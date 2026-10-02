@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="WaveDefinition" format=3 uid="uid://uaiismft5nub"]
+
+[ext_resource type="Script" uid="uid://cmo6to4a6tibi" path="res://game/data/spawn_group.gd" id="1_4buek"]
+[ext_resource type="Resource" uid="uid://crniaq8n2b6bv" path="res://game/data/enemies/cultist.tres" id="2_fy15y"]
+[ext_resource type="Script" uid="uid://bvroyv8j4sgmi" path="res://game/data/wave_definition.gd" id="2_x3uce"]
+
+[sub_resource type="Resource" id="Resource_7gs6h"]
+script = ExtResource("1_4buek")
+enemy = ExtResource("2_fy15y")
+metadata/_custom_type_script = "uid://cmo6to4a6tibi"
+
+[sub_resource type="Resource" id="Resource_wo47w"]
+script = ExtResource("1_4buek")
+enemy = ExtResource("2_fy15y")
+metadata/_custom_type_script = "uid://cmo6to4a6tibi"
+
+[sub_resource type="Resource" id="Resource_kba43"]
+script = ExtResource("1_4buek")
+enemy = ExtResource("2_fy15y")
+metadata/_custom_type_script = "uid://cmo6to4a6tibi"
+
+[resource]
+script = ExtResource("2_x3uce")
+groups = Array[ExtResource("1_4buek")]([SubResource("Resource_7gs6h"), SubResource("Resource_wo47w"), SubResource("Resource_kba43")])
+metadata/_custom_type_script = "uid://bvroyv8j4sgmi"

@@ -1,91 +1,54 @@
-[gd_scene format=3 uid="uid://dpeqdxb317lrk"]
+[gd_scene format=3 uid="uid://bghavjkofsdd7"]
 
-[ext_resource type="Script" uid="uid://qy4it252asph" path="res://game/game.gd" id="1_qdja7"]
-[ext_resource type="AudioStream" uid="uid://4qr4upba6mol" path="res://assets/sounds/music/duty_calls.mp3" id="2_i75et"]
+[ext_resource type="Script" uid="uid://cki8h873psykx" path="res://game/managers/game_manager.gd" id="1_l1rk1"]
 [ext_resource type="PackedScene" uid="uid://clc41ipfan7bu" path="res://core/ui/pause_menu.tscn" id="2_m71xk"]
-[ext_resource type="Theme" uid="uid://big3vhu7k1hbb" path="res://core/theme/base_theme.tres" id="3_l8g03"]
 [ext_resource type="PackedScene" uid="uid://dr52lc4bvyyj7" path="res://core/ui/settings_menu.tscn" id="3_m71xk"]
 [ext_resource type="PackedScene" uid="uid://cyyymtcnpcy60" path="res://core/ui/end_screen.tscn" id="5_adwu5"]
-[ext_resource type="AudioStream" uid="uid://b8d08d24ieooh" path="res://assets/sounds/music/kayak.mp3" id="6_knu3h"]
-[ext_resource type="AudioStream" uid="uid://c476cpsaki108" path="res://assets/sounds/music/game_over.ogg" id="7_1vmna"]
+[ext_resource type="PackedScene" uid="uid://ddt1m8s6wg7ju" path="res://core/ui/credits.tscn" id="6_dakft"]
 [ext_resource type="PackedScene" uid="uid://cniox0c88ga5l" path="res://core/ui/controls_menu.tscn" id="8_wmqhs"]
 
-[node name="Game" type="Control" unique_id=670230050 node_paths=PackedStringArray("pause_menu", "win_screen", "game_over_screen")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_qdja7")
-music = ExtResource("2_i75et")
-pause_menu = NodePath("PauseMenu")
-win_screen = NodePath("WinScreen")
-game_over_screen = NodePath("GameOverScreen")
+[sub_resource type="PlaneMesh" id="PlaneMesh_ra2i3"]
 
-[node name="Background" type="ColorRect" parent="." unique_id=1037094621]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.023529412, 0, 1, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_ra2i3"]
 
-[node name="PlaceHolder" type="Label" parent="." unique_id=850699072]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_l8g03")
-theme_type_variation = &"TitleLabel"
-text = "    Game Scene
-    Press Esc / Start for the Pause Menu"
-horizontal_alignment = 1
+[node name="Game" type="Node3D" unique_id=1433756563]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2023108572]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -69.0
-offset_top = -50.5
-offset_right = 69.0
-offset_bottom = 50.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="World" type="Node3D" parent="." unique_id=1336092557]
 
-[node name="PauseMenu" parent="." unique_id=1641965247 node_paths=PackedStringArray("settings_menu") instance=ExtResource("2_m71xk")]
-visible = false
-layout_mode = 1
+[node name="Camera3D" type="Camera3D" parent="World" unique_id=2106176760]
+transform = Transform3D(0.70710677, -0.4055798, 0.579228, 0, 0.81915206, 0.57357645, -0.70710677, -0.4055798, 0.579228, 14, 14, 14)
+projection = 1
+size = 24.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World" unique_id=1994589766]
+transform = Transform3D(0.8660254, -0.38302222, 0.32139382, 0, 0.64278764, 0.76604444, -0.5, -0.66341394, 0.5566704, 0, 0, 0)
+
+[node name="Ground" type="MeshInstance3D" parent="World" unique_id=311498323]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ra2i3")
+
+[node name="Stronghold" type="MeshInstance3D" parent="World" unique_id=475187574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52057624, 0)
+mesh = SubResource("BoxMesh_ra2i3")
+
+[node name="Systems" type="Node" parent="." unique_id=1873627118]
+
+[node name="GameManager" type="Node" parent="Systems" unique_id=181638440 node_paths=PackedStringArray("pause_menu", "win_screen", "game_over_screen")]
+script = ExtResource("1_l1rk1")
+pause_menu = NodePath("../../UI/PauseMenu")
+win_screen = NodePath("../../UI/EndScreen")
+game_over_screen = NodePath("../../UI/EndScreen")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=851109597]
+
+[node name="PauseMenu" parent="UI" unique_id=1641965247 node_paths=PackedStringArray("settings_menu") instance=ExtResource("2_m71xk")]
 settings_menu = NodePath("../SettingsMenu")
 
-[node name="SettingsMenu" parent="." unique_id=662873383 node_paths=PackedStringArray("controls_menu") instance=ExtResource("3_m71xk")]
-visible = false
-layout_mode = 1
+[node name="SettingsMenu" parent="UI" unique_id=662873383 node_paths=PackedStringArray("controls_menu") instance=ExtResource("3_m71xk")]
 controls_menu = NodePath("../ControlsMenu")
 
-[node name="WinScreen" parent="." unique_id=1090858386 instance=ExtResource("5_adwu5")]
-visible = false
-layout_mode = 1
-heading_text = "You Win!"
-music = ExtResource("6_knu3h")
+[node name="ControlsMenu" parent="UI" unique_id=1503134691 instance=ExtResource("8_wmqhs")]
 
-[node name="GameOverScreen" parent="." unique_id=576888152 instance=ExtResource("5_adwu5")]
-visible = false
-layout_mode = 1
-stinger = ExtResource("7_1vmna")
+[node name="EndScreen" parent="UI" unique_id=1090858386 instance=ExtResource("5_adwu5")]
 
-[node name="ControlsMenu" parent="." unique_id=1503134691 instance=ExtResource("8_wmqhs")]
-visible = false
-layout_mode = 1
+[node name="Credits" parent="UI" unique_id=1391844769 instance=ExtResource("6_dakft")]

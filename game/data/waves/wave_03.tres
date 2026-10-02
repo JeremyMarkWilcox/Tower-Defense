@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WaveDefinition" format=3 uid="uid://cb0dfd6owlsiq"]
+
+[ext_resource type="Script" uid="uid://cmo6to4a6tibi" path="res://game/data/spawn_group.gd" id="1_u5ujo"]
+[ext_resource type="Script" uid="uid://bvroyv8j4sgmi" path="res://game/data/wave_definition.gd" id="2_wsuxj"]
+
+[resource]
+script = ExtResource("2_wsuxj")
+metadata/_custom_type_script = "uid://bvroyv8j4sgmi"
