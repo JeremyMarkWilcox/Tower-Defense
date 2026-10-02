@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://ddt1m8s6wg7ju"]
+
+[ext_resource type="Script" uid="uid://pd8cv474isyx" path="res://core/ui/credits.gd" id="1_3mp8h"]
+[ext_resource type="Theme" uid="uid://big3vhu7k1hbb" path="res://core/theme/base_theme.tres" id="2_3t7oe"]
+
+[node name="Credits" type="Control" unique_id=1391844769 node_paths=PackedStringArray("back_button", "scroll", "first_focus", "focus_chain")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3mp8h")
+back_button = NodePath("VBoxContainer/BackButton")
+scroll = NodePath("VBoxContainer/ScrollContainer")
+first_focus = NodePath("VBoxContainer/BackButton")
+focus_chain = [NodePath("VBoxContainer/BackButton")]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2022974861]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1341029757]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -192.0
+offset_right = 250.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreditsTitle" type="Label" parent="VBoxContainer" unique_id=762846986]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme = ExtResource("2_3t7oe")
+theme_type_variation = &"TitleLabel"
+text = "Credits"
+
+[node name="EmptyFiller" type="Label" parent="VBoxContainer" unique_id=1872581890]
+layout_mode = 2
+text = "
+"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer" unique_id=839135666]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Body" type="RichTextLabel" parent="VBoxContainer/ScrollContainer" unique_id=1294872875]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+bbcode_enabled = true
+text = "[center][b]Programming[/b]
+Name
+
+[b]Art[/b]
+Name
+
+[b]Music[/b]
+\"Deified\" by The Grey Room / Density & Time
+\"Kayak\" by The Grey Room / Density & Time
+\"Duty Calls\" by Rod Kim
+
+[b]Sound Effects[/b]
+Sound effects by Kenney (CC0)
+
+[b]Font[/b]
+VT323 by Peter Hull (SIL Open Font License)
+
+[b]Made with[/b]
+Godot Engine
+godotengine.org/license[/center]
+"
+fit_content = true
+
+[node name="BackButton" type="Button" parent="VBoxContainer" unique_id=1571895217]
+layout_mode = 2
+text = "Back"
