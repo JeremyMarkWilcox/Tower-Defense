@@ -10,6 +10,7 @@ enum RunState { SETUP, ACTIVE, VICTORY, DEFEAT }
 @export var pause_menu: BaseMenu
 @export var wave_manager: WaveManager
 @export var end_screen: RunEndScreen
+@export var stronghold: Stronghold
 
 var state: RunState = RunState.SETUP
 
@@ -29,9 +30,11 @@ func _ready() -> void:
 
 func _connect_systems() -> void:
 	wave_manager.boss_defeated.connect(_win)
-	# Temporary prints until the Stronghold (Step 4) and GoldManager (Step 5) exist.
-	wave_manager.enemy_reached_stronghold.connect(func(damage: int) -> void:
-		print("Stronghold hit for %d" % damage))
+	wave_manager.enemy_reached_stronghold.connect(stronghold.take_damage)
+	stronghold.destroyed.connect(_lose)
+	# Temporary prints until GoldManager (Step 5) and the HUD exist.
+	stronghold.health_changed.connect(func(current: int, maximum: int) -> void:
+		print("Stronghold %d / %d" % [current, maximum]))
 	wave_manager.enemy_killed.connect(func(bounty: int) -> void:
 		print("Enemy killed, bounty %d" % bounty))
 	wave_manager.early_call_rewarded.connect(func(bonus: int) -> void:

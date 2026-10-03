@@ -9,9 +9,10 @@ signal enemy_reached_stronghold(damage: int)
 signal early_call_rewarded(bonus: int)
 signal boss_defeated
 
+
 @export var waves: Array[WaveDefinition] = []
 @export var enemy_container: Node3D
-@export var stronghold: Node3D
+@export var stronghold: Stronghold
 @export var spawn_radius := 18.0
 @export var arrive_radius := 1.5
 

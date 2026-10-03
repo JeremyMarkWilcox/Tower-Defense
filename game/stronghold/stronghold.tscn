@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dduwnap7vm400"]
+
+[ext_resource type="Script" uid="uid://bmpesgfk651k2" path="res://game/stronghold/stronghold.gd" id="1_3cre5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ra2i3"]
+
+[node name="Stronghold" type="Node3D" unique_id=1932149259]
+script = ExtResource("1_3cre5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=751748002]
+mesh = SubResource("BoxMesh_ra2i3")

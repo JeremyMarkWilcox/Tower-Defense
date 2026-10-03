@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bghavjkofsdd7"]
 
 [ext_resource type="Script" uid="uid://cki8h873psykx" path="res://game/managers/game_manager.gd" id="1_l1rk1"]
+[ext_resource type="PackedScene" uid="uid://dduwnap7vm400" path="res://game/stronghold/stronghold.tscn" id="1_qf6n1"]
 [ext_resource type="PackedScene" uid="uid://clc41ipfan7bu" path="res://core/ui/pause_menu.tscn" id="2_m71xk"]
 [ext_resource type="Script" uid="uid://cwa8b8tgq2p2w" path="res://game/managers/wave_manager.gd" id="2_u5opy"]
 [ext_resource type="Script" uid="uid://bvroyv8j4sgmi" path="res://game/data/wave_definition.gd" id="3_3vho3"]
@@ -13,8 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://dj4pwl2xdjjfq" path="res://game/Ui/run_end_screen.tscn" id="11_3vho3"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ra2i3"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_ra2i3"]
 
 [node name="Game" type="Node3D" unique_id=1433756563]
 
@@ -32,19 +31,20 @@ transform = Transform3D(0.8660254, -0.38302222, 0.32139382, 0, 0.64278764, 0.766
 transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0, 0, 0)
 mesh = SubResource("PlaneMesh_ra2i3")
 
-[node name="Stronghold" type="MeshInstance3D" parent="World" unique_id=475187574]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52057624, 0)
-mesh = SubResource("BoxMesh_ra2i3")
+[node name="Stronghold" parent="World" unique_id=1932149259 instance=ExtResource("1_qf6n1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+max_health = 3
 
 [node name="Enemies" type="Node3D" parent="World" unique_id=1363674715]
 
 [node name="Systems" type="Node" parent="." unique_id=1873627118]
 
-[node name="GameManager" type="Node" parent="Systems" unique_id=181638440 node_paths=PackedStringArray("pause_menu", "wave_manager", "end_screen")]
+[node name="GameManager" type="Node" parent="Systems" unique_id=181638440 node_paths=PackedStringArray("pause_menu", "wave_manager", "end_screen", "stronghold")]
 script = ExtResource("1_l1rk1")
 pause_menu = NodePath("../../UI/PauseMenu")
 wave_manager = NodePath("../WaveManager")
 end_screen = NodePath("../../UI/EndScreen")
+stronghold = NodePath("../../World/Stronghold")
 
 [node name="WaveManager" type="Node" parent="Systems" unique_id=1737513906 node_paths=PackedStringArray("enemy_container", "stronghold")]
 script = ExtResource("2_u5opy")
