@@ -11,6 +11,7 @@ enum RunState { SETUP, ACTIVE, VICTORY, DEFEAT }
 @export var wave_manager: WaveManager
 @export var end_screen: RunEndScreen
 @export var stronghold: Stronghold
+@export var gold_manager: GoldManager
 
 var state: RunState = RunState.SETUP
 
@@ -31,20 +32,21 @@ func _ready() -> void:
 func _connect_systems() -> void:
 	wave_manager.boss_defeated.connect(_win)
 	wave_manager.enemy_reached_stronghold.connect(stronghold.take_damage)
+	wave_manager.enemy_killed.connect(gold_manager.add_gold)
+	wave_manager.early_call_rewarded.connect(gold_manager.add_gold)
 	stronghold.destroyed.connect(_lose)
-	# Temporary prints until GoldManager (Step 5) and the HUD exist.
+	# Temporary prints until the HUD exists.
+	gold_manager.gold_changed.connect(func(current: int) -> void:
+		print("Gold: %d" % current))
 	stronghold.health_changed.connect(func(current: int, maximum: int) -> void:
 		print("Stronghold %d / %d" % [current, maximum]))
-	wave_manager.enemy_killed.connect(func(bounty: int) -> void:
-		print("Enemy killed, bounty %d" % bounty))
-	wave_manager.early_call_rewarded.connect(func(bonus: int) -> void:
-		print("Early-call bonus %d" % bonus))
 	wave_manager.wave_started.connect(func(number: int, total: int) -> void:
 		print("Wave %d / %d" % [number, total]))
 
 
 func _start_run() -> void:
 	state = RunState.ACTIVE
+	gold_manager.reset()
 	wave_manager.start()
 
 
@@ -77,6 +79,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("call_next_wave"):
 		wave_manager.call_next_wave()
 		get_viewport().set_input_as_handled()
+	elif OS.is_debug_build() and event is InputEventKey and event.is_pressed() \
+			and not event.is_echo() and (event as InputEventKey).keycode == KEY_B:
+		print("Spend 5: ", gold_manager.try_spend(5))
 
 
 func _on_window_size_changed() -> void:

@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://bpny3ka8b2xq5" path="res://game/data/waves/wave_02.tres" id="5_vsp63"]
 [ext_resource type="Resource" uid="uid://cb0dfd6owlsiq" path="res://game/data/waves/wave_03.tres" id="6_b686c"]
 [ext_resource type="PackedScene" uid="uid://ddt1m8s6wg7ju" path="res://core/ui/credits.tscn" id="6_dakft"]
+[ext_resource type="Script" uid="uid://e21u8rkcefj4" path="res://game/managers/gold_manager.gd" id="8_vsp63"]
 [ext_resource type="PackedScene" uid="uid://cniox0c88ga5l" path="res://core/ui/controls_menu.tscn" id="8_wmqhs"]
 [ext_resource type="PackedScene" uid="uid://dj4pwl2xdjjfq" path="res://game/Ui/run_end_screen.tscn" id="11_3vho3"]
 
@@ -39,18 +40,22 @@ max_health = 3
 
 [node name="Systems" type="Node" parent="." unique_id=1873627118]
 
-[node name="GameManager" type="Node" parent="Systems" unique_id=181638440 node_paths=PackedStringArray("pause_menu", "wave_manager", "end_screen", "stronghold")]
+[node name="GameManager" type="Node" parent="Systems" unique_id=181638440 node_paths=PackedStringArray("pause_menu", "wave_manager", "end_screen", "stronghold", "gold_manager")]
 script = ExtResource("1_l1rk1")
 pause_menu = NodePath("../../UI/PauseMenu")
 wave_manager = NodePath("../WaveManager")
 end_screen = NodePath("../../UI/EndScreen")
 stronghold = NodePath("../../World/Stronghold")
+gold_manager = NodePath("../GoldManager")
 
 [node name="WaveManager" type="Node" parent="Systems" unique_id=1737513906 node_paths=PackedStringArray("enemy_container", "stronghold")]
 script = ExtResource("2_u5opy")
 waves = Array[ExtResource("3_3vho3")]([ExtResource("4_qf6n1"), ExtResource("5_vsp63"), ExtResource("6_b686c")])
 enemy_container = NodePath("../../World/Enemies")
 stronghold = NodePath("../../World/Stronghold")
+
+[node name="GoldManager" type="Node" parent="Systems" unique_id=900479467]
+script = ExtResource("8_vsp63")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=851109597]
 
