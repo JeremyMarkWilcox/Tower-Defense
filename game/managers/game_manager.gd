@@ -1,14 +1,15 @@
 class_name GameManager
 extends Node
 ## Owns the run: setup, active play, victory and defeat.
-## Restart is handled by SceneManager reloading the scene, so no manual cleanup.
+## Connects the other systems once. Restart is handled by SceneManager
+## reloading the scene, so no manual cleanup.
 
 enum RunState { SETUP, ACTIVE, VICTORY, DEFEAT }
 
 @export var music: AudioStream
 @export var pause_menu: BaseMenu
-@export var win_screen: BaseMenu
-@export var game_over_screen: BaseMenu
+@export var wave_manager: WaveManager
+@export var end_screen: RunEndScreen
 
 var state: RunState = RunState.SETUP
 
@@ -22,28 +23,46 @@ func _ready() -> void:
 	if OS.has_feature("web"):
 		_last_window_size = get_window().size
 		get_window().size_changed.connect(_on_window_size_changed)
+	_connect_systems()
 	_start_run()
 
 
+func _connect_systems() -> void:
+	wave_manager.boss_defeated.connect(_win)
+	# Temporary prints until the Stronghold (Step 4) and GoldManager (Step 5) exist.
+	wave_manager.enemy_reached_stronghold.connect(func(damage: int) -> void:
+		print("Stronghold hit for %d" % damage))
+	wave_manager.enemy_killed.connect(func(bounty: int) -> void:
+		print("Enemy killed, bounty %d" % bounty))
+	wave_manager.early_call_rewarded.connect(func(bonus: int) -> void:
+		print("Early-call bonus %d" % bonus))
+	wave_manager.wave_started.connect(func(number: int, total: int) -> void:
+		print("Wave %d / %d" % [number, total]))
+
+
 func _start_run() -> void:
-	# Later steps: reset gold, start the wave schedule.
 	state = RunState.ACTIVE
+	wave_manager.start()
 
 
 func _win() -> void:
 	if state != RunState.ACTIVE:
 		return  # the outcome is decided once
 	state = RunState.VICTORY
+	wave_manager.stop()
 	MenuManager.close_all()
-	MenuManager.open_menu(win_screen)
+	end_screen.set_result(true)
+	MenuManager.open_menu(end_screen)
 
 
 func _lose() -> void:
 	if state != RunState.ACTIVE:
 		return
 	state = RunState.DEFEAT
+	wave_manager.stop()
 	MenuManager.close_all()
-	MenuManager.open_menu(game_over_screen)
+	end_screen.set_result(false)
+	MenuManager.open_menu(end_screen)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -51,6 +70,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("pause") and not MenuManager.is_menu_open():
 		MenuManager.open_menu(pause_menu)
+		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("call_next_wave"):
+		wave_manager.call_next_wave()
 		get_viewport().set_input_as_handled()
 
 

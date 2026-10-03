@@ -2,10 +2,15 @@
 
 [ext_resource type="Script" uid="uid://cki8h873psykx" path="res://game/managers/game_manager.gd" id="1_l1rk1"]
 [ext_resource type="PackedScene" uid="uid://clc41ipfan7bu" path="res://core/ui/pause_menu.tscn" id="2_m71xk"]
+[ext_resource type="Script" uid="uid://cwa8b8tgq2p2w" path="res://game/managers/wave_manager.gd" id="2_u5opy"]
+[ext_resource type="Script" uid="uid://bvroyv8j4sgmi" path="res://game/data/wave_definition.gd" id="3_3vho3"]
 [ext_resource type="PackedScene" uid="uid://dr52lc4bvyyj7" path="res://core/ui/settings_menu.tscn" id="3_m71xk"]
-[ext_resource type="PackedScene" uid="uid://cyyymtcnpcy60" path="res://core/ui/end_screen.tscn" id="5_adwu5"]
+[ext_resource type="Resource" uid="uid://uaiismft5nub" path="res://game/data/waves/wave_01.tres" id="4_qf6n1"]
+[ext_resource type="Resource" uid="uid://bpny3ka8b2xq5" path="res://game/data/waves/wave_02.tres" id="5_vsp63"]
+[ext_resource type="Resource" uid="uid://cb0dfd6owlsiq" path="res://game/data/waves/wave_03.tres" id="6_b686c"]
 [ext_resource type="PackedScene" uid="uid://ddt1m8s6wg7ju" path="res://core/ui/credits.tscn" id="6_dakft"]
 [ext_resource type="PackedScene" uid="uid://cniox0c88ga5l" path="res://core/ui/controls_menu.tscn" id="8_wmqhs"]
+[ext_resource type="PackedScene" uid="uid://dj4pwl2xdjjfq" path="res://game/Ui/run_end_screen.tscn" id="11_3vho3"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ra2i3"]
 
@@ -31,24 +36,33 @@ mesh = SubResource("PlaneMesh_ra2i3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52057624, 0)
 mesh = SubResource("BoxMesh_ra2i3")
 
+[node name="Enemies" type="Node3D" parent="World" unique_id=1363674715]
+
 [node name="Systems" type="Node" parent="." unique_id=1873627118]
 
-[node name="GameManager" type="Node" parent="Systems" unique_id=181638440 node_paths=PackedStringArray("pause_menu", "win_screen", "game_over_screen")]
+[node name="GameManager" type="Node" parent="Systems" unique_id=181638440 node_paths=PackedStringArray("pause_menu", "wave_manager", "end_screen")]
 script = ExtResource("1_l1rk1")
 pause_menu = NodePath("../../UI/PauseMenu")
-win_screen = NodePath("../../UI/EndScreen")
-game_over_screen = NodePath("../../UI/EndScreen")
+wave_manager = NodePath("../WaveManager")
+end_screen = NodePath("../../UI/EndScreen")
+
+[node name="WaveManager" type="Node" parent="Systems" unique_id=1737513906 node_paths=PackedStringArray("enemy_container", "stronghold")]
+script = ExtResource("2_u5opy")
+waves = Array[ExtResource("3_3vho3")]([ExtResource("4_qf6n1"), ExtResource("5_vsp63"), ExtResource("6_b686c")])
+enemy_container = NodePath("../../World/Enemies")
+stronghold = NodePath("../../World/Stronghold")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=851109597]
 
 [node name="PauseMenu" parent="UI" unique_id=1641965247 node_paths=PackedStringArray("settings_menu") instance=ExtResource("2_m71xk")]
 settings_menu = NodePath("../SettingsMenu")
+pauses_game = true
 
 [node name="SettingsMenu" parent="UI" unique_id=662873383 node_paths=PackedStringArray("controls_menu") instance=ExtResource("3_m71xk")]
 controls_menu = NodePath("../ControlsMenu")
 
 [node name="ControlsMenu" parent="UI" unique_id=1503134691 instance=ExtResource("8_wmqhs")]
 
-[node name="EndScreen" parent="UI" unique_id=1090858386 instance=ExtResource("5_adwu5")]
-
 [node name="Credits" parent="UI" unique_id=1391844769 instance=ExtResource("6_dakft")]
+
+[node name="EndScreen" parent="UI" unique_id=1090858386 instance=ExtResource("11_3vho3")]

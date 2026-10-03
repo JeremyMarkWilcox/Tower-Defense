@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://crniaq8n2b6bv"]
 
+[ext_resource type="PackedScene" uid="uid://cdf14u2jmm2p6" path="res://game/data/enemies/cultist.tscn" id="1_6guiu"]
 [ext_resource type="Script" uid="uid://dynep1f7hnh6a" path="res://game/data/enemy_data.gd" id="1_uele5"]
 
 [resource]
 script = ExtResource("1_uele5")
 display_name = "Cultist"
+scene = ExtResource("1_6guiu")
 bounty = 2
 metadata/_custom_type_script = "uid://dynep1f7hnh6a"
