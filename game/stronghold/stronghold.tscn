@@ -2,10 +2,16 @@
 
 [ext_resource type="Script" uid="uid://bmpesgfk651k2" path="res://game/stronghold/stronghold.gd" id="1_3cre5"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_ra2i3"]
+[sub_resource type="BoxMesh" id="BoxMesh_g4gaj"]
 
-[node name="Stronghold" type="Node3D" unique_id=1932149259]
+[node name="Stronghold" type="Node3D" unique_id=2125922311]
+transform = Transform3D(-2.1855695e-07, 0, 5, 0, 1, 0, -5, 0, -2.1855695e-07, 0, 0, 0)
 script = ExtResource("1_3cre5")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=751748002]
-mesh = SubResource("BoxMesh_ra2i3")
+[node name="Base_01" type="MeshInstance3D" parent="." unique_id=2101840664]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.25, 0, 0.25)
+mesh = SubResource("BoxMesh_g4gaj")
+
+[node name="Base_02" type="MeshInstance3D" parent="." unique_id=985869088]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.25, 0, -0.25)
+mesh = SubResource("BoxMesh_g4gaj")
