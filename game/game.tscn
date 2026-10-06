@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://clc41ipfan7bu" path="res://core/ui/pause_menu.tscn" id="2_m71xk"]
 [ext_resource type="Script" uid="uid://cwa8b8tgq2p2w" path="res://game/managers/wave_manager.gd" id="2_u5opy"]
 [ext_resource type="Script" uid="uid://bvroyv8j4sgmi" path="res://game/data/wave_definition.gd" id="3_3vho3"]
+[ext_resource type="PackedScene" uid="uid://djqs531cdvw7h" path="res://assets/3dArt/rock.glb" id="3_ee6o4"]
 [ext_resource type="Shader" uid="uid://bpukmr24jllgu" path="res://assets/shaders/edge_shadow.gdshader" id="3_hb504"]
 [ext_resource type="PackedScene" uid="uid://dr52lc4bvyyj7" path="res://core/ui/settings_menu.tscn" id="3_m71xk"]
 [ext_resource type="Resource" uid="uid://uaiismft5nub" path="res://game/data/waves/wave_01.tres" id="4_qf6n1"]
@@ -53,10 +54,28 @@ mesh = SubResource("PlaneMesh_g4gaj")
 surface_material_override/0 = SubResource("StandardMaterial3D_otjlk")
 
 [node name="Stronghold" parent="World" unique_id=1932149259 instance=ExtResource("1_qf6n1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9108037, 0)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.9108037, 0)
 max_health = 3
 
 [node name="Enemies" type="Node3D" parent="World" unique_id=1363674715]
+
+[node name="rock_01" parent="World" unique_id=885553891 instance=ExtResource("3_ee6o4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.021085978, 21.246647)
+
+[node name="rock_02" parent="World" unique_id=1986284191 instance=ExtResource("3_ee6o4")]
+transform = Transform3D(0.3141581, 0.9493706, 0, -0.9493706, 0.3141581, 0, 0, 0, 0.6221444, 17.778894, 0.06291363, -6.017362)
+
+[node name="rock_03" parent="World" unique_id=20079178 instance=ExtResource("3_ee6o4")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.311, 18.952042, 0.045034945, -7.5763636)
+
+[node name="rock_04" parent="World" unique_id=563846773 instance=ExtResource("3_ee6o4")]
+transform = Transform3D(0.5, 0, 0, 0, 0.4385731, -0.14934951, 0, 0.24011175, 0.27279246, 18.952042, -0.09554911, -5.61253)
+
+[node name="rock_05" parent="World" unique_id=1502653079 instance=ExtResource("3_ee6o4")]
+transform = Transform3D(0.32751223, 0.36119568, -0.4298527, -0.48152298, 0.43661836, 0, 0.2887409, 0.31843686, 0.48757216, -16.005077, 0.122728825, -0.03004837)
+
+[node name="rock_06" parent="World" unique_id=2140864810 instance=ExtResource("3_ee6o4")]
+transform = Transform3D(0.1093387, 0.120583795, -0.14350466, -0.16075459, 0.14576335, 3.6852774e-09, 0.09639504, 0.10630892, 0.16277409, -16.005077, 0.3977698, 1.4842558)
 
 [node name="Atmosphere" type="CanvasLayer" parent="." unique_id=67527882]
 layer = 0
