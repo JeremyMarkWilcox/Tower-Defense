@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dr52lc4bvyyj7" path="res://core/ui/settings_menu.tscn" id="3_m71xk"]
 [ext_resource type="PackedScene" uid="uid://c6plvsjtimxkn" path="res://assets/3dArt/dead_tree_01.glb" id="4_4cobl"]
 [ext_resource type="Resource" uid="uid://uaiismft5nub" path="res://game/data/waves/wave_01.tres" id="4_qf6n1"]
+[ext_resource type="Shader" uid="uid://bcqlmc0nah414" path="res://assets/shaders/rain.gdshader" id="5_ln7ps"]
 [ext_resource type="Resource" uid="uid://bpny3ka8b2xq5" path="res://game/data/waves/wave_02.tres" id="5_vsp63"]
 [ext_resource type="Resource" uid="uid://cb0dfd6owlsiq" path="res://game/data/waves/wave_03.tres" id="6_b686c"]
 [ext_resource type="PackedScene" uid="uid://ddt1m8s6wg7ju" path="res://core/ui/credits.tscn" id="6_dakft"]
@@ -20,6 +21,16 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_a5s0c"]
 size = Vector3(0.167, 0.167, 0.167)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4cobl"]
+shader = ExtResource("5_ln7ps")
+shader_parameter/rain_color = Color(0.65, 0.73, 0.77, 1)
+shader_parameter/opacity = 0.14
+shader_parameter/density = 0.35
+shader_parameter/fall_speed = 0.65
+shader_parameter/slant = 0.15
+shader_parameter/streak_length = 0.025
+shader_parameter/streak_width = 0.0012
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b686c"]
 shader = ExtResource("3_hb504")
@@ -45,74 +56,85 @@ size = 35.0
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="World" unique_id=1994589766]
 transform = Transform3D(0.8660254, -0.38302222, 0.32139382, 0, 0.64278764, 0.76604444, -0.5, -0.66341394, 0.5566704, 0, 0, 0)
 
-[node name="Ground" parent="World" unique_id=1918880653 instance=ExtResource("2_b686c")]
+[node name="Environment" type="Node3D" parent="World" unique_id=1459671944]
 
-[node name="Stronghold" parent="World" unique_id=2125922311 instance=ExtResource("1_qf6n1")]
+[node name="Ground" parent="World/Environment" unique_id=1918880653 instance=ExtResource("2_b686c")]
+
+[node name="Stronghold" parent="World/Environment" unique_id=2125922311 instance=ExtResource("1_qf6n1")]
 transform = Transform3D(-2.1855695e-07, 0, 5, 0, 1, 0, -5, 0, -2.1855695e-07, -1.495718, 1.0362198, 1.3766179)
 
-[node name="Slot_01" type="MeshInstance3D" parent="World" unique_id=100128813]
+[node name="Slot_01" type="MeshInstance3D" parent="World/Environment" unique_id=100128813]
 transform = Transform3D(4, 0, 0, 0, 14.11, 0, 0, 0, 4, -4.907729, 2.448382, 4.7888513)
 mesh = SubResource("BoxMesh_a5s0c")
 
-[node name="Slot_02" type="MeshInstance3D" parent="World" unique_id=1513955015]
+[node name="Slot_02" type="MeshInstance3D" parent="World/Environment" unique_id=1513955015]
 transform = Transform3D(4, 0, 0, 0, 14.11, 0, 0, 0, 4, -4.9091387, 2.4400382, 0.46123505)
 mesh = SubResource("BoxMesh_a5s0c")
 
-[node name="Slot_03" type="MeshInstance3D" parent="World" unique_id=1940641558]
+[node name="Slot_03" type="MeshInstance3D" parent="World/Environment" unique_id=1940641558]
 transform = Transform3D(4, 0, 0, 0, 14.11, 0, 0, 0, 4, -0.6060493, 2.448382, 4.7865343)
 mesh = SubResource("BoxMesh_a5s0c")
 
-[node name="Slot_04" type="MeshInstance3D" parent="World" unique_id=1296384859]
+[node name="Slot_04" type="MeshInstance3D" parent="World/Environment" unique_id=1296384859]
 transform = Transform3D(4, 0, 0, 0, 14.11, 0, 0, 0, 4, -2.4153163, 2.448382, -2.0408347)
 mesh = SubResource("BoxMesh_a5s0c")
 
-[node name="Slot_05" type="MeshInstance3D" parent="World" unique_id=541513090]
+[node name="Slot_05" type="MeshInstance3D" parent="World/Environment" unique_id=541513090]
 transform = Transform3D(4, 0, 0, 0, 14.11, 0, 0, 0, 4, 1.9207788, 2.448382, -2.0330393)
 mesh = SubResource("BoxMesh_a5s0c")
 
-[node name="Slot_06" type="MeshInstance3D" parent="World" unique_id=467748503]
+[node name="Slot_06" type="MeshInstance3D" parent="World/Environment" unique_id=467748503]
 transform = Transform3D(4, 0, 0, 0, 14.11, 0, 0, 0, 4, 1.9127023, 2.448382, 2.2808354)
 mesh = SubResource("BoxMesh_a5s0c")
 
-[node name="Enemies" type="Node3D" parent="World" unique_id=1363674715]
+[node name="Enemies" type="Node3D" parent="World/Environment" unique_id=1363674715]
 
-[node name="rock_01" parent="World" unique_id=885553891 instance=ExtResource("3_ee6o4")]
+[node name="rock_01" parent="World/Environment" unique_id=885553891 instance=ExtResource("3_ee6o4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3730229, 33.600082)
 
-[node name="rock_02" parent="World" unique_id=1986284191 instance=ExtResource("3_ee6o4")]
+[node name="rock_02" parent="World/Environment" unique_id=1986284191 instance=ExtResource("3_ee6o4")]
 transform = Transform3D(0.3141581, 0.9493706, 0, -0.9493706, 0.3141581, 0, 0, 0, 0.6221444, 13.93482, 0.8279035, -20.242075)
 
-[node name="rock_03" parent="World" unique_id=20079178 instance=ExtResource("3_ee6o4")]
+[node name="rock_03" parent="World/Environment" unique_id=20079178 instance=ExtResource("3_ee6o4")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.311, 18.81191, 0.5336988, -20.401806)
 
-[node name="rock_04" parent="World" unique_id=563846773 instance=ExtResource("3_ee6o4")]
+[node name="rock_04" parent="World/Environment" unique_id=563846773 instance=ExtResource("3_ee6o4")]
 transform = Transform3D(0.5, 0, 0, 0, 0.4385731, -0.14934951, 0, 0.24011175, 0.27279246, 18.952042, 0.64256907, -5.61253)
 
-[node name="rock_05" parent="World" unique_id=1502653079 instance=ExtResource("3_ee6o4")]
+[node name="rock_05" parent="World/Environment" unique_id=1502653079 instance=ExtResource("3_ee6o4")]
 transform = Transform3D(0.32751223, 0.41676426, -0.4298527, -0.48152298, 0.50379044, 1.1038849e-08, 0.2887409, 0.36742717, 0.48757216, -27.477098, 0.39540434, -0.03004837)
 
-[node name="rock_06" parent="World" unique_id=2140864810 instance=ExtResource("3_ee6o4")]
+[node name="rock_06" parent="World/Environment" unique_id=2140864810 instance=ExtResource("3_ee6o4")]
 transform = Transform3D(0.1093387, 0.120583795, -0.14350466, -0.16075459, 0.14576335, 3.6852774e-09, 0.09639504, 0.10630892, 0.16277409, -26.74106, 0.8000392, 6.219616)
 
-[node name="dead_tree_01" parent="World" unique_id=592016842 instance=ExtResource("4_4cobl")]
-transform = Transform3D(0.81883156, 0, 0.5740338, 0.054177523, 0.9955362, -0.077281624, -0.57147145, 0.094380364, 0.8151765, -29.030489, -0.12676573, 0)
+[node name="dead_tree_01" parent="World/Environment" unique_id=592016842 instance=ExtResource("4_4cobl")]
+transform = Transform3D(0.81883156, 0, 0.5740338, 0.054177523, 0.9955362, -0.077281624, -0.57147145, 0.094380364, 0.8151765, -29.030489, 0.2590394, 0)
 
-[node name="dead_tree_04" parent="World" unique_id=1535275759 instance=ExtResource("4_4cobl")]
+[node name="dead_tree_04" parent="World/Environment" unique_id=1535275759 instance=ExtResource("4_4cobl")]
 transform = Transform3D(0.71920925, -0.4207495, 0.5529085, 0.39516875, 0.90225387, 0.17256705, -0.57147145, 0.094380364, 0.8151765, 16.212196, 0.11251664, -21.931486)
 
-[node name="dead_tree_05" parent="World" unique_id=973768381 instance=ExtResource("4_4cobl")]
-transform = Transform3D(0.9599308, 0.12586583, 0.2503802, 0.040534675, 0.8217017, -0.5684741, -0.2772895, 0.5558451, 0.78367513, 22.680407, 0.19398928, 12.103888)
+[node name="dead_tree_05" parent="World/Environment" unique_id=973768381 instance=ExtResource("4_4cobl")]
+transform = Transform3D(0.9599308, 0.12586583, 0.2503802, 0.040534675, 0.8217017, -0.5684741, -0.2772895, 0.5558451, 0.78367513, 22.680407, 0.26457572, 12.103888)
 
-[node name="dead_tree_02" parent="World" unique_id=1428054735 instance=ExtResource("4_4cobl")]
+[node name="dead_tree_02" parent="World/Environment" unique_id=1428054735 instance=ExtResource("4_4cobl")]
 transform = Transform3D(-0.5615691, 0.2927253, 1.4693375, -0.10446862, 1.5576932, -0.35025468, -1.4945657, -0.21886998, -0.5276073, -4.3433876, -0.121925116, 39.03974)
 
-[node name="dead_tree_03" parent="World" unique_id=588193272 instance=ExtResource("4_4cobl")]
-transform = Transform3D(0.7547453, 0.36306286, -0.5463926, -0.29408714, 0.93176466, 0.21290232, 0.58640623, 0, 0.8100171, -32.634163, -0.12676573, 0)
+[node name="dead_tree_03" parent="World/Environment" unique_id=588193272 instance=ExtResource("4_4cobl")]
+transform = Transform3D(0.7547453, 0.36306286, -0.5463926, -0.29408714, 0.93176466, 0.21290232, 0.58640623, 0, 0.8100171, -32.634163, 0.3410957, 0)
 
 [node name="Atmosphere" type="CanvasLayer" parent="." unique_id=67527882]
 layer = 0
 
-[node name="Shader" type="ColorRect" parent="Atmosphere" unique_id=1088106623]
+[node name="Rain" type="ColorRect" parent="Atmosphere" unique_id=1144361930]
+material = SubResource("ShaderMaterial_4cobl")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Shadow" type="ColorRect" parent="Atmosphere" unique_id=1088106623]
 material = SubResource("ShaderMaterial_b686c")
 anchors_preset = 15
 anchor_right = 1.0
@@ -128,14 +150,14 @@ script = ExtResource("1_l1rk1")
 pause_menu = NodePath("../../UI/PauseMenu")
 wave_manager = NodePath("../WaveManager")
 end_screen = NodePath("../../UI/EndScreen")
-stronghold = NodePath("../../World/Stronghold")
+stronghold = NodePath("../../World/Environment/Stronghold")
 gold_manager = NodePath("../GoldManager")
 
 [node name="WaveManager" type="Node" parent="Systems" unique_id=1737513906 node_paths=PackedStringArray("enemy_container", "stronghold")]
 script = ExtResource("2_u5opy")
 waves = Array[ExtResource("3_3vho3")]([ExtResource("4_qf6n1"), ExtResource("5_vsp63"), ExtResource("6_b686c")])
-enemy_container = NodePath("../../World/Enemies")
-stronghold = NodePath("../../World/Stronghold")
+enemy_container = NodePath("../../World/Environment/Enemies")
+stronghold = NodePath("../../World/Environment/Stronghold")
 spawn_radius = 32.0
 arrive_radius = 2.5
 
