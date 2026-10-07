@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://bpny3ka8b2xq5" path="res://game/data/waves/wave_02.tres" id="5_vsp63"]
 [ext_resource type="Resource" uid="uid://cb0dfd6owlsiq" path="res://game/data/waves/wave_03.tres" id="6_b686c"]
 [ext_resource type="PackedScene" uid="uid://ddt1m8s6wg7ju" path="res://core/ui/credits.tscn" id="6_dakft"]
+[ext_resource type="PackedScene" uid="uid://78dpp3fnvxmq" path="res://assets/3dArt/broken_fence_01.glb" id="6_u8s88"]
 [ext_resource type="Script" uid="uid://e21u8rkcefj4" path="res://game/managers/gold_manager.gd" id="8_vsp63"]
 [ext_resource type="PackedScene" uid="uid://cniox0c88ga5l" path="res://core/ui/controls_menu.tscn" id="8_wmqhs"]
 [ext_resource type="PackedScene" uid="uid://dj4pwl2xdjjfq" path="res://game/Ui/run_end_screen.tscn" id="11_3vho3"]
@@ -128,6 +129,12 @@ transform = Transform3D(0.6005177, -0.21705996, 0.7695867, 0.21031705, 0.9714389
 
 [node name="gravestone_02" parent="World/Environment" unique_id=56124867 instance=ExtResource("5_pxxsx")]
 transform = Transform3D(0.86868834, 0.47545716, -0.13900061, -0.43279713, 0.86498594, 0.25394115, 0.24097174, -0.16043663, 0.95717967, 16.560997, 2.0448604, -19.371984)
+
+[node name="broken_fence_012" parent="World/Environment" unique_id=1950211041 instance=ExtResource("6_u8s88")]
+transform = Transform3D(2.5895276, 0, 1.0098068, 0, 2, 0, -1.5147102, 0, 1.7263517, 23.753824, 1.2419505, 15.002273)
+
+[node name="broken_fence_013" parent="World/Environment" unique_id=1716466741 instance=ExtResource("6_u8s88")]
+transform = Transform3D(2.9757683, 0, -0.2536866, 0, 2, 0, 0.3805299, 0, 1.9838456, 18.875387, 1.2419505, -19.318901)
 
 [node name="Atmosphere" type="CanvasLayer" parent="." unique_id=67527882]
 layer = 0
