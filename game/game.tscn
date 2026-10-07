@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c6plvsjtimxkn" path="res://assets/3dArt/dead_tree_01.glb" id="4_4cobl"]
 [ext_resource type="Resource" uid="uid://uaiismft5nub" path="res://game/data/waves/wave_01.tres" id="4_qf6n1"]
 [ext_resource type="Shader" uid="uid://bcqlmc0nah414" path="res://assets/shaders/rain.gdshader" id="5_ln7ps"]
+[ext_resource type="PackedScene" uid="uid://dtdm6p6y7kmi7" path="res://assets/3dArt/gravestone_01.glb" id="5_pxxsx"]
 [ext_resource type="Resource" uid="uid://bpny3ka8b2xq5" path="res://game/data/waves/wave_02.tres" id="5_vsp63"]
 [ext_resource type="Resource" uid="uid://cb0dfd6owlsiq" path="res://game/data/waves/wave_03.tres" id="6_b686c"]
 [ext_resource type="PackedScene" uid="uid://ddt1m8s6wg7ju" path="res://core/ui/credits.tscn" id="6_dakft"]
@@ -90,16 +91,16 @@ mesh = SubResource("BoxMesh_a5s0c")
 [node name="Enemies" type="Node3D" parent="World/Environment" unique_id=1363674715]
 
 [node name="rock_01" parent="World/Environment" unique_id=885553891 instance=ExtResource("3_ee6o4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3730229, 33.600082)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002506256, 0.33694446, 33.61258)
 
 [node name="rock_02" parent="World/Environment" unique_id=1986284191 instance=ExtResource("3_ee6o4")]
 transform = Transform3D(0.3141581, 0.9493706, 0, -0.9493706, 0.3141581, 0, 0, 0, 0.6221444, 13.93482, 0.8279035, -20.242075)
 
 [node name="rock_03" parent="World/Environment" unique_id=20079178 instance=ExtResource("3_ee6o4")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.311, 18.81191, 0.5336988, -20.401806)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.311, 9.743777, 0.5336988, -21.672249)
 
 [node name="rock_04" parent="World/Environment" unique_id=563846773 instance=ExtResource("3_ee6o4")]
-transform = Transform3D(0.5, 0, 0, 0, 0.4385731, -0.14934951, 0, 0.24011175, 0.27279246, 18.952042, 0.64256907, -5.61253)
+transform = Transform3D(0.5, 0, 0, 0, 0.4385731, -0.14934951, 0, 0.24011175, 0.27279246, 7.268528, 0.64256907, -20.454023)
 
 [node name="rock_05" parent="World/Environment" unique_id=1502653079 instance=ExtResource("3_ee6o4")]
 transform = Transform3D(0.32751223, 0.41676426, -0.4298527, -0.48152298, 0.50379044, 1.1038849e-08, 0.2887409, 0.36742717, 0.48757216, -27.477098, 0.39540434, -0.03004837)
@@ -121,6 +122,12 @@ transform = Transform3D(-0.5615691, 0.2927253, 1.4693375, -0.10446862, 1.5576932
 
 [node name="dead_tree_03" parent="World/Environment" unique_id=588193272 instance=ExtResource("4_4cobl")]
 transform = Transform3D(0.7547453, 0.36306286, -0.5463926, -0.29408714, 0.93176466, 0.21290232, 0.58640623, 0, 0.8100171, -32.634163, 0.3410957, 0)
+
+[node name="gravestone_01" parent="World/Environment" unique_id=482463098 instance=ExtResource("5_pxxsx")]
+transform = Transform3D(0.6005177, -0.21705996, 0.7695867, 0.21031705, 0.9714389, 0.10987898, -0.7714568, 0.09587295, 0.6290175, -29.502693, 2.355508, 1.7498322)
+
+[node name="gravestone_02" parent="World/Environment" unique_id=56124867 instance=ExtResource("5_pxxsx")]
+transform = Transform3D(0.86868834, 0.47545716, -0.13900061, -0.43279713, 0.86498594, 0.25394115, 0.24097174, -0.16043663, 0.95717967, 16.560997, 2.0448604, -19.371984)
 
 [node name="Atmosphere" type="CanvasLayer" parent="." unique_id=67527882]
 layer = 0
