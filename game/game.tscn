@@ -17,6 +17,8 @@
 [ext_resource type="Resource" uid="uid://cb0dfd6owlsiq" path="res://game/data/waves/wave_03.tres" id="6_b686c"]
 [ext_resource type="PackedScene" uid="uid://ddt1m8s6wg7ju" path="res://core/ui/credits.tscn" id="6_dakft"]
 [ext_resource type="PackedScene" uid="uid://78dpp3fnvxmq" path="res://assets/3dArt/broken_fence_01.glb" id="6_u8s88"]
+[ext_resource type="PackedScene" uid="uid://c3fqjawearufk" path="res://assets/3dArt/grass_tuft_01.glb" id="7_dxwpq"]
+[ext_resource type="Shader" uid="uid://dlqkwxa4ft1ud" path="res://assets/shaders/mist.gdshader" id="8_mhvfb"]
 [ext_resource type="Script" uid="uid://e21u8rkcefj4" path="res://game/managers/gold_manager.gd" id="8_vsp63"]
 [ext_resource type="PackedScene" uid="uid://cniox0c88ga5l" path="res://core/ui/controls_menu.tscn" id="8_wmqhs"]
 [ext_resource type="PackedScene" uid="uid://dj4pwl2xdjjfq" path="res://game/Ui/run_end_screen.tscn" id="11_3vho3"]
@@ -46,6 +48,18 @@ shader_parameter/noise_scale = 4.0
 shader_parameter/animate = false
 shader_parameter/drift_speed = 0.025
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dxwpq"]
+shader = ExtResource("8_mhvfb")
+shader_parameter/mist_color = Color(0.48, 0.55, 0.52, 1)
+shader_parameter/opacity = 0.1
+shader_parameter/patch_scale = 3.0
+shader_parameter/coverage = 0.45
+shader_parameter/drift = Vector2(0.018, -0.006)
+shader_parameter/shape_change_speed = 0.012
+shader_parameter/center_strength = 0.15
+shader_parameter/edge_start = 0.35
+shader_parameter/seed = 12.0
+
 [node name="Game" type="Node3D" unique_id=1433756563]
 
 [node name="World" type="Node3D" parent="." unique_id=1336092557]
@@ -61,6 +75,7 @@ transform = Transform3D(0.8660254, -0.38302222, 0.32139382, 0, 0.64278764, 0.766
 [node name="Environment" type="Node3D" parent="World" unique_id=1459671944]
 
 [node name="Ground" parent="World/Environment" unique_id=1918880653 instance=ExtResource("2_b686c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.038425446, 0.084358215, -0.026489258)
 
 [node name="Stronghold" parent="World/Environment" unique_id=2125922311 instance=ExtResource("1_qf6n1")]
 transform = Transform3D(-2.1855695e-07, 0, 5, 0, 1, 0, -5, 0, -2.1855695e-07, -1.495718, 1.0362198, 1.3766179)
@@ -136,6 +151,18 @@ transform = Transform3D(2.5895276, 0, 1.0098068, 0, 2, 0, -1.5147102, 0, 1.72635
 [node name="broken_fence_013" parent="World/Environment" unique_id=1716466741 instance=ExtResource("6_u8s88")]
 transform = Transform3D(2.9757683, 0, -0.2536866, 0, 2, 0, 0.3805299, 0, 1.9838456, 18.875387, 1.2419505, -19.318901)
 
+[node name="grass_tuft_012" parent="World/Environment" unique_id=556892733 instance=ExtResource("7_dxwpq")]
+transform = Transform3D(0.07014869, -0.22038904, -0.9728868, -0.20852754, 0.9505017, -0.23035377, 0.9754978, 0.21903256, 0.020719174, 19.076231, 0.6771145, -19.171368)
+
+[node name="grass_tuft_013" parent="World/Environment" unique_id=1723221897 instance=ExtResource("7_dxwpq")]
+transform = Transform3D(0.80599827, 0.39094585, 0.44444138, -0.3423479, 0.9204137, -0.18877655, -0.48287132, 0, 0.8756913, 23.058767, 0.8790145, 12.762012)
+
+[node name="grass_tuft_014" parent="World/Environment" unique_id=931103291 instance=ExtResource("7_dxwpq")]
+transform = Transform3D(0.43350565, 0, 0.9011508, 0, 1, 0, -0.9011508, 0, 0.43350565, -3.657105, 1.1414802, 39.3385)
+
+[node name="grass_tuft_015" parent="World/Environment" unique_id=1456933221 instance=ExtResource("7_dxwpq")]
+transform = Transform3D(-0.36455172, 0, -0.93118316, 0, 1, 0, 0.93118316, 0, -0.36455172, -28.98921, 0.6981883, 1.9696858)
+
 [node name="Atmosphere" type="CanvasLayer" parent="." unique_id=67527882]
 layer = 0
 
@@ -150,6 +177,15 @@ mouse_filter = 2
 
 [node name="Shadow" type="ColorRect" parent="Atmosphere" unique_id=1088106623]
 material = SubResource("ShaderMaterial_b686c")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Mist" type="ColorRect" parent="Atmosphere" unique_id=156717597]
+material = SubResource("ShaderMaterial_dxwpq")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
