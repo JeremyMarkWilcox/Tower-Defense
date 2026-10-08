@@ -87,4 +87,6 @@ fit_content = true
 
 [node name="BackButton" type="Button" parent="VBoxContainer" unique_id=1571895217]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 text = "Back"

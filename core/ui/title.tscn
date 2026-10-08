@@ -53,14 +53,17 @@ layout_mode = 2
 text = "Play"
 
 [node name="Settings" type="Button" parent="VBoxContainer" unique_id=1578274722]
+custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 text = "Settings"
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=1689832209]
+custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 text = "Credits"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1353322006]
+custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 text = "Quit"
 

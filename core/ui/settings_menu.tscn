@@ -248,4 +248,6 @@ text = "Controls"
 
 [node name="BackButton" type="Button" parent="VBoxMain" unique_id=1386689142]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 text = "Back"

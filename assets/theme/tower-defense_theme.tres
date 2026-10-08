@@ -16,19 +16,48 @@ corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gbe44"]
 texture = ExtResource("1_btyo8")
+texture_margin_left = 25.0
+texture_margin_right = 25.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_at5ve"]
 texture = ExtResource("1_btyo8")
+texture_margin_left = 25.0
+texture_margin_right = 25.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_32n0t"]
 texture = ExtResource("1_btyo8")
-texture_margin_left = 50.0
-texture_margin_top = 12.0
-texture_margin_right = 50.0
-texture_margin_bottom = 12.0
+texture_margin_left = 25.0
+texture_margin_right = 25.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_btyo8"]
 texture = ExtResource("1_btyo8")
+texture_margin_left = 25.0
+texture_margin_right = 25.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xpfcc"]
+texture = ExtResource("1_btyo8")
+texture_margin_left = 25.0
+texture_margin_right = 25.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jrnct"]
+texture = ExtResource("1_btyo8")
+texture_margin_left = 25.0
+texture_margin_right = 25.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2yt7v"]
+texture = ExtResource("1_btyo8")
+texture_margin_left = 25.0
+texture_margin_right = 25.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1jde1"]
+texture = ExtResource("1_btyo8")
+texture_margin_left = 25.0
+texture_margin_right = 25.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sjtqe"]
+texture = ExtResource("1_btyo8")
+texture_margin_left = 25.0
+texture_margin_right = 25.0
 
 [resource]
 default_font = ExtResource("1_g0ci4")
@@ -37,7 +66,17 @@ Button/colors/font_disabled_color = Color(0.16078432, 0.039215688, 0.023529412, 
 Button/colors/font_focus_color = Color(0, 0.9490196, 0.9490196, 1)
 Button/colors/font_hover_color = Color(0, 0.9490196, 0.9490196, 1)
 Button/colors/font_hover_pressed_color = Color(0.6313726, 1, 1, 1)
-Button/colors/font_outline_color = Color(0.2223286, 0.32397363, 0.38376337, 1)
+Button/colors/font_outline_color = Color(0.22352941, 0.3254902, 0.38431373, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
 Button/constants/outline_size = 3
 Button/font_sizes/font_size = 40
 Button/styles/disabled = SubResource("StyleBoxFlat_qn6pg")
@@ -45,17 +84,28 @@ Button/styles/focus = SubResource("StyleBoxTexture_gbe44")
 Button/styles/hover = SubResource("StyleBoxTexture_at5ve")
 Button/styles/normal = SubResource("StyleBoxTexture_32n0t")
 Button/styles/pressed = SubResource("StyleBoxTexture_btyo8")
+CheckButton/colors/button_checked_color = Color(0, 0.9490196, 0.9490196, 1)
+CheckButton/colors/button_unchecked_color = Color(0.22352941, 0.3254902, 0.38431373, 1)
+CheckButton/styles/focus = SubResource("StyleBoxTexture_xpfcc")
+CheckButton/styles/hover = SubResource("StyleBoxTexture_jrnct")
+CheckButton/styles/hover_mirrored = SubResource("StyleBoxTexture_2yt7v")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxTexture_1jde1")
+CheckButton/styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_sjtqe")
 HeaderLabel/base_type = &"Label"
 HeaderLabel/constants/outline_size = 2
 HeaderLabel/font_sizes/font_size = 40
 HeaderLabel/fonts/font = ExtResource("1_g0ci4")
+Label/colors/font_color = Color(0.5803922, 0.7764706, 1, 1)
+Label/colors/font_outline_color = Color(0.22352941, 0.3254902, 0.38431373, 1)
 Label/font_sizes/font_size = 25
 Label/fonts/font = ExtResource("1_g0ci4")
-RichTextLabel/font_sizes/bold_font_size = 30
-RichTextLabel/font_sizes/bold_italics_font_size = 22
-RichTextLabel/font_sizes/italics_font_size = 18
-RichTextLabel/font_sizes/mono_font_size = 20
-RichTextLabel/font_sizes/normal_font_size = 20
+RichTextLabel/colors/default_color = Color(0.5803922, 0.7764706, 1, 1)
+RichTextLabel/colors/font_outline_color = Color(0.22352941, 0.3254902, 0.38431373, 1)
+RichTextLabel/font_sizes/bold_font_size = 35
+RichTextLabel/font_sizes/bold_italics_font_size = 28
+RichTextLabel/font_sizes/italics_font_size = 22
+RichTextLabel/font_sizes/mono_font_size = 25
+RichTextLabel/font_sizes/normal_font_size = 25
 RichTextLabel/fonts/bold_font = ExtResource("1_g0ci4")
 RichTextLabel/fonts/bold_italics_font = ExtResource("1_g0ci4")
 RichTextLabel/fonts/italics_font = ExtResource("1_g0ci4")
