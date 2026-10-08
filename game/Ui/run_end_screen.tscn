@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dj4pwl2xdjjfq"]
 
 [ext_resource type="PackedScene" uid="uid://cyyymtcnpcy60" path="res://core/ui/end_screen.tscn" id="1_ydo2o"]
-[ext_resource type="Script" uid="uid://d3cp3p64duyqp" path="res://game/Ui/run_end_screen.gd" id="2_lhmfp"]
+[ext_resource type="Script" uid="uid://d3cp3p64duyqp" path="res://game/ui/run_end_screen.gd" id="2_lhmfp"]
 
 [node name="RunEndScreen" unique_id=1090858386 node_paths=PackedStringArray("focus_chain") instance=ExtResource("1_ydo2o")]
 script = ExtResource("2_lhmfp")

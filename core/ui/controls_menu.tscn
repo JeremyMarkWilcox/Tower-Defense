@@ -78,13 +78,15 @@ theme = ExtResource("2_4gk8h")
 text = "Pause"
 
 [node name="PauseKeyboard" type="Button" parent="VBoxContainer/GridContainer" unique_id=634408257]
-custom_minimum_size = Vector2(160, 0)
+custom_minimum_size = Vector2(125, 50)
+custom_maximum_size = Vector2(500, -1)
 layout_mode = 2
 script = ExtResource("2_ovn7s")
 action = &"pause"
 
 [node name="PauseController" type="Button" parent="VBoxContainer/GridContainer" unique_id=1648494387]
-custom_minimum_size = Vector2(160, 0)
+custom_minimum_size = Vector2(125, 50)
+custom_maximum_size = Vector2(500, -1)
 layout_mode = 2
 script = ExtResource("2_ovn7s")
 action = &"pause"
@@ -94,9 +96,13 @@ device = 1
 layout_mode = 2
 
 [node name="ResetButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=867403949]
+custom_minimum_size = Vector2(125, 50)
+custom_maximum_size = Vector2(500, -1)
 layout_mode = 2
 text = "Reset to Defaults"
 
 [node name="BackButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=695458215]
+custom_minimum_size = Vector2(125, 50)
+custom_maximum_size = Vector2(500, -1)
 layout_mode = 2
 text = "Back"

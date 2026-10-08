@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c3fqjawearufk"
-path="res://.godot/imported/grass_tuft_01.glb-751fcfe3dc81ecd49f295b433bb9653c.scn"
+path="res://.godot/imported/grass_tuft_01.glb-ae85e46233a4fa8cd08b0be72eb98261.scn"
 
 [deps]
 
-source_file="res://assets/3dArt/grass_tuft_01.glb"
-dest_files=["res://.godot/imported/grass_tuft_01.glb-751fcfe3dc81ecd49f295b433bb9653c.scn"]
+source_file="res://assets/3dart/grass_tuft_01.glb"
+dest_files=["res://.godot/imported/grass_tuft_01.glb-ae85e46233a4fa8cd08b0be72eb98261.scn"]
 
 [params]
 

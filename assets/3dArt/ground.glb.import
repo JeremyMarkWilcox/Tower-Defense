@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://caariescix5cy"
-path="res://.godot/imported/ground.glb-4dfb693667df2cb3b9aacd570565ff2c.scn"
+path="res://.godot/imported/ground.glb-e01bbf4e4f99e4aee7234e1c51e61950.scn"
 
 [deps]
 
-source_file="res://assets/3dArt/ground.glb"
-dest_files=["res://.godot/imported/ground.glb-4dfb693667df2cb3b9aacd570565ff2c.scn"]
+source_file="res://assets/3dart/ground.glb"
+dest_files=["res://.godot/imported/ground.glb-e01bbf4e4f99e4aee7234e1c51e61950.scn"]
 
 [params]
 

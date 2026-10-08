@@ -1,0 +1,71 @@
+[gd_resource type="Theme" format=3 uid="uid://docepy01vs1ci"]
+
+[ext_resource type="Texture2D" uid="uid://bw2sicycr0g3l" path="res://assets/2dart/tablet_button.png" id="1_btyo8"]
+[ext_resource type="FontFile" uid="uid://dl8fqw0cfdgm3" path="res://assets/fonts/VT323-Regular.ttf" id="1_g0ci4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qn6pg"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.105882354, 0.105882354, 0.105882354, 0.91764706)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gbe44"]
+texture = ExtResource("1_btyo8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_at5ve"]
+texture = ExtResource("1_btyo8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_32n0t"]
+texture = ExtResource("1_btyo8")
+texture_margin_left = 50.0
+texture_margin_top = 12.0
+texture_margin_right = 50.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_btyo8"]
+texture = ExtResource("1_btyo8")
+
+[resource]
+default_font = ExtResource("1_g0ci4")
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0.16078432, 0.039215688, 0.023529412, 0.8784314)
+Button/colors/font_focus_color = Color(0, 0.9490196, 0.9490196, 1)
+Button/colors/font_hover_color = Color(0, 0.9490196, 0.9490196, 1)
+Button/colors/font_hover_pressed_color = Color(0.6313726, 1, 1, 1)
+Button/colors/font_outline_color = Color(0.2223286, 0.32397363, 0.38376337, 1)
+Button/constants/outline_size = 3
+Button/font_sizes/font_size = 40
+Button/styles/disabled = SubResource("StyleBoxFlat_qn6pg")
+Button/styles/focus = SubResource("StyleBoxTexture_gbe44")
+Button/styles/hover = SubResource("StyleBoxTexture_at5ve")
+Button/styles/normal = SubResource("StyleBoxTexture_32n0t")
+Button/styles/pressed = SubResource("StyleBoxTexture_btyo8")
+HeaderLabel/base_type = &"Label"
+HeaderLabel/constants/outline_size = 2
+HeaderLabel/font_sizes/font_size = 40
+HeaderLabel/fonts/font = ExtResource("1_g0ci4")
+Label/font_sizes/font_size = 25
+Label/fonts/font = ExtResource("1_g0ci4")
+RichTextLabel/font_sizes/bold_font_size = 30
+RichTextLabel/font_sizes/bold_italics_font_size = 22
+RichTextLabel/font_sizes/italics_font_size = 18
+RichTextLabel/font_sizes/mono_font_size = 20
+RichTextLabel/font_sizes/normal_font_size = 20
+RichTextLabel/fonts/bold_font = ExtResource("1_g0ci4")
+RichTextLabel/fonts/bold_italics_font = ExtResource("1_g0ci4")
+RichTextLabel/fonts/italics_font = ExtResource("1_g0ci4")
+RichTextLabel/fonts/mono_font = ExtResource("1_g0ci4")
+RichTextLabel/fonts/normal_font = ExtResource("1_g0ci4")
+TitleLabel/base_type = &"Label"
+TitleLabel/colors/font_shadow_color = Color(0, 0, 0, 0.49803922)
+TitleLabel/constants/outline_size = 5
+TitleLabel/constants/shadow_offset_x = 3
+TitleLabel/constants/shadow_offset_y = 3
+TitleLabel/constants/shadow_outline_size = 2
+TitleLabel/font_sizes/font_size = 75
+TitleLabel/fonts/font = ExtResource("1_g0ci4")

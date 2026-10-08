@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bsq1ys1w6rko1" path="res://core/ui/end_screen.gd" id="1_ii3hx"]
 [ext_resource type="Theme" uid="uid://big3vhu7k1hbb" path="res://core/theme/base_theme.tres" id="2_chb2t"]
+[ext_resource type="PackedScene" uid="uid://ms65ua2jh58q" path="res://game/ui/skull_button.tscn" id="3_v4e4x"]
 
 [node name="EndScreen" type="Control" unique_id=1090858386 node_paths=PackedStringArray("heading_label", "retry_button", "title_button", "first_focus", "focus_chain")]
 layout_mode = 3
@@ -48,10 +49,10 @@ text = "Heading"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RetryButton" type="Button" parent="VBoxContainer" unique_id=1797708706]
+[node name="RetryButton" parent="VBoxContainer" unique_id=323461587 instance=ExtResource("3_v4e4x")]
 layout_mode = 2
 text = "Retry"
 
-[node name="TitleButton" type="Button" parent="VBoxContainer" unique_id=1329844631]
+[node name="TitleButton" parent="VBoxContainer" unique_id=1880123845 instance=ExtResource("3_v4e4x")]
 layout_mode = 2
 text = "Back to Title"

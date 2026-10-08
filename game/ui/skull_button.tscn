@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://ms65ua2jh58q"]
+
+[ext_resource type="Texture2D" uid="uid://x67pwu5j17n3" path="res://assets/2dart/button_skull.png" id="1_dacs5"]
+[ext_resource type="Script" uid="uid://dkfnnyq2rm61s" path="res://game/ui/skull_button.gd" id="1_ujj31"]
+
+[node name="SkullButton" type="Button" unique_id=323461587]
+custom_minimum_size = Vector2(300, 65)
+offset_right = 100.0
+offset_bottom = 24.0
+script = ExtResource("1_ujj31")
+hover_opacity = 0.411
+click_opacity = 1.0
+flip_min_seconds = 0.783
+flip_max_seconds = 1.8760000000000001
+click_duration = 0.518
+
+[node name="SkullLeft" type="TextureRect" parent="." unique_id=794603820]
+self_modulate = Color(1, 1, 1, 0.11372549)
+custom_maximum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_dacs5")
+
+[node name="SkullRight" type="TextureRect" parent="." unique_id=799809073]
+self_modulate = Color(1, 1, 1, 0.11372549)
+custom_maximum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_bottom = 50.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_dacs5")
+
+[node name="Caption" type="Label" parent="." unique_id=1667515389]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://clc41ipfan7bu"]
 
 [ext_resource type="Script" uid="uid://blcy7p60o1i33" path="res://core/ui/pause_menu.gd" id="1_jxs0t"]
+[ext_resource type="PackedScene" uid="uid://ms65ua2jh58q" path="res://game/ui/skull_button.tscn" id="2_vdl4r"]
 
 [node name="PauseMenu" type="Control" unique_id=1641965247 node_paths=PackedStringArray("resume_button", "restart_button", "quit_button", "settings_button", "first_focus", "focus_chain")]
 layout_mode = 3
@@ -40,7 +41,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ResumeButton" type="Button" parent="Restart" unique_id=18693107]
+[node name="ResumeButton" parent="Restart" unique_id=323461587 instance=ExtResource("2_vdl4r")]
 layout_mode = 2
 text = "Resume"
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dtdm6p6y7kmi7"
-path="res://.godot/imported/gravestone_01.glb-786d17cb4924f180c6ff6daa2fcf5343.scn"
+path="res://.godot/imported/gravestone_01.glb-ff08e9be331a33be6610a52466160ce6.scn"
 
 [deps]
 
-source_file="res://assets/3dArt/gravestone_01.glb"
-dest_files=["res://.godot/imported/gravestone_01.glb-786d17cb4924f180c6ff6daa2fcf5343.scn"]
+source_file="res://assets/3dart/gravestone_01.glb"
+dest_files=["res://.godot/imported/gravestone_01.glb-ff08e9be331a33be6610a52466160ce6.scn"]
 
 [params]
 

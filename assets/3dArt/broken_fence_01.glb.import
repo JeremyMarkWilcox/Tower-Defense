@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://78dpp3fnvxmq"
-path="res://.godot/imported/broken_fence_01.glb-99241c765bfb221b5e6de7cdd91144a3.scn"
+path="res://.godot/imported/broken_fence_01.glb-fbfd870c094b127408c2dd034d6679a0.scn"
 
 [deps]
 
-source_file="res://assets/3dArt/broken_fence_01.glb"
-dest_files=["res://.godot/imported/broken_fence_01.glb-99241c765bfb221b5e6de7cdd91144a3.scn"]
+source_file="res://assets/3dart/broken_fence_01.glb"
+dest_files=["res://.godot/imported/broken_fence_01.glb-fbfd870c094b127408c2dd034d6679a0.scn"]
 
 [params]
 
