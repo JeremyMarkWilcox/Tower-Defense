@@ -244,10 +244,12 @@ text = "1x\" and \"1.75x"
 
 [node name="ControlsButton" type="Button" parent="VBoxMain/ScrollContainer/ScrollerVBox" unique_id=190658101]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 text = "Controls"
 
 [node name="BackButton" type="Button" parent="VBoxMain" unique_id=1386689142]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "Back"
