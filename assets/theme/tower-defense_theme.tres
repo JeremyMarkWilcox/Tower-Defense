@@ -80,6 +80,9 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0, 0.9490196, 0.9490196, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbe44"]
+bg_color = Color(0.9999998, 0.13660476, 0.3940236, 0.35686275)
+
 [resource]
 default_font = ExtResource("1_g0ci4")
 Button/colors/font_color = Color(0, 0, 0, 1)
@@ -123,6 +126,7 @@ Label/colors/font_color = Color(0.5803922, 0.7764706, 1, 1)
 Label/colors/font_outline_color = Color(0.22352941, 0.3254902, 0.38431373, 1)
 Label/font_sizes/font_size = 25
 Label/fonts/font = ExtResource("1_g0ci4")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_gbe44")
 RichTextLabel/colors/default_color = Color(0.5803922, 0.7764706, 1, 1)
 RichTextLabel/colors/font_outline_color = Color(0.22352941, 0.3254902, 0.38431373, 1)
 RichTextLabel/font_sizes/bold_font_size = 35

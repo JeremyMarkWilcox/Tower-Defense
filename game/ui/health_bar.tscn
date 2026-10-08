@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://oedawwjr5won"]
+
+[ext_resource type="Theme" uid="uid://docepy01vs1ci" path="res://assets/theme/tower-defense_theme.tres" id="1_pk34a"]
+[ext_resource type="Theme" uid="uid://rnrbk788gvq3" path="res://assets/theme/health_Background_bar.tres" id="2_2etwv"]
+
+[node name="HealthBar" type="Control" unique_id=582245639]
+custom_minimum_size = Vector2(256, 32)
+custom_maximum_size = Vector2(256, 32)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pk34a")
+
+[node name="BarBackground" type="ProgressBar" parent="." unique_id=2040169778]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_2etwv")
+
+[node name="FillBar" type="ProgressBar" parent="." unique_id=1969278986]
+custom_maximum_size = Vector2(250, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 7.0
+offset_right = -9.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pk34a")
+value = 100.0
