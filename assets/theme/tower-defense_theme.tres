@@ -64,6 +64,20 @@ border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
+border_color = Color(0, 0.16078432, 0.16078432, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32n0t"]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.16078432, 0.16078432, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpfcc"]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
 border_color = Color(0, 0.9490196, 0.9490196, 1)
 
 [resource]
@@ -98,7 +112,9 @@ CheckButton/styles/hover = SubResource("StyleBoxTexture_jrnct")
 CheckButton/styles/hover_mirrored = SubResource("StyleBoxTexture_2yt7v")
 CheckButton/styles/hover_pressed = SubResource("StyleBoxTexture_1jde1")
 CheckButton/styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_sjtqe")
-HSlider/styles/slider = SubResource("StyleBoxFlat_btyo8")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_btyo8")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_32n0t")
+HSlider/styles/slider = SubResource("StyleBoxFlat_xpfcc")
 HeaderLabel/base_type = &"Label"
 HeaderLabel/constants/outline_size = 2
 HeaderLabel/font_sizes/font_size = 40
