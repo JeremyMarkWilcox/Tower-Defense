@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwhcbglbuj3ps"
-path="res://.godot/imported/health_bar_frame.png-ee667d0ac4a38c64bd815e2f61918767.ctex"
+uid="uid://x67pwu5j17n3"
+path="res://.godot/imported/button_skull.png-2d514f01f3f17b923e58105eec68b266.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/2dart/health_bar_frame.png"
-dest_files=["res://.godot/imported/health_bar_frame.png-ee667d0ac4a38c64bd815e2f61918767.ctex"]
+source_file="res://assets/2d_art/button_skull.png"
+dest_files=["res://.godot/imported/button_skull.png-2d514f01f3f17b923e58105eec68b266.ctex"]
 
 [params]
 

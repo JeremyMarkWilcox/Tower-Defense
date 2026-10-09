@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c6plvsjtimxkn"
-path="res://.godot/imported/dead_tree_01.glb-61b866250c6f45e7566ebda631abe4a5.scn"
+uid="uid://78dpp3fnvxmq"
+path="res://.godot/imported/broken_fence_01.glb-f89d1c41ce2f578185edb2a8e10dc2c2.scn"
 
 [deps]
 
-source_file="res://assets/3dart/dead_tree_01.glb"
-dest_files=["res://.godot/imported/dead_tree_01.glb-61b866250c6f45e7566ebda631abe4a5.scn"]
+source_file="res://assets/3d_art/broken_fence_01.glb"
+dest_files=["res://.godot/imported/broken_fence_01.glb-f89d1c41ce2f578185edb2a8e10dc2c2.scn"]
 
 [params]
 

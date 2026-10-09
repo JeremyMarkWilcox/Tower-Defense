@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dtdm6p6y7kmi7"
-path="res://.godot/imported/gravestone_01.glb-ff08e9be331a33be6610a52466160ce6.scn"
+uid="uid://c3fqjawearufk"
+path="res://.godot/imported/grass_tuft_01.glb-f59c519677829cec6b8728a1ff06c451.scn"
 
 [deps]
 
-source_file="res://assets/3dart/gravestone_01.glb"
-dest_files=["res://.godot/imported/gravestone_01.glb-ff08e9be331a33be6610a52466160ce6.scn"]
+source_file="res://assets/3d_art/grass_tuft_01.glb"
+dest_files=["res://.godot/imported/grass_tuft_01.glb-f59c519677829cec6b8728a1ff06c451.scn"]
 
 [params]
 

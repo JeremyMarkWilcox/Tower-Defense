@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ms65ua2jh58q"]
 
-[ext_resource type="Texture2D" uid="uid://x67pwu5j17n3" path="res://assets/2dart/button_skull.png" id="1_dacs5"]
+[ext_resource type="Texture2D" uid="uid://x67pwu5j17n3" path="res://assets/2d_art/button_skull.png" id="1_dacs5"]
 [ext_resource type="Script" uid="uid://dkfnnyq2rm61s" path="res://game/ui/skull_button.gd" id="1_ujj31"]
 
 [node name="SkullButton" type="Button" unique_id=323461587]

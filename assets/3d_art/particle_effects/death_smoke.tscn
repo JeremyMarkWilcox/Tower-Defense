@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://1gufnqo3khmk"]
 
-[ext_resource type="Texture2D" uid="uid://dx8yt14bos60" path="res://assets/2dart/smoke_puffs.png" id="1_lsl3e"]
+[ext_resource type="Texture2D" uid="uid://dx8yt14bos60" path="res://assets/2d_art/smoke_puffs.png" id="1_65sls"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsl3e"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_lsl3e")
+albedo_texture = ExtResource("1_65sls")
 billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1

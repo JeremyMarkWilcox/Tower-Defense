@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx8yt14bos60"
-path.s3tc="res://.godot/imported/smoke_puffs.png-2d01cb98a054cdec45d77bca1fe0bb38.s3tc.ctex"
+uid="uid://q5irpp0w1h14"
+path="res://.godot/imported/gold_coin.png-cdc3bcad962e46084cceace075d4abf2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/2dart/smoke_puffs.png"
-dest_files=["res://.godot/imported/smoke_puffs.png-2d01cb98a054cdec45d77bca1fe0bb38.s3tc.ctex"]
+source_file="res://assets/2d_art/gold_coin.png"
+dest_files=["res://.godot/imported/gold_coin.png-cdc3bcad962e46084cceace075d4abf2.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -24,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -38,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

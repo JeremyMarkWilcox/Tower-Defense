@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://rnrbk788gvq3"]
 
-[ext_resource type="Texture2D" uid="uid://bwhcbglbuj3ps" path="res://assets/2dart/health_bar_frame.png" id="1_r0i4x"]
+[ext_resource type="Texture2D" uid="uid://bwhcbglbuj3ps" path="res://assets/2d_art/health_bar_frame.png" id="1_r0i4x"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2etwv"]
 texture = ExtResource("1_r0i4x")

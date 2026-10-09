@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://clc41ipfan7bu"]
 
 [ext_resource type="Script" uid="uid://blcy7p60o1i33" path="res://core/ui/pause_menu.gd" id="1_jxs0t"]
-[ext_resource type="Texture2D" uid="uid://0dmonlip37ou" path="res://assets/2dart/ui_panel.png" id="2_q2nfl"]
+[ext_resource type="Texture2D" uid="uid://0dmonlip37ou" path="res://assets/2d_art/ui_panel.png" id="2_q2nfl"]
 [ext_resource type="PackedScene" uid="uid://ms65ua2jh58q" path="res://game/ui/skull_button.tscn" id="2_vdl4r"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nwy8r"]

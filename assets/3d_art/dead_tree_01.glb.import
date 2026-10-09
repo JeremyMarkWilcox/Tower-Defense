@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://djqs531cdvw7h"
-path="res://.godot/imported/rock.glb-f110ea3654db248988e6f8fdc5186690.scn"
+uid="uid://c6plvsjtimxkn"
+path="res://.godot/imported/dead_tree_01.glb-ce2a6aa303a8570f08790ad2a57f0545.scn"
 
 [deps]
 
-source_file="res://assets/3dart/rock.glb"
-dest_files=["res://.godot/imported/rock.glb-f110ea3654db248988e6f8fdc5186690.scn"]
+source_file="res://assets/3d_art/dead_tree_01.glb"
+dest_files=["res://.godot/imported/dead_tree_01.glb-ce2a6aa303a8570f08790ad2a57f0545.scn"]
 
 [params]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://78dpp3fnvxmq"
-path="res://.godot/imported/broken_fence_01.glb-fbfd870c094b127408c2dd034d6679a0.scn"
+uid="uid://dtdm6p6y7kmi7"
+path="res://.godot/imported/gravestone_01.glb-87a69a8344b865339ca2fc5f2770b531.scn"
 
 [deps]
 
-source_file="res://assets/3dart/broken_fence_01.glb"
-dest_files=["res://.godot/imported/broken_fence_01.glb-fbfd870c094b127408c2dd034d6679a0.scn"]
+source_file="res://assets/3d_art/gravestone_01.glb"
+dest_files=["res://.godot/imported/gravestone_01.glb-87a69a8344b865339ca2fc5f2770b531.scn"]
 
 [params]
 

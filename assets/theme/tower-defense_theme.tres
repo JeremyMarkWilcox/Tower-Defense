@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://docepy01vs1ci"]
 
-[ext_resource type="Texture2D" uid="uid://bw2sicycr0g3l" path="res://assets/2dart/tablet_button.png" id="1_btyo8"]
+[ext_resource type="Texture2D" uid="uid://bw2sicycr0g3l" path="res://assets/2d_art/tablet_button.png" id="1_btyo8"]
 [ext_resource type="FontFile" uid="uid://dl8fqw0cfdgm3" path="res://assets/fonts/VT323-Regular.ttf" id="1_g0ci4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qn6pg"]

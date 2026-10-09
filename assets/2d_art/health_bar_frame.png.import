@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw2sicycr0g3l"
-path="res://.godot/imported/tablet_button.png-1aab4588b9daa119129db28a2a47d216.ctex"
+uid="uid://bwhcbglbuj3ps"
+path="res://.godot/imported/health_bar_frame.png-e6f4aec3359fd8fd5015ac20f7dd787a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/2dart/tablet_button.png"
-dest_files=["res://.godot/imported/tablet_button.png-1aab4588b9daa119129db28a2a47d216.ctex"]
+source_file="res://assets/2d_art/health_bar_frame.png"
+dest_files=["res://.godot/imported/health_bar_frame.png-e6f4aec3359fd8fd5015ac20f7dd787a.ctex"]
 
 [params]
 
