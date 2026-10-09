@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dtdm6p6y7kmi7"
-path="res://.godot/imported/gravestone_01.glb-87a69a8344b865339ca2fc5f2770b531.scn"
+uid="uid://drxix2qq7vrcp"
+path="res://.godot/imported/stronghold_base.glb-16db06c36aa955951463ddadf999061c.scn"
 
 [deps]
 
-source_file="res://assets/3d_art/gravestone_01.glb"
-dest_files=["res://.godot/imported/gravestone_01.glb-87a69a8344b865339ca2fc5f2770b531.scn"]
+source_file="res://assets/3d_art/stronghold/stronghold_base.glb"
+dest_files=["res://.godot/imported/stronghold_base.glb-16db06c36aa955951463ddadf999061c.scn"]
 
 [params]
 

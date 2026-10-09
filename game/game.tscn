@@ -2,29 +2,27 @@
 
 [ext_resource type="Script" uid="uid://cki8h873psykx" path="res://game/managers/game_manager.gd" id="1_l1rk1"]
 [ext_resource type="PackedScene" uid="uid://dduwnap7vm400" path="res://game/stronghold/stronghold.tscn" id="1_qf6n1"]
-[ext_resource type="PackedScene" uid="uid://caariescix5cy" path="res://assets/3d_art/ground.glb" id="2_b686c"]
+[ext_resource type="PackedScene" uid="uid://caariescix5cy" path="res://assets/3d_art/props/ground.glb" id="2_b686c"]
 [ext_resource type="PackedScene" uid="uid://clc41ipfan7bu" path="res://core/ui/pause_menu.tscn" id="2_m71xk"]
 [ext_resource type="Script" uid="uid://cwa8b8tgq2p2w" path="res://game/managers/wave_manager.gd" id="2_u5opy"]
 [ext_resource type="Script" uid="uid://bvroyv8j4sgmi" path="res://game/data/wave_definition.gd" id="3_3vho3"]
-[ext_resource type="PackedScene" uid="uid://djqs531cdvw7h" path="res://assets/3d_art/rock.glb" id="3_ee6o4"]
+[ext_resource type="PackedScene" uid="uid://djqs531cdvw7h" path="res://assets/3d_art/props/rock.glb" id="3_ee6o4"]
 [ext_resource type="Shader" uid="uid://bpukmr24jllgu" path="res://assets/shaders/edge_shadow.gdshader" id="3_hb504"]
 [ext_resource type="PackedScene" uid="uid://dr52lc4bvyyj7" path="res://core/ui/settings_menu.tscn" id="3_m71xk"]
-[ext_resource type="PackedScene" uid="uid://c6plvsjtimxkn" path="res://assets/3d_art/dead_tree_01.glb" id="4_4cobl"]
+[ext_resource type="PackedScene" uid="uid://c6plvsjtimxkn" path="res://assets/3d_art/props/dead_tree_01.glb" id="4_4cobl"]
 [ext_resource type="Resource" uid="uid://uaiismft5nub" path="res://game/data/waves/wave_01.tres" id="4_qf6n1"]
 [ext_resource type="Shader" uid="uid://bcqlmc0nah414" path="res://assets/shaders/rain.gdshader" id="5_ln7ps"]
-[ext_resource type="PackedScene" uid="uid://dtdm6p6y7kmi7" path="res://assets/3d_art/gravestone_01.glb" id="5_pxxsx"]
+[ext_resource type="PackedScene" uid="uid://dtdm6p6y7kmi7" path="res://assets/3d_art/props/gravestone_01.glb" id="5_pxxsx"]
 [ext_resource type="Resource" uid="uid://bpny3ka8b2xq5" path="res://game/data/waves/wave_02.tres" id="5_vsp63"]
 [ext_resource type="Resource" uid="uid://cb0dfd6owlsiq" path="res://game/data/waves/wave_03.tres" id="6_b686c"]
 [ext_resource type="PackedScene" uid="uid://ddt1m8s6wg7ju" path="res://core/ui/credits.tscn" id="6_dakft"]
-[ext_resource type="PackedScene" uid="uid://78dpp3fnvxmq" path="res://assets/3d_art/broken_fence_01.glb" id="6_u8s88"]
-[ext_resource type="PackedScene" uid="uid://c3fqjawearufk" path="res://assets/3d_art/grass_tuft_01.glb" id="7_dxwpq"]
+[ext_resource type="PackedScene" uid="uid://78dpp3fnvxmq" path="res://assets/3d_art/props/broken_fence_01.glb" id="6_u8s88"]
+[ext_resource type="PackedScene" uid="uid://c3fqjawearufk" path="res://assets/3d_art/props/grass_tuft_01.glb" id="7_dxwpq"]
 [ext_resource type="Shader" uid="uid://dlqkwxa4ft1ud" path="res://assets/shaders/mist.gdshader" id="8_mhvfb"]
 [ext_resource type="Script" uid="uid://e21u8rkcefj4" path="res://game/managers/gold_manager.gd" id="8_vsp63"]
 [ext_resource type="PackedScene" uid="uid://cniox0c88ga5l" path="res://core/ui/controls_menu.tscn" id="8_wmqhs"]
 [ext_resource type="PackedScene" uid="uid://dj4pwl2xdjjfq" path="res://game/ui/run_end_screen.tscn" id="11_3vho3"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_a5s0c"]
-size = Vector3(0.167, 0.167, 0.167)
+[ext_resource type="PackedScene" uid="uid://b82y0h3s65i2h" path="res://assets/3d_art/towers/CannonTower.glb" id="23_5e03w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4cobl"]
 shader = ExtResource("5_ln7ps")
@@ -78,89 +76,67 @@ transform = Transform3D(0.8660254, -0.38302222, 0.32139382, 0, 0.64278764, 0.766
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.038425446, 0.084358215, -0.026489258)
 
 [node name="Stronghold" parent="World/Environment" unique_id=2125922311 instance=ExtResource("1_qf6n1")]
-transform = Transform3D(-2.1855695e-07, 0, 5, 0, 1, 0, -5, 0, -2.1855695e-07, -1.495718, 1.0362198, 1.3766179)
-
-[node name="Slot_01" type="MeshInstance3D" parent="World/Environment" unique_id=100128813]
-transform = Transform3D(4, 0, 0, 0, 14.11, 0, 0, 0, 4, -4.907729, 2.448382, 4.7888513)
-mesh = SubResource("BoxMesh_a5s0c")
-
-[node name="Slot_02" type="MeshInstance3D" parent="World/Environment" unique_id=1513955015]
-transform = Transform3D(4, 0, 0, 0, 14.11, 0, 0, 0, 4, -4.9091387, 2.4400382, 0.46123505)
-mesh = SubResource("BoxMesh_a5s0c")
-
-[node name="Slot_03" type="MeshInstance3D" parent="World/Environment" unique_id=1940641558]
-transform = Transform3D(4, 0, 0, 0, 14.11, 0, 0, 0, 4, -0.6060493, 2.448382, 4.7865343)
-mesh = SubResource("BoxMesh_a5s0c")
-
-[node name="Slot_04" type="MeshInstance3D" parent="World/Environment" unique_id=1296384859]
-transform = Transform3D(4, 0, 0, 0, 14.11, 0, 0, 0, 4, -2.4153163, 2.448382, -2.0408347)
-mesh = SubResource("BoxMesh_a5s0c")
-
-[node name="Slot_05" type="MeshInstance3D" parent="World/Environment" unique_id=541513090]
-transform = Transform3D(4, 0, 0, 0, 14.11, 0, 0, 0, 4, 1.9207788, 2.448382, -2.0330393)
-mesh = SubResource("BoxMesh_a5s0c")
-
-[node name="Slot_06" type="MeshInstance3D" parent="World/Environment" unique_id=467748503]
-transform = Transform3D(4, 0, 0, 0, 14.11, 0, 0, 0, 4, 1.9127023, 2.448382, 2.2808354)
-mesh = SubResource("BoxMesh_a5s0c")
+transform = Transform3D(-0.9761344, 0, -0.21716723, 0, 1, 0, 0.21716723, 0, -0.9761344, -1.495718, 1.0362198, 1.3766179)
 
 [node name="Enemies" type="Node3D" parent="World/Environment" unique_id=1363674715]
 
-[node name="rock_01" parent="World/Environment" unique_id=885553891 instance=ExtResource("3_ee6o4")]
+[node name="Props" type="Node3D" parent="World/Environment" unique_id=2108826791]
+
+[node name="rock_01" parent="World/Environment/Props" unique_id=885553891 instance=ExtResource("3_ee6o4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002506256, 0.33694446, 33.61258)
 
-[node name="rock_02" parent="World/Environment" unique_id=1986284191 instance=ExtResource("3_ee6o4")]
+[node name="rock_02" parent="World/Environment/Props" unique_id=1986284191 instance=ExtResource("3_ee6o4")]
 transform = Transform3D(0.3141581, 0.9493706, 0, -0.9493706, 0.3141581, 0, 0, 0, 0.6221444, 13.93482, 0.8279035, -20.242075)
 
-[node name="rock_03" parent="World/Environment" unique_id=20079178 instance=ExtResource("3_ee6o4")]
+[node name="rock_03" parent="World/Environment/Props" unique_id=20079178 instance=ExtResource("3_ee6o4")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.311, 9.743777, 0.5336988, -21.672249)
 
-[node name="rock_04" parent="World/Environment" unique_id=563846773 instance=ExtResource("3_ee6o4")]
+[node name="rock_04" parent="World/Environment/Props" unique_id=563846773 instance=ExtResource("3_ee6o4")]
 transform = Transform3D(0.5, 0, 0, 0, 0.4385731, -0.14934951, 0, 0.24011175, 0.27279246, 7.268528, 0.64256907, -20.454023)
 
-[node name="rock_05" parent="World/Environment" unique_id=1502653079 instance=ExtResource("3_ee6o4")]
+[node name="rock_05" parent="World/Environment/Props" unique_id=1502653079 instance=ExtResource("3_ee6o4")]
 transform = Transform3D(0.32751223, 0.41676426, -0.4298527, -0.48152298, 0.50379044, 1.1038849e-08, 0.2887409, 0.36742717, 0.48757216, -27.477098, 0.39540434, -0.03004837)
 
-[node name="rock_06" parent="World/Environment" unique_id=2140864810 instance=ExtResource("3_ee6o4")]
+[node name="rock_06" parent="World/Environment/Props" unique_id=2140864810 instance=ExtResource("3_ee6o4")]
 transform = Transform3D(0.1093387, 0.120583795, -0.14350466, -0.16075459, 0.14576335, 3.6852774e-09, 0.09639504, 0.10630892, 0.16277409, -26.74106, 0.8000392, 6.219616)
 
-[node name="dead_tree_01" parent="World/Environment" unique_id=592016842 instance=ExtResource("4_4cobl")]
+[node name="dead_tree_01" parent="World/Environment/Props" unique_id=592016842 instance=ExtResource("4_4cobl")]
 transform = Transform3D(0.81883156, 0, 0.5740338, 0.054177523, 0.9955362, -0.077281624, -0.57147145, 0.094380364, 0.8151765, -29.030489, 0.2590394, 0)
 
-[node name="dead_tree_04" parent="World/Environment" unique_id=1535275759 instance=ExtResource("4_4cobl")]
+[node name="dead_tree_04" parent="World/Environment/Props" unique_id=1535275759 instance=ExtResource("4_4cobl")]
 transform = Transform3D(0.71920925, -0.4207495, 0.5529085, 0.39516875, 0.90225387, 0.17256705, -0.57147145, 0.094380364, 0.8151765, 16.212196, 0.11251664, -21.931486)
 
-[node name="dead_tree_05" parent="World/Environment" unique_id=973768381 instance=ExtResource("4_4cobl")]
+[node name="dead_tree_05" parent="World/Environment/Props" unique_id=973768381 instance=ExtResource("4_4cobl")]
 transform = Transform3D(0.9599308, 0.12586583, 0.2503802, 0.040534675, 0.8217017, -0.5684741, -0.2772895, 0.5558451, 0.78367513, 22.680407, 0.26457572, 12.103888)
 
-[node name="dead_tree_02" parent="World/Environment" unique_id=1428054735 instance=ExtResource("4_4cobl")]
+[node name="dead_tree_02" parent="World/Environment/Props" unique_id=1428054735 instance=ExtResource("4_4cobl")]
 transform = Transform3D(-0.5615691, 0.2927253, 1.4693375, -0.10446862, 1.5576932, -0.35025468, -1.4945657, -0.21886998, -0.5276073, -4.3433876, -0.121925116, 39.03974)
 
-[node name="dead_tree_03" parent="World/Environment" unique_id=588193272 instance=ExtResource("4_4cobl")]
+[node name="dead_tree_03" parent="World/Environment/Props" unique_id=588193272 instance=ExtResource("4_4cobl")]
 transform = Transform3D(0.7547453, 0.36306286, -0.5463926, -0.29408714, 0.93176466, 0.21290232, 0.58640623, 0, 0.8100171, -32.634163, 0.3410957, 0)
 
-[node name="gravestone_01" parent="World/Environment" unique_id=482463098 instance=ExtResource("5_pxxsx")]
+[node name="gravestone_01" parent="World/Environment/Props" unique_id=482463098 instance=ExtResource("5_pxxsx")]
 transform = Transform3D(0.6005177, -0.21705996, 0.7695867, 0.21031705, 0.9714389, 0.10987898, -0.7714568, 0.09587295, 0.6290175, -29.502693, 2.355508, 1.7498322)
 
-[node name="gravestone_02" parent="World/Environment" unique_id=56124867 instance=ExtResource("5_pxxsx")]
+[node name="gravestone_02" parent="World/Environment/Props" unique_id=56124867 instance=ExtResource("5_pxxsx")]
 transform = Transform3D(0.86868834, 0.47545716, -0.13900061, -0.43279713, 0.86498594, 0.25394115, 0.24097174, -0.16043663, 0.95717967, 16.560997, 2.0448604, -19.371984)
 
-[node name="broken_fence_012" parent="World/Environment" unique_id=1950211041 instance=ExtResource("6_u8s88")]
+[node name="broken_fence_012" parent="World/Environment/Props" unique_id=1950211041 instance=ExtResource("6_u8s88")]
 transform = Transform3D(2.5895276, 0, 1.0098068, 0, 2, 0, -1.5147102, 0, 1.7263517, 23.753824, 1.2419505, 15.002273)
 
-[node name="broken_fence_013" parent="World/Environment" unique_id=1716466741 instance=ExtResource("6_u8s88")]
+[node name="broken_fence_013" parent="World/Environment/Props" unique_id=1716466741 instance=ExtResource("6_u8s88")]
 transform = Transform3D(2.9757683, 0, -0.2536866, 0, 2, 0, 0.3805299, 0, 1.9838456, 18.875387, 1.2419505, -19.318901)
 
-[node name="grass_tuft_012" parent="World/Environment" unique_id=556892733 instance=ExtResource("7_dxwpq")]
+[node name="grass_tuft_012" parent="World/Environment/Props" unique_id=556892733 instance=ExtResource("7_dxwpq")]
 transform = Transform3D(0.07014869, -0.22038904, -0.9728868, -0.20852754, 0.9505017, -0.23035377, 0.9754978, 0.21903256, 0.020719174, 19.076231, 0.6771145, -19.171368)
 
-[node name="grass_tuft_013" parent="World/Environment" unique_id=1723221897 instance=ExtResource("7_dxwpq")]
+[node name="grass_tuft_013" parent="World/Environment/Props" unique_id=1723221897 instance=ExtResource("7_dxwpq")]
 transform = Transform3D(0.80599827, 0.39094585, 0.44444138, -0.3423479, 0.9204137, -0.18877655, -0.48287132, 0, 0.8756913, 23.058767, 0.8790145, 12.762012)
 
-[node name="grass_tuft_014" parent="World/Environment" unique_id=931103291 instance=ExtResource("7_dxwpq")]
+[node name="grass_tuft_014" parent="World/Environment/Props" unique_id=931103291 instance=ExtResource("7_dxwpq")]
 transform = Transform3D(0.43350565, 0, 0.9011508, 0, 1, 0, -0.9011508, 0, 0.43350565, -3.657105, 1.1414802, 39.3385)
 
-[node name="grass_tuft_015" parent="World/Environment" unique_id=1456933221 instance=ExtResource("7_dxwpq")]
+[node name="grass_tuft_015" parent="World/Environment/Props" unique_id=1456933221 instance=ExtResource("7_dxwpq")]
 transform = Transform3D(-0.36455172, 0, -0.93118316, 0, 1, 0, 0.93118316, 0, -0.36455172, -28.98921, 0.6981883, 1.9696858)
 
 [node name="Atmosphere" type="CanvasLayer" parent="." unique_id=67527882]
@@ -228,3 +204,6 @@ controls_menu = NodePath("../ControlsMenu")
 [node name="Credits" parent="UI" unique_id=1391844769 instance=ExtResource("6_dakft")]
 
 [node name="EndScreen" parent="UI" unique_id=1090858386 instance=ExtResource("11_3vho3")]
+
+[node name="CannonTower" parent="." unique_id=1976264692 instance=ExtResource("23_5e03w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.352815, 2.7614064, 0.41207373)

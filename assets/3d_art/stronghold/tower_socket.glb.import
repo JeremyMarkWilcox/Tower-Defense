@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://djqs531cdvw7h"
-path="res://.godot/imported/rock.glb-8bb0bdfa48598152bbb7e93ae5b3cd14.scn"
+uid="uid://y6owkn5m8su0"
+path="res://.godot/imported/tower_socket.glb-162f336b39fd0b3178ec9649693c8f28.scn"
 
 [deps]
 
-source_file="res://assets/3d_art/rock.glb"
-dest_files=["res://.godot/imported/rock.glb-8bb0bdfa48598152bbb7e93ae5b3cd14.scn"]
+source_file="res://assets/3d_art/stronghold/tower_socket.glb"
+dest_files=["res://.godot/imported/tower_socket.glb-162f336b39fd0b3178ec9649693c8f28.scn"]
 
 [params]
 
