@@ -7,4 +7,5 @@
 script = ExtResource("1_ptdfy")
 enemy = ExtResource("1_b6pul")
 count = 1
+can_cut = false
 metadata/_custom_type_script = "uid://dv1yo7v82leod"

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dxiaycn0rmy1n"]
+
+[ext_resource type="Script" uid="uid://bpnvh3dnln8ql" path="res://game/data/threads/base_thread/signal_thread.gd" id="1_6pubp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g4gaj"]
+size = Vector3(0.12, 0.12, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ra2i3"]
+resource_local_to_scene = true
+
+[node name="SignalThread" type="Node3D" unique_id=1644461023 node_paths=PackedStringArray("line", "pick_area", "pick_shape")]
+script = ExtResource("1_6pubp")
+line = NodePath("Line")
+pick_area = NodePath("PickArea")
+pick_shape = NodePath("PickArea/PickShape")
+
+[node name="Line" type="MeshInstance3D" parent="." unique_id=1429375333]
+cast_shadow = 0
+mesh = SubResource("BoxMesh_g4gaj")
+
+[node name="PickArea" type="Area3D" parent="." unique_id=1997027373]
+collision_layer = 512
+collision_mask = 0
+monitoring = false
+
+[node name="PickShape" type="CollisionShape3D" parent="PickArea" unique_id=2047334725]
+shape = SubResource("BoxShape3D_ra2i3")

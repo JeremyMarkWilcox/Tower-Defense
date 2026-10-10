@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://clf8ysodcag78"]
+
+[ext_resource type="Script" uid="uid://bivgfbt0xn486" path="res://game/data/threads/test_thread/test_thread.gd" id="1_q862k"]
+[ext_resource type="PackedScene" uid="uid://dxiaycn0rmy1n" path="res://game/threads/signal_thread.tscn" id="2_2xcy8"]
+[ext_resource type="Resource" uid="uid://bchml4lumf1wr" path="res://game/data/threads/lulls/lull_test.tres" id="3_6spku"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ra2i3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ra2i3"]
+
+[node name="ThreadTest" type="Node3D" unique_id=1072541974]
+script = ExtResource("1_q862k")
+thread_scene = ExtResource("2_2xcy8")
+lull = ExtResource("3_6spku")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=653721621]
+transform = Transform3D(0.70710677, -0.4055798, 0.579228, 0, 0.81915206, 0.57357645, -0.70710677, -0.4055798, 0.579228, 14, 14, 14)
+projection = 1
+size = 25.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=523141439]
+transform = Transform3D(1, 0, 0, 0, 0.069861524, 0.99755675, 0, -0.99755675, 0.06986153, 0, 4.913508, 0)
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=1693278783]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ra2i3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=389922894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58149683, 0)
+mesh = SubResource("BoxMesh_ra2i3")
