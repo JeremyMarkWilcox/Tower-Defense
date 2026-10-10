@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dgf785mw3toay"]
 
-[ext_resource type="Script" uid="uid://ba5o3g0hspol2" path="res://game/data/enemies/base_enemy.gd" id="1_2o6uh"]
+[ext_resource type="Script" uid="uid://ba5o3g0hspol2" path="res://game/data/enemies/base_enemy/base_enemy.gd" id="1_2o6uh"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ra2i3"]
 radius = 0.4

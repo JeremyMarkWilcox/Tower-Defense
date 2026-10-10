@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WaveDefinition" format=3 uid="uid://cb0dfd6owlsiq"]
+
+[ext_resource type="Script" uid="uid://cmo6to4a6tibi" path="res://game/data/waves/base_data/spawn_group.gd" id="1_u5ujo"]
+[ext_resource type="Resource" uid="uid://4ksplexl1tsu" path="res://game/data/enemies/unique_enemies/greater_demon.tres" id="2_glbnf"]
+[ext_resource type="Script" uid="uid://bvroyv8j4sgmi" path="res://game/data/waves/base_data/wave_definition.gd" id="2_wsuxj"]
+
+[sub_resource type="Resource" id="Resource_l8g03"]
+script = ExtResource("1_u5ujo")
+enemy = ExtResource("2_glbnf")
+count = 1
+metadata/_custom_type_script = "uid://cmo6to4a6tibi"
+
+[resource]
+script = ExtResource("2_wsuxj")
+groups = Array[ExtResource("1_u5ujo")]([SubResource("Resource_l8g03")])
+metadata/_custom_type_script = "uid://bvroyv8j4sgmi"

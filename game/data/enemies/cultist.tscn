@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://cdf14u2jmm2p6"]
-
-[ext_resource type="PackedScene" uid="uid://dgf785mw3toay" path="res://game/data/enemies/base_enemy.tscn" id="1_klvc8"]
-
-[node name="Cultist" unique_id=1427662883 instance=ExtResource("1_klvc8")]

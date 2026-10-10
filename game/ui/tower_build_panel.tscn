@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://b0ihbus3uvtu0"]
+
+[ext_resource type="Theme" uid="uid://docepy01vs1ci" path="res://assets/theme/tower-defense_theme.tres" id="1_mn7y1"]
+
+[node name="TowerBuildPanel" type="PanelContainer" unique_id=501736015]
+custom_minimum_size = Vector2(350, 0)
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -460.0
+offset_top = -261.5
+offset_right = -42.0
+offset_bottom = 261.5
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_mn7y1")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1788028315]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1027164169]
+layout_mode = 2
+offset_transform_enabled = true
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=324086139]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_type_variation = &"TitleLabel"
+text = "Build Tower"
+
+[node name="Hint" type="Label" parent="MarginContainer/VBoxContainer" unique_id=446934295]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_type_variation = &"Hint"
+text = "Select a tower for this socket."
+
+[node name="CannonOption" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=885464909]
+layout_mode = 2
+
+[node name="Info" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CannonOption" unique_id=1592985330]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Portrait" type="TextureRect" parent="MarginContainer/VBoxContainer/CannonOption/Info" unique_id=1307712493]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Details" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CannonOption/Info" unique_id=1255692376]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/CannonOption/Info/Details" unique_id=1262683813]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "Cannon"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/CannonOption/Info/Details" unique_id=138536943]
+custom_maximum_size = Vector2(750, 750)
+layout_mode = 2
+text = "Damage a single target."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="BuildButton" type="Button" parent="MarginContainer/VBoxContainer/CannonOption" unique_id=1805489436]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Build - 10"
+
+[node name="FireOption" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1354466747]
+layout_mode = 2
+
+[node name="Info" type="HBoxContainer" parent="MarginContainer/VBoxContainer/FireOption" unique_id=1978205083]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Portrait" type="TextureRect" parent="MarginContainer/VBoxContainer/FireOption/Info" unique_id=1707931874]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Details" type="VBoxContainer" parent="MarginContainer/VBoxContainer/FireOption/Info" unique_id=1406766057]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/FireOption/Info/Details" unique_id=2001098063]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "Fire"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/FireOption/Info/Details" unique_id=1751721640]
+custom_maximum_size = Vector2(750, 750)
+layout_mode = 2
+text = "Apply burning damage to targets."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="BuildButton" type="Button" parent="MarginContainer/VBoxContainer/FireOption" unique_id=264372664]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Build - 10"
+
+[node name="IceOption" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=807791012]
+layout_mode = 2
+
+[node name="Info" type="HBoxContainer" parent="MarginContainer/VBoxContainer/IceOption" unique_id=1238918010]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Portrait" type="TextureRect" parent="MarginContainer/VBoxContainer/IceOption/Info" unique_id=819983239]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Details" type="VBoxContainer" parent="MarginContainer/VBoxContainer/IceOption/Info" unique_id=1634777589]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/IceOption/Info/Details" unique_id=403680]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "Ice"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/IceOption/Info/Details" unique_id=1412353680]
+custom_maximum_size = Vector2(750, 750)
+layout_mode = 2
+text = "Slows down targets."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="BuildButton" type="Button" parent="MarginContainer/VBoxContainer/IceOption" unique_id=1337352755]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Build - 10"
+
+[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1987900665]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+text = "Close"

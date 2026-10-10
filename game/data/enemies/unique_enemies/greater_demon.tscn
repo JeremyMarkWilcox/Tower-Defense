@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://lvbm281h2vww"]
 
-[ext_resource type="PackedScene" uid="uid://dgf785mw3toay" path="res://game/data/enemies/base_enemy.tscn" id="1_fel5c"]
+[ext_resource type="PackedScene" uid="uid://dgf785mw3toay" path="res://game/data/enemies/base_enemy/base_enemy.tscn" id="1_fel5c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_csfhu"]
 albedo_color = Color(1, 0, 0, 1)
