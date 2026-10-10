@@ -13,7 +13,6 @@ var flashing := true
 
 var _config := ConfigFile.new()
 
-var game_speed := 1.0
 
 func _ready() -> void:
 	load_settings()
@@ -55,7 +54,6 @@ func save_settings() -> void:
 	_config.set_value("display", "ui_scale", ui_scale)
 	_config.set_value("accessibility", "screen_shake", screen_shake)
 	_config.set_value("accessibility", "flashing", flashing)
-	_config.set_value("gameplay", "game_speed", game_speed)
 	var error := _config.save(CONFIG_PATH)
 	if error != OK:
 		push_warning("Settings: could not save %s" % CONFIG_PATH)
@@ -70,7 +68,6 @@ func load_settings() -> void:
 	ui_scale = _config.get_value("display", "ui_scale", ui_scale)
 	screen_shake = _config.get_value("accessibility", "screen_shake", screen_shake)
 	flashing = _config.get_value("accessibility", "flashing", flashing)
-	game_speed = _config.get_value("gameplay", "game_speed", game_speed)
 
 
 func _apply_all() -> void:
@@ -79,7 +76,6 @@ func _apply_all() -> void:
 	if not OS.has_feature("web"):  # browsers only allow fullscreen after a click
 		_apply_fullscreen()
 	get_tree().root.content_scale_factor = ui_scale
-	Engine.time_scale = game_speed
 
 
 func _apply_volume(bus: String) -> void:
@@ -94,9 +90,3 @@ func _apply_volume(bus: String) -> void:
 func _apply_fullscreen() -> void:
 	var mode := DisplayServer.WINDOW_MODE_FULLSCREEN if fullscreen else DisplayServer.WINDOW_MODE_WINDOWED
 	DisplayServer.window_set_mode(mode)
-	
-	
-func set_game_speed(value: float) -> void:
-	game_speed = value
-	Engine.time_scale = game_speed
-	changed.emit()

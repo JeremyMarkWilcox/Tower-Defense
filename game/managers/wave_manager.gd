@@ -1,27 +1,33 @@
 class_name WaveManager
 extends Node
-## Spawns waves on a timer. Never waits for an empty battlefield.
-## Uses its own clock in _process, so pause and game speed both just work.
+## Runs the baseline trickle on a timer and hands each wave's lull to ThreadManager.
+## The only place enemies are spawned, including groups released by Signal Threads.
+## Never waits for an empty battlefield. Uses its own clock, so pause and game speed work.
 
 signal wave_started(wave_number: int, total_waves: int)
 signal enemy_killed(bounty: int)
 signal enemy_reached_stronghold(damage: int)
-signal early_call_rewarded(bonus: int)
+signal lull_requested(lull: LullDefinition)
 signal boss_defeated
-
 
 @export var waves: Array[WaveDefinition] = []
 @export var enemy_container: Node3D
 @export var stronghold: Stronghold
+## Match ThreadManager's thread_length so both spawn at the map edge.
 @export var spawn_radius := 18.0
 @export var arrive_radius := 1.5
+## Random spread around a thread's end so a group doesn't stack on one spot.
+@export var group_spread := 0.8
 
 var current_wave := -1  # index into waves; -1 before the first wave
 
 var _is_running := false
 var _run_clock := 0.0
 var _wave_time_left := 0.0
-var _pending: Array[Dictionary] = []  # { "time": float, "enemy": EnemyData }, sorted by time
+# { "time": float, "enemy": EnemyData, "position": Vector3 or null for the ring }
+var _pending: Array[Dictionary] = []
+var _pending_lull: LullDefinition
+var _lull_time := 0.0
 var _alive: Array[BaseEnemy] = []
 
 
@@ -45,14 +51,13 @@ func get_time_until_next_wave() -> float:
 	return _wave_time_left if has_next_wave() else 0.0
 
 
-## Starts the next wave now and pays the current wave's early-call bonus.
-func call_next_wave() -> void:
-	if not _is_running or not has_next_wave():
+## Spawns a group at a fixed point. Signal Threads use this through GameManager.
+func spawn_group(enemy_data: EnemyData, count: int, interval: float, at: Vector3) -> void:
+	if not _is_running or enemy_data == null:
 		return
-	var bonus := waves[current_wave].early_call_bonus
-	_start_wave(current_wave + 1)
-	if bonus > 0:
-		early_call_rewarded.emit(bonus)
+	for i in count:
+		_pending.append({"time": _run_clock + i * interval, "enemy": enemy_data, "position": at})
+	_sort_pending()
 
 
 func _process(delta: float) -> void:
@@ -61,7 +66,11 @@ func _process(delta: float) -> void:
 	_run_clock += delta
 	while not _pending.is_empty() and float(_pending[0]["time"]) <= _run_clock:
 		var entry: Dictionary = _pending.pop_front()
-		_spawn(entry["enemy"] as EnemyData)
+		_spawn(entry["enemy"] as EnemyData, entry["position"])
+	if _pending_lull and _run_clock >= _lull_time:
+		var lull := _pending_lull
+		_pending_lull = null
+		lull_requested.emit(lull)
 	if has_next_wave():
 		_wave_time_left -= delta
 		if _wave_time_left <= 0.0:
@@ -72,8 +81,6 @@ func _start_wave(index: int) -> void:
 	current_wave = index
 	var wave := waves[index]
 	_wave_time_left = wave.duration
-	# Spawn times are on the run clock, so an early call never cancels
-	# spawns still pending from the previous wave.
 	for group in wave.groups:
 		if group == null or group.enemy == null:
 			continue
@@ -81,13 +88,20 @@ func _start_wave(index: int) -> void:
 			_pending.append({
 				"time": _run_clock + group.start_delay + i * group.interval,
 				"enemy": group.enemy,
+				"position": null,
 			})
-	_pending.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
-		return float(a["time"]) < float(b["time"]))
+	_sort_pending()
+	_pending_lull = wave.lull
+	_lull_time = _run_clock + wave.lull_start
 	wave_started.emit(index + 1, waves.size())
 
 
-func _spawn(enemy_data: EnemyData) -> void:
+func _sort_pending() -> void:
+	_pending.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+		return float(a["time"]) < float(b["time"]))
+
+
+func _spawn(enemy_data: EnemyData, at: Variant) -> void:
 	if enemy_data.scene == null:
 		push_warning("WaveManager: %s has no scene" % enemy_data.display_name)
 		return
@@ -96,9 +110,16 @@ func _spawn(enemy_data: EnemyData) -> void:
 		push_error("WaveManager: %s scene root is not a BaseEnemy" % enemy_data.display_name)
 		return
 	var center := stronghold.global_position
-	var angle := randf() * TAU
+	var spawn_position: Vector3
+	if at == null:
+		var angle := randf() * TAU
+		spawn_position = center + Vector3(cos(angle), 0.0, sin(angle)) * spawn_radius
+	else:
+		var spot: Vector3 = at
+		spawn_position = spot + Vector3(randf_range(-group_spread, group_spread), 0.0,
+				randf_range(-group_spread, group_spread))
 	enemy_container.add_child(enemy)
-	enemy.global_position = center + Vector3(cos(angle), 0.0, sin(angle)) * spawn_radius
+	enemy.global_position = spawn_position
 	enemy.setup(enemy_data, center, arrive_radius)
 	enemy.died.connect(_on_enemy_died)
 	enemy.reached_stronghold.connect(_on_enemy_reached_stronghold)

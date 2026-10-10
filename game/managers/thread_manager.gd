@@ -23,8 +23,6 @@ const REFUSED_COOLDOWN := &"cooldown"
 @export var camera: Camera3D
 ## Distance from the Stronghold to the map edge, where groups spawn.
 @export var thread_length := 18.0
-## One color per enemy type, so every thread of that type matches.
-@export var thread_colors: Dictionary[EnemyData, Color] = {}
 @export var default_color := Color.WHITE
 
 var _lull: LullDefinition
@@ -72,6 +70,15 @@ func start_lull(lull: LullDefinition) -> void:
 		_spawn_thread(lull.threads[i], angles[i])
 	_select(0)
 	lull_started.emit(lull.duration)
+	
+	
+## Ends the current lull without releasing anything.
+func stop() -> void:
+	for thread in _threads:
+		thread.queue_free()
+	_threads.clear()
+	if is_active():
+		_end_lull()
 
 
 func _process(delta: float) -> void:
@@ -140,7 +147,7 @@ func _spawn_thread(data: SignalThreadData, screen_angle: float) -> void:
 	var thread := thread_scene.instantiate() as SignalThread
 	thread_container.add_child(thread)
 	thread.global_position = center.global_position
-	var color: Color = thread_colors.get(data.enemy, default_color)
+	var color := data.enemy.thread_color if data.enemy else default_color
 	thread.setup(data, _screen_to_world(screen_angle), thread_length, color)
 	thread.hovered.connect(_on_thread_hovered)
 	thread.clicked.connect(_on_thread_clicked)

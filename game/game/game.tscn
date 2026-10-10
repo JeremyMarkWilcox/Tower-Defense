@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://dl7btnuthvvlb" path="res://assets/3d_art/towers/FireTower.glb" id="9_leid8"]
 [ext_resource type="PackedScene" uid="uid://dm6ojjrnrnkqg" path="res://assets/3d_art/towers/IceTower.glb" id="10_8bboj"]
 [ext_resource type="PackedScene" uid="uid://dj4pwl2xdjjfq" path="res://game/ui/run_end_screen.tscn" id="11_3vho3"]
+[ext_resource type="PackedScene" uid="uid://dfad8mr7np0na" path="res://game/threads/signal_threads/signal_system.tscn" id="11_7l47o"]
 [ext_resource type="PackedScene" uid="uid://b82y0h3s65i2h" path="res://assets/3d_art/towers/CannonTower.glb" id="23_5e03w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4cobl"]
@@ -150,6 +151,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9429172, 2.8008618, -0.570
 [node name="IceTower" parent="World" unique_id=879949465 instance=ExtResource("10_8bboj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4456089, 2.748484, -1.5844189)
 
+[node name="SignalSystem" parent="World" unique_id=1072541974 instance=ExtResource("11_7l47o")]
+
+[node name="ThreadManager" parent="World/SignalSystem" index="1" unique_id=791041048 node_paths=PackedStringArray("center", "camera")]
+center = NodePath("../../Environment/Stronghold")
+camera = NodePath("../../Camera3D")
+
+[node name="ThreadFeedback" parent="World/SignalSystem" index="3" unique_id=11552838 node_paths=PackedStringArray("camera")]
+camera = NodePath("../../Camera3D")
+
 [node name="Atmosphere" type="CanvasLayer" parent="." unique_id=67527882]
 layer = 0
 
@@ -182,13 +192,14 @@ mouse_filter = 2
 
 [node name="Systems" type="Node" parent="." unique_id=1873627118]
 
-[node name="GameManager" type="Node" parent="Systems" unique_id=181638440 node_paths=PackedStringArray("pause_menu", "wave_manager", "end_screen", "stronghold", "gold_manager")]
+[node name="GameManager" type="Node" parent="Systems" unique_id=181638440 node_paths=PackedStringArray("pause_menu", "end_screen", "wave_manager", "stronghold", "gold_manager", "thread_manager")]
 script = ExtResource("1_l1rk1")
 pause_menu = NodePath("../../UI/PauseMenu")
-wave_manager = NodePath("../WaveManager")
 end_screen = NodePath("../../UI/EndScreen")
+wave_manager = NodePath("../WaveManager")
 stronghold = NodePath("../../World/Environment/Stronghold")
 gold_manager = NodePath("../GoldManager")
+thread_manager = NodePath("../../World/SignalSystem/ThreadManager")
 
 [node name="WaveManager" type="Node" parent="Systems" unique_id=1737513906 node_paths=PackedStringArray("enemy_container", "stronghold")]
 script = ExtResource("2_u5opy")
@@ -218,3 +229,4 @@ controls_menu = NodePath("../ControlsMenu")
 
 [editable path="World/Environment/Stronghold"]
 [editable path="World/Environment/Stronghold/stronghold_base"]
+[editable path="World/SignalSystem"]

@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dfad8mr7np0na"]
+
+[ext_resource type="Script" uid="uid://gnn5x4jgay38" path="res://game/managers/thread_manager.gd" id="3_d6mrp"]
+[ext_resource type="PackedScene" uid="uid://dxiaycn0rmy1n" path="res://game/threads/signal_threads/signal_thread.tscn" id="4_ntrhb"]
+[ext_resource type="Script" uid="uid://dw63nkt6ikr6k" path="res://game/data/threads/lulls/lull_timer.gd" id="7_w0ieh"]
+[ext_resource type="Theme" uid="uid://docepy01vs1ci" path="res://assets/theme/tower-defense_theme.tres" id="8_ensoo"]
+[ext_resource type="Script" uid="uid://ba6rpq5fhc23t" path="res://game/data/threads/base_thread/thread_feedback.gd" id="9_qukkj"]
+[ext_resource type="AudioStream" uid="uid://5pmss0av5i1" path="res://assets/sounds/sfx/back_002.ogg" id="10_swm82"]
+[ext_resource type="AudioStream" uid="uid://d4bsisau8la3h" path="res://assets/sounds/sfx/question_004.wav" id="11_hch2e"]
+
+[node name="SignalSystem" type="Node3D" unique_id=1072541974]
+
+[node name="Threads" type="Node3D" parent="." unique_id=1192624320]
+
+[node name="ThreadManager" type="Node" parent="." unique_id=791041048 node_paths=PackedStringArray("thread_container")]
+script = ExtResource("3_d6mrp")
+thread_scene = ExtResource("4_ntrhb")
+thread_container = NodePath("../Threads")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1075648712]
+
+[node name="PulseRect" type="ColorRect" parent="UI" unique_id=994932982]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="LullTimer" type="Control" parent="UI" unique_id=1183315398 node_paths=PackedStringArray("thread_manager", "label")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 100.0
+grow_horizontal = 2
+size_flags_vertical = 0
+mouse_filter = 2
+script = ExtResource("7_w0ieh")
+thread_manager = NodePath("../../ThreadManager")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="UI/LullTimer" unique_id=1818317055]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_ensoo")
+theme_type_variation = &"TitleLabel"
+text = "Place Holder"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ThreadFeedback" type="Node" parent="." unique_id=11552838 node_paths=PackedStringArray("thread_manager", "pulse_rect")]
+script = ExtResource("9_qukkj")
+thread_manager = NodePath("../ThreadManager")
+pulse_rect = NodePath("../UI/PulseRect")
+refusal_sound = ExtResource("10_swm82")
+cooldown_sound = ExtResource("11_hch2e")

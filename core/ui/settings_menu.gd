@@ -12,8 +12,6 @@ const UI_SCALE_STEPS: Array[float] = [0.75, 0.9, 1.0, 1.1, 1.25]
 @export var back_button: Button
 @export var controls_button: Button
 @export var controls_menu: BaseMenu
-@export var game_speed_slider: HSlider
-@export var game_speed_value_label: Label
 @export var ui_scale_down_button: Button
 @export var ui_scale_up_button: Button
 @export var ui_scale_value_label: Label
@@ -30,7 +28,6 @@ func _ready() -> void:
 	shake_toggle.toggled.connect(Settings.set_screen_shake)
 	flash_toggle.toggled.connect(Settings.set_flashing)
 	back_button.pressed.connect(MenuManager.close_menu)
-	game_speed_slider.value_changed.connect(_on_game_speed_changed)
 	ui_scale_down_button.pressed.connect(_step_ui_scale.bind(-1))
 	ui_scale_up_button.pressed.connect(_step_ui_scale.bind(1))
 
@@ -51,16 +48,7 @@ func open() -> void:
 func close() -> void:
 	Settings.save_settings()
 	super()
-	
-	
-func _on_game_speed_changed(value: float) -> void:
-	Settings.set_game_speed(value)
-	_update_game_speed_label(value)
-	
-	
-func _update_game_speed_label(value: float) -> void:
-	game_speed_value_label.text = "%sx" % value
-
+			
 
 func _sync_from_settings() -> void:
 	master_slider.set_value_no_signal(Settings.volumes["Master"])
@@ -74,8 +62,6 @@ func _sync_from_settings() -> void:
 	fullscreen_toggle.set_pressed_no_signal(is_fullscreen)
 	shake_toggle.set_pressed_no_signal(Settings.screen_shake)
 	flash_toggle.set_pressed_no_signal(Settings.flashing)
-	game_speed_slider.set_value_no_signal(Settings.game_speed)
-	_update_game_speed_label(Settings.game_speed)
 	_update_ui_scale_display()
 	
 	

@@ -10,5 +10,7 @@ extends Resource
 @export_range(1, 10000) var max_health := 10
 @export_range(0, 1000) var stronghold_damage := 1
 @export_range(0, 1000) var bounty := 1
+## Color of Signal Threads that hold this enemy type.
+@export var thread_color := Color.WHITE
 ## Killing a boss wins the run.
 @export var is_boss := false

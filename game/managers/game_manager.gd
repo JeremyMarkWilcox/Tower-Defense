@@ -8,10 +8,11 @@ enum RunState { SETUP, ACTIVE, VICTORY, DEFEAT }
 
 @export var music: AudioStream
 @export var pause_menu: BaseMenu
-@export var wave_manager: WaveManager
 @export var end_screen: RunEndScreen
+@export var wave_manager: WaveManager
 @export var stronghold: Stronghold
 @export var gold_manager: GoldManager
+@export var thread_manager: ThreadManager
 
 var state: RunState = RunState.SETUP
 
@@ -33,7 +34,8 @@ func _connect_systems() -> void:
 	wave_manager.boss_defeated.connect(_win)
 	wave_manager.enemy_reached_stronghold.connect(stronghold.take_damage)
 	wave_manager.enemy_killed.connect(gold_manager.add_gold)
-	wave_manager.early_call_rewarded.connect(gold_manager.add_gold)
+	wave_manager.lull_requested.connect(thread_manager.start_lull)
+	thread_manager.thread_released.connect(_on_thread_released)
 	stronghold.destroyed.connect(_lose)
 	# Temporary prints until the HUD exists.
 	gold_manager.gold_changed.connect(func(current: int) -> void:
@@ -54,8 +56,7 @@ func _win() -> void:
 	if state != RunState.ACTIVE:
 		return  # the outcome is decided once
 	state = RunState.VICTORY
-	wave_manager.stop()
-	MenuManager.close_all()
+	_end_run()
 	end_screen.set_result(true)
 	MenuManager.open_menu(end_screen)
 
@@ -64,10 +65,19 @@ func _lose() -> void:
 	if state != RunState.ACTIVE:
 		return
 	state = RunState.DEFEAT
-	wave_manager.stop()
-	MenuManager.close_all()
+	_end_run()
 	end_screen.set_result(false)
 	MenuManager.open_menu(end_screen)
+
+
+func _end_run() -> void:
+	wave_manager.stop()
+	thread_manager.stop()
+	MenuManager.close_all()
+
+
+func _on_thread_released(data: SignalThreadData, at: Vector3) -> void:
+	wave_manager.spawn_group(data.enemy, data.count, data.spawn_interval, at)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -76,12 +86,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") and not MenuManager.is_menu_open():
 		MenuManager.open_menu(pause_menu)
 		get_viewport().set_input_as_handled()
-	elif event.is_action_pressed("call_next_wave"):
-		wave_manager.call_next_wave()
-		get_viewport().set_input_as_handled()
-	elif OS.is_debug_build() and event is InputEventKey and event.is_pressed() \
-			and not event.is_echo() and (event as InputEventKey).keycode == KEY_B:
-		print("Spend 5: ", gold_manager.try_spend(5))
 
 
 func _on_window_size_changed() -> void:
