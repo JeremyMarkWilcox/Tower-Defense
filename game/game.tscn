@@ -21,6 +21,7 @@
 [ext_resource type="Shader" uid="uid://dlqkwxa4ft1ud" path="res://assets/shaders/mist.gdshader" id="8_mhvfb"]
 [ext_resource type="Script" uid="uid://e21u8rkcefj4" path="res://game/managers/gold_manager.gd" id="8_vsp63"]
 [ext_resource type="PackedScene" uid="uid://cniox0c88ga5l" path="res://core/ui/controls_menu.tscn" id="8_wmqhs"]
+[ext_resource type="PackedScene" uid="uid://dl7btnuthvvlb" path="res://assets/3d_art/towers/FireTower.glb" id="9_leid8"]
 [ext_resource type="PackedScene" uid="uid://dj4pwl2xdjjfq" path="res://game/ui/run_end_screen.tscn" id="11_3vho3"]
 [ext_resource type="PackedScene" uid="uid://b82y0h3s65i2h" path="res://assets/3d_art/towers/CannonTower.glb" id="23_5e03w"]
 
@@ -139,6 +140,12 @@ transform = Transform3D(0.43350565, 0, 0.9011508, 0, 1, 0, -0.9011508, 0, 0.4335
 [node name="grass_tuft_015" parent="World/Environment/Props" unique_id=1456933221 instance=ExtResource("7_dxwpq")]
 transform = Transform3D(-0.36455172, 0, -0.93118316, 0, 1, 0, 0.93118316, 0, -0.36455172, -28.98921, 0.6981883, 1.9696858)
 
+[node name="CannonTower" parent="World" unique_id=1976264692 instance=ExtResource("23_5e03w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3367014, 2.791296, 0.41207373)
+
+[node name="FireTower" parent="World" unique_id=570521196 instance=ExtResource("9_leid8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9429172, 2.8008618, -0.5709059)
+
 [node name="Atmosphere" type="CanvasLayer" parent="." unique_id=67527882]
 layer = 0
 
@@ -204,6 +211,3 @@ controls_menu = NodePath("../ControlsMenu")
 [node name="Credits" parent="UI" unique_id=1391844769 instance=ExtResource("6_dakft")]
 
 [node name="EndScreen" parent="UI" unique_id=1090858386 instance=ExtResource("11_3vho3")]
-
-[node name="CannonTower" parent="." unique_id=1976264692 instance=ExtResource("23_5e03w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.352815, 2.7614064, 0.41207373)
