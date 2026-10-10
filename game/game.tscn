@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://e21u8rkcefj4" path="res://game/managers/gold_manager.gd" id="8_vsp63"]
 [ext_resource type="PackedScene" uid="uid://cniox0c88ga5l" path="res://core/ui/controls_menu.tscn" id="8_wmqhs"]
 [ext_resource type="PackedScene" uid="uid://dl7btnuthvvlb" path="res://assets/3d_art/towers/FireTower.glb" id="9_leid8"]
+[ext_resource type="PackedScene" uid="uid://dm6ojjrnrnkqg" path="res://assets/3d_art/towers/IceTower.glb" id="10_8bboj"]
 [ext_resource type="PackedScene" uid="uid://dj4pwl2xdjjfq" path="res://game/ui/run_end_screen.tscn" id="11_3vho3"]
 [ext_resource type="PackedScene" uid="uid://b82y0h3s65i2h" path="res://assets/3d_art/towers/CannonTower.glb" id="23_5e03w"]
 
@@ -145,6 +146,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3367014, 2.791296, 0.41207
 
 [node name="FireTower" parent="World" unique_id=570521196 instance=ExtResource("9_leid8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9429172, 2.8008618, -0.5709059)
+
+[node name="IceTower" parent="World" unique_id=879949465 instance=ExtResource("10_8bboj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4456089, 2.748484, -1.5844189)
 
 [node name="Atmosphere" type="CanvasLayer" parent="." unique_id=67527882]
 layer = 0
