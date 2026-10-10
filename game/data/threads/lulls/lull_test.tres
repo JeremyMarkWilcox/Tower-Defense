@@ -7,5 +7,5 @@
 
 [resource]
 script = ExtResource("1_8pah5")
-threads = Array[ExtResource("2_07kna")]([ExtResource("3_jcyd7"), ExtResource("4_uimls")])
+threads = Array[ExtResource("2_07kna")]([ExtResource("3_jcyd7"), ExtResource("3_jcyd7"), ExtResource("4_uimls")])
 metadata/_custom_type_script = "uid://dtlm87vw6n02f"

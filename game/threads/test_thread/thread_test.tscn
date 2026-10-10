@@ -1,17 +1,20 @@
 [gd_scene format=3 uid="uid://clf8ysodcag78"]
 
-[ext_resource type="Script" uid="uid://bivgfbt0xn486" path="res://game/data/threads/test_thread/test_thread.gd" id="1_q862k"]
+[ext_resource type="Script" uid="uid://bivgfbt0xn486" path="res://game/data/threads/test_thread/test_thread.gd" id="1_0skb2"]
 [ext_resource type="PackedScene" uid="uid://dxiaycn0rmy1n" path="res://game/threads/signal_thread.tscn" id="2_2xcy8"]
-[ext_resource type="Resource" uid="uid://bchml4lumf1wr" path="res://game/data/threads/lulls/lull_test.tres" id="3_6spku"]
+[ext_resource type="Resource" uid="uid://bchml4lumf1wr" path="res://game/data/threads/lulls/lull_test.tres" id="2_yhdev"]
+[ext_resource type="Script" uid="uid://gnn5x4jgay38" path="res://game/managers/thread_manager.gd" id="4_0skb2"]
+[ext_resource type="Script" uid="uid://dynep1f7hnh6a" path="res://game/data/enemies/base_enemy/enemy_data.gd" id="5_yhdev"]
+[ext_resource type="Resource" uid="uid://crniaq8n2b6bv" path="res://game/data/enemies/unique_enemies/cultist.tres" id="6_so744"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ra2i3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ra2i3"]
 
-[node name="ThreadTest" type="Node3D" unique_id=1072541974]
-script = ExtResource("1_q862k")
-thread_scene = ExtResource("2_2xcy8")
-lull = ExtResource("3_6spku")
+[node name="ThreadTest" type="Node3D" unique_id=1072541974 node_paths=PackedStringArray("thread_manager")]
+script = ExtResource("1_0skb2")
+thread_manager = NodePath("ThreadManager")
+lull = ExtResource("2_yhdev")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=653721621]
 transform = Transform3D(0.70710677, -0.4055798, 0.579228, 0, 0.81915206, 0.57357645, -0.70710677, -0.4055798, 0.579228, 14, 14, 14)
@@ -25,6 +28,18 @@ transform = Transform3D(1, 0, 0, 0, 0.069861524, 0.99755675, 0, -0.99755675, 0.0
 transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0, 0, 0)
 mesh = SubResource("PlaneMesh_ra2i3")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=389922894]
+[node name="Center" type="MeshInstance3D" parent="." unique_id=389922894]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58149683, 0)
 mesh = SubResource("BoxMesh_ra2i3")
+
+[node name="Threads" type="Node3D" parent="." unique_id=1192624320]
+
+[node name="ThreadManager" type="Node" parent="." unique_id=791041048 node_paths=PackedStringArray("thread_container", "center", "camera")]
+script = ExtResource("4_0skb2")
+thread_scene = ExtResource("2_2xcy8")
+thread_container = NodePath("../Threads")
+center = NodePath("../Center")
+camera = NodePath("../Camera3D")
+thread_colors = Dictionary[ExtResource("5_yhdev"), Color]({
+ExtResource("6_so744"): Color(0.7176471, 0, 0.9137255, 1)
+})

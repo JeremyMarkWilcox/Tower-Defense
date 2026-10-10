@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://4ksplexl1tsu"]
 
-[ext_resource type="PackedScene" uid="uid://lvbm281h2vww" path="res://game/data/enemies/unique_enemies/greater_demon.tscn" id="1_0gg35"]
-[ext_resource type="Script" uid="uid://dynep1f7hnh6a" path="res://game/data/enemies/base_enemy/enemy_data.gd" id="1_wnnh2"]
+[ext_resource type="PackedScene" uid="uid://lvbm281h2vww" path="res://game/data/enemies/unique_enemies/greater_demon.tscn" id="1_npnuq"]
+[ext_resource type="Script" uid="uid://dynep1f7hnh6a" path="res://game/data/enemies/base_enemy/enemy_data.gd" id="2_5ai4t"]
 
 [resource]
-script = ExtResource("1_wnnh2")
-scene = ExtResource("1_0gg35")
+script = ExtResource("2_5ai4t")
+display_name = "Great Demon"
+scene = ExtResource("1_npnuq")
 move_speed = 0.1
 max_health = 300
 stronghold_damage = 50
