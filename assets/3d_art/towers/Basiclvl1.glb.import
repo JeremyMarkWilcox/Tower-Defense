@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dm6ojjrnrnkqg"
-path="res://.godot/imported/IceTower.glb-78004e6a24bb044e5ecce6879a35b2d3.scn"
+uid="uid://b82y0h3s65i2h"
+path="res://.godot/imported/Basiclvl1.glb-439d49af422d06ce456240e3bd9ff781.scn"
 
 [deps]
 
-source_file="res://assets/3d_art/towers/IceTower.glb"
-dest_files=["res://.godot/imported/IceTower.glb-78004e6a24bb044e5ecce6879a35b2d3.scn"]
+source_file="res://assets/3d_art/towers/Basiclvl1.glb"
+dest_files=["res://.godot/imported/Basiclvl1.glb-439d49af422d06ce456240e3bd9ff781.scn"]
 
 [params]
 

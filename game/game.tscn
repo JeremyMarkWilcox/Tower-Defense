@@ -21,10 +21,10 @@
 [ext_resource type="Shader" uid="uid://dlqkwxa4ft1ud" path="res://assets/shaders/mist.gdshader" id="8_mhvfb"]
 [ext_resource type="Script" uid="uid://e21u8rkcefj4" path="res://game/managers/gold_manager.gd" id="8_vsp63"]
 [ext_resource type="PackedScene" uid="uid://cniox0c88ga5l" path="res://core/ui/controls_menu.tscn" id="8_wmqhs"]
-[ext_resource type="PackedScene" uid="uid://dl7btnuthvvlb" path="res://assets/3d_art/towers/FireTower.glb" id="9_leid8"]
-[ext_resource type="PackedScene" uid="uid://dm6ojjrnrnkqg" path="res://assets/3d_art/towers/IceTower.glb" id="10_8bboj"]
+[ext_resource type="PackedScene" uid="uid://dl7btnuthvvlb" path="res://assets/3d_art/towers/Firelvl1.glb" id="9_leid8"]
+[ext_resource type="PackedScene" uid="uid://dm6ojjrnrnkqg" path="res://assets/3d_art/towers/Icelvl1.glb" id="10_8bboj"]
 [ext_resource type="PackedScene" uid="uid://dj4pwl2xdjjfq" path="res://game/Ui/run_end_screen.tscn" id="11_3vho3"]
-[ext_resource type="PackedScene" uid="uid://b82y0h3s65i2h" path="res://assets/3d_art/towers/CannonTower.glb" id="23_5e03w"]
+[ext_resource type="PackedScene" uid="uid://b82y0h3s65i2h" path="res://assets/3d_art/towers/Basiclvl1.glb" id="23_5e03w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4cobl"]
 shader = ExtResource("5_ln7ps")
