@@ -4,27 +4,32 @@
 [ext_resource type="PackedScene" uid="uid://drxix2qq7vrcp" path="res://assets/3d_art/stronghold/stronghold_base.glb" id="2_b8jds"]
 [ext_resource type="PackedScene" uid="uid://caeloa1nngu3c" path="res://game/stronghold/tower_socket.tscn" id="3_b46vg"]
 
-[node name="Stronghold" type="Node3D" unique_id=2125922311]
+[node name="StrongholdHolder" type="Node3D" unique_id=2125922311]
 script = ExtResource("1_3cre5")
 
-[node name="stronghold_base2" parent="." unique_id=25793128 instance=ExtResource("2_b8jds")]
+[node name="stronghold_base" parent="." unique_id=25793128 instance=ExtResource("2_b8jds")]
+
+[node name="Pillar1" parent="stronghold_base" index="0" unique_id=1137104780]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 5.709543, 0.6811876, -3.1790874)
 
 [node name="Sockets" type="Node3D" parent="." unique_id=2147328759]
 
 [node name="TowerSocket1" parent="Sockets" unique_id=1883056460 instance=ExtResource("3_b46vg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.5, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.65, 2)
 
 [node name="TowerSocket2" parent="Sockets" unique_id=1737476503 instance=ExtResource("3_b46vg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 2)
 
 [node name="TowerSocket3" parent="Sockets" unique_id=983640999 instance=ExtResource("3_b46vg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.5, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.65, 2)
 
 [node name="TowerSocket4" parent="Sockets" unique_id=26012494 instance=ExtResource("3_b46vg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.65, -2)
 
 [node name="TowerSocket5" parent="Sockets" unique_id=1348864092 instance=ExtResource("3_b46vg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, -2)
 
 [node name="TowerSocket6" parent="Sockets" unique_id=55002485 instance=ExtResource("3_b46vg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.65, -2)
+
+[editable path="stronghold_base"]
