@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://hfqj55tjn8l8"]
+
+[ext_resource type="Script" uid="uid://epix5p0brcyp" path="res://game/data/towers/tower.gd" id="1_6kh8y"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6kh8y"]
+radius = 1.9892578
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3jnb4"]
+radius = 4.540039
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hpi32"]
+radius = 7.82959
+
+[node name="Tower" type="Node3D" unique_id=2053335034 node_paths=PackedStringArray("range_one", "range_two", "range_three")]
+script = ExtResource("1_6kh8y")
+range_one = NodePath("enemyTargeter/rangeOne")
+range_two = NodePath("enemyTargeter/rangeTwo")
+range_three = NodePath("enemyTargeter/rangeThree")
+
+[node name="enemyTargeter" type="Area3D" parent="." unique_id=2060501464]
+
+[node name="rangeOne" type="CollisionShape3D" parent="enemyTargeter" unique_id=1715895733]
+shape = SubResource("CylinderShape3D_6kh8y")
+
+[node name="rangeTwo" type="CollisionShape3D" parent="enemyTargeter" unique_id=153127937]
+shape = SubResource("CylinderShape3D_3jnb4")
+
+[node name="rangeThree" type="CollisionShape3D" parent="enemyTargeter" unique_id=305499448]
+shape = SubResource("CylinderShape3D_hpi32")
