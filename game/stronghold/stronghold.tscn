@@ -9,9 +9,6 @@ script = ExtResource("1_3cre5")
 
 [node name="stronghold_base" parent="." unique_id=25793128 instance=ExtResource("2_b8jds")]
 
-[node name="Pillar1" parent="stronghold_base" index="0" unique_id=1137104780]
-transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 5.709543, 0.6811876, -3.1790874)
-
 [node name="Sockets" type="Node3D" parent="." unique_id=2147328759]
 
 [node name="TowerSocket1" parent="Sockets" unique_id=1883056460 instance=ExtResource("3_b46vg")]
