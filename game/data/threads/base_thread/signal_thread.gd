@@ -17,6 +17,8 @@ signal clicked(thread: SignalThread)
 @export var pick_width := 1.2
 ## Line thickness multiplier while highlighted.
 @export var highlight_width := 2.5
+## Color the thread flashes when a cut is refused.
+@export var refusal_color := Color(1.0, 0.15, 0.1)
 
 var data: SignalThreadData
 var direction := Vector3.FORWARD
@@ -25,6 +27,10 @@ var length := 0.0
 var _color := Color.WHITE
 var _material: StandardMaterial3D
 var _is_highlighted := false
+var _urgency := 0.0
+var _pulse_time := 0.0
+var _flash := 0.0
+var _shake_tween: Tween
 
 
 func _ready() -> void:
@@ -44,7 +50,7 @@ func setup(thread_data: SignalThreadData, thread_direction: Vector3, thread_leng
 	_color = color
 	# Local -Z points along the thread, so the line runs from 0 to -length.
 	basis = Basis.looking_at(direction, Vector3.UP)
-	line.position = Vector3(0.0, height, -length * 0.5)
+	line.position = _rest_position()
 	pick_shape.position = line.position
 	(pick_shape.shape as BoxShape3D).size = Vector3(pick_width, 1.0, length)
 	_apply_look()
@@ -55,15 +61,54 @@ func set_highlighted(value: bool) -> void:
 	_apply_look()
 
 
+## 0 at the start of the lull, 1 when the timer hits zero. Drives the pulse.
+func set_urgency(value: float) -> void:
+	_urgency = clampf(value, 0.0, 1.0)
+
+
+## Snap-back wiggle and red flash. Strong for the boss, light for the cooldown.
+func play_refusal(strong: bool) -> void:
+	if _shake_tween:
+		_shake_tween.kill()
+	var rest := _rest_position()
+	var amount := 0.4 if strong else 0.12
+	_shake_tween = create_tween()
+	_shake_tween.tween_method(_set_flash, 1.0 if strong else 0.5, 1.0 if strong else 0.5, 0.0)
+	for i in (6 if strong else 3):
+		var side := amount if i % 2 == 0 else -amount
+		_shake_tween.tween_property(line, "position", rest + Vector3(side, 0.0, 0.0), 0.04)
+		amount *= 0.7
+	_shake_tween.tween_property(line, "position", rest, 0.05)
+	_shake_tween.tween_method(_set_flash, _flash, 0.0, 0.25)
+
+
 ## Where the thread leaves the map; its group spawns here.
 func get_end_position() -> Vector3:
 	return global_position + direction * length
 
 
+func _process(delta: float) -> void:
+	# Pulses slowly at the start of a lull and fast near the end.
+	_pulse_time += delta * lerpf(0.6, 4.0, _urgency)
+	_apply_look()
+
+
+func _rest_position() -> Vector3:
+	return Vector3(0.0, height, -length * 0.5)
+
+
+func _set_flash(value: float) -> void:
+	_flash = value
+
+
 func _apply_look() -> void:
+	var pulse := 0.5 + 0.5 * sin(_pulse_time * TAU)
 	var width := highlight_width if _is_highlighted else 1.0
+	width *= 1.0 + 0.5 * _urgency * pulse
 	line.scale = Vector3(width, width, length)
-	_material.albedo_color = _color.lerp(Color.WHITE, 0.35) if _is_highlighted else _color
+	var color := _color.lerp(Color.WHITE, 0.35) if _is_highlighted else _color
+	color = color.lerp(Color.WHITE, 0.3 * _urgency * pulse)
+	_material.albedo_color = color.lerp(refusal_color, _flash)
 
 
 func _on_pick_input_event(_camera: Node, event: InputEvent, _position: Vector3,

@@ -48,6 +48,10 @@ func get_time_left() -> float:
 
 func get_cooldown_left() -> float:
 	return _cooldown_left
+	
+	
+func get_duration() -> float:
+	return _lull.duration if is_active() else 0.0
 
 
 func start_lull(lull: LullDefinition) -> void:
@@ -74,9 +78,11 @@ func _process(delta: float) -> void:
 	if not is_active():
 		return
 	_cooldown_left = maxf(_cooldown_left - delta, 0.0)
-	_time_left -= delta
+	_time_left = maxf(_time_left - delta, 0.0)
+	var urgency := 1.0 - _time_left / _lull.duration
+	for thread in _threads:
+		thread.set_urgency(urgency)
 	if _time_left <= 0.0:
-		_time_left = 0.0
 		_swarm()
 
 

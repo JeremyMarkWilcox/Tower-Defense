@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="LullDefinition" format=3 uid="uid://bchml4lumf1wr"]
 
-[ext_resource type="Script" uid="uid://dtlm87vw6n02f" path="res://game/data/threads/base_thread/lull_definition.gd" id="1_8pah5"]
+[ext_resource type="Script" uid="uid://dtlm87vw6n02f" path="res://game/data/threads/lulls/lull_definition.gd" id="1_8pah5"]
 [ext_resource type="Script" uid="uid://dv1yo7v82leod" path="res://game/data/threads/base_thread/signal_thread_data.gd" id="2_07kna"]
 [ext_resource type="Resource" uid="uid://1v47tabkmxou" path="res://game/data/threads/unique_threads/cultist.tres" id="3_jcyd7"]
 [ext_resource type="Resource" uid="uid://bv6k6lb31te1f" path="res://game/data/threads/unique_threads/greater_demon.tres" id="4_uimls"]
