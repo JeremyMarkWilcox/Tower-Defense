@@ -2,11 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://dgf785mw3toay" path="res://game/data/enemies/base_enemy/base_enemy.tscn" id="1_fel5c"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_csfhu"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ra2i3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4gaj"]
 albedo_color = Color(1, 0, 0, 1)
 
 [node name="GreaterDemon" unique_id=1427662883 instance=ExtResource("1_fel5c")]
 
-[node name="MeshInstance3D" parent="." index="0" unique_id=1513116122]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0.8, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_csfhu")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0" unique_id=396841766]
+mesh = SubResource("CapsuleMesh_ra2i3")
+surface_material_override/0 = SubResource("StandardMaterial3D_g4gaj")

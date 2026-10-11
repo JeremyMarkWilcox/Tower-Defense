@@ -15,6 +15,10 @@ signal boss_defeated
 @export var stronghold: Stronghold
 ## Match ThreadManager's thread_length so both spawn at the map edge.
 @export var spawn_radius := 18.0
+## Used to spawn the trickle just off-screen. Leave empty to use Spawn Radius.
+@export var camera: Camera3D
+## How far beyond the screen edge the trickle appears.
+@export var offscreen_margin := 2.0
 @export var arrive_radius := 1.5
 ## Random spread around a thread's end so a group doesn't stack on one spot.
 @export var group_spread := 0.8
@@ -112,9 +116,15 @@ func _spawn(enemy_data: EnemyData, at: Variant) -> void:
 	var center := stronghold.global_position
 	var spawn_position: Vector3
 	if at == null:
+		# Baseline trickle: just off-screen in a random direction.
 		var angle := randf() * TAU
-		spawn_position = center + Vector3(cos(angle), 0.0, sin(angle)) * spawn_radius
+		var dir := Vector3(cos(angle), 0.0, sin(angle))
+		var distance := spawn_radius
+		if camera:
+			distance = ScreenEdge.distance(camera, center, dir, spawn_radius) + offscreen_margin
+		spawn_position = center + dir * distance
 	else:
+		# Signal Thread group: at the thread's end, slightly spread out.
 		var spot: Vector3 = at
 		spawn_position = spot + Vector3(randf_range(-group_spread, group_spread), 0.0,
 				randf_range(-group_spread, group_spread))
@@ -142,5 +152,5 @@ func _unhandled_input(event: InputEvent) -> void:
 	# Debug only: K damages every enemy by 10 until towers exist.
 	if OS.is_debug_build() and event is InputEventKey and event.is_pressed() \
 			and not event.is_echo() and (event as InputEventKey).keycode == KEY_K:
-		for enemy in _alive.duplicate():
+		for enemy: BaseEnemy in _alive.duplicate():
 			(enemy as BaseEnemy).take_damage(10)

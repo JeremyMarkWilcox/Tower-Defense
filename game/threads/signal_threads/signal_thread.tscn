@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dxiaycn0rmy1n"]
 
 [ext_resource type="Script" uid="uid://bpnvh3dnln8ql" path="res://game/data/threads/base_thread/signal_thread.gd" id="1_6pubp"]
+[ext_resource type="Shader" uid="uid://c47flmhshtgtf" path="res://assets/shaders/thread/rope_thread.gdshader" id="2_7kxdx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_g4gaj"]
 size = Vector3(0.12, 0.12, 1)
@@ -13,6 +14,10 @@ script = ExtResource("1_6pubp")
 line = NodePath("Line")
 pick_area = NodePath("PickArea")
 pick_shape = NodePath("PickArea/PickShape")
+rope_shader = ExtResource("2_7kxdx")
+sway = 0.5
+segments = 256
+radial_sides = 12
 
 [node name="Line" type="MeshInstance3D" parent="." unique_id=1429375333]
 cast_shadow = 0

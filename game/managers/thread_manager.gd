@@ -21,8 +21,10 @@ const REFUSED_COOLDOWN := &"cooldown"
 @export var center: Node3D
 ## Used to turn screen angles ("top of the screen") into world directions.
 @export var camera: Camera3D
-## Distance from the Stronghold to the map edge, where groups spawn.
+## Fallback length if the screen edge can't be found.
 @export var thread_length := 18.0
+## How far inside the screen edge threads end, so their groups appear in view.
+@export var edge_margin := 1.0
 @export var default_color := Color.WHITE
 
 var _lull: LullDefinition
@@ -148,7 +150,9 @@ func _spawn_thread(data: SignalThreadData, screen_angle: float) -> void:
 	thread_container.add_child(thread)
 	thread.global_position = center.global_position
 	var color := data.enemy.thread_color if data.enemy else default_color
-	thread.setup(data, _screen_to_world(screen_angle), thread_length, color)
+	var direction := _screen_to_world(screen_angle)
+	var length := ScreenEdge.distance(camera, center.global_position, direction, thread_length) - edge_margin
+	thread.setup(data, direction, maxf(length, 1.0), color)
 	thread.hovered.connect(_on_thread_hovered)
 	thread.clicked.connect(_on_thread_clicked)
 	_threads.append(thread)
