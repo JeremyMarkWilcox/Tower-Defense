@@ -23,9 +23,10 @@
 [ext_resource type="PackedScene" uid="uid://cniox0c88ga5l" path="res://core/ui/controls_menu.tscn" id="8_wmqhs"]
 [ext_resource type="PackedScene" uid="uid://dl7btnuthvvlb" path="res://assets/3d_art/towers/Firelvl1.glb" id="9_leid8"]
 [ext_resource type="PackedScene" uid="uid://dm6ojjrnrnkqg" path="res://assets/3d_art/towers/Icelvl1.glb" id="10_8bboj"]
-[ext_resource type="PackedScene" uid="uid://dj4pwl2xdjjfq" path="res://game/Ui/run_end_screen.tscn" id="11_3vho3"]
+[ext_resource type="PackedScene" uid="uid://dj4pwl2xdjjfq" path="res://game/ui/run_end_screen.tscn" id="11_3vho3"]
 [ext_resource type="PackedScene" uid="uid://dfad8mr7np0na" path="res://game/threads/signal_threads/signal_system.tscn" id="11_7l47o"]
 [ext_resource type="PackedScene" uid="uid://b82y0h3s65i2h" path="res://assets/3d_art/towers/Basiclvl1.glb" id="23_5e03w"]
+[ext_resource type="PackedScene" uid="uid://cg6n6b183jwsh" path="res://assets/3d_art/enemies/CULT.gltf" id="27_ropga"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4cobl"]
 shader = ExtResource("5_ln7ps")
@@ -226,6 +227,9 @@ controls_menu = NodePath("../ControlsMenu")
 [node name="Credits" parent="UI" unique_id=1391844769 instance=ExtResource("6_dakft")]
 
 [node name="EndScreen" parent="UI" unique_id=1090858386 instance=ExtResource("11_3vho3")]
+
+[node name="blockbench_export" parent="." unique_id=30939511 instance=ExtResource("27_ropga")]
+transform = Transform3D(-0.93372303, 0, -0.3579962, 0, 1, 0, 0.3579962, 0, -0.93372303, -3.0924778, 0.8978064, 6.9347897)
 
 [editable path="World/Environment/Stronghold"]
 [editable path="World/Environment/Stronghold/stronghold_base"]
