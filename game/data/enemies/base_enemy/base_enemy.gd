@@ -19,6 +19,10 @@ func setup(enemy_data: EnemyData, target: Vector3, arrive_radius: float) -> void
 	health = data.max_health
 	_target = target
 	_arrive_radius = arrive_radius
+	var to_target := _target - global_position
+	to_target.y = 0.0
+	if to_target.length() > 0.01:
+		look_at(global_position + to_target, Vector3.UP, true)
 
 
 func _physics_process(delta: float) -> void:
@@ -34,7 +38,7 @@ func _physics_process(delta: float) -> void:
 		return
 	var direction := to_target / distance
 	global_position += direction * data.move_speed * delta
-	look_at(global_position + direction, Vector3.UP)
+	look_at(global_position + direction, Vector3.UP, true)
 
 
 func take_damage(amount: int) -> void:

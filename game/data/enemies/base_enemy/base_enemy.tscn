@@ -2,13 +2,5 @@
 
 [ext_resource type="Script" uid="uid://ba5o3g0hspol2" path="res://game/data/enemies/base_enemy/base_enemy.gd" id="1_2o6uh"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ra2i3"]
-radius = 0.4
-height = 1.6
-
 [node name="BaseEnemy" type="Node3D" unique_id=1427662883]
 script = ExtResource("1_2o6uh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1513116122]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
-mesh = SubResource("CapsuleMesh_ra2i3")
