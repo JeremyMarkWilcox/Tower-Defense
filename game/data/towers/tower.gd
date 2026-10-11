@@ -12,11 +12,11 @@ var aimDirection := 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	range_three.debug_fill
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if(targetEnemy == null):
-		range_one.debug_fill
-	pass
+		targetEnemy = range_three.get_overlapping_bodies()
+	print(targetEnemy.position.x)
