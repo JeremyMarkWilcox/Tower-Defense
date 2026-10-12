@@ -34,6 +34,8 @@ func _ready() -> void:
 
 
 func take_damage(amount: int) -> void:
+	if Debug.stronghold_invincible:
+		return
 	if _is_destroyed or amount <= 0:
 		return  # each hit applies once; nothing after destruction
 	health = maxi(health - amount, 0)

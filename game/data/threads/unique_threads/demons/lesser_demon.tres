@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SignalThreadData" format=3 uid="uid://cinkjyq0wo6l3"]
+
+[ext_resource type="Script" uid="uid://dv1yo7v82leod" path="res://game/data/threads/base_thread/signal_thread_data.gd" id="1_4chsm"]
+[ext_resource type="Resource" uid="uid://cejbhkb8400sh" path="res://game/data/enemies/unique_enemies/lesser_demon.tres" id="1_vtysc"]
+
+[resource]
+script = ExtResource("1_4chsm")
+enemy = ExtResource("1_vtysc")
+count = 1
+metadata/_custom_type_script = "uid://dv1yo7v82leod"

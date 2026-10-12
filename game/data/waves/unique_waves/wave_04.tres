@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="WaveDefinition" format=3 uid="uid://dxbta4cne2rrk"]
+
+[ext_resource type="Script" uid="uid://cmo6to4a6tibi" path="res://game/data/waves/base_data/spawn_group.gd" id="1_ega6o"]
+[ext_resource type="Script" uid="uid://bvroyv8j4sgmi" path="res://game/data/waves/base_data/wave_definition.gd" id="2_2msy5"]
+[ext_resource type="Resource" uid="uid://trop0kuylotd" path="res://game/data/enemies/unique_enemies/skeleton.tres" id="2_rkk6w"]
+[ext_resource type="Resource" uid="uid://ciclkk6cgvw5m" path="res://game/data/threads/lulls/lull_waves/wave_four.tres" id="3_y6h0c"]
+
+[sub_resource type="Resource" id="Resource_cmj0o"]
+script = ExtResource("1_ega6o")
+enemy = ExtResource("2_rkk6w")
+metadata/_custom_type_script = "uid://cmo6to4a6tibi"
+
+[sub_resource type="Resource" id="Resource_netxl"]
+script = ExtResource("1_ega6o")
+enemy = ExtResource("2_rkk6w")
+start_delay = 10.0
+metadata/_custom_type_script = "uid://cmo6to4a6tibi"
+
+[sub_resource type="Resource" id="Resource_7bgr8"]
+script = ExtResource("1_ega6o")
+enemy = ExtResource("2_rkk6w")
+start_delay = 15.0
+metadata/_custom_type_script = "uid://cmo6to4a6tibi"
+
+[resource]
+script = ExtResource("2_2msy5")
+groups = Array[ExtResource("1_ega6o")]([SubResource("Resource_cmj0o"), SubResource("Resource_netxl"), SubResource("Resource_7bgr8")])
+lull = ExtResource("3_y6h0c")
+lull_start = 30.0
+metadata/_custom_type_script = "uid://bvroyv8j4sgmi"

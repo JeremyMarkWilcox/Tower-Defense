@@ -13,6 +13,12 @@ enum State { MOVING, ATTACKING }
 
 ## Optional: shown while a ward protects this enemy (e.g. a faint purple shell).
 @export var ward_effect: Node3D
+## Optional: the model's AnimationPlayer. Its playback speed follows speed_multiplier.
+@export var anim_player: AnimationPlayer
+## Base playback speed for this enemy's animation. 1 = as authored.
+@export_range(0.1, 5.0, 0.05) var anim_speed := 1.0
+## Optional: animation to play once this enemy reaches the Stronghold. Leave empty to keep walking.
+@export var attack_animation: StringName
 
 var data: EnemyData
 var health := 0
@@ -50,6 +56,8 @@ func setup(enemy_data: EnemyData, target: Vector3, stronghold_radius: float) -> 
 func _physics_process(delta: float) -> void:
 	if _is_dead or data == null:
 		return
+	if anim_player:
+		anim_player.speed_scale = anim_speed * speed_multiplier
 	match state:
 		State.MOVING:
 			_move(delta)
@@ -94,6 +102,7 @@ func _move(delta: float) -> void:
 	var distance := to_target.length()
 	if distance <= _stop_distance:
 		state = State.ATTACKING
+		_play_attack_animation()
 		arrived.emit(self)
 		return
 	var direction := to_target / distance
@@ -108,6 +117,11 @@ func _attack(delta: float) -> void:
 	if _attack_cooldown <= 0.0:
 		_attack_cooldown += data.attack_interval
 		attacked.emit(self, roundi(data.stronghold_damage * damage_multiplier))
+
+
+func _play_attack_animation() -> void:
+	if anim_player and attack_animation != &"" and anim_player.has_animation(attack_animation):
+		anim_player.play(attack_animation, 0.15)  # 0.15s blend so the arms raise instead of snapping
 
 
 func _update_ward_look() -> void:

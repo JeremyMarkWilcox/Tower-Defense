@@ -1,16 +1,40 @@
 [gd_resource type="Resource" script_class="WaveDefinition" format=3 uid="uid://cb0dfd6owlsiq"]
 
 [ext_resource type="Script" uid="uid://cmo6to4a6tibi" path="res://game/data/waves/base_data/spawn_group.gd" id="1_u5ujo"]
-[ext_resource type="Resource" uid="uid://4ksplexl1tsu" path="res://game/data/enemies/unique_enemies/greater_demon.tres" id="2_glbnf"]
+[ext_resource type="Resource" uid="uid://trop0kuylotd" path="res://game/data/enemies/unique_enemies/skeleton.tres" id="2_cmj0o"]
 [ext_resource type="Script" uid="uid://bvroyv8j4sgmi" path="res://game/data/waves/base_data/wave_definition.gd" id="2_wsuxj"]
+[ext_resource type="Resource" uid="uid://b6j4j27ylhq4j" path="res://game/data/enemies/unique_enemies/zombie.tres" id="3_netxl"]
+[ext_resource type="Resource" uid="uid://crniaq8n2b6bv" path="res://game/data/enemies/unique_enemies/cultist.tres" id="4_rgl3k"]
+[ext_resource type="Resource" uid="uid://ewsj2802jqmw" path="res://game/data/threads/lulls/lull_waves/wave_three.tres" id="5_7bgr8"]
 
 [sub_resource type="Resource" id="Resource_l8g03"]
 script = ExtResource("1_u5ujo")
-enemy = ExtResource("2_glbnf")
+enemy = ExtResource("2_cmj0o")
+metadata/_custom_type_script = "uid://cmo6to4a6tibi"
+
+[sub_resource type="Resource" id="Resource_2ueli"]
+script = ExtResource("1_u5ujo")
+enemy = ExtResource("2_cmj0o")
+start_delay = 10.0
+metadata/_custom_type_script = "uid://cmo6to4a6tibi"
+
+[sub_resource type="Resource" id="Resource_q515j"]
+script = ExtResource("1_u5ujo")
+enemy = ExtResource("4_rgl3k")
 count = 1
+start_delay = 12.0
+metadata/_custom_type_script = "uid://cmo6to4a6tibi"
+
+[sub_resource type="Resource" id="Resource_nwa0j"]
+script = ExtResource("1_u5ujo")
+enemy = ExtResource("3_netxl")
+count = 2
+start_delay = 15.0
 metadata/_custom_type_script = "uid://cmo6to4a6tibi"
 
 [resource]
 script = ExtResource("2_wsuxj")
-groups = Array[ExtResource("1_u5ujo")]([SubResource("Resource_l8g03")])
+groups = Array[ExtResource("1_u5ujo")]([SubResource("Resource_l8g03"), SubResource("Resource_2ueli"), SubResource("Resource_q515j"), SubResource("Resource_nwa0j")])
+lull = ExtResource("5_7bgr8")
+lull_start = 15.0
 metadata/_custom_type_script = "uid://bvroyv8j4sgmi"

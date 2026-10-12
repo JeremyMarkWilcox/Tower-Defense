@@ -2,7 +2,7 @@ class_name WaveManager
 extends Node
 ## Runs the baseline trickle on a timer and hands each wave's lull to ThreadManager.
 ## The only place enemies are spawned, including groups released by Signal Threads.
-## Never waits for an empty battlefield. Uses its own clock, so pause and game speed work.
+## The next wave waits until this one, its lull, and every enemy they spawned are gone.
 
 signal wave_started(wave_number: int, total_waves: int)
 signal enemy_killed(bounty: int)
@@ -10,6 +10,7 @@ signal enemy_reached_stronghold(damage: int)
 signal lull_requested(lull: LullDefinition)
 signal boss_defeated
 signal stronghold_attacked(damage: int)
+signal wave_cleared(wave_number: int)
 
 @export var waves: Array[WaveDefinition] = []
 @export var enemy_container: Node3D
@@ -24,12 +25,14 @@ signal stronghold_attacked(damage: int)
 @export var stronghold_radius := 1.5
 ## Random spread around a thread's end so a group doesn't stack on one spot.
 @export var group_spread := 0.8
+## Breather after a wave is fully cleared, before the next one starts.
+@export_range(0.0, 60.0, 0.5, "suffix:s") var time_between_waves := 5.0
 
 var current_wave := -1  # index into waves; -1 before the first wave
-
 var _is_running := false
 var _run_clock := 0.0
-var _wave_time_left := 0.0
+var _break_time_left := -1.0  # counts down to the next wave; -1 while a wave is in progress
+var _lull_active := false
 # { "time": float, "enemy": EnemyData, "position": Vector3 or null for the ring }
 var _pending: Array[Dictionary] = []
 var _pending_lull: LullDefinition
@@ -54,7 +57,12 @@ func has_next_wave() -> bool:
 
 
 func get_time_until_next_wave() -> float:
-	return _wave_time_left if has_next_wave() else 0.0
+	return maxf(_break_time_left, 0.0) if has_next_wave() else 0.0
+
+
+## Connected to ThreadManager.lull_ended by GameManager.
+func on_lull_ended() -> void:
+	_lull_active = false
 
 
 ## Spawns a group at a fixed point. Signal Threads use this through GameManager.
@@ -76,17 +84,33 @@ func _process(delta: float) -> void:
 	if _pending_lull and _run_clock >= _lull_time:
 		var lull := _pending_lull
 		_pending_lull = null
+		_lull_active = not lull.threads.is_empty()  # an empty lull never sends lull_ended
 		lull_requested.emit(lull)
-	if has_next_wave():
-		_wave_time_left -= delta
-		if _wave_time_left <= 0.0:
-			_start_wave(current_wave + 1)
+	_update_wave_progress(delta)
+	
+
+func _update_wave_progress(delta: float) -> void:
+	if not has_next_wave():
+		return  # the last wave ends when the boss dies
+	if _break_time_left < 0.0:
+		if _is_wave_cleared():
+			_break_time_left = time_between_waves
+			wave_cleared.emit(current_wave + 1)
+		return
+	_break_time_left -= delta
+	if _break_time_left <= 0.0:
+		_start_wave(current_wave + 1)
+
+
+## Everything this wave will spawn has spawned, its lull is over, and nothing is left alive.
+func _is_wave_cleared() -> bool:
+	return _pending.is_empty() and _pending_lull == null and not _lull_active and _alive.is_empty()
 
 
 func _start_wave(index: int) -> void:
 	current_wave = index
 	var wave := waves[index]
-	_wave_time_left = wave.duration
+	_break_time_left = -1.0
 	for group in wave.groups:
 		if group == null or group.enemy == null:
 			continue

@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://dm6ojjrnrnkqg" path="res://assets/3d_art/towers/Icelvl1.glb" id="10_8bboj"]
 [ext_resource type="PackedScene" uid="uid://dj4pwl2xdjjfq" path="res://game/ui/screens/run_end_screen.tscn" id="11_3vho3"]
 [ext_resource type="PackedScene" uid="uid://dfad8mr7np0na" path="res://game/threads/signal_threads/signal_system.tscn" id="11_7l47o"]
+[ext_resource type="Resource" uid="uid://dxbta4cne2rrk" path="res://game/data/waves/unique_waves/wave_04.tres" id="21_caicf"]
 [ext_resource type="PackedScene" uid="uid://b82y0h3s65i2h" path="res://assets/3d_art/towers/Basiclvl1.glb" id="23_5e03w"]
 [ext_resource type="PackedScene" uid="uid://trtw8x206jx5" path="res://game/ui/hud/hud.tscn" id="27_caicf"]
 
@@ -82,7 +83,6 @@ sky_mode = 1
 [node name="Environment" type="Node3D" parent="World" unique_id=1459671944]
 
 [node name="Ground" parent="World/Environment" unique_id=1918880653 instance=ExtResource("2_b686c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.038425446, 0.084358215, -0.026489258)
 
 [node name="Enemies" type="Node3D" parent="World/Environment" unique_id=1363674715]
 
@@ -196,9 +196,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Systems" type="Node" parent="." unique_id=1873627118]
+[node name="Managers" type="Node" parent="." unique_id=1873627118]
 
-[node name="GameManager" type="Node" parent="Systems" unique_id=181638440 node_paths=PackedStringArray("pause_menu", "end_screen", "wave_manager", "stronghold", "gold_manager", "thread_manager")]
+[node name="GameManager" type="Node" parent="Managers" unique_id=181638440 node_paths=PackedStringArray("pause_menu", "end_screen", "wave_manager", "stronghold", "gold_manager", "thread_manager")]
 script = ExtResource("1_l1rk1")
 pause_menu = NodePath("../../UI/PauseMenu")
 end_screen = NodePath("../../UI/EndScreen")
@@ -207,15 +207,15 @@ stronghold = NodePath("../../World/Environment/Stronghold")
 gold_manager = NodePath("../GoldManager")
 thread_manager = NodePath("../../World/SignalSystem/ThreadManager")
 
-[node name="WaveManager" type="Node" parent="Systems" unique_id=1737513906 node_paths=PackedStringArray("enemy_container", "stronghold", "camera")]
+[node name="WaveManager" type="Node" parent="Managers" unique_id=1737513906 node_paths=PackedStringArray("enemy_container", "stronghold", "camera")]
 script = ExtResource("2_u5opy")
-waves = Array[ExtResource("3_3vho3")]([ExtResource("4_qf6n1"), ExtResource("5_vsp63"), ExtResource("6_b686c")])
+waves = Array[ExtResource("3_3vho3")]([ExtResource("4_qf6n1"), ExtResource("5_vsp63"), ExtResource("6_b686c"), ExtResource("21_caicf")])
 enemy_container = NodePath("../../World/Environment/Enemies")
 stronghold = NodePath("../../World/Environment/Stronghold")
 spawn_radius = 32.0
 camera = NodePath("../../World/CameraLighting/Camera3D")
 
-[node name="GoldManager" type="Node" parent="Systems" unique_id=900479467]
+[node name="GoldManager" type="Node" parent="Managers" unique_id=900479467]
 script = ExtResource("8_vsp63")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=851109597]
@@ -239,9 +239,9 @@ visible = false
 visible = false
 
 [node name="HUD" parent="UI" unique_id=360266916 node_paths=PackedStringArray("gold_manager", "stronghold", "wave_manager") instance=ExtResource("27_caicf")]
-gold_manager = NodePath("../../Systems/GoldManager")
+gold_manager = NodePath("../../Managers/GoldManager")
 stronghold = NodePath("../../World/Environment/Stronghold")
-wave_manager = NodePath("../../Systems/WaveManager")
+wave_manager = NodePath("../../Managers/WaveManager")
 
 [editable path="World/Environment/Stronghold"]
 [editable path="World/Environment/Stronghold/stronghold_base"]

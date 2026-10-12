@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LullDefinition" format=3 uid="uid://cphwyi56xfci3"]
+
+[ext_resource type="Script" uid="uid://dtlm87vw6n02f" path="res://game/data/threads/lulls/base_lull/lull_definition.gd" id="1_jxstq"]
+[ext_resource type="Script" uid="uid://dv1yo7v82leod" path="res://game/data/threads/base_thread/signal_thread_data.gd" id="2_vddcj"]
+[ext_resource type="Resource" uid="uid://d0iqkg1h3je8m" path="res://game/data/threads/unique_threads/skeleton/three_skeleton.tres" id="3_tiinq"]
+[ext_resource type="Resource" uid="uid://1v47tabkmxou" path="res://game/data/threads/unique_threads/cultist/one_cultist.tres" id="5_dmuyw"]
+
+[resource]
+script = ExtResource("1_jxstq")
+threads = Array[ExtResource("2_vddcj")]([ExtResource("3_tiinq"), ExtResource("3_tiinq"), ExtResource("5_dmuyw")])
+cut_cooldown = 1.5
+metadata/_custom_type_script = "uid://dtlm87vw6n02f"

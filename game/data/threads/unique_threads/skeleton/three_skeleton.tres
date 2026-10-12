@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SignalThreadData" format=3 uid="uid://d0iqkg1h3je8m"]
+
+[ext_resource type="Resource" uid="uid://trop0kuylotd" path="res://game/data/enemies/unique_enemies/skeleton.tres" id="1_x4lg2"]
+[ext_resource type="Script" uid="uid://dv1yo7v82leod" path="res://game/data/threads/base_thread/signal_thread_data.gd" id="2_8mwqb"]
+
+[resource]
+script = ExtResource("2_8mwqb")
+enemy = ExtResource("1_x4lg2")
+metadata/_custom_type_script = "uid://dv1yo7v82leod"

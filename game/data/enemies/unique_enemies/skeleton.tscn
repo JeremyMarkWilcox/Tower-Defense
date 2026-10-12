@@ -23,10 +23,12 @@ height = 2.0
 [node name="SkeletonMesh" parent="." index="0" unique_id=1248366212 instance=ExtResource("2_54rws")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 script = ExtResource("3_gbopi")
-steps_per_unit = 0.6
-step_height = 0.15
+steps_per_unit = 2.5
+max_steps_per_second = 5.0
+step_height = 0.25
 sway_degrees = 20.0
-lean_degrees = 10.0
+lean_degrees = 15.0
+settle_speed = 25.0
 
 [node name="Hitbox" parent="." index="1" unique_id=1439913594]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43624657, 0)

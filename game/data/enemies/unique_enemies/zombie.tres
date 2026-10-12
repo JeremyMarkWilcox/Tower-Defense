@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://b6j4j27ylhq4j"]
+
+[ext_resource type="PackedScene" uid="uid://cb6yw6pdpv3o8" path="res://game/data/enemies/unique_enemies/zombie.tscn" id="1_ce4wo"]
+[ext_resource type="Script" uid="uid://dynep1f7hnh6a" path="res://game/data/enemies/base_enemy/enemy_data.gd" id="1_yf7cv"]
+
+[resource]
+script = ExtResource("1_yf7cv")
+display_name = "Zombie"
+scene = ExtResource("1_ce4wo")
+move_speed = 8.0
+stronghold_damage = 2
+attack_range = 6.5
+bounty = 2
+thread_color = Color(0, 0.55359787, 5.7756904e-07, 1)
+metadata/_custom_type_script = "uid://dynep1f7hnh6a"

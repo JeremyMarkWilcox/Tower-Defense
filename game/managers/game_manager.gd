@@ -35,6 +35,7 @@ func _connect_systems() -> void:
 	wave_manager.stronghold_attacked.connect(stronghold.take_damage)
 	wave_manager.enemy_killed.connect(gold_manager.add_gold)
 	wave_manager.lull_requested.connect(thread_manager.start_lull)
+	thread_manager.lull_ended.connect(wave_manager.on_lull_ended)
 	thread_manager.thread_released.connect(_on_thread_released)
 	stronghold.destroyed.connect(_lose)
 

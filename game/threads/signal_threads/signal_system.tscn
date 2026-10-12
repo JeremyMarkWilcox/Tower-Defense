@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://gnn5x4jgay38" path="res://game/managers/thread_manager.gd" id="3_d6mrp"]
 [ext_resource type="PackedScene" uid="uid://dxiaycn0rmy1n" path="res://game/threads/signal_threads/signal_thread.tscn" id="4_ntrhb"]
-[ext_resource type="Script" uid="uid://dw63nkt6ikr6k" path="res://game/data/threads/lulls/lull_timer.gd" id="7_w0ieh"]
+[ext_resource type="Script" uid="uid://dw63nkt6ikr6k" path="res://game/data/threads/lulls/base_lull/lull_timer.gd" id="7_w0ieh"]
 [ext_resource type="Theme" uid="uid://docepy01vs1ci" path="res://assets/theme/tower-defense_theme.tres" id="8_ensoo"]
 [ext_resource type="Script" uid="uid://ba6rpq5fhc23t" path="res://game/data/threads/base_thread/thread_feedback.gd" id="9_qukkj"]
 [ext_resource type="AudioStream" uid="uid://5pmss0av5i1" path="res://assets/sounds/sfx/back_002.ogg" id="10_swm82"]
