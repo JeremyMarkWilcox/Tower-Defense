@@ -3,8 +3,7 @@ extends Node3D
 
 signal health_changed(current: int, maximum: int)
 signal destroyed
-
-@export var towerdata: Resource 
+@export var towerdata: Resource
 @export_range(1, 10000) var max_health := 20
 const towerScene = preload("res://game/data/towers/tower.tscn")
 
@@ -18,9 +17,9 @@ func _ready() -> void:
 	health = max_health
 	
 
-	var cx = position.x
-	var cy = position.y
-	var cz = position.z
+	var cx := position.x
+	var cy := position.y
+	var cz := position.z
 	
 	towerPositions = [
 		Vector3(cx - 6.3, cy + 2.8, cz + .4),

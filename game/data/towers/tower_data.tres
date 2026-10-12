@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TowerData" format=3 uid="uid://byui546w78od6"]
+
+[ext_resource type="PackedScene" uid="uid://b82y0h3s65i2h" path="res://assets/3d_art/towers/Basiclvl1.glb" id="1_pymm2"]
+[ext_resource type="Script" uid="uid://dxhmx4118pfd3" path="res://game/data/towers/towerdata.gd" id="1_qm3ln"]
+[ext_resource type="PackedScene" uid="uid://dl7btnuthvvlb" path="res://assets/3d_art/towers/Firelvl1.glb" id="2_as6rv"]
+[ext_resource type="PackedScene" uid="uid://dm6ojjrnrnkqg" path="res://assets/3d_art/towers/Icelvl1.glb" id="3_co70p"]
+
+[resource]
+script = ExtResource("1_qm3ln")
+basiclvl_1 = ExtResource("1_pymm2")
+firelvl_1 = ExtResource("2_as6rv")
+icelvl_1 = ExtResource("3_co70p")
+metadata/_custom_type_script = "uid://dxhmx4118pfd3"

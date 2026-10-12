@@ -2,9 +2,9 @@ extends Node3D
 
 const bulletScene = preload("res://game/data/towers/bullet.tscn")
 
-@export var range_one: CollisionShape3D
-@export var range_two: CollisionShape3D
-@export var range_three: CollisionShape3D
+@export var range_one: Area3D
+@export var range_two: Area3D
+@export var range_three: Area3D
 @export var twrFireRate := 2000
 @export var twrDamage := 1
 @export var twrBulletSpeed := 10
