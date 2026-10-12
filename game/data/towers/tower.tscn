@@ -19,6 +19,9 @@ range_three = NodePath("enemyTargeter/rangeThree")
 
 [node name="enemyTargeter" type="Area3D" parent="." unique_id=2060501464]
 
+[node name="Timer" type="Timer" parent="enemyTargeter" unique_id=1653151059]
+autostart = true
+
 [node name="rangeOne" type="CollisionShape3D" parent="enemyTargeter" unique_id=1715895733]
 shape = SubResource("CylinderShape3D_6kh8y")
 

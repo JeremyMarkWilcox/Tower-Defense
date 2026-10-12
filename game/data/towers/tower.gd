@@ -1,8 +1,11 @@
 extends Node3D
+
+const bullet = preload("res://game/data/towers/bullet.tscn")
+
 @export var range_one: CollisionShape3D
 @export var range_two: CollisionShape3D
 @export var range_three: CollisionShape3D
-
+@export var fireRate := 0
 
 #this script will handle detecting and aiming at enemies.
 #stronghold script will detect when a socket is hovered over,
@@ -17,6 +20,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#will lock on to enemy and fire bullet
 	if(targetEnemy == null):
 		targetEnemy = range_three.get_overlapping_bodies()
 	print(targetEnemy.position.x)

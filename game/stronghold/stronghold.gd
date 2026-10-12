@@ -6,6 +6,7 @@ signal health_changed(current: int, maximum: int)
 signal destroyed
 
 @export_range(1, 10000) var max_health := 20
+const tower = preload("res://game/data/towers/tower.tscn")
 
 var health := 0
 var _is_destroyed := false
@@ -45,6 +46,6 @@ func take_damage(amount: int) -> void:
 		destroyed.emit()
 
 func change_tower(slot: int, type: int, level: int) -> void:
-	#description
+	#description places a tower at a position
 	
 	pass
