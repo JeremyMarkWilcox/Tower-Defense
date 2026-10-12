@@ -24,16 +24,19 @@ tower_mesh = NodePath("TowerMesh")
 autostart = true
 
 [node name="rangeOne" type="Area3D" parent="." unique_id=1867613354]
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rangeOne" unique_id=86986928]
 shape = SubResource("CylinderShape3D_xkro6")
 
 [node name="rangeTwo" type="Area3D" parent="." unique_id=1909420512]
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rangeTwo" unique_id=485072162]
 shape = SubResource("CylinderShape3D_lccvh")
 
 [node name="rangeThree" type="Area3D" parent="." unique_id=1890466275]
+input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rangeThree" unique_id=730385619]
 shape = SubResource("CylinderShape3D_rengx")
