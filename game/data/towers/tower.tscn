@@ -2,37 +2,41 @@
 
 [ext_resource type="Script" uid="uid://epix5p0brcyp" path="res://game/data/towers/tower.gd" id="1_6kh8y"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_6kh8y"]
-radius = 1.9892578
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xkro6"]
+radius = 2.0327148
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_3jnb4"]
-radius = 4.540039
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lccvh"]
+radius = 5.01416
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_hpi32"]
-radius = 7.82959
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rengx"]
+radius = 10.550781
 
 [sub_resource type="BoxMesh" id="BoxMesh_6kh8y"]
 
 [node name="Tower" type="Node3D" unique_id=2053335034 node_paths=PackedStringArray("range_one", "range_two", "range_three", "tower_mesh")]
 script = ExtResource("1_6kh8y")
-range_one = NodePath("enemyTargeter/rangeOne")
-range_two = NodePath("enemyTargeter/rangeTwo")
-range_three = NodePath("enemyTargeter/rangeThree")
+range_one = NodePath("rangeOne")
+range_two = NodePath("rangeTwo")
+range_three = NodePath("rangeThree")
 tower_mesh = NodePath("TowerMesh")
 
-[node name="enemyTargeter" type="Area3D" parent="." unique_id=2060501464]
-
-[node name="Timer" type="Timer" parent="enemyTargeter" unique_id=1653151059]
+[node name="Timer" type="Timer" parent="." unique_id=1653151059]
 autostart = true
 
-[node name="rangeOne" type="CollisionShape3D" parent="enemyTargeter" unique_id=1715895733]
-shape = SubResource("CylinderShape3D_6kh8y")
+[node name="rangeOne" type="Area3D" parent="." unique_id=1867613354]
 
-[node name="rangeTwo" type="CollisionShape3D" parent="enemyTargeter" unique_id=153127937]
-shape = SubResource("CylinderShape3D_3jnb4")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rangeOne" unique_id=86986928]
+shape = SubResource("CylinderShape3D_xkro6")
 
-[node name="rangeThree" type="CollisionShape3D" parent="enemyTargeter" unique_id=305499448]
-shape = SubResource("CylinderShape3D_hpi32")
+[node name="rangeTwo" type="Area3D" parent="." unique_id=1909420512]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rangeTwo" unique_id=485072162]
+shape = SubResource("CylinderShape3D_lccvh")
+
+[node name="rangeThree" type="Area3D" parent="." unique_id=1890466275]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rangeThree" unique_id=730385619]
+shape = SubResource("CylinderShape3D_rengx")
 
 [node name="TowerMesh" type="MeshInstance3D" parent="." unique_id=1721241029]
 mesh = SubResource("BoxMesh_6kh8y")
