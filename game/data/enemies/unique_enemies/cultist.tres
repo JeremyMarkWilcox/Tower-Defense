@@ -7,6 +7,9 @@
 script = ExtResource("1_uele5")
 display_name = "Cultist"
 scene = ExtResource("1_6guiu")
+stronghold_damage = 0
+attack_range = 6.0
 bounty = 2
 thread_color = Color(0.44685185, 0.00013880909, 0.44684857, 1)
+can_be_warded = false
 metadata/_custom_type_script = "uid://dynep1f7hnh6a"

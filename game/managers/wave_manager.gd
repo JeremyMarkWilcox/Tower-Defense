@@ -9,6 +9,7 @@ signal enemy_killed(bounty: int)
 signal enemy_reached_stronghold(damage: int)
 signal lull_requested(lull: LullDefinition)
 signal boss_defeated
+signal stronghold_attacked(damage: int)
 
 @export var waves: Array[WaveDefinition] = []
 @export var enemy_container: Node3D
@@ -19,7 +20,8 @@ signal boss_defeated
 @export var camera: Camera3D
 ## How far beyond the screen edge the trickle appears.
 @export var offscreen_margin := 2.0
-@export var arrive_radius := 1.5
+## Roughly the Stronghold's footprint radius. Enemies stop this far plus their attack range from its center.
+@export var stronghold_radius := 1.5
 ## Random spread around a thread's end so a group doesn't stack on one spot.
 @export var group_spread := 0.8
 
@@ -130,9 +132,9 @@ func _spawn(enemy_data: EnemyData, at: Variant) -> void:
 				randf_range(-group_spread, group_spread))
 	enemy_container.add_child(enemy)
 	enemy.global_position = spawn_position
-	enemy.setup(enemy_data, center, arrive_radius)
+	enemy.setup(enemy_data, center, stronghold_radius)
 	enemy.died.connect(_on_enemy_died)
-	enemy.reached_stronghold.connect(_on_enemy_reached_stronghold)
+	enemy.attacked.connect(_on_enemy_attacked)
 	_alive.append(enemy)
 
 
@@ -142,6 +144,9 @@ func _on_enemy_died(enemy: BaseEnemy) -> void:
 	if enemy.data.is_boss:
 		boss_defeated.emit()
 
+
+func _on_enemy_attacked(_enemy: BaseEnemy, damage: int) -> void:
+	stronghold_attacked.emit(damage)
 
 func _on_enemy_reached_stronghold(enemy: BaseEnemy) -> void:
 	_alive.erase(enemy)

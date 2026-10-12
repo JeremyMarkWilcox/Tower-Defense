@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://dj4pwl2xdjjfq" path="res://game/ui/run_end_screen.tscn" id="11_3vho3"]
 [ext_resource type="PackedScene" uid="uid://dfad8mr7np0na" path="res://game/threads/signal_threads/signal_system.tscn" id="11_7l47o"]
 [ext_resource type="PackedScene" uid="uid://b82y0h3s65i2h" path="res://assets/3d_art/towers/Basiclvl1.glb" id="23_5e03w"]
+[ext_resource type="PackedScene" uid="uid://trtw8x206jx5" path="res://game/Ui/hud/hud.tscn" id="27_caicf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4cobl"]
 shader = ExtResource("5_ln7ps")
@@ -65,12 +66,14 @@ shader_parameter/seed = 12.0
 
 [node name="World" type="Node3D" parent="." unique_id=1336092557]
 
-[node name="Camera3D" type="Camera3D" parent="World" unique_id=2106176760]
-transform = Transform3D(0.70710677, -0.4055798, 0.579228, 0, 0.81915206, 0.57357645, -0.70710677, -0.4055798, 0.579228, 14, 14, 14)
+[node name="CameraLighting" type="Node3D" parent="World" unique_id=2114772527]
+
+[node name="Camera3D" type="Camera3D" parent="World/CameraLighting" unique_id=2106176760]
+transform = Transform3D(0.7071068, -0.4055798, 0.579228, 0, 0.81915206, 0.57357645, -0.7071068, -0.4055798, 0.579228, 14, 14, 14)
 projection = 1
 size = 35.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World" unique_id=1994589766]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World/CameraLighting" unique_id=1994589766]
 transform = Transform3D(0.8660254, -0.38302222, 0.32139382, 0, 0.64278764, 0.76604444, -0.5, -0.66341394, 0.5566704, 0, 0, 0)
 light_energy = 0.5
 light_indirect_energy = 0.5
@@ -81,10 +84,10 @@ sky_mode = 1
 [node name="Ground" parent="World/Environment" unique_id=1918880653 instance=ExtResource("2_b686c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.038425446, 0.084358215, -0.026489258)
 
+[node name="Enemies" type="Node3D" parent="World/Environment" unique_id=1363674715]
+
 [node name="Stronghold" parent="World/Environment" unique_id=2125922311 instance=ExtResource("1_qf6n1")]
 transform = Transform3D(-0.9761344, 0, -0.21716723, 0, 1, 0, 0.21716723, 0, -0.9761344, -1.495718, 1.0362198, 1.3766179)
-
-[node name="Enemies" type="Node3D" parent="World/Environment" unique_id=1363674715]
 
 [node name="Props" type="Node3D" parent="World/Environment" unique_id=2108826791]
 
@@ -158,10 +161,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4456089, 2.748484, -1.58441
 
 [node name="ThreadManager" parent="World/SignalSystem" index="1" unique_id=791041048 node_paths=PackedStringArray("center", "camera")]
 center = NodePath("../../Environment/Stronghold")
-camera = NodePath("../../Camera3D")
+camera = NodePath("../../CameraLighting/Camera3D")
 
 [node name="ThreadFeedback" parent="World/SignalSystem" index="3" unique_id=11552838 node_paths=PackedStringArray("camera")]
-camera = NodePath("../../Camera3D")
+camera = NodePath("../../CameraLighting/Camera3D")
 
 [node name="Atmosphere" type="CanvasLayer" parent="." unique_id=67527882]
 layer = 0
@@ -210,8 +213,7 @@ waves = Array[ExtResource("3_3vho3")]([ExtResource("4_qf6n1"), ExtResource("5_vs
 enemy_container = NodePath("../../World/Environment/Enemies")
 stronghold = NodePath("../../World/Environment/Stronghold")
 spawn_radius = 32.0
-camera = NodePath("../../World/Camera3D")
-arrive_radius = 2.5
+camera = NodePath("../../World/CameraLighting/Camera3D")
 
 [node name="GoldManager" type="Node" parent="Systems" unique_id=900479467]
 script = ExtResource("8_vsp63")
@@ -230,6 +232,11 @@ controls_menu = NodePath("../ControlsMenu")
 [node name="Credits" parent="UI" unique_id=1391844769 instance=ExtResource("6_dakft")]
 
 [node name="EndScreen" parent="UI" unique_id=1090858386 instance=ExtResource("11_3vho3")]
+
+[node name="HUD" parent="UI" unique_id=360266916 node_paths=PackedStringArray("gold_manager", "stronghold", "wave_manager") instance=ExtResource("27_caicf")]
+gold_manager = NodePath("../../Systems/GoldManager")
+stronghold = NodePath("../../World/Environment/Stronghold")
+wave_manager = NodePath("../../Systems/WaveManager")
 
 [editable path="World/Environment/Stronghold"]
 [editable path="World/Environment/Stronghold/stronghold_base"]

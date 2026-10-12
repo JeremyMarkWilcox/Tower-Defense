@@ -85,6 +85,11 @@ thread_cut={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_2="enemies"
+3d_physics/layer_10="signal_threads"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

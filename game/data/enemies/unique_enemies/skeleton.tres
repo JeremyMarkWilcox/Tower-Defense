@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://trop0kuylotd"]
+
+[ext_resource type="Script" uid="uid://dynep1f7hnh6a" path="res://game/data/enemies/base_enemy/enemy_data.gd" id="1_8sqps"]
+[ext_resource type="PackedScene" uid="uid://clxgsyewsruls" path="res://game/data/enemies/unique_enemies/skeleton.tscn" id="1_tdmgd"]
+
+[resource]
+script = ExtResource("1_8sqps")
+display_name = "Skeleton"
+scene = ExtResource("1_tdmgd")
+move_speed = 1.4000000000000001
+max_health = 5
+attack_range = 5.0
+attack_interval = 3.0
+thread_color = Color(1, 1, 0.67058825, 1)
+metadata/_custom_type_script = "uid://dynep1f7hnh6a"

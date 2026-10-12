@@ -2,10 +2,52 @@
 
 [ext_resource type="PackedScene" uid="uid://dgf785mw3toay" path="res://game/data/enemies/base_enemy/base_enemy.tscn" id="1_klvc8"]
 [ext_resource type="PackedScene" uid="uid://cg6n6b183jwsh" path="res://assets/3d_art/enemies/CULT.gltf" id="2_hkt21"]
+[ext_resource type="Script" uid="uid://byvqdkchtukj0" path="res://game/data/enemies/enemy_components/float_bob.gd" id="3_hhqyx"]
+[ext_resource type="Script" uid="uid://jqhrxyqa2l5h" path="res://game/data/enemies/enemy_components/ward_aura.gd" id="4_ea85i"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hhqyx"]
+radius = 0.4892578
+height = 1.5632324
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4gaj"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.5176471, 0.08235294, 0.7490196, 0.06666667)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ra2i3"]
+material = SubResource("StandardMaterial3D_g4gaj")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.02
 
 [node name="Cultist" unique_id=1427662883 instance=ExtResource("1_klvc8")]
 
 [node name="CultistMesh" parent="." index="0" unique_id=30939511 instance=ExtResource("2_hkt21")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("3_hhqyx")
+bob_height = 0.3
+bob_speed = 0.8
+drift = 0.1
+drift_speed = 1.0
+
+[node name="Hitbox" parent="." index="1" unique_id=1439913594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49793953, 0)
+
+[node name="CollisionShape3D" parent="Hitbox" index="0" unique_id=749003341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36315918, 0)
+shape = SubResource("CapsuleShape3D_hhqyx")
+
+[node name="WardEffect" parent="." index="2" unique_id=1037558712]
+visible = false
+
+[node name="WardAura" type="Area3D" parent="." index="3" unique_id=819370043 node_paths=PackedStringArray("range_visual")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_ea85i")
+range_visual = NodePath("RangeDisc")
+
+[node name="RangeDisc" type="MeshInstance3D" parent="WardAura" index="0" unique_id=423457799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+mesh = SubResource("CylinderMesh_ra2i3")
 
 [editable path="CultistMesh"]

@@ -22,6 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_2etwv")
+show_percentage = false
 
 [node name="FillBar" type="ProgressBar" parent="." unique_id=1969278986]
 custom_maximum_size = Vector2(250, 20)
@@ -37,3 +38,4 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_pk34a")
 value = 100.0
+show_percentage = false

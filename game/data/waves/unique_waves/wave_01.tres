@@ -4,25 +4,21 @@
 [ext_resource type="Resource" uid="uid://crniaq8n2b6bv" path="res://game/data/enemies/unique_enemies/cultist.tres" id="2_7qaua"]
 [ext_resource type="Script" uid="uid://bvroyv8j4sgmi" path="res://game/data/waves/base_data/wave_definition.gd" id="2_x3uce"]
 [ext_resource type="Resource" uid="uid://bchml4lumf1wr" path="res://game/data/threads/lulls/lull_test.tres" id="3_pho53"]
+[ext_resource type="Resource" uid="uid://trop0kuylotd" path="res://game/data/enemies/unique_enemies/skeleton.tres" id="3_s1x7u"]
 
 [sub_resource type="Resource" id="Resource_7gs6h"]
 script = ExtResource("1_4buek")
 enemy = ExtResource("2_7qaua")
 metadata/_custom_type_script = "uid://cmo6to4a6tibi"
 
-[sub_resource type="Resource" id="Resource_wo47w"]
+[sub_resource type="Resource" id="Resource_ea85i"]
 script = ExtResource("1_4buek")
-enemy = ExtResource("2_7qaua")
-metadata/_custom_type_script = "uid://cmo6to4a6tibi"
-
-[sub_resource type="Resource" id="Resource_kba43"]
-script = ExtResource("1_4buek")
-enemy = ExtResource("2_7qaua")
+enemy = ExtResource("3_s1x7u")
 metadata/_custom_type_script = "uid://cmo6to4a6tibi"
 
 [resource]
 script = ExtResource("2_x3uce")
-groups = Array[ExtResource("1_4buek")]([SubResource("Resource_7gs6h"), SubResource("Resource_wo47w"), SubResource("Resource_kba43")])
+groups = Array[ExtResource("1_4buek")]([SubResource("Resource_7gs6h"), SubResource("Resource_ea85i")])
 lull = ExtResource("3_pho53")
 lull_start = 0.0
 metadata/_custom_type_script = "uid://bvroyv8j4sgmi"

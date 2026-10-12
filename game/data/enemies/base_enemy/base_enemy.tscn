@@ -2,5 +2,27 @@
 
 [ext_resource type="Script" uid="uid://ba5o3g0hspol2" path="res://game/data/enemies/base_enemy/base_enemy.gd" id="1_2o6uh"]
 
-[node name="BaseEnemy" type="Node3D" unique_id=1427662883]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ra2i3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_otjlk"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.5176471, 0.08235294, 0.7490196, 0.2509804)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ra2i3"]
+material = SubResource("StandardMaterial3D_otjlk")
+
+[node name="BaseEnemy" type="Node3D" unique_id=1427662883 node_paths=PackedStringArray("ward_effect")]
 script = ExtResource("1_2o6uh")
+ward_effect = NodePath("WardEffect")
+
+[node name="Hitbox" type="Area3D" parent="." unique_id=1439913594]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=749003341]
+shape = SubResource("CapsuleShape3D_ra2i3")
+
+[node name="WardEffect" type="MeshInstance3D" parent="." unique_id=1037558712]
+mesh = SubResource("SphereMesh_ra2i3")

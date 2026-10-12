@@ -32,18 +32,11 @@ func _ready() -> void:
 
 func _connect_systems() -> void:
 	wave_manager.boss_defeated.connect(_win)
-	wave_manager.enemy_reached_stronghold.connect(stronghold.take_damage)
+	wave_manager.stronghold_attacked.connect(stronghold.take_damage)
 	wave_manager.enemy_killed.connect(gold_manager.add_gold)
 	wave_manager.lull_requested.connect(thread_manager.start_lull)
 	thread_manager.thread_released.connect(_on_thread_released)
 	stronghold.destroyed.connect(_lose)
-	# Temporary prints until the HUD exists.
-	gold_manager.gold_changed.connect(func(current: int) -> void:
-		print("Gold: %d" % current))
-	stronghold.health_changed.connect(func(current: int, maximum: int) -> void:
-		print("Stronghold %d / %d" % [current, maximum]))
-	wave_manager.wave_started.connect(func(number: int, total: int) -> void:
-		print("Wave %d / %d" % [number, total]))
 
 
 func _start_run() -> void:

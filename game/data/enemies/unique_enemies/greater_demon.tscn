@@ -12,3 +12,6 @@ albedo_color = Color(1, 0, 0, 1)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0" unique_id=396841766]
 mesh = SubResource("CapsuleMesh_ra2i3")
 surface_material_override/0 = SubResource("StandardMaterial3D_g4gaj")
+
+[node name="WardEffect" parent="." index="2" unique_id=1037558712]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
