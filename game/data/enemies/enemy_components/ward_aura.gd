@@ -36,6 +36,8 @@ func _ready() -> void:
 
 func _set_active(value: bool) -> void:
 	_is_active = value
+	if value:
+		get_tree().call_group(&"hint_listeners", &"on_ward_activated")
 	set_deferred("monitoring", value)  # existing overlaps get picked up once it turns on
 	if range_visual == null:
 		return

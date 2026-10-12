@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://cg50601ef7udl"]
+
+[ext_resource type="Script" uid="uid://bh14amiwn3bds" path="res://game/ui/hints/hint_card.gd" id="1_sgxwx"]
+[ext_resource type="Theme" uid="uid://docepy01vs1ci" path="res://assets/theme/tower-defense_theme.tres" id="2_kqm8t"]
+
+[node name="HintCard" type="Control" unique_id=342804509 node_paths=PackedStringArray("title_label", "body_label", "got_it_button", "first_focus")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sgxwx")
+title_label = NodePath("Panel/VBoxContainer/TitleLabel")
+body_label = NodePath("Panel/VBoxContainer/BodyLabel")
+got_it_button = NodePath("Panel/VBoxContainer/GotItButton")
+first_focus = NodePath("Panel/VBoxContainer/GotItButton")
+pauses_game = true
+
+[node name="Dim" type="ColorRect" parent="." unique_id=404154024]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.34901962)
+
+[node name="Panel" type="Panel" parent="." unique_id=1920192939]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 80.0
+offset_right = 300.0
+offset_bottom = 680.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1070295227]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="Panel/VBoxContainer" unique_id=2108423556]
+layout_mode = 2
+theme = ExtResource("2_kqm8t")
+theme_type_variation = &"TitleLabel"
+text = "Title"
+horizontal_alignment = 1
+
+[node name="BodyLabel" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=422293954]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+bbcode_enabled = true
+text = "Info
+
+
+"
+fit_content = true
+
+[node name="GotItButton" type="Button" parent="Panel/VBoxContainer" unique_id=1248025923]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Got it..."
