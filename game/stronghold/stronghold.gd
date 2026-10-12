@@ -4,8 +4,9 @@ extends Node3D
 
 signal health_changed(current: int, maximum: int)
 signal destroyed
-
+@export var towerdata: Resource
 @export_range(1, 10000) var max_health := 20
+const towerScene = preload("res://game/data/towers/tower.tscn")
 
 var health := 0
 var _is_destroyed := false
@@ -45,6 +46,10 @@ func take_damage(amount: int) -> void:
 		destroyed.emit()
 
 func change_tower(slot: int, type: int, level: int) -> void:
-	#description
-	
-	pass
+	#description places a tower at a position
+	var newTower = towerScene.instantiate()
+	#for now set values, change to resource values soon
+	newTower.twrDamage = 10
+	newTower.twrFireRate = 100
+	newTower.position = towerPositions[slot]
+	newTower.twrMesh = towerdata.twrMesh[type]

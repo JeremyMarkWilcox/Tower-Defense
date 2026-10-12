@@ -11,13 +11,19 @@ radius = 4.540039
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hpi32"]
 radius = 7.82959
 
-[node name="Tower" type="Node3D" unique_id=2053335034 node_paths=PackedStringArray("range_one", "range_two", "range_three")]
+[sub_resource type="BoxMesh" id="BoxMesh_6kh8y"]
+
+[node name="Tower" type="Node3D" unique_id=2053335034 node_paths=PackedStringArray("range_one", "range_two", "range_three", "tower_mesh")]
 script = ExtResource("1_6kh8y")
 range_one = NodePath("enemyTargeter/rangeOne")
 range_two = NodePath("enemyTargeter/rangeTwo")
 range_three = NodePath("enemyTargeter/rangeThree")
+tower_mesh = NodePath("TowerMesh")
 
 [node name="enemyTargeter" type="Area3D" parent="." unique_id=2060501464]
+
+[node name="Timer" type="Timer" parent="enemyTargeter" unique_id=1653151059]
+autostart = true
 
 [node name="rangeOne" type="CollisionShape3D" parent="enemyTargeter" unique_id=1715895733]
 shape = SubResource("CylinderShape3D_6kh8y")
@@ -27,3 +33,6 @@ shape = SubResource("CylinderShape3D_3jnb4")
 
 [node name="rangeThree" type="CollisionShape3D" parent="enemyTargeter" unique_id=305499448]
 shape = SubResource("CylinderShape3D_hpi32")
+
+[node name="TowerMesh" type="MeshInstance3D" parent="." unique_id=1721241029]
+mesh = SubResource("BoxMesh_6kh8y")
