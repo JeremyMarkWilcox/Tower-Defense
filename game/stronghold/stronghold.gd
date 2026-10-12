@@ -44,13 +44,13 @@ func take_damage(amount: int) -> void:
 		destroyed.emit()
 
 func change_tower(slot: int, type: int, level: int) -> void:
-	var newTower = towerScene.instantiate()
+	var newTower := towerScene.instantiate()
 	
 	
 	newTower.twrDamage = towerdata.damageData[type][level]
 	newTower.twrFireRate = towerdata.fireRateData[type][level] 
 	newTower.position = towerPositions[slot]
-	
+	newTower.twrMesh.mesh = towerdata.meshData[type][level]
 	
 	add_child(newTower)
 	
