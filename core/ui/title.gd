@@ -9,6 +9,9 @@ extends Control
 @export var settings_menu: BaseMenu
 @export var credits_menu: BaseMenu
 @export var version_label: Label
+@export var intro: TitleIntro
+## Hidden until the intro finishes: the title art panel and the button column.
+@export var menu_items: Array[CanvasItem] = []
 
 
 func _ready() -> void:
@@ -19,15 +22,33 @@ func _ready() -> void:
 	quit_button.pressed.connect(SceneManager.quit)
 	quit_button.visible = not OS.has_feature("web")  # browsers can't close the tab
 	MenuManager.menu_closed.connect(_on_menu_closed)
-	play_button.grab_focus()
-	var version: String = ProjectSettings.get_setting("application/config/version", "")
-	version_label.text = "v" + version if version else ""
-
-
-func _on_play_pressed() -> void:
-	SceneManager.change_scene(game_scene)
+	if intro:
+		for item in menu_items:
+			item.visible = false
+		intro.finished.connect(_show_menu)
+	else:
+		play_button.grab_focus()
 
 
 func _on_menu_closed(_menu: BaseMenu) -> void:
 	if not MenuManager.is_menu_open():
 		play_button.grab_focus()
+		
+
+func _on_play_pressed() -> void:
+	if intro:
+		play_button.disabled = true
+		var tween := create_tween().set_parallel(true)
+		for item in menu_items:
+			tween.tween_property(item, "modulate:a", 0.0, 0.3)
+		await intro.play_transition()
+	SceneManager.change_scene(game_scene)
+
+
+func _show_menu() -> void:
+	var tween := create_tween().set_parallel(true)
+	for item in menu_items:
+		item.visible = true
+		item.modulate.a = 0.0
+		tween.tween_property(item, "modulate:a", 1.0, 0.8)  # the title "burns in"
+	play_button.grab_focus()

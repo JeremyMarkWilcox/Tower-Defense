@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://drybvcb351xjl"]
+
+[ext_resource type="PackedScene" uid="uid://caariescix5cy" path="res://assets/3d_art/props/ground.glb" id="1_gn01j"]
+[ext_resource type="Script" uid="uid://c2hste0f48qh6" path="res://core/ui/title_intro.gd" id="1_q3fhn"]
+[ext_resource type="PackedScene" uid="uid://dxiaycn0rmy1n" path="res://game/threads/signal_threads/signal_thread.tscn" id="2_eak0k"]
+[ext_resource type="PackedScene" uid="uid://dduwnap7vm400" path="res://game/stronghold/stronghold.tscn" id="2_q3fhn"]
+[ext_resource type="Script" uid="uid://dynep1f7hnh6a" path="res://game/data/enemies/base_enemy/enemy_data.gd" id="3_iu610"]
+[ext_resource type="PackedScene" uid="uid://cvogxbmkihnuc" path="res://game/enviroment/props.tscn" id="3_sl5m6"]
+[ext_resource type="Resource" uid="uid://trop0kuylotd" path="res://game/data/enemies/unique_enemies/skeleton.tres" id="4_lg6ph"]
+[ext_resource type="Resource" uid="uid://crniaq8n2b6bv" path="res://game/data/enemies/unique_enemies/cultist.tres" id="5_pkkqh"]
+[ext_resource type="Resource" uid="uid://b6j4j27ylhq4j" path="res://game/data/enemies/unique_enemies/zombie.tres" id="6_nljka"]
+[ext_resource type="Resource" uid="uid://cejbhkb8400sh" path="res://game/data/enemies/unique_enemies/lesser_demon.tres" id="7_jrl1y"]
+[ext_resource type="Resource" uid="uid://4ksplexl1tsu" path="res://game/data/enemies/unique_enemies/greater_demon.tres" id="8_lxkhl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4gaj"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.5365198, 0.9999997, 0.91875637, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_ra2i3"]
+material = SubResource("StandardMaterial3D_g4gaj")
+inner_radius = 0.92
+
+[node name="TitleBackdrop" type="Node3D" unique_id=1278245280 node_paths=PackedStringArray("camera", "stronghold", "pulse_ring", "shot_start", "shot_reveal", "shot_gameplay")]
+script = ExtResource("1_q3fhn")
+camera = NodePath("CameraLighting/Camera3D")
+stronghold = NodePath("Stronghold")
+thread_scene = ExtResource("2_eak0k")
+thread_enemies = Array[ExtResource("3_iu610")]([ExtResource("4_lg6ph"), ExtResource("5_pkkqh"), ExtResource("6_nljka"), ExtResource("7_jrl1y"), ExtResource("8_lxkhl")])
+pulse_ring = NodePath("PluseRing")
+shot_start = NodePath("Node3D/ShotStart")
+shot_reveal = NodePath("Node3D/ShotReveal")
+shot_gameplay = NodePath("Node3D/ShotGameplay")
+thread_length = 44.0
+start_offset = 6.0
+rise_time = 1.0
+
+[node name="CameraLighting" type="Node3D" parent="." unique_id=1680893488]
+
+[node name="Camera3D" type="Camera3D" parent="CameraLighting" unique_id=1751248668]
+transform = Transform3D(0.7071068, -0.4055798, 0.579228, 0, 0.81915206, 0.57357645, -0.7071068, -0.4055798, 0.579228, 14, 14, 14)
+fov = 50.0
+size = 35.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CameraLighting" unique_id=586233330]
+transform = Transform3D(0.8660254, -0.38302222, 0.32139382, 0, 0.64278764, 0.76604444, -0.5, -0.66341394, 0.5566704, 0, 0, 0)
+light_energy = 0.5
+light_indirect_energy = 0.5
+sky_mode = 1
+
+[node name="Ground" parent="." unique_id=1318758561 instance=ExtResource("1_gn01j")]
+
+[node name="Stronghold" parent="." unique_id=2125922311 instance=ExtResource("2_q3fhn")]
+transform = Transform3D(-0.9761344, 0, -0.21716723, 0, 1, 0, 0.21716723, 0, -0.9761344, -1.495718, 1.0362198, 1.3766179)
+
+[node name="Props" parent="." unique_id=1002412612 instance=ExtResource("3_sl5m6")]
+
+[node name="PluseRing" type="MeshInstance3D" parent="." unique_id=566466645]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.225, 0)
+mesh = SubResource("TorusMesh_ra2i3")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1694655497]
+
+[node name="ShotStart" type="Marker3D" parent="Node3D" unique_id=323035430]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.96592563, 0.25881898, 0, -0.25881898, 0.9659256, 0, 5, 25)
+
+[node name="ShotReveal" type="Marker3D" parent="Node3D" unique_id=413215977]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 75, 100)
+
+[node name="ShotGameplay" type="Marker3D" parent="Node3D" unique_id=1748228603]
+transform = Transform3D(1, 0, 0, 0, 0.30320475, 0.95292544, 0, -0.95292544, 0.30320475, -2.6962318, 0, -0.7259877)
+
+[editable path="Stronghold"]
+[editable path="Stronghold/stronghold_base"]
