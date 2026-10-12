@@ -149,13 +149,13 @@ transform = Transform3D(0.43350565, 0, 0.9011508, 0, 1, 0, -0.9011508, 0, 0.4335
 transform = Transform3D(-0.36455172, 0, -0.93118316, 0, 1, 0, 0.93118316, 0, -0.36455172, -28.98921, 0.6981883, 1.9696858)
 
 [node name="CannonTower" parent="World" unique_id=1976264692 instance=ExtResource("23_5e03w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3367014, 2.791296, 0.41207373)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3367014, 2.791296, -5.9613943)
 
 [node name="FireTower" parent="World" unique_id=570521196 instance=ExtResource("9_leid8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9429172, 2.8008618, -0.5709059)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9429172, 2.8008618, -8.238418)
 
 [node name="IceTower" parent="World" unique_id=879949465 instance=ExtResource("10_8bboj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4456089, 2.748484, -1.5844189)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4456089, 2.748484, -8.647053)
 
 [node name="SignalSystem" parent="World" unique_id=1072541974 instance=ExtResource("11_7l47o")]
 
