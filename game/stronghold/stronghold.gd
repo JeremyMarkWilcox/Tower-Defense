@@ -1,44 +1,43 @@
 class_name Stronghold
 extends Node3D
-## The central base. Owns its health; sockets and purchases come later.
 
 signal health_changed(current: int, maximum: int)
 signal destroyed
-@export var towerdata: Resource
+
+@export var towerdata: Resource 
 @export_range(1, 10000) var max_health := 20
 const towerScene = preload("res://game/data/towers/tower.tscn")
 
 var health := 0
 var _is_destroyed := false
 
-
-#new tower stuff
-#loadout keeps track of what tower types and levels are on the stronghold
-var loadout: Array[int] = [
-	11, 00, 00, 00, 00, 00
-]
-var cx : float = self.position.x
-var cy : float = self.position.y
-var cz : float = self.position.z
-var towerPositions : Array[Vector3] = [
-	Vector3(cx - 6.3, cy + 2.8, cz + .4),
-	Vector3(cx - 1.9, cy + 2.8, cz - .4),
-	Vector3(cx + 2.4, cy + 2.8, cz -1.5),
-	Vector3(cx - 5.4, cy + 2.8, cz + 4.2),
-	Vector3(cx - 1.0, cy + 2.8, cz + 3.4),
-	Vector3(cx + 3.3, cy + 2.8,cz + 2.3)
-]
+var loadout: Array[int] = [11, 00, 00, 00, 00, 00]
+var towerPositions: Array[Vector3] = []
 
 func _ready() -> void:
 	health = max_health
-	change_tower(0, 0, 0)
+	
 
+	var cx = position.x
+	var cy = position.y
+	var cz = position.z
+	
+	towerPositions = [
+		Vector3(cx - 6.3, cy + 2.8, cz + .4),
+		Vector3(cx - 1.9, cy + 2.8, cz - .4),
+		Vector3(cx + 2.4, cy + 2.8, cz - 1.5),
+		Vector3(cx - 5.4, cy + 2.8, cz + 4.2),
+		Vector3(cx - 1.0, cy + 2.8, cz + 3.4),
+		Vector3(cx + 3.3, cy + 2.8, cz + 2.3)
+	]
+	
+	change_tower(0, 0, 0)
 
 func take_damage(amount: int) -> void:
 	if Debug.stronghold_invincible:
 		return
 	if _is_destroyed or amount <= 0:
-		return  # each hit applies once; nothing after destruction
+		return
 	health = maxi(health - amount, 0)
 	health_changed.emit(health, max_health)
 	if health == 0:
@@ -46,10 +45,14 @@ func take_damage(amount: int) -> void:
 		destroyed.emit()
 
 func change_tower(slot: int, type: int, level: int) -> void:
-	#description places a tower at a position
 	var newTower = towerScene.instantiate()
-	#for now set values, change to resource values soon
-	newTower.twrDamage = 10
-	newTower.twrFireRate = 100
+	
+	
+	newTower.twrDamage = towerdata.damageData[type][level]
+	newTower.twrFireRate = towerdata.fireRateData[type][level] 
 	newTower.position = towerPositions[slot]
-	newTower.twrMesh = towerdata.twrMesh[type]
+	
+	
+	add_child(newTower)
+	
+	loadout[slot] = (type * 10) + level
