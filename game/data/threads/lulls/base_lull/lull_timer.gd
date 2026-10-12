@@ -15,13 +15,18 @@ extends Control
 func _ready() -> void:
 	mouse_filter = MOUSE_FILTER_IGNORE  # never block clicks on threads
 	hide()
-	thread_manager.lull_started.connect(func(_duration: float) -> void: show())
+	thread_manager.lull_started.connect(func(_duration: float) -> void:
+		show()
+		_refresh())
 	thread_manager.lull_ended.connect(hide)
 
 
 func _process(_delta: float) -> void:
-	if not visible:
-		return
+	if visible:
+		_refresh()
+
+
+func _refresh() -> void:
 	var time_left := thread_manager.get_time_left()
 	label.text = "%d" % ceili(time_left)
 	var t := clampf(1.0 - time_left / urgent_seconds, 0.0, 1.0)
