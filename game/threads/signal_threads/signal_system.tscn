@@ -17,6 +17,7 @@ script = ExtResource("3_d6mrp")
 thread_scene = ExtResource("4_ntrhb")
 thread_container = NodePath("../Threads")
 thread_length = 32.0
+start_offset = 5.0
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1075648712]
 
@@ -29,7 +30,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
 
-[node name="LullTimer" type="Control" parent="UI" unique_id=1183315398 node_paths=PackedStringArray("thread_manager", "label")]
+[node name="LullTimer" type="Control" parent="UI" unique_id=1183315398 node_paths=PackedStringArray("thread_manager", "label", "caption")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 3
 anchors_preset = 5
@@ -44,17 +45,37 @@ mouse_filter = 2
 script = ExtResource("7_w0ieh")
 thread_manager = NodePath("../../ThreadManager")
 label = NodePath("Label")
+caption = NodePath("Label/Caption")
 
 [node name="Label" type="Label" parent="UI/LullTimer" unique_id=1818317055]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = 30.0
+offset_right = 160.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("8_ensoo")
 theme_type_variation = &"TitleLabel"
 text = "Place Holder"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Caption" type="Label" parent="UI/LullTimer/Label" unique_id=1650878094]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -43.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_ensoo")
+theme_type_variation = &"HeaderLarge"
+text = "All Signal Threads Snap In:"
 horizontal_alignment = 1
 vertical_alignment = 1
 

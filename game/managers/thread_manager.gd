@@ -26,6 +26,11 @@ const REFUSED_COOLDOWN := &"cooldown"
 ## How far inside the screen edge threads end, so their groups appear in view.
 @export var edge_margin := 1.0
 @export var default_color := Color.WHITE
+## How far from the Stronghold's center threads begin. About the distance to its wall.
+@export var start_offset := 1.5
+## Half the Stronghold's width (x) and depth (y), measured along its own axes.
+## Threads start exactly at its walls. Leave at (0, 0) to use Start Offset instead.
+@export var stronghold_half_size := Vector2.ZERO
 
 var _lull: LullDefinition
 var _threads: Array[SignalThread] = []  # sorted clockwise from the top of the screen
@@ -148,10 +153,12 @@ func _screen_to_world(degrees: float) -> Vector3:
 func _spawn_thread(data: SignalThreadData, screen_angle: float) -> void:
 	var thread := thread_scene.instantiate() as SignalThread
 	thread_container.add_child(thread)
-	thread.global_position = center.global_position
-	var color := data.enemy.thread_color if data.enemy else default_color
 	var direction := _screen_to_world(screen_angle)
-	var length := ScreenEdge.distance(camera, center.global_position, direction, thread_length) - edge_margin
+	var wall := _wall_distance(direction)
+	thread.global_position = center.global_position + direction * wall
+	var edge_distance := ScreenEdge.distance(camera, center.global_position, direction, thread_length)
+	var length := edge_distance - edge_margin - wall
+	var color := data.enemy.thread_color if data.enemy else default_color
 	thread.setup(data, direction, maxf(length, 1.0), color)
 	thread.hovered.connect(_on_thread_hovered)
 	thread.clicked.connect(_on_thread_clicked)
@@ -219,3 +226,13 @@ func _on_thread_clicked(thread: SignalThread) -> void:
 	if index >= 0:
 		_select(index)
 		_try_cut(thread)
+		
+	
+## Distance from the Stronghold's center to its wall along a direction.
+func _wall_distance(direction: Vector3) -> float:
+	if stronghold_half_size == Vector2.ZERO:
+		return start_offset
+	var local := center.global_basis.orthonormalized().inverse() * direction
+	var to_side := stronghold_half_size.x / absf(local.x) if absf(local.x) > 0.0001 else INF
+	var to_end := stronghold_half_size.y / absf(local.z) if absf(local.z) > 0.0001 else INF
+	return minf(to_side, to_end)

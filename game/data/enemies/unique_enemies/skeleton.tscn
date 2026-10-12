@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dgf785mw3toay" path="res://game/data/enemies/base_enemy/base_enemy.tscn" id="1_qye7u"]
 [ext_resource type="PackedScene" uid="uid://bm4lsflmwqgpy" path="res://assets/3d_art/enemies/Skeleton.glb" id="2_54rws"]
+[ext_resource type="Script" uid="uid://dwan00dwov0j0" path="res://game/data/enemies/enemy_components/WalkWobble.gd" id="3_gbopi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gbopi"]
 radius = 0.40576172
@@ -21,6 +22,11 @@ height = 2.0
 
 [node name="SkeletonMesh" parent="." index="0" unique_id=1248366212 instance=ExtResource("2_54rws")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+script = ExtResource("3_gbopi")
+steps_per_unit = 0.6
+step_height = 0.15
+sway_degrees = 20.0
+lean_degrees = 10.0
 
 [node name="Hitbox" parent="." index="1" unique_id=1439913594]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43624657, 0)

@@ -9,6 +9,7 @@ extends Control
 @export var urgent_color := Color(1.0, 0.25, 0.2)
 ## The number shifts toward the urgent color over the last few seconds.
 @export var urgent_seconds := 5.0
+@export var caption: Label
 
 
 func _ready() -> void:
@@ -25,3 +26,5 @@ func _process(_delta: float) -> void:
 	label.text = "%d" % ceili(time_left)
 	var t := clampf(1.0 - time_left / urgent_seconds, 0.0, 1.0)
 	label.modulate = calm_color.lerp(urgent_color, t)
+	if caption:
+		caption.modulate = label.modulate

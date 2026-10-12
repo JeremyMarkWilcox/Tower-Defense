@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://trtw8x206jx5"]
 
 [ext_resource type="Script" uid="uid://dig27xj86hnvm" path="res://game/ui/hud/hud.gd" id="1_r0wki"]
-[ext_resource type="PackedScene" uid="uid://oedawwjr5won" path="res://game/ui/health_bar.tscn" id="2_f8jww"]
+[ext_resource type="PackedScene" uid="uid://oedawwjr5won" path="res://game/ui/hud/health_bar.tscn" id="2_f8jww"]
 [ext_resource type="Theme" uid="uid://docepy01vs1ci" path="res://assets/theme/tower-defense_theme.tres" id="3_4cd48"]
 
 [node name="HUD" type="Control" unique_id=360266916 node_paths=PackedStringArray("health_panel", "health_bar", "health_label", "gold_label", "wave_label", "wave_banner")]
@@ -14,7 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_r0wki")
 health_panel = NodePath("HealthPanel")
 health_bar = NodePath("HealthPanel/HealthBar/FillBar")
-health_label = NodePath("HealthPanel/HealthLabel")
+health_label = NodePath("HealthPanel/HealthBar/HealthLabel")
 gold_label = NodePath("TopRight/GoldLabel")
 wave_label = NodePath("TopRight/WaveLabel")
 wave_banner = NodePath("WaveBanner")
@@ -26,13 +26,16 @@ offset_top = 24.0
 offset_right = 64.0
 offset_bottom = 64.0
 
-[node name="HealthLabel" type="Label" parent="HealthPanel" unique_id=1051179027]
-layout_mode = 2
-text = "20 / 20"
-horizontal_alignment = 1
-
 [node name="HealthBar" parent="HealthPanel" unique_id=582245639 instance=ExtResource("2_f8jww")]
 layout_mode = 2
+
+[node name="HealthLabel" type="Label" parent="HealthPanel/HealthBar" unique_id=1051179027]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 256.0
+offset_bottom = 29.0
+text = "20 / 20"
+horizontal_alignment = 1
 
 [node name="TopRight" type="VBoxContainer" parent="." unique_id=697948508]
 layout_mode = 1
@@ -61,9 +64,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -86.0
-offset_top = 110.0
+offset_top = 210.0
 offset_right = 244.0
-offset_bottom = 185.0
+offset_bottom = 285.0
 grow_horizontal = 2
 theme = ExtResource("3_4cd48")
 theme_type_variation = &"TitleLabel"
