@@ -19,19 +19,19 @@ texture = ExtResource("3_wyv7l")
 shader = ExtResource("9_nskft")
 shader_parameter/rain_color = Color(0.65, 0.73, 0.77, 1)
 shader_parameter/opacity = 0.14
-shader_parameter/density = 0.35
-shader_parameter/fall_speed = 0.65
-shader_parameter/slant = 0.15
-shader_parameter/streak_length = 0.025
-shader_parameter/streak_width = 0.0012
+shader_parameter/density = 0.6070000288325
+shader_parameter/fall_speed = 1.1650000553375
+shader_parameter/slant = 0.27100001753063996
+shader_parameter/streak_length = 0.03700000140824
+shader_parameter/streak_width = 0.00250000011875
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_svqww"]
 shader = ExtResource("10_ktp8a")
 shader_parameter/shadow_color = Color(0.015, 0.025, 0.02, 1)
 shader_parameter/base_darkness = 0.03
-shader_parameter/edge_darkness = 0.55
-shader_parameter/edge_start = 0.55
-shader_parameter/edge_softness = 0.65
+shader_parameter/edge_darkness = 0.50000002375
+shader_parameter/edge_start = 0.50000002375
+shader_parameter/edge_softness = 0.50000002212006
 shader_parameter/irregularity = 0.0
 shader_parameter/noise_scale = 4.0
 shader_parameter/animate = false
@@ -69,7 +69,18 @@ version_label = NodePath("VersionLabel")
 intro = NodePath("TitleBackdrop")
 menu_items = [NodePath("PanelContainer"), NodePath("VBoxContainer")]
 
-[node name="TitleBackdrop" parent="." unique_id=1278245280 instance=ExtResource("3_2uxhk")]
+[node name="TitleBackdrop" parent="." unique_id=1278245280 node_paths=PackedStringArray("fade") instance=ExtResource("3_2uxhk")]
+fade = NodePath("../IntroFade")
+
+[node name="IntroFade" type="ColorRect" parent="." unique_id=723287824]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=188829487]
 custom_maximum_size = Vector2(350, -1)

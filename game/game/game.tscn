@@ -27,23 +27,23 @@
 [ext_resource type="Script" uid="uid://co5qb4iuc1pgj" path="res://game/ui/tower_ui/tower_menus.gd" id="26_ropga"]
 [ext_resource type="PackedScene" uid="uid://trtw8x206jx5" path="res://game/ui/hud/hud.tscn" id="27_caicf"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4cobl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_acxbe"]
 shader = ExtResource("5_ln7ps")
 shader_parameter/rain_color = Color(0.65, 0.73, 0.77, 1)
 shader_parameter/opacity = 0.14
 shader_parameter/density = 0.35
-shader_parameter/fall_speed = 0.65
-shader_parameter/slant = 0.15
-shader_parameter/streak_length = 0.025
-shader_parameter/streak_width = 0.0012
+shader_parameter/fall_speed = 1.1650000553375
+shader_parameter/slant = 0.27100001753063996
+shader_parameter/streak_length = 0.03700000140824
+shader_parameter/streak_width = 0.00250000011875
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b686c"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_svqww"]
 shader = ExtResource("3_hb504")
 shader_parameter/shadow_color = Color(0.015, 0.025, 0.02, 1)
 shader_parameter/base_darkness = 0.03
-shader_parameter/edge_darkness = 0.55
-shader_parameter/edge_start = 0.55
-shader_parameter/edge_softness = 0.65
+shader_parameter/edge_darkness = 0.50000002375
+shader_parameter/edge_start = 0.50000002375
+shader_parameter/edge_softness = 0.50000002212006
 shader_parameter/irregularity = 0.0
 shader_parameter/noise_scale = 4.0
 shader_parameter/animate = false
@@ -52,9 +52,9 @@ shader_parameter/drift_speed = 0.025
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dxwpq"]
 shader = ExtResource("8_mhvfb")
 shader_parameter/mist_color = Color(0.48, 0.55, 0.52, 1)
-shader_parameter/opacity = 0.1
-shader_parameter/patch_scale = 3.0
-shader_parameter/coverage = 0.45
+shader_parameter/opacity = 0.150000007125
+shader_parameter/patch_scale = 7.030000286425
+shader_parameter/coverage = 0.350000016625
 shader_parameter/drift = Vector2(0.018, -0.006)
 shader_parameter/shape_change_speed = 0.012
 shader_parameter/center_strength = 0.15
@@ -102,7 +102,7 @@ camera = NodePath("../../CameraLighting/Camera3D")
 layer = 0
 
 [node name="Rain" type="ColorRect" parent="Atmosphere" unique_id=1144361930]
-material = SubResource("ShaderMaterial_4cobl")
+material = SubResource("ShaderMaterial_acxbe")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -111,7 +111,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Shadow" type="ColorRect" parent="Atmosphere" unique_id=1088106623]
-material = SubResource("ShaderMaterial_b686c")
+material = SubResource("ShaderMaterial_svqww")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

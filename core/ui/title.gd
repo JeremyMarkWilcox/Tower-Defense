@@ -17,7 +17,6 @@ var _loaded_game: PackedScene
 
 
 func _ready() -> void:
-	ResourceLoader.load_threaded_request(game_scene)
 	Audio.play_music(music)
 	play_button.pressed.connect(_on_play_pressed)
 	settings_button.pressed.connect(func() -> void: MenuManager.open_menu(settings_menu))
@@ -50,6 +49,7 @@ func _on_play_pressed() -> void:
 
 
 func _show_menu() -> void:
+	ResourceLoader.load_threaded_request(game_scene)  # after the intro, so it doesn't stutter
 	var tween := create_tween().set_parallel(true)
 	for item in menu_items:
 		item.visible = true

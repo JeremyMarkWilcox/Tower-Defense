@@ -1,17 +1,51 @@
 [gd_scene format=3 uid="uid://lvbm281h2vww"]
 
 [ext_resource type="PackedScene" uid="uid://dgf785mw3toay" path="res://game/data/enemies/base_enemy/base_enemy.tscn" id="1_fel5c"]
+[ext_resource type="PackedScene" uid="uid://brghpujytf1le" path="res://assets/3d_art/enemies/frog.gltf" id="2_fef88"]
+[ext_resource type="Script" uid="uid://dwan00dwov0j0" path="res://game/data/enemies/enemy_components/WalkWobble.gd" id="3_abdfr"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ra2i3"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_abdfr"]
+radius = 4.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4gaj"]
-albedo_color = Color(1, 0, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_otjlk"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.5176471, 0.08235294, 0.7490196, 0.2509804)
 
-[node name="GreaterDemon" unique_id=1427662883 instance=ExtResource("1_fel5c")]
+[sub_resource type="SphereMesh" id="SphereMesh_fef88"]
+material = SubResource("StandardMaterial3D_otjlk")
+radius = 2.0
+height = 3.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0" unique_id=396841766]
-mesh = SubResource("CapsuleMesh_ra2i3")
-surface_material_override/0 = SubResource("StandardMaterial3D_g4gaj")
+[node name="GreaterDemon" unique_id=1427662883 node_paths=PackedStringArray("anim_player") instance=ExtResource("1_fel5c")]
+anim_player = NodePath("FrogMesh/AnimationPlayer")
+
+[node name="FrogMesh" parent="." index="0" unique_id=281235633 instance=ExtResource("2_fef88")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("3_abdfr")
+
+[node name="demon" parent="FrogMesh" index="0" unique_id=1568694031]
+transform = Transform3D(1, 0, 0, 0, 0.9993324, 0, 0, 0, 1, 0, 5.2637663, 0)
+
+[node name="arms" parent="FrogMesh/demon/body/body2" parent_id_path=PackedInt32Array(281235633, 1520978104) index="1" unique_id=1007284898]
+transform = Transform3D(1, 0, 0, 0, 0.9968312, 0, 0, 0, 1, 0, -0.4538961, 0)
+
+[node name="head" parent="FrogMesh/demon/body/body2" parent_id_path=PackedInt32Array(281235633, 1520978104) index="2" unique_id=639893344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13644478, 0)
+
+[node name="legs" parent="FrogMesh/demon/body" parent_id_path=PackedInt32Array(281235633, 423449298) index="1" unique_id=1550264928]
+transform = Transform3D(1, 0, 0, 0, 1.0436623, 0, 0, 0, 1, 0, -0.46020228, 0)
+
+[node name="Hitbox" parent="." index="1" unique_id=1439913594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.34316993)
+
+[node name="CollisionShape3D" parent="Hitbox" index="0" unique_id=749003341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.045839548, 2.9336486, -1.6150787)
+shape = SubResource("SphereShape3D_abdfr")
 
 [node name="WardEffect" parent="." index="2" unique_id=1037558712]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.1197362, -1.1183023)
+visible = false
+mesh = SubResource("SphereMesh_fef88")
+
+[editable path="FrogMesh"]

@@ -30,6 +30,7 @@ enum Phase { INTRO, IDLE, LEAVING }
 ## Radians per second.
 @export var orbit_speed := 0.06
 @export var swoop_time := 1.2
+@export var fade: ColorRect
 
 var phase := Phase.INTRO
 
@@ -43,7 +44,7 @@ var _orbit_angle := 0.0
 func _ready() -> void:
 	camera.current = true
 	camera.global_transform = shot_start.global_transform
-	pulse_ring.visible = false
+	pulse_ring.scale = Vector3(0.01, 1.0, 0.01)  # drawn but too small to see, so its shader compiles now
 	_build_threads()
 	_play_intro()
 
@@ -90,14 +91,13 @@ func _build_threads() -> void:
 		thread.setup(null, direction, thread_length, enemy_data.thread_color)
 		thread.set_urgency(0.25)  # a faint idle pulse
 		var end := thread.get_end_position()  # read before collapsing it
-		thread.scale = Vector3(1.0, 1.0, 0.001)
-		thread.visible = false
+		thread.scale = Vector3.ONE * 0.001  # drawn (shader compiles) but invisible)
 		_threads.append(thread)
 
 		# The enemy waits underground at the thread's end.
 		var enemy := enemy_data.scene.instantiate() as Node3D
 		add_child(enemy)
-		enemy.global_position = end + Vector3.DOWN * 2.5
+		enemy.global_position = end + Vector3.DOWN * 6
 		enemy.look_at(Vector3(center.x, enemy.global_position.y, center.z), Vector3.UP, true)
 		_risers.append(enemy)
 		_rise_targets.append(end)
@@ -107,20 +107,22 @@ func _play_intro() -> void:
 	var ring_size := thread_length + start_offset
 	_intro = create_tween()
 	# Beat 1: a moment of darkness, then the pulse.
-	_intro.tween_interval(0.8)
+	_intro.tween_interval(1.2)
 	_intro.tween_callback(pulse_ring.show)
 	# Beat 2: the camera rises while the pulse spreads.
 	_intro.set_parallel(true)
+	if fade:
+		_intro.tween_property(fade, "modulate:a", 0.0, pulse_time * 1.2).from(1.0)
 	_intro.tween_method(_move_camera.bind(shot_start.global_transform, shot_reveal.global_transform),
 			0.0, 1.0, pulse_time + 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	_intro.tween_property(pulse_ring, "scale", Vector3(ring_size, 1.0, ring_size), pulse_time) \
 			.from(Vector3(0.01, 1.0, 0.01))
-	_intro.tween_property(pulse_ring, "transparency", 1.0, pulse_time).from(0.0)
+	_intro.tween_property((pulse_ring.mesh as PrimitiveMesh).material, "albedo_color:a", 0.0, pulse_time).from(1.0)
 	# Threads light up one by one as the pulse passes (Beat 2); enemies rise at their ends (Beat 3).
 	for i in _threads.size():
 		var delay := pulse_time * 0.6 + i * 0.25
 		_intro.tween_callback(_threads[i].show).set_delay(delay)
-		_intro.tween_property(_threads[i], "scale:z", 1.0, 0.35).set_delay(delay)
+		_intro.tween_property(_threads[i], "scale", Vector3.ONE, 0.35).set_delay(delay)
 		_intro.tween_property(_risers[i], "global_position", _rise_targets[i], rise_time) \
 				.set_delay(delay + 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	_intro.chain().tween_callback(_finish_intro)
