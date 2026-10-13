@@ -90,7 +90,7 @@ transform = Transform3D(-0.9761344, 0, -0.21716723, 0, 1, 0, 0.21716723, 0, -0.9
 [node name="Props" parent="World/Environment" unique_id=1002412612 instance=ExtResource("3_wgsev")]
 
 [node name="CannonTower" parent="World" unique_id=1976264692 instance=ExtResource("23_5e03w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3367014, 2.791296, -5.9613943)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.499464, 2.791296, -5.864142)
 
 [node name="FireTower" parent="World" unique_id=570521196 instance=ExtResource("9_leid8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9429172, 2.8008618, -8.238418)

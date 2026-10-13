@@ -18,9 +18,9 @@ var damageData : Array[Array] = [
 ]
 
 var fireRateData : Array[Array] = [
-	[10,20,30],
-	[10,20,30],
-	[10,20,30]
+	[.40,.40,.40],
+	[.10,.20,.30],
+	[.10,.20,.30]
 ]
 
 var bulletSpeedData : Array[Array] = [

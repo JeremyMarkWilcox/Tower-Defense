@@ -22,9 +22,9 @@ func _ready() -> void:
 	var cz := position.z
 	
 	towerPositions = [
-		Vector3(cx - 0, cy, cz + 0),
-		Vector3(cx - 1.9, cy, cz - .4),
-		Vector3(cx + 2.4, cy, cz - 1.5),
+		Vector3(cx + 6, cy, cz + .5),
+		Vector3(cx + 1.5, cy, cz + 1.5),
+		Vector3(cx - 3, cy, cz + 2.5),
 		Vector3(cx - 5.4, cy, cz + 4.2),
 		Vector3(cx - 1.0, cy, cz + 3.4),
 		Vector3(cx + 3.3, cy, cz + 2.3)
@@ -49,21 +49,19 @@ func change_tower(slot: int, type: int, level: int) -> void:
 	# Set position and stats
 	newTower.position = towerPositions[slot]
 	newTower.twrDamage = towerdata.damageData[type][level]
-	newTower.twrFireRate = towerdata.fireRateData[type][level]  
+	newTower.twrFireRate = towerdata.fireRateData[type][level]
+	newTower.type = type
+	newTower.level = level
 	
 	# 1. Add the tower to the scene tree first
 	add_child(newTower)
 	
 	# 2. Grab the .glb PackedScene from your resource data
+	@warning_ignore("untyped_declaration")
 	var glb_scene = towerdata.get_scene(type, level)
-	
-	if glb_scene:
-		# 3. Instantiate the .glb and place it right at the tower's origin (0,0,0)
-		var glb_instance = glb_scene.instantiate()
-		glb_instance.position = Vector3.ZERO
-		glb_instance.rotation.y = deg_to_rad(180)
-		newTower.add_child(glb_instance)
-	else:
-		push_warning("Could not find .glb scene for tower type/level!")
-	
+	@warning_ignore("untyped_declaration")
+	var glb_instance = glb_scene.instantiate()
+	glb_instance.position = Vector3.ZERO
+	glb_instance.rotation.y = deg_to_rad(180)
+	newTower.add_child(glb_instance)
 	loadout[slot] = (type * 10) + level
