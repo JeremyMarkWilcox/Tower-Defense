@@ -47,10 +47,8 @@ func _process(delta: float) -> void:
 func _shoot() -> void:
 	#firing logic
 	var bulletInstance := bulletScene.instantiate()
-	bulletInstance.direction = direction.normalized()
+	bulletInstance.targetEnemy = targetEnemy
 	add_sibling(bulletInstance)
 	bulletInstance.global_transform = self.global_transform
 	bulletInstance.damage = twrDamage
 	bulletInstance.bulletSpeed = twrBulletSpeed
-	
-	return

@@ -17,9 +17,6 @@ radius = 25.478027
 
 [sub_resource type="PlaceholderMesh" id="PlaceholderMesh_6kh8y"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_xkro6"]
-size = Vector3(1, 1, 10)
-
 [node name="Tower" type="Node3D" unique_id=2053335034 node_paths=PackedStringArray("range_one", "range_two", "range_three", "twrMesh", "shoot_timer")]
 script = ExtResource("1_6kh8y")
 tower_data = ExtResource("2_g61ai")
@@ -56,7 +53,3 @@ shape = SubResource("CylinderShape3D_rengx")
 
 [node name="TowerMesh" type="MeshInstance3D" parent="." unique_id=1721241029]
 mesh = SubResource("PlaceholderMesh_6kh8y")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=864183932]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.5665855)
-mesh = SubResource("BoxMesh_xkro6")
