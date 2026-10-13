@@ -31,7 +31,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, -2)
 [node name="TowerSocket6" parent="Sockets" unique_id=55002485 instance=ExtResource("3_b46vg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.65, -2)
 
-[node name="TowerSocket7" parent="Sockets" unique_id=1651291308 instance=ExtResource("3_b46vg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1997495, 1.3965986, -1.9820808)
-
 [editable path="stronghold_base"]

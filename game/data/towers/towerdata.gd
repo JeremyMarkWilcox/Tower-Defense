@@ -18,15 +18,15 @@ var damageData : Array[Array] = [
 ]
 
 var fireRateData : Array[Array] = [
-	[.40,.40,.40],
+	[.80,.80,.80],
 	[.10,.20,.30],
 	[.10,.20,.30]
 ]
 
 var bulletSpeedData : Array[Array] = [
-	[10,20,30],
-	[10,20,30],
-	[10,20,30]
+	[20,40,60],
+	[20,40,60],
+	[20,40,60]
 ]
 
 # Use a function instead of a variable array so it evaluates live

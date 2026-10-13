@@ -17,13 +17,10 @@
 [ext_resource type="Shader" uid="uid://dlqkwxa4ft1ud" path="res://assets/shaders/atmosphere/mist.gdshader" id="8_mhvfb"]
 [ext_resource type="Script" uid="uid://e21u8rkcefj4" path="res://game/managers/gold_manager.gd" id="8_vsp63"]
 [ext_resource type="PackedScene" uid="uid://cniox0c88ga5l" path="res://core/ui/controls_menu.tscn" id="8_wmqhs"]
-[ext_resource type="PackedScene" uid="uid://dl7btnuthvvlb" path="res://assets/3d_art/towers/Firelvl1.glb" id="9_leid8"]
-[ext_resource type="PackedScene" uid="uid://dm6ojjrnrnkqg" path="res://assets/3d_art/towers/Icelvl1.glb" id="10_8bboj"]
 [ext_resource type="PackedScene" uid="uid://dj4pwl2xdjjfq" path="res://game/ui/screens/run_end_screen.tscn" id="11_3vho3"]
 [ext_resource type="PackedScene" uid="uid://dfad8mr7np0na" path="res://game/threads/signal_threads/signal_system.tscn" id="11_7l47o"]
 [ext_resource type="Script" uid="uid://t5dtitkv78yy" path="res://game/managers/hint_manager.gd" id="19_jhnov"]
 [ext_resource type="Resource" uid="uid://dxbta4cne2rrk" path="res://game/data/waves/unique_waves/wave_04.tres" id="21_caicf"]
-[ext_resource type="PackedScene" uid="uid://b82y0h3s65i2h" path="res://assets/3d_art/towers/Basiclvl1.glb" id="23_5e03w"]
 [ext_resource type="PackedScene" uid="uid://cg50601ef7udl" path="res://game/ui/hints/HintCard.tscn" id="26_7l47o"]
 [ext_resource type="PackedScene" uid="uid://trtw8x206jx5" path="res://game/ui/hud/hud.tscn" id="27_caicf"]
 
@@ -88,15 +85,6 @@ sky_mode = 1
 transform = Transform3D(-0.9761344, 0, -0.21716723, 0, 1, 0, 0.21716723, 0, -0.9761344, -1.495718, 1.0362198, 1.3766179)
 
 [node name="Props" parent="World/Environment" unique_id=1002412612 instance=ExtResource("3_wgsev")]
-
-[node name="CannonTower" parent="World" unique_id=1976264692 instance=ExtResource("23_5e03w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.499464, 2.791296, -5.864142)
-
-[node name="FireTower" parent="World" unique_id=570521196 instance=ExtResource("9_leid8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9429172, 2.8008618, -8.238418)
-
-[node name="IceTower" parent="World" unique_id=879949465 instance=ExtResource("10_8bboj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4456089, 2.748484, -8.647053)
 
 [node name="SignalSystem" parent="World" unique_id=1072541974 instance=ExtResource("11_7l47o")]
 
