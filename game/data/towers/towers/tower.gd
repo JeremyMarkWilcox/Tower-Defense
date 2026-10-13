@@ -42,9 +42,9 @@ func _process(_delta: float) -> void:
 			targetEnemy = null
 			return
 	#aiming logic
-	direction = (targetEnemy.global_position - global_position) * -1
-	var target_angle := atan2(-direction.x, -direction.z)
-	rotation.y = lerp_angle(rotation.y, target_angle, 0.1)
+		direction = targetEnemy.global_position - global_position
+	var target_angle := atan2(-direction.x, -direction.z)  # points -Z (the front) at the target
+	global_rotation.y = lerp_angle(global_rotation.y, target_angle, 0.1)
 	#shooting logic
 	if (targetEnemy):
 		if (shoot_timer.is_stopped()):

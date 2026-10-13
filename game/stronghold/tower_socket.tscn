@@ -1,18 +1,38 @@
 [gd_scene format=3 uid="uid://caeloa1nngu3c"]
 
 [ext_resource type="PackedScene" uid="uid://y6owkn5m8su0" path="res://assets/3d_art/stronghold/tower_socket.glb" id="1_oy5ou"]
+[ext_resource type="Script" uid="uid://conpuonu51t4j" path="res://game/stronghold/tower_socket.gd" id="1_wwi2b"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ra2i3"]
 radius = 0.8
 
-[node name="TowerSocket" type="Node3D" unique_id=1883056460]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4gaj"]
+shading_mode = 0
+albedo_color = Color(0.5921569, 1, 1, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_ra2i3"]
+material = SubResource("StandardMaterial3D_g4gaj")
+inner_radius = 0.7
+outer_radius = 0.85
+
+[node name="TowerSocket" type="Node3D" unique_id=1883056460 node_paths=PackedStringArray("build_point", "click_area", "hover_visual")]
+script = ExtResource("1_wwi2b")
+build_point = NodePath("BuildPoint")
+click_area = NodePath("ClickArea")
+hover_visual = NodePath("HoverRing")
 
 [node name="tower_socket" parent="." unique_id=1541132017 instance=ExtResource("1_oy5ou")]
 
 [node name="BuildPoint" type="Marker3D" parent="." unique_id=125162564]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94418144, 0)
 
 [node name="ClickArea" type="Area3D" parent="." unique_id=309150489]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ClickArea" unique_id=1916211524]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42805147, 0)
 shape = SubResource("CylinderShape3D_ra2i3")
+
+[node name="HoverRing" type="MeshInstance3D" parent="." unique_id=654797165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0156622, 0)
+visible = false
+mesh = SubResource("TorusMesh_ra2i3")

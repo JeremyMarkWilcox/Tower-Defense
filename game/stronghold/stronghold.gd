@@ -3,34 +3,37 @@ extends Node3D
 
 signal health_changed(current: int, maximum: int)
 signal destroyed
-@export var towerdata: Resource
+signal socket_clicked(socket: TowerSocket)
+
+const TOWER_SCENE := preload("uid://hfqj55tjn8l8")  # towers/towers/tower.tscn
+
+@export var towerdata: TowerData
 @export_range(1, 10000) var max_health := 20
-const towerScene = preload("res://game/data/towers/tower.tscn")
+## The node holding the TowerSocket children.
+@export var sockets_root: Node3D
+## A free tower built when the run starts. -1 = start with nothing.
+@export var starting_tower_type := 0
+@export var starting_socket := 1
 
 var health := 0
+var sockets: Array[TowerSocket] = []
+## type * 10 + level per socket, or -1 if empty. Kept for anything that reads it.
+var loadout: Array[int] = []
+
 var _is_destroyed := false
 
-var loadout: Array[int] = [11, 00, 00, 00, 00, 00]
-var towerPositions: Array[Vector3] = []
 
 func _ready() -> void:
 	health = max_health
-	
+	for child in sockets_root.get_children():
+		var socket := child as TowerSocket
+		if socket:
+			sockets.append(socket)
+			loadout.append(-1)
+			socket.clicked.connect(func(s: TowerSocket) -> void: socket_clicked.emit(s))
+	if starting_tower_type >= 0 and starting_socket < sockets.size():
+		build_tower(sockets[starting_socket], starting_tower_type, 0)
 
-	var cx := position.x
-	var cy := position.y
-	var cz := position.z
-	
-	towerPositions = [
-		Vector3(cx + 6, cy, cz + .5),
-		Vector3(cx + 1.5, cy, cz + 1.5),
-		Vector3(cx - 3, cy, cz + 2.5),
-		Vector3(cx - 5.4, cy, cz + 4.2),
-		Vector3(cx - 1.0, cy, cz + 3.4),
-		Vector3(cx + 3.3, cy, cz + 2.3)
-	]
-	
-	change_tower(0, 0, 0)
 
 func take_damage(amount: int) -> void:
 	if Debug.stronghold_invincible:
@@ -43,26 +46,28 @@ func take_damage(amount: int) -> void:
 		_is_destroyed = true
 		destroyed.emit()
 
-func change_tower(slot: int, type: int, level: int) -> void:
-	var newTower := towerScene.instantiate()
-	
-	# Set position and stats
-	newTower.position = towerPositions[slot]
-	newTower.twrDamage = towerdata.damageData[type][level]
-	newTower.twrFireRate = towerdata.fireRateData[type][level]
-	newTower.type = type
-	newTower.level = level
-	newTower.twrHitParticle = towerdata.get_hit_particle(type, level)
-	
-	# 1. Add the tower to the scene tree first
-	add_child(newTower)
-	
-	# 2. Grab the .glb PackedScene from your resource data
-	@warning_ignore("untyped_declaration")
-	var glb_scene = towerdata.get_mesh(type, level)
-	@warning_ignore("untyped_declaration")
-	var glb_instance = glb_scene.instantiate()
-	glb_instance.position = Vector3.ZERO
-	glb_instance.rotation.y = deg_to_rad(180)
-	newTower.add_child(glb_instance)
-	loadout[slot] = (type * 10) + level
+## Builds a tower on a socket, replacing any tower already there.
+## Doesn't touch gold; the shop checks and spends before calling this.
+func build_tower(socket: TowerSocket, type: int, level: int) -> void:
+	if socket.tower:
+		socket.tower.queue_free()
+
+	var tower := TOWER_SCENE.instantiate()
+	tower.tower_data = towerdata
+	tower.type = type
+	tower.level = level
+	tower.twrDamage = towerdata.damageData[type][level]
+	tower.twrFireRate = towerdata.fireRateData[type][level]
+	tower.twrBulletSpeed = towerdata.bulletSpeedData[type][level]
+	tower.twrHitParticle = towerdata.get_hit_particle(type, level)
+	tower.twrShotParticle = towerdata.get_shot_particle(type, level)
+	socket.build_point.add_child(tower)
+
+	var model := towerdata.get_mesh(type, level).instantiate() as Node3D
+	model.rotation.y = PI
+	tower.add_child(model)
+
+	socket.tower = tower
+	socket.tower_type = type
+	socket.tower_level = level
+	loadout[sockets.find(socket)] = type * 10 + level

@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://drxix2qq7vrcp" path="res://assets/3d_art/stronghold/stronghold_base.glb" id="2_b8jds"]
 [ext_resource type="PackedScene" uid="uid://caeloa1nngu3c" path="res://game/stronghold/tower_socket.tscn" id="3_b46vg"]
 
-
-[node name="StrongholdHolder" type="Node3D" unique_id=2125922311]
+[node name="StrongholdHolder" type="Node3D" unique_id=2125922311 node_paths=PackedStringArray("sockets_root")]
 script = ExtResource("1_3cre5")
 towerdata = ExtResource("2_3ms5n")
+sockets_root = NodePath("Sockets")
 
 [node name="stronghold_base" parent="." unique_id=25793128 instance=ExtResource("2_b8jds")]
 

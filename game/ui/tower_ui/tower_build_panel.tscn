@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://b0ihbus3uvtu0"]
 
 [ext_resource type="Theme" uid="uid://docepy01vs1ci" path="res://assets/theme/tower-defense_theme.tres" id="1_mn7y1"]
+[ext_resource type="Script" uid="uid://d1p7yp5iyfvo2" path="res://game/ui/tower_ui/tower_shop.gd" id="2_t5nre"]
 
-[node name="TowerBuildPanel" type="PanelContainer" unique_id=501736015]
-custom_minimum_size = Vector2(350, 0)
+[node name="TowerBuildPanel" type="PanelContainer" unique_id=501736015 node_paths=PackedStringArray("title_label", "build_buttons", "close_button")]
+custom_minimum_size = Vector2(500, 550)
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -16,12 +17,18 @@ offset_bottom = 261.5
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("1_mn7y1")
+script = ExtResource("2_t5nre")
+title_label = NodePath("MarginContainer/VBoxContainer/Title")
+build_buttons = [NodePath("MarginContainer/VBoxContainer/CannonOption/BuildButton"), NodePath("MarginContainer/VBoxContainer/FireOption/BuildButton"), NodePath("MarginContainer/VBoxContainer/IceOption/BuildButton")]
+close_button = NodePath("MarginContainer/VBoxContainer/CloseButton")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1788028315]
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1027164169]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 offset_transform_enabled = true
 
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=324086139]
@@ -40,12 +47,12 @@ text = "Select a tower for this socket."
 
 [node name="CannonOption" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=885464909]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Info" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CannonOption" unique_id=1592985330]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
 [node name="Portrait" type="TextureRect" parent="MarginContainer/VBoxContainer/CannonOption/Info" unique_id=1307712493]
 custom_minimum_size = Vector2(64, 64)
@@ -67,6 +74,7 @@ layout_mode = 2
 theme_type_variation = &"HeaderLabel"
 text = "Cannon"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Description" type="Label" parent="MarginContainer/VBoxContainer/CannonOption/Info/Details" unique_id=138536943]
 custom_maximum_size = Vector2(750, 750)
