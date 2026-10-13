@@ -61,6 +61,8 @@ func _shoot() -> void:
 	bulletInstance.damage = twrDamage
 	bulletInstance.bulletSpeed = twrBulletSpeed
 	bulletInstance.hitParticle = twrHitParticle
+	bulletInstance.type = type
+	bulletInstance.level = level
 
 	if twrShotParticle:
 		var flash := twrShotParticle.instantiate() as Node3D

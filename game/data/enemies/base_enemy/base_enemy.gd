@@ -39,6 +39,11 @@ var _attack_cooldown := 0.0
 var _is_dead := false
 var _ward_sources: Array[Node] = []
 
+var burnTimer : float
+var burnTick : float
+var burnDamage : float
+var freezeTimer : float
+
 
 func _ready() -> void:
 	add_to_group("enemies")
@@ -67,7 +72,16 @@ func _physics_process(delta: float) -> void:
 			_move(delta)
 		State.ATTACKING:
 			_attack(delta)
-
+	#status effects
+	freezeTimer -= delta
+	burnTimer -= delta
+	burnTick -= delta
+	if (freezeTimer < 0):
+		speed_multiplier = 1
+	if (burnTimer < 0):
+		if (burnTick < 0.0):
+			take_damage(burnDamage)
+			burnTick = .5
 
 func take_damage(amount: int) -> void:
 	if _is_dead or amount <= 0:
@@ -82,6 +96,19 @@ func take_damage(amount: int) -> void:
 		_spawn_death_effect()
 		died.emit(self)
 		queue_free()
+
+func slow(time: float, percent: float) -> void:
+	if (freezeTimer < time):
+		freezeTimer = time
+		speed_multiplier = 1 - (percent * speed_multiplier)
+		anim_speed = 1 - (percent * anim_speed)
+	#apply freeze particles
+	
+func burn(time: float, damage: float) -> void:
+	if (burnTimer < time):
+		burnTimer = time
+		burnDamage = damage
+	#apply fire particles
 
 
 func _spawn_death_effect() -> void:

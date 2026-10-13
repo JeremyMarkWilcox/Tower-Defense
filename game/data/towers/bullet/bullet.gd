@@ -4,6 +4,8 @@ extends Area3D
 @export var bulletSpeed := 1.0
 @export var targetEnemy : Node3D
 @export var hitParticle : PackedScene
+@export var type : int
+@export var level : int
 
 var time := 0.0
 var _has_hit := false
@@ -37,6 +39,15 @@ func _on_area_entered(area: Area3D) -> void:
 		enemy.take_damage(int(damage))
 	_spawn_effect(hitParticle)
 	queue_free()
+	
+	##special effects per tower type maybe not the best practice but it will work
+	#fire
+	if (type == 1):
+		enemy.burn(1.0 * level, 2.0 * level)
+	
+	#ice
+	if (type == 2):
+		enemy.slow(1.0 * level, 30.0 * level)
 
 
 func _spawn_effect(scene: PackedScene) -> void:

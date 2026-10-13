@@ -14,20 +14,20 @@ extends Resource
 
 var costData : Array[Array] = [
 	[10,20,30],
-	[10,20,30],
-	[10,20,30]
+	[20,40,80],
+	[20,40,80]
 ]
 
 var damageData : Array[Array] = [
 	[4,8,12],
-	[10,20,30],
-	[10,20,30]
+	[2,4,6],
+	[8,16,32]
 ]
 
 var fireRateData : Array[Array] = [
-	[.80,.80,.80],
-	[.10,.20,.30],
-	[.10,.20,.30]
+	[.8,.7,.6],
+	[.6,.5,.4],
+	[1,1.2,1.4]
 ]
 
 var bulletSpeedData : Array[Array] = [
