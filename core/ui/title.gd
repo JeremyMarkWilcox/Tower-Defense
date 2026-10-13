@@ -13,8 +13,11 @@ extends Control
 ## Hidden until the intro finishes: the title art panel and the button column.
 @export var menu_items: Array[CanvasItem] = []
 
+var _loaded_game: PackedScene
+
 
 func _ready() -> void:
+	ResourceLoader.load_threaded_request(game_scene)
 	Audio.play_music(music)
 	play_button.pressed.connect(_on_play_pressed)
 	settings_button.pressed.connect(func() -> void: MenuManager.open_menu(settings_menu))
@@ -42,6 +45,7 @@ func _on_play_pressed() -> void:
 		for item in menu_items:
 			tween.tween_property(item, "modulate:a", 0.0, 0.3)
 		await intro.play_transition()
+	_loaded_game = ResourceLoader.load_threaded_get(game_scene)  # waits only if it isn't done yet
 	SceneManager.change_scene(game_scene)
 
 

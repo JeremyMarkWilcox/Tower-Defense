@@ -7,9 +7,11 @@ extends Control
 @export var always_show := false
 
 var _started := false
+var _loaded_scene: PackedScene  # keeps the preloaded title alive until we switch
 
 
 func _ready() -> void:
+	ResourceLoader.load_threaded_request(next_scene)  # load the title while the prompt shows
 	if not OS.has_feature("web") and not always_show:
 		_start.call_deferred()  # desktop: skip straight to the title
 		return
@@ -27,6 +29,12 @@ func _input(event: InputEvent) -> void:
 
 func _start() -> void:
 	_started = true
+	# Usually done already; if not, show that we're working on it.
+	if ResourceLoader.load_threaded_get_status(next_scene) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+		prompt_label.text = "Loading..."
+		while ResourceLoader.load_threaded_get_status(next_scene) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+			await get_tree().process_frame
+	_loaded_scene = ResourceLoader.load_threaded_get(next_scene)
 	SceneManager.change_scene(next_scene)
 
 
