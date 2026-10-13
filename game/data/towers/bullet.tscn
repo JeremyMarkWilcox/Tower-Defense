@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://bdqi3hlmsoi1j" path="res://game/data/towers/bullet.gd" id="1_2q6dw"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g61ai"]
-radius = 0.58130735
+radius = 0.57835805
 
 [sub_resource type="SphereMesh" id="SphereMesh_31d26"]
+radius = 0.3
+height = 0.6
 
 [node name="Bullet" type="Area3D" unique_id=2058617444]
 collision_mask = 3

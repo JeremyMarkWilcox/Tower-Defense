@@ -5,6 +5,13 @@ extends Resource
 @export var firelvl_1: PackedScene
 @export var icelvl_1: PackedScene
 
+@export var standard_hit: PackedScene
+@export var fire_hit: PackedScene
+@export var ice_hit: PackedScene
+
+@export var standard_shoot: PackedScene
+
+
 var costData : Array[Array] = [
 	[10,20,30],
 	[10,20,30],
@@ -12,7 +19,7 @@ var costData : Array[Array] = [
 ]
 
 var damageData : Array[Array] = [
-	[10,20,30],
+	[4,8,12],
 	[10,20,30],
 	[10,20,30]
 ]
@@ -30,8 +37,33 @@ var bulletSpeedData : Array[Array] = [
 ]
 
 # Use a function instead of a variable array so it evaluates live
-func get_scene(type: int, level: int) -> PackedScene:
+func get_mesh(type: int, level: int) -> PackedScene:
 	var matching_array := [
+		[basiclvl_1, basiclvl_1, basiclvl_1],
+		[firelvl_1, firelvl_1, firelvl_1],
+		[icelvl_1, icelvl_1, icelvl_1]
+	]
+	return matching_array[type][level]
+
+func get_hit_particle(type: int, level: int) -> PackedScene:
+	var matching_array := [
+		[standard_hit, standard_hit, standard_hit],
+		[fire_hit, fire_hit, fire_hit],
+		[ice_hit, ice_hit, ice_hit]
+	]
+	return matching_array[type][level]
+	
+func get_shot_particle(type: int, level: int) -> PackedScene:
+	var matching_array := [
+		[basiclvl_1, basiclvl_1, basiclvl_1],
+		[firelvl_1, firelvl_1, firelvl_1],
+		[icelvl_1, icelvl_1, icelvl_1]
+	]
+	return matching_array[type][level]
+
+func get_bullet_mesh(type: int, level: int) -> PackedScene:
+	var matching_array := [
+		#add here later
 		[basiclvl_1, basiclvl_1, basiclvl_1],
 		[firelvl_1, firelvl_1, firelvl_1],
 		[icelvl_1, icelvl_1, icelvl_1]

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ejbtcg4bo146"]
+
+[ext_resource type="Texture2D" uid="uid://dx8yt14bos60" path="res://assets/2d_art/smoke_puffs.png" id="1_pqqbr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3jnb4"]
+transparency = 1
+albedo_texture = ExtResource("1_pqqbr")
+
+[sub_resource type="QuadMesh" id="QuadMesh_xkro6"]
+material = SubResource("StandardMaterial3D_3jnb4")
+
+[node name="StandardShoot" type="Node3D" unique_id=834614202]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=884524686]
+mesh = SubResource("QuadMesh_xkro6")

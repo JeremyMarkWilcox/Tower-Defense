@@ -52,13 +52,14 @@ func change_tower(slot: int, type: int, level: int) -> void:
 	newTower.twrFireRate = towerdata.fireRateData[type][level]
 	newTower.type = type
 	newTower.level = level
+	newTower.twrHitParticle = towerdata.get_hit_particle(type, level)
 	
 	# 1. Add the tower to the scene tree first
 	add_child(newTower)
 	
 	# 2. Grab the .glb PackedScene from your resource data
 	@warning_ignore("untyped_declaration")
-	var glb_scene = towerdata.get_scene(type, level)
+	var glb_scene = towerdata.get_mesh(type, level)
 	@warning_ignore("untyped_declaration")
 	var glb_instance = glb_scene.instantiate()
 	glb_instance.position = Vector3.ZERO

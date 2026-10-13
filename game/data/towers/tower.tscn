@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://epix5p0brcyp" path="res://game/data/towers/tower.gd" id="1_6kh8y"]
 [ext_resource type="Resource" uid="uid://byui546w78od6" path="res://game/data/towers/tower_data.tres" id="2_g61ai"]
+[ext_resource type="Script" uid="uid://btnrlonqqiotg" path="res://game/data/towers/hit_particles.gd" id="3_31d26"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xkro6"]
 height = 26.553223
@@ -17,6 +18,8 @@ radius = 25.478027
 
 [sub_resource type="PlaceholderMesh" id="PlaceholderMesh_6kh8y"]
 
+[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_xkro6"]
+
 [node name="Tower" type="Node3D" unique_id=2053335034 node_paths=PackedStringArray("range_one", "range_two", "range_three", "twrMesh", "shoot_timer")]
 script = ExtResource("1_6kh8y")
 tower_data = ExtResource("2_g61ai")
@@ -24,6 +27,8 @@ range_one = NodePath("rangeOne")
 range_two = NodePath("rangeTwo")
 range_three = NodePath("rangeThree")
 twrMesh = NodePath("TowerMesh")
+twrHitParticle = Object(CPUParticles3D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":1,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":1,"gi_lightmap_texel_scale":1.0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"emitting":false,"amount":8,"lifetime":1.0,"one_shot":true,"preprocess":0.0,"speed_scale":1.0,"explosiveness":0.0,"randomness":0.0,"use_fixed_seed":false,"lifetime_randomness":0.0,"fixed_fps":0,"fract_delta":true,"visibility_aabb":AABB(0, 0, 0, 0, 0, 0),"local_coords":false,"draw_order":0,"mesh":SubResource("PlaceholderMesh_xkro6"),"emission_shape":0,"emission_colors":PackedColorArray(),"particle_flag_align_y":false,"particle_flag_rotate_y":false,"particle_flag_disable_z":false,"direction":Vector3(1, 0, 0),"spread":45.0,"flatness":0.0,"gravity":Vector3(0, -9.8, 0),"initial_velocity_min":0.0,"initial_velocity_max":0.0,"angular_velocity_min":0.0,"angular_velocity_max":0.0,"angular_velocity_curve":null,"linear_accel_min":0.0,"linear_accel_max":0.0,"linear_accel_curve":null,"radial_accel_min":0.0,"radial_accel_max":0.0,"radial_accel_curve":null,"tangential_accel_min":0.0,"tangential_accel_max":0.0,"tangential_accel_curve":null,"damping_min":0.0,"damping_max":0.0,"damping_curve":null,"angle_min":0.0,"angle_max":0.0,"angle_curve":null,"scale_amount_min":1.0,"scale_amount_max":1.0,"scale_amount_curve":null,"split_scale":false,"color":Color(1, 1, 1, 1),"color_ramp":null,"color_initial_ramp":null,"hue_variation_min":0.0,"hue_variation_max":0.0,"hue_variation_curve":null,"anim_speed_min":0.0,"anim_speed_max":0.0,"anim_speed_curve":null,"anim_offset_min":0.0,"anim_offset_max":0.0,"anim_offset_curve":null,"script":ExtResource("3_31d26"))
+
 shoot_timer = NodePath("shootTimer")
 
 [node name="shootTimer" type="Timer" parent="." unique_id=1653151059]
@@ -53,3 +58,9 @@ shape = SubResource("CylinderShape3D_rengx")
 
 [node name="TowerMesh" type="MeshInstance3D" parent="." unique_id=1721241029]
 mesh = SubResource("PlaceholderMesh_6kh8y")
+
+[node name="HitParticles" type="CPUParticles3D" parent="." unique_id=852741463]
+emitting = false
+one_shot = true
+mesh = SubResource("PlaceholderMesh_xkro6")
+script = ExtResource("3_31d26")

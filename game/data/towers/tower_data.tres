@@ -3,11 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://b82y0h3s65i2h" path="res://assets/3d_art/towers/Basiclvl1.glb" id="1_pymm2"]
 [ext_resource type="Script" uid="uid://dxhmx4118pfd3" path="res://game/data/towers/towerdata.gd" id="1_qm3ln"]
 [ext_resource type="PackedScene" uid="uid://dl7btnuthvvlb" path="res://assets/3d_art/towers/Firelvl1.glb" id="2_as6rv"]
+[ext_resource type="PackedScene" uid="uid://cyn45b55j6a6x" path="res://assets/3d_art/particle_effects/fire_hit.tscn" id="2_r20n7"]
 [ext_resource type="PackedScene" uid="uid://dm6ojjrnrnkqg" path="res://assets/3d_art/towers/Icelvl1.glb" id="3_co70p"]
+[ext_resource type="PackedScene" uid="uid://cq6n43g7ad7iv" path="res://assets/3d_art/particle_effects/ice_hit.tscn" id="4_ldq5b"]
+[ext_resource type="PackedScene" uid="uid://c6bt1b5a61xuv" path="res://assets/3d_art/particle_effects/standard_hit.tscn" id="7_bxgwe"]
+[ext_resource type="PackedScene" uid="uid://ejbtcg4bo146" path="res://assets/3d_art/particle_effects/standard_shoot.tscn" id="8_lln0y"]
 
 [resource]
 script = ExtResource("1_qm3ln")
 basiclvl_1 = ExtResource("1_pymm2")
 firelvl_1 = ExtResource("2_as6rv")
 icelvl_1 = ExtResource("3_co70p")
+standard_hit = ExtResource("7_bxgwe")
+fire_hit = ExtResource("2_r20n7")
+ice_hit = ExtResource("4_ldq5b")
+standard_shoot = ExtResource("8_lln0y")
 metadata/_custom_type_script = "uid://dxhmx4118pfd3"
