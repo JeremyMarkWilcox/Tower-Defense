@@ -15,7 +15,7 @@ script = ExtResource("1_v34rh")
 reset_button = NodePath("VBoxContainer/HBoxContainer/ResetButton")
 back_button = NodePath("VBoxContainer/HBoxContainer/BackButton")
 first_focus = NodePath("VBoxContainer/GridContainer/PauseKeyboard")
-focus_chain = [NodePath("VBoxContainer/GridContainer/PauseKeyboard"), NodePath("VBoxContainer/GridContainer/PauseController"), NodePath("VBoxContainer/HBoxContainer/ResetButton"), NodePath("VBoxContainer/HBoxContainer/BackButton")]
+focus_chain = [NodePath("VBoxContainer/GridContainer/PauseKeyboard"), NodePath("VBoxContainer/GridContainer/PauseController"), NodePath("VBoxContainer/HBoxContainer/ResetButton"), NodePath("VBoxContainer/GridContainer/CutThreadKeyboard"), NodePath("VBoxContainer/GridContainer/CutThreadController"), NodePath("VBoxContainer/GridContainer/NextThreadKeyboard"), NodePath("VBoxContainer/GridContainer/NextThreadController"), NodePath("VBoxContainer/GridContainer/PreviousThreadController"), NodePath("VBoxContainer/GridContainer/PreviousThreadKeyboard"), NodePath("VBoxContainer/HBoxContainer/BackButton")]
 focus_columns = 2
 
 [node name="Dim" type="ColorRect" parent="." unique_id=281587102]
@@ -91,6 +91,76 @@ layout_mode = 2
 script = ExtResource("2_ovn7s")
 action = &"pause"
 device = 1
+
+[node name="CutThread" type="Label" parent="VBoxContainer/GridContainer" unique_id=961831867]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_4gk8h")
+text = "Cut Thread"
+
+[node name="CutThreadKeyboard" type="Button" parent="VBoxContainer/GridContainer" unique_id=1827865232]
+custom_minimum_size = Vector2(125, 50)
+custom_maximum_size = Vector2(500, -1)
+layout_mode = 2
+script = ExtResource("2_ovn7s")
+action = &"thread_cut"
+
+[node name="CutThreadController" type="Button" parent="VBoxContainer/GridContainer" unique_id=208240992]
+custom_minimum_size = Vector2(125, 50)
+custom_maximum_size = Vector2(500, -1)
+layout_mode = 2
+script = ExtResource("2_ovn7s")
+action = &"thread_cut"
+device = 1
+
+[node name="NextThread" type="Label" parent="VBoxContainer/GridContainer" unique_id=1177980663]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_4gk8h")
+text = "Next Thread"
+
+[node name="NextThreadKeyboard" type="Button" parent="VBoxContainer/GridContainer" unique_id=1623245427]
+custom_minimum_size = Vector2(125, 50)
+custom_maximum_size = Vector2(500, -1)
+layout_mode = 2
+script = ExtResource("2_ovn7s")
+action = &"thread_next"
+
+[node name="NextThreadController" type="Button" parent="VBoxContainer/GridContainer" unique_id=1553382304]
+custom_minimum_size = Vector2(125, 50)
+custom_maximum_size = Vector2(500, -1)
+layout_mode = 2
+script = ExtResource("2_ovn7s")
+action = &"thread_next"
+device = 1
+
+[node name="PreviousThread" type="Label" parent="VBoxContainer/GridContainer" unique_id=2096964419]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_4gk8h")
+text = "Previous Thread"
+
+[node name="PreviousThreadKeyboard" type="Button" parent="VBoxContainer/GridContainer" unique_id=778955426]
+custom_minimum_size = Vector2(125, 50)
+custom_maximum_size = Vector2(500, -1)
+layout_mode = 2
+script = ExtResource("2_ovn7s")
+action = &"thread_prev"
+
+[node name="PreviousThreadController" type="Button" parent="VBoxContainer/GridContainer" unique_id=136924524]
+custom_minimum_size = Vector2(125, 50)
+custom_maximum_size = Vector2(500, -1)
+layout_mode = 2
+script = ExtResource("2_ovn7s")
+action = &"thread_prev"
+device = 1
+
+[node name="Mouse" type="Label" parent="VBoxContainer/GridContainer" unique_id=1585577340]
+layout_mode = 2
+theme_type_variation = &"Hint"
+text = "Mouse: hover a thread
+to select it, click to cut."
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1307688876]
 layout_mode = 2
