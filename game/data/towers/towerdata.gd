@@ -29,13 +29,11 @@ var bulletSpeedData : Array[Array] = [
 	[10,20,30]
 ]
 
-# Note: meshData initialization is fixed below!
-var meshData : Array[Array] = []
-
-func _init() -> void:
-	# Initialize meshData here so it actually captures the exported PackedScenes
-	meshData = [
+# Use a function instead of a variable array so it evaluates live
+func get_scene(type: int, level: int) -> PackedScene:
+	var matching_array := [
 		[basiclvl_1, basiclvl_1, basiclvl_1],
 		[firelvl_1, firelvl_1, firelvl_1],
 		[icelvl_1, icelvl_1, icelvl_1]
 	]
+	return matching_array[type][level]

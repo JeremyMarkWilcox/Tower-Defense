@@ -46,12 +46,23 @@ func take_damage(amount: int) -> void:
 func change_tower(slot: int, type: int, level: int) -> void:
 	var newTower := towerScene.instantiate()
 	
-	
-	newTower.twrDamage = towerdata.damageData[type][level]
-	newTower.twrFireRate = towerdata.fireRateData[type][level] 
+	# Set position and stats
 	newTower.position = towerPositions[slot]
-	newTower.twrMesh.mesh = towerdata.meshData[type][level]
+	newTower.twrDamage = towerdata.damageData[type][level]
+	newTower.twrFireRate = towerdata.fireRateData[type][level]  
 	
+	# 1. Add the tower to the scene tree first
 	add_child(newTower)
+	
+	# 2. Grab the .glb PackedScene from your resource data
+	var glb_scene = towerdata.get_scene(type, level)
+	
+	if glb_scene:
+		# 3. Instantiate the .glb and place it right at the tower's origin (0,0,0)
+		var glb_instance = glb_scene.instantiate()
+		glb_instance.position = Vector3.ZERO 
+		newTower.add_child(glb_instance)
+	else:
+		push_warning("Could not find .glb scene for tower type/level!")
 	
 	loadout[slot] = (type * 10) + level
