@@ -59,6 +59,7 @@ func build_tower(socket: TowerSocket, type: int, level: int) -> void:
 	tower.twrDamage = towerdata.damageData[type][level]
 	tower.twrFireRate = towerdata.fireRateData[type][level]
 	tower.twrBulletSpeed = towerdata.bulletSpeedData[type][level]
+	tower.twrBulletVisual = towerdata.get_bullet_mesh(type, level)
 	tower.twrHitParticle = towerdata.get_hit_particle(type, level)
 	tower.twrShotParticle = towerdata.get_shot_particle(type, level)
 	socket.build_point.add_child(tower)

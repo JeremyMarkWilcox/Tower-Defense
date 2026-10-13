@@ -9,6 +9,10 @@ extends Resource
 @export var fire_hit: PackedScene
 @export var ice_hit: PackedScene
 
+@export var cannon_bullet: PackedScene
+@export var fire_bullet: PackedScene
+@export var ice_bullet: PackedScene
+
 @export var standard_shoot: PackedScene
 
 
@@ -57,11 +61,5 @@ func get_shot_particle(_type: int, _level: int) -> PackedScene:
 	return standard_shoot  # one shared muzzle flash for now
 	
 
-func get_bullet_mesh(type: int, level: int) -> PackedScene:
-	var matching_array := [
-		#add here later
-		[basiclvl_1, basiclvl_1, basiclvl_1],
-		[firelvl_1, firelvl_1, firelvl_1],
-		[icelvl_1, icelvl_1, icelvl_1]
-	]
-	return matching_array[type][level]
+func get_bullet_mesh(type: int, _level: int) -> PackedScene:
+	return [cannon_bullet, fire_bullet, ice_bullet][type]  # same look at every level for now

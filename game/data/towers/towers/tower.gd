@@ -18,6 +18,7 @@ const bulletScene = preload("uid://bxdlpoael8gal")  # bullet/bullet.tscn
 @export var turnRate := 5
 @export var muzzle: Marker3D
 @export var twrShotParticle: PackedScene
+@export var twrBulletVisual: PackedScene
 
 @export var shoot_timer: Timer
 
@@ -55,6 +56,7 @@ func _shoot() -> void:
 	#firing logic
 	var bulletInstance := bulletScene.instantiate()
 	bulletInstance.targetEnemy = targetEnemy
+	bulletInstance.visual_scene = twrBulletVisual
 	add_sibling(bulletInstance)
 	var spawn := muzzle.global_transform if muzzle else global_transform
 	bulletInstance.global_transform = spawn

@@ -2,13 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://b82y0h3s65i2h" path="res://assets/3d_art/towers/Basiclvl1.glb" id="1_pymm2"]
 [ext_resource type="Script" uid="uid://dxhmx4118pfd3" path="res://game/data/towers/towers/towerdata.gd" id="1_qm3ln"]
+[ext_resource type="PackedScene" uid="uid://max4pe5f8vqo" path="res://game/data/towers/bullet/visuals/cannon_ball.tscn" id="2_8m7gp"]
 [ext_resource type="PackedScene" uid="uid://dl7btnuthvvlb" path="res://assets/3d_art/towers/Firelvl1.glb" id="2_as6rv"]
 [ext_resource type="PackedScene" uid="uid://cyn45b55j6a6x" path="res://assets/3d_art/particle_effects/fire_hit.tscn" id="2_r20n7"]
 [ext_resource type="PackedScene" uid="uid://dm6ojjrnrnkqg" path="res://assets/3d_art/towers/Icelvl1.glb" id="3_co70p"]
+[ext_resource type="PackedScene" uid="uid://6xr5g0kcstpl" path="res://game/data/towers/bullet/visuals/fireball.tscn" id="3_d81vh"]
 [ext_resource type="PackedScene" uid="uid://cq6n43g7ad7iv" path="res://assets/3d_art/particle_effects/ice_hit.tscn" id="4_ldq5b"]
+[ext_resource type="PackedScene" uid="uid://bvh7wpjavnwmp" path="res://game/data/towers/bullet/visuals/ice_shard.tscn" id="6_ec85p"]
 [ext_resource type="PackedScene" uid="uid://c6bt1b5a61xuv" path="res://assets/3d_art/particle_effects/standard_hit.tscn" id="7_bxgwe"]
 [ext_resource type="PackedScene" uid="uid://ejbtcg4bo146" path="res://assets/3d_art/particle_effects/standard_shoot.tscn" id="8_lln0y"]
-
 
 [resource]
 script = ExtResource("1_qm3ln")
@@ -18,5 +20,8 @@ icelvl_1 = ExtResource("3_co70p")
 standard_hit = ExtResource("7_bxgwe")
 fire_hit = ExtResource("2_r20n7")
 ice_hit = ExtResource("4_ldq5b")
+cannon_bullet = ExtResource("2_8m7gp")
+fire_bullet = ExtResource("3_d81vh")
+ice_bullet = ExtResource("6_ec85p")
 standard_shoot = ExtResource("8_lln0y")
 metadata/_custom_type_script = "uid://dxhmx4118pfd3"

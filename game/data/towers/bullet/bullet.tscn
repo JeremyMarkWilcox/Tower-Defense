@@ -5,18 +5,11 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_g61ai"]
 radius = 0.57835805
 
-[sub_resource type="SphereMesh" id="SphereMesh_31d26"]
-radius = 0.3
-height = 0.6
-
 [node name="Bullet" type="Area3D" unique_id=2058617444]
 collision_mask = 3
 script = ExtResource("1_2q6dw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1106542266]
 shape = SubResource("SphereShape3D_g61ai")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1371440723]
-mesh = SubResource("SphereMesh_31d26")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
