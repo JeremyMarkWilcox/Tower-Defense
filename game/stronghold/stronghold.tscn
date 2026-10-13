@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://dduwnap7vm400"]
 
 [ext_resource type="Script" uid="uid://bmpesgfk651k2" path="res://game/stronghold/stronghold.gd" id="1_3cre5"]
-[ext_resource type="Resource" uid="uid://byui546w78od6" path="res://game/data/towers/tower_data.tres" id="2_3ms5n"]
+[ext_resource type="Resource" uid="uid://byui546w78od6" path="res://game/data/towers/towers/tower_data.tres" id="2_3ms5n"]
 [ext_resource type="PackedScene" uid="uid://drxix2qq7vrcp" path="res://assets/3d_art/stronghold/stronghold_base.glb" id="2_b8jds"]
 [ext_resource type="PackedScene" uid="uid://caeloa1nngu3c" path="res://game/stronghold/tower_socket.tscn" id="3_b46vg"]
+
 
 [node name="StrongholdHolder" type="Node3D" unique_id=2125922311]
 script = ExtResource("1_3cre5")

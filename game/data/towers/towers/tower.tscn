@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://hfqj55tjn8l8"]
+
+[ext_resource type="Script" uid="uid://epix5p0brcyp" path="res://game/data/towers/towers/tower.gd" id="1_6kh8y"]
+[ext_resource type="Resource" uid="uid://byui546w78od6" path="res://game/data/towers/towers/tower_data.tres" id="2_g61ai"]
+[ext_resource type="Script" uid="uid://btnrlonqqiotg" path="res://game/data/towers/particles/hit_particles.gd" id="3_31d26"]
+[ext_resource type="PackedScene" uid="uid://c6bt1b5a61xuv" path="res://assets/3d_art/particle_effects/standard_hit.tscn" id="3_l3i21"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xkro6"]
+height = 26.553223
+radius = 9.049316
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lccvh"]
+height = 26.369629
+radius = 18.925293
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rengx"]
+height = 30.282715
+radius = 25.478027
+
+[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_6kh8y"]
+
+[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_xkro6"]
+
+[node name="Tower" type="Node3D" unique_id=2053335034 node_paths=PackedStringArray("range_one", "range_two", "range_three", "twrMesh", "muzzle", "shoot_timer")]
+script = ExtResource("1_6kh8y")
+tower_data = ExtResource("2_g61ai")
+range_one = NodePath("rangeOne")
+range_two = NodePath("rangeTwo")
+range_three = NodePath("rangeThree")
+twrMesh = NodePath("TowerMesh")
+twrHitParticle = ExtResource("3_l3i21")
+muzzle = NodePath("Muzzle")
+twrShotParticle = ExtResource("3_l3i21")
+shoot_timer = NodePath("shootTimer")
+
+[node name="shootTimer" type="Timer" parent="." unique_id=1653151059]
+one_shot = true
+autostart = true
+
+[node name="rangeOne" type="Area3D" parent="." unique_id=1867613354]
+collision_mask = 2
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rangeOne" unique_id=86986928]
+shape = SubResource("CylinderShape3D_xkro6")
+
+[node name="rangeTwo" type="Area3D" parent="." unique_id=1909420512]
+collision_mask = 2
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rangeTwo" unique_id=485072162]
+shape = SubResource("CylinderShape3D_lccvh")
+
+[node name="rangeThree" type="Area3D" parent="." unique_id=1890466275]
+collision_mask = 2
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rangeThree" unique_id=730385619]
+shape = SubResource("CylinderShape3D_rengx")
+
+[node name="TowerMesh" type="MeshInstance3D" parent="." unique_id=1721241029]
+mesh = SubResource("PlaceholderMesh_6kh8y")
+
+[node name="HitParticles" type="CPUParticles3D" parent="." unique_id=852741463]
+emitting = false
+one_shot = true
+mesh = SubResource("PlaceholderMesh_xkro6")
+script = ExtResource("3_31d26")
+
+[node name="Muzzle" type="Marker3D" parent="." unique_id=1695593878]

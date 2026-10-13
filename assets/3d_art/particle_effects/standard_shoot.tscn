@@ -12,4 +12,5 @@ material = SubResource("StandardMaterial3D_3jnb4")
 [node name="StandardShoot" type="Node3D" unique_id=834614202]
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=884524686]
+emitting = false
 mesh = SubResource("QuadMesh_xkro6")

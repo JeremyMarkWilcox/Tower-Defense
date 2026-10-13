@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c6bt1b5a61xuv"]
 
 [ext_resource type="Texture2D" uid="uid://dx8yt14bos60" path="res://assets/2d_art/smoke_puffs.png" id="1_8tyla"]
+[ext_resource type="Script" uid="uid://dqj0pwa85anqo" path="res://game/data/towers/particles/OneShotEffect.gd" id="1_g5ch8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81sm2"]
 transparency = 1
@@ -16,8 +17,10 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_81sm2")
 
 [node name="StandardHit" type="Node3D" unique_id=1387893528]
+script = ExtResource("1_g5ch8")
 
 [node name="Smoke" type="CPUParticles3D" parent="." unique_id=67319450]
+emitting = false
 amount = 5
 lifetime = 0.2
 explosiveness = 1.0

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dgf785mw3toay"]
 
 [ext_resource type="Script" uid="uid://ba5o3g0hspol2" path="res://game/data/enemies/base_enemy/base_enemy.gd" id="1_2o6uh"]
+[ext_resource type="PackedScene" uid="uid://1gufnqo3khmk" path="res://assets/3d_art/particle_effects/death_smoke.tscn" id="2_0gayg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ra2i3"]
 
@@ -15,6 +16,7 @@ material = SubResource("StandardMaterial3D_otjlk")
 [node name="BaseEnemy" type="Node3D" unique_id=1427662883 node_paths=PackedStringArray("ward_effect")]
 script = ExtResource("1_2o6uh")
 ward_effect = NodePath("WardEffect")
+death_effect = ExtResource("2_0gayg")
 
 [node name="Hitbox" type="Area3D" parent="." unique_id=1439913594]
 collision_layer = 2

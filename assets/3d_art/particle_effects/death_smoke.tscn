@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://1gufnqo3khmk"]
 
 [ext_resource type="Texture2D" uid="uid://dx8yt14bos60" path="res://assets/2d_art/smoke_puffs.png" id="1_65sls"]
+[ext_resource type="Script" uid="uid://dqj0pwa85anqo" path="res://game/data/towers/particles/OneShotEffect.gd" id="1_ityxt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsl3e"]
 transparency = 1
@@ -25,9 +26,11 @@ offsets = PackedFloat32Array(0, 0.9886364)
 colors = PackedColorArray(0.27058825, 0.2901961, 0.28235295, 1, 0.27058825, 0.2901961, 0.28235295, 0)
 
 [node name="DeathSmoke" type="Node3D" unique_id=721675762]
+script = ExtResource("1_ityxt")
 
 [node name="Smoke" type="CPUParticles3D" parent="." unique_id=90950119]
 cast_shadow = 0
+emitting = false
 amount = 16
 explosiveness = 1.0
 local_coords = true

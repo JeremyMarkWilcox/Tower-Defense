@@ -1,6 +1,6 @@
 extends Node3D
 
-const bulletScene = preload("res://game/data/towers/bullet.tscn")
+const bulletScene = preload("uid://bxdlpoael8gal")  # bullet/bullet.tscn
 @export var tower_data: TowerData
 
 #currently only range_three is being used, but if we implement more enemies/want the tower to focus on closer enemies instead of ones that have existed longer then should use smaller ranges too.
@@ -16,6 +16,8 @@ const bulletScene = preload("res://game/data/towers/bullet.tscn")
 @export var twrMesh: MeshInstance3D
 @export var twrHitParticle: PackedScene
 @export var turnRate := 5
+@export var muzzle: Marker3D
+@export var twrShotParticle: PackedScene
 
 @export var shoot_timer: Timer
 
@@ -54,7 +56,13 @@ func _shoot() -> void:
 	var bulletInstance := bulletScene.instantiate()
 	bulletInstance.targetEnemy = targetEnemy
 	add_sibling(bulletInstance)
-	bulletInstance.global_transform = self.global_transform
+	var spawn := muzzle.global_transform if muzzle else global_transform
+	bulletInstance.global_transform = spawn
 	bulletInstance.damage = twrDamage
 	bulletInstance.bulletSpeed = twrBulletSpeed
 	bulletInstance.hitParticle = twrHitParticle
+
+	if twrShotParticle:
+		var flash := twrShotParticle.instantiate() as Node3D
+		get_tree().current_scene.add_child(flash)
+		flash.global_transform = spawn

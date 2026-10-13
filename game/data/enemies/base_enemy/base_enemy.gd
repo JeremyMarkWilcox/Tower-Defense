@@ -19,6 +19,10 @@ enum State { MOVING, ATTACKING }
 @export_range(0.1, 5.0, 0.05) var anim_speed := 1.0
 ## Optional: animation to play once this enemy reaches the Stronghold. Leave empty to keep walking.
 @export var attack_animation: StringName
+## Spawned where the enemy dies. Set once in base_enemy.tscn; override per enemy if needed.
+@export var death_effect: PackedScene
+## Lifts the effect off the ground to roughly the middle of the body.
+@export var death_effect_height := 0.8
 
 var data: EnemyData
 var health := 0
@@ -73,6 +77,19 @@ func take_damage(amount: int) -> void:
 		_is_dead = true
 		died.emit(self)
 		queue_free()
+	if health <= 0:
+		_is_dead = true
+		_spawn_death_effect()
+		died.emit(self)
+		queue_free()
+
+
+func _spawn_death_effect() -> void:
+	if death_effect == null:
+		return
+	var effect := death_effect.instantiate() as Node3D
+	get_tree().current_scene.add_child(effect)  # outlives the enemy, cleaned up on restart
+	effect.global_position = global_position + Vector3.UP * death_effect_height
 
 
 func is_warded() -> bool:
