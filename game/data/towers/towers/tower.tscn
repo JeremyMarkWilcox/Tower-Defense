@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" uid="uid://epix5p0brcyp" path="res://game/data/towers/towers/tower.gd" id="1_6kh8y"]
 [ext_resource type="Resource" uid="uid://byui546w78od6" path="res://game/data/towers/towers/tower_data.tres" id="2_g61ai"]
-[ext_resource type="Script" uid="uid://btnrlonqqiotg" path="res://game/data/towers/particles/hit_particles.gd" id="3_31d26"]
 [ext_resource type="PackedScene" uid="uid://c6bt1b5a61xuv" path="res://assets/3d_art/particle_effects/attacks/standard_hit.tscn" id="3_l3i21"]
-
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xkro6"]
 height = 26.553223
@@ -19,8 +17,6 @@ height = 30.282715
 radius = 25.478027
 
 [sub_resource type="PlaceholderMesh" id="PlaceholderMesh_6kh8y"]
-
-[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_xkro6"]
 
 [node name="Tower" type="Node3D" unique_id=2053335034 node_paths=PackedStringArray("range_one", "range_two", "range_three", "twrMesh", "muzzle", "shoot_timer")]
 script = ExtResource("1_6kh8y")
@@ -62,11 +58,5 @@ shape = SubResource("CylinderShape3D_rengx")
 [node name="TowerMesh" type="MeshInstance3D" parent="." unique_id=1721241029]
 mesh = SubResource("PlaceholderMesh_6kh8y")
 
-[node name="HitParticles" type="CPUParticles3D" parent="." unique_id=852741463]
-emitting = false
-one_shot = true
-mesh = SubResource("PlaceholderMesh_xkro6")
-script = ExtResource("3_31d26")
-
 [node name="Muzzle" type="Marker3D" parent="." unique_id=1695593878]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8984121, 1.3987412)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -2)

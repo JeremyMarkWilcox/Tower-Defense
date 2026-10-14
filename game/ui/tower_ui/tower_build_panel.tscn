@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b0ihbus3uvtu0"]
 
 [ext_resource type="Theme" uid="uid://docepy01vs1ci" path="res://assets/theme/tower-defense_theme.tres" id="1_mn7y1"]
-[ext_resource type="Script" uid="uid://d1p7yp5iyfvo2" path="res://game/ui/tower_ui/tower_shop.gd" id="2_t5nre"]
+[ext_resource type="Script" uid="uid://d1p7yp5iyfvo2" path="res://game/ui/tower_ui/tower_vuild_panel.gd" id="2_t5nre"]
 
 [node name="TowerBuildPanel" type="PanelContainer" unique_id=501736015 node_paths=PackedStringArray("title_label", "build_buttons", "close_button")]
 custom_minimum_size = Vector2(500, 550)

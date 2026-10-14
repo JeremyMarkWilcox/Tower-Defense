@@ -1,16 +1,69 @@
 [gd_scene format=3 uid="uid://ejbtcg4bo146"]
 
+[ext_resource type="Script" uid="uid://dqj0pwa85anqo" path="res://game/data/towers/particles/OneShotEffect.gd" id="1_3b0kc"]
 [ext_resource type="Texture2D" uid="uid://dx8yt14bos60" path="res://assets/2d_art/smoke_puffs.png" id="1_pqqbr"]
+[ext_resource type="Texture2D" uid="uid://chllnmbdgvx2d" path="res://assets/2d_art/fire.png" id="3_6qqvd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3jnb4"]
 transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.5764706)
 albedo_texture = ExtResource("1_pqqbr")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_xkro6"]
 material = SubResource("StandardMaterial3D_3jnb4")
 
-[node name="StandardShoot" type="Node3D" unique_id=834614202]
+[sub_resource type="Gradient" id="Gradient_3b0kc"]
+colors = PackedColorArray(0.25275356, 0.25275356, 0.25275356, 1, 0.5372549, 0.5372549, 0.5372549, 0)
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=884524686]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4gaj"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_6qqvd")
+detail_blend_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_ra2i3"]
+material = SubResource("StandardMaterial3D_g4gaj")
+size = Vector2(1, 2)
+orientation = 1
+
+[sub_resource type="Curve" id="Curve_otjlk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_6qqvd"]
+colors = PackedColorArray(1, 0.7019608, 0.2784314, 1, 1, 0.7019608, 0.2784314, 0)
+
+[node name="StandardShoot" type="Node3D" unique_id=834614202]
+script = ExtResource("1_3b0kc")
+
+[node name="Smoke" type="CPUParticles3D" parent="." unique_id=884524686]
 emitting = false
+lifetime = 0.5
+explosiveness = 0.9
 mesh = SubResource("QuadMesh_xkro6")
+direction = Vector3(1, 0, 1)
+spread = 20.0
+gravity = Vector3(0, 0.5, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+damping_min = 4.0
+damping_max = 4.0
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+color_ramp = SubResource("Gradient_3b0kc")
+
+[node name="Flash" type="CPUParticles3D" parent="." unique_id=183510000]
+emitting = false
+amount = 2
+lifetime = 0.01
+explosiveness = 1.0
+local_coords = true
+mesh = SubResource("QuadMesh_ra2i3")
+scale_amount_curve = SubResource("Curve_otjlk")
+color_ramp = SubResource("Gradient_6qqvd")
