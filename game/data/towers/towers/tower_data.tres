@@ -5,23 +5,29 @@
 [ext_resource type="PackedScene" uid="uid://max4pe5f8vqo" path="res://game/data/towers/bullet/visuals/cannon_ball.tscn" id="2_8m7gp"]
 [ext_resource type="PackedScene" uid="uid://dl7btnuthvvlb" path="res://assets/3d_art/towers/Firelvl1.glb" id="2_as6rv"]
 [ext_resource type="PackedScene" uid="uid://cyn45b55j6a6x" path="res://assets/3d_art/particle_effects/attacks/fire_hit.tscn" id="2_r20n7"]
-[ext_resource type="PackedScene" uid="uid://dm6ojjrnrnkqg" path="res://assets/3d_art/towers/Icelvl1.glb" id="3_co70p"]
 [ext_resource type="PackedScene" uid="uid://6xr5g0kcstpl" path="res://game/data/towers/bullet/visuals/fireball.tscn" id="3_d81vh"]
+[ext_resource type="PackedScene" uid="uid://c6bt1b5a61xuv" path="res://assets/3d_art/particle_effects/attacks/cannon_hit.tscn" id="3_ec85p"]
 [ext_resource type="PackedScene" uid="uid://cq6n43g7ad7iv" path="res://assets/3d_art/particle_effects/attacks/ice_hit.tscn" id="4_ldq5b"]
+[ext_resource type="PackedScene" uid="uid://dcnixmhr20vy4" path="res://assets/3d_art/towers/FireTowerlvl2.glb" id="6_d81vh"]
 [ext_resource type="PackedScene" uid="uid://bvh7wpjavnwmp" path="res://game/data/towers/bullet/visuals/ice_shard.tscn" id="6_ec85p"]
-[ext_resource type="PackedScene" uid="uid://c6bt1b5a61xuv" path="res://assets/3d_art/particle_effects/attacks/standard_hit.tscn" id="7_bxgwe"]
-[ext_resource type="PackedScene" uid="uid://ejbtcg4bo146" path="res://assets/3d_art/particle_effects/attacks/standard_shoot.tscn" id="8_lln0y"]
+[ext_resource type="PackedScene" uid="uid://dfqwo7pdhjwkd" path="res://game/data/towers/towers/icelvl_1.tscn" id="10_d81vh"]
+[ext_resource type="PackedScene" uid="uid://djrpki6vu1667" path="res://game/data/towers/towers/ice_towerlevel_2.tscn" id="11_d81vh"]
+[ext_resource type="PackedScene" uid="uid://ejbtcg4bo146" path="res://assets/3d_art/particle_effects/attacks/cannon_shoot.tscn" id="13_ec85p"]
 
 [resource]
 script = ExtResource("1_qm3ln")
 basiclvl_1 = ExtResource("1_pymm2")
 firelvl_1 = ExtResource("2_as6rv")
-icelvl_1 = ExtResource("3_co70p")
-standard_hit = ExtResource("7_bxgwe")
+firelvl_2 = ExtResource("6_d81vh")
+icelvl_1 = ExtResource("10_d81vh")
+icelvl_2 = ExtResource("11_d81vh")
+cannon_hit = ExtResource("3_ec85p")
 fire_hit = ExtResource("2_r20n7")
 ice_hit = ExtResource("4_ldq5b")
 cannon_bullet = ExtResource("2_8m7gp")
 fire_bullet = ExtResource("3_d81vh")
 ice_bullet = ExtResource("6_ec85p")
-standard_shoot = ExtResource("8_lln0y")
+cannon_shoot = ExtResource("13_ec85p")
+ice_shoot = ExtResource("4_ldq5b")
+fire_shoot = ExtResource("2_r20n7")
 metadata/_custom_type_script = "uid://dxhmx4118pfd3"

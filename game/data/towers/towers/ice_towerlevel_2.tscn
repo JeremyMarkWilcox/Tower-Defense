@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://djrpki6vu1667"]
+
+[ext_resource type="PackedScene" uid="uid://cdi6agu61euh7" path="res://assets/3d_art/towers/IceTowerlevel2.glb" id="1_1whe5"]
+[ext_resource type="PackedScene" uid="uid://dsbmpjxk1h3ke" path="res://game/data/towers/towers/ice_orbit.tscn" id="2_hey7k"]
+[ext_resource type="PackedScene" uid="uid://pr07c3mxeg85" path="res://game/data/towers/towers/ice_orbit_reversed.tscn" id="3_ph2o4"]
+
+[node name="IceTowerlevel2" unique_id=1882837467 instance=ExtResource("1_1whe5")]
+
+[node name="IceOrbit" parent="." index="19" unique_id=51408548 instance=ExtResource("2_hey7k")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.5968973, 0)
+spin_speed = 120.0
+bob_height = 0.5
+bob_speed = 3.0
+
+[node name="IceOrbitReversed" parent="." index="20" unique_id=1549861514 instance=ExtResource("3_ph2o4")]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0.5460516, 0)

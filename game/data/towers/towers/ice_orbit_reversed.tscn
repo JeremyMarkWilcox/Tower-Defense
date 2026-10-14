@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://pr07c3mxeg85"]
+
+[ext_resource type="Script" uid="uid://cgf6yqjsstggg" path="res://game/data/towers/towers/ice_orbit.gd" id="1_4ab71"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eye20"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.7294118, 1, 1, 0.63529414)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pf76u"]
+material = SubResource("StandardMaterial3D_eye20")
+top_radius = 0.0
+bottom_radius = 0.12
+height = 0.6
+
+[node name="IceOrbitReversed" type="Node3D" unique_id=1549861514]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)
+script = ExtResource("1_4ab71")
+spin_speed = -75.0
+bob_height = 0.1
+bob_speed = 1.0
+
+[node name="IceShard1" type="MeshInstance3D" parent="." unique_id=1549558757]
+transform = Transform3D(-0.94448096, 0.21791998, 0.24590042, 0.27760896, 0.12894034, 0.952002, 0.17575377, 0.96741194, -0.18227816, 1.5484041, 1.2061785, 0)
+mesh = SubResource("CylinderMesh_pf76u")
+
+[node name="IceShard2" type="MeshInstance3D" parent="." unique_id=1168479572]
+transform = Transform3D(0.9592572, 0.28116837, 0.02775063, -0.022413785, -0.022179764, 0.99950266, 0.28164402, -0.95940197, -0.014974046, -1.918691, 1.058939, 0.005286932)
+mesh = SubResource("CylinderMesh_pf76u")
+
+[node name="IceShard3" type="MeshInstance3D" parent="." unique_id=317879860]
+transform = Transform3D(0.6502271, -0.7528424, -0.102143064, -0.75082177, -0.65729976, 0.06499348, -0.11606856, 0.034430776, -0.9926444, 0, 1.4641626, 1.6197205)
+mesh = SubResource("CylinderMesh_pf76u")
+
+[node name="IceShard4" type="MeshInstance3D" parent="." unique_id=1352683677]
+transform = Transform3D(-0.6342732, 0.7347568, 0.24047865, 0.03705742, -0.28180212, 0.9587568, 0.7722206, 0.61702514, 0.1515113, 0, 0.9764749, -2.0176766)
+mesh = SubResource("CylinderMesh_pf76u")

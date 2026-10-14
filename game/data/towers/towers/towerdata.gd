@@ -16,7 +16,7 @@ const ICE := 2
 @export var icelvl_2: PackedScene
 
 @export_group("Hit Effects")
-@export var standard_hit: PackedScene
+@export var cannon_hit: PackedScene
 @export var fire_hit: PackedScene
 @export var ice_hit: PackedScene
 
@@ -26,7 +26,9 @@ const ICE := 2
 @export var ice_bullet: PackedScene
 
 @export_group("Shot Effects")
-@export var standard_shoot: PackedScene
+@export var cannon_shoot: PackedScene
+@export var ice_shoot: PackedScene
+@export var fire_shoot: PackedScene
 
 # One row per type; one entry per level on that path.
 var costData: Array[Array] = [
@@ -72,11 +74,19 @@ func get_mesh(type: int, level: int) -> PackedScene:
 
 
 func get_hit_particle(type: int, _level: int) -> PackedScene:
-	return [standard_hit, fire_hit, ice_hit][type]
+	return [cannon_hit, fire_hit, ice_hit][type]
 
 
-func get_shot_particle(_type: int, _level: int) -> PackedScene:
-	return standard_shoot  # one shared muzzle flash for now
+func get_shot_particle(type: int, _level: int) -> PackedScene:
+	var scene: PackedScene
+	match type:
+		FIRE:
+			scene = fire_shoot
+		ICE:
+			scene = ice_shoot
+		_:
+			scene = cannon_shoot
+	return scene if scene else cannon_shoot  # fall back if an export is empty
 
 
 func get_bullet_mesh(type: int, _level: int) -> PackedScene:

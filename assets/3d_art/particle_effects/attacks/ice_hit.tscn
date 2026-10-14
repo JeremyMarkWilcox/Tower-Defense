@@ -19,7 +19,7 @@ material = SubResource("StandardMaterial3D_81sm2")
 
 [sub_resource type="Gradient" id="Gradient_xt0fm"]
 offsets = PackedFloat32Array(0, 0.37175325, 1)
-colors = PackedColorArray(0.8666667, 0.972549, 1, 1, 0.4745098, 0.79607844, 0.9098039, 1, 0.2627451, 0.53333336, 0.7294118, 0)
+colors = PackedColorArray(0, 0.7411765, 1, 0.7254902, 0.4745098, 0.79607844, 0.9098039, 0.56078434, 0.2627451, 0.53333336, 0.7294118, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5nmck"]
 transparency = 1
@@ -30,34 +30,38 @@ albedo_texture = ExtResource("2_xt0fm")
 
 [sub_resource type="QuadMesh" id="QuadMesh_pje2c"]
 material = SubResource("StandardMaterial3D_5nmck")
+orientation = 0
 
 [node name="IceHit" type="Node3D" unique_id=1387893528]
 script = ExtResource("1_5nmck")
 
 [node name="Frost" type="CPUParticles3D" parent="." unique_id=67319450]
-emitting = false
 amount = 1
-lifetime = 0.1
+lifetime = 0.4
 local_coords = true
 mesh = SubResource("QuadMesh_lnrxn")
+direction = Vector3(0, 0, -1)
 spread = 29.41
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 2.0
-initial_velocity_max = 3.0
+gravity = Vector3(0, 1, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+damping_min = 0.2
+damping_max = 0.4
 scale_amount_min = 0.15
 scale_amount_max = 0.3
 color_ramp = SubResource("Gradient_xt0fm")
 
 [node name="IceShard" type="CPUParticles3D" parent="." unique_id=376621290]
-emitting = false
-amount = 3
-lifetime = 0.35000000000000003
+visible = false
+amount = 12
+lifetime = 0.98
 local_coords = true
 mesh = SubResource("QuadMesh_pje2c")
+direction = Vector3(0, 0, -1)
 spread = 21.37
 gravity = Vector3(0, -5, 0)
 initial_velocity_min = 5.0
 initial_velocity_max = 7.0
-scale_amount_min = 0.15
-scale_amount_max = 0.3
+scale_amount_min = 0.25
+scale_amount_max = 0.75
 color_ramp = SubResource("Gradient_xt0fm")

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dfqwo7pdhjwkd"]
+
+[ext_resource type="PackedScene" uid="uid://dm6ojjrnrnkqg" path="res://assets/3d_art/towers/Icelvl1.glb" id="1_ortfk"]
+[ext_resource type="PackedScene" uid="uid://dsbmpjxk1h3ke" path="res://game/data/towers/towers/ice_orbit.tscn" id="2_0lqvs"]
+
+[node name="Icelvl1" unique_id=867320742 instance=ExtResource("1_ortfk")]
+
+[node name="IceOrbit" parent="." index="6" unique_id=51408548 instance=ExtResource("2_0lqvs")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.27196562, 0)
+bob_height = 0.5
+bob_speed = 3.0

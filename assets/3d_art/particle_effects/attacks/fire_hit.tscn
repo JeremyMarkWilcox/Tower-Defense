@@ -31,6 +31,7 @@ albedo_texture = ExtResource("2_aqd82")
 
 [sub_resource type="QuadMesh" id="QuadMesh_mhvfb"]
 material = SubResource("StandardMaterial3D_5e03w")
+orientation = 0
 
 [node name="FireHit" type="Node3D" unique_id=1387893528]
 script = ExtResource("1_yf4iv")
@@ -59,6 +60,7 @@ explosiveness = 1.0
 randomness = 0.94
 local_coords = true
 mesh = SubResource("QuadMesh_mhvfb")
+direction = Vector3(0, 0, -1)
 spread = 26.31
 gravity = Vector3(0, -5, 0)
 initial_velocity_min = 5.0
