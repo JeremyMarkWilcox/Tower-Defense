@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cq6n43g7ad7iv"]
 
+[ext_resource type="Script" uid="uid://dqj0pwa85anqo" path="res://game/data/towers/particles/OneShotEffect.gd" id="1_5nmck"]
 [ext_resource type="Texture2D" uid="uid://dx8yt14bos60" path="res://assets/2d_art/smoke_puffs.png" id="1_lmrdi"]
 [ext_resource type="Texture2D" uid="uid://rckp6dgpnhy8" path="res://assets/2d_art/ice_shard.png" id="2_xt0fm"]
 
@@ -31,11 +32,12 @@ albedo_texture = ExtResource("2_xt0fm")
 material = SubResource("StandardMaterial3D_5nmck")
 
 [node name="IceHit" type="Node3D" unique_id=1387893528]
+script = ExtResource("1_5nmck")
 
 [node name="Frost" type="CPUParticles3D" parent="." unique_id=67319450]
 emitting = false
 amount = 1
-lifetime = 0.09999999999999999
+lifetime = 0.1
 local_coords = true
 mesh = SubResource("QuadMesh_lnrxn")
 spread = 29.41

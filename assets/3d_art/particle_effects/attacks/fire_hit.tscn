@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cyn45b55j6a6x"]
 
 [ext_resource type="Texture2D" uid="uid://dx8yt14bos60" path="res://assets/2d_art/smoke_puffs.png" id="1_xtkq3"]
+[ext_resource type="Script" uid="uid://dqj0pwa85anqo" path="res://game/data/towers/particles/OneShotEffect.gd" id="1_yf4iv"]
 [ext_resource type="Texture2D" uid="uid://chllnmbdgvx2d" path="res://assets/2d_art/fire.png" id="2_aqd82"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81sm2"]
@@ -32,6 +33,7 @@ albedo_texture = ExtResource("2_aqd82")
 material = SubResource("StandardMaterial3D_5e03w")
 
 [node name="FireHit" type="Node3D" unique_id=1387893528]
+script = ExtResource("1_yf4iv")
 
 [node name="Smoke" type="CPUParticles3D" parent="." unique_id=67319450]
 emitting = false

@@ -5,6 +5,10 @@ extends Node3D
 
 
 func _ready() -> void:
+	_fire.call_deferred()  # wait until whoever spawned us has set our position
+
+
+func _fire() -> void:
 	var longest := 0.0
 	for child in get_children():
 		var particles := child as CPUParticles3D

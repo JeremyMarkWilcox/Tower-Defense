@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dgf785mw3toay"]
 
 [ext_resource type="Script" uid="uid://ba5o3g0hspol2" path="res://game/data/enemies/base_enemy/base_enemy.gd" id="1_2o6uh"]
-[ext_resource type="PackedScene" uid="uid://1gufnqo3khmk" path="res://assets/3d_art/particle_effects/death_smoke.tscn" id="2_0gayg"]
+[ext_resource type="PackedScene" uid="uid://1gufnqo3khmk" path="res://assets/3d_art/particle_effects/deaths/death_skeleton.tscn" id="2_0gayg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ra2i3"]
 
