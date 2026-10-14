@@ -26,17 +26,8 @@ death_effect = ExtResource("2_txtyp")
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("3_abdfr")
 
-[node name="demon" parent="FrogMesh" index="0" unique_id=1568694031]
-transform = Transform3D(1, 0, 0, 0, 0.9993324, 0, 0, 0, 1, 0, 5.2637663, 0)
-
-[node name="arms" parent="FrogMesh/demon/body/body2" parent_id_path=PackedInt32Array(281235633, 1520978104) index="1" unique_id=1007284898]
-transform = Transform3D(1, 0, 0, 0, 0.9968312, 0, 0, 0, 1, 0, -0.4538961, 0)
-
-[node name="head" parent="FrogMesh/demon/body/body2" parent_id_path=PackedInt32Array(281235633, 1520978104) index="2" unique_id=639893344]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13644478, 0)
-
-[node name="legs" parent="FrogMesh/demon/body" parent_id_path=PackedInt32Array(281235633, 423449298) index="1" unique_id=1550264928]
-transform = Transform3D(1, 0, 0, 0, 1.0436623, 0, 0, 0, 1, 0, -0.46020228, 0)
+[node name="AnimationPlayer" parent="FrogMesh" index="1" unique_id=1561867502]
+autoplay = &"animation"
 
 [node name="Hitbox" parent="." index="1" unique_id=1439913594]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.34316993)

@@ -20,6 +20,9 @@ func _on_lull_requested(lull: LullDefinition) -> void:
 	if _has_boss(lull):
 		_show_once.call_deferred(&"boss", "Something is coming",
 				"Its thread [b]can't be cut[/b].\nClear the others while you can.")
+	elif lull.spin_speed != 0.0 and _seen.has(&"threads"):
+		_show_once.call_deferred(&"spin", "Turning Threads",
+				"In some levels threads circle the Stronghold.\nWhen a thread is cut an enemy group appears [b]where its thread points.[/b] So like before you want to spread the groups out, but also try to cut when the thread faces your towers.\n\n[b]Double Duty Time![/b]" )
 	else:
 		_show_once.call_deferred(&"threads", "Signal Threads",
 				"Each thread holds enemies in the dark.\n[b]Click[/b] one to release its group now.\nWhen the timer runs out, [b]every uncut thread swarms at once.[/b]")

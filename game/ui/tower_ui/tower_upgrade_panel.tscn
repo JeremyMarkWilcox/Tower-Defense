@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://docepy01vs1ci" path="res://assets/theme/tower-defense_theme.tres" id="1_ptrbw"]
 [ext_resource type="Script" uid="uid://cj1j6fufnthmy" path="res://game/ui/tower_ui/tower_upgrade_panel.gd" id="2_ptrbw"]
 
-[node name="TowerBuildPanel" type="PanelContainer" unique_id=501736015 node_paths=PackedStringArray("title_label", "stats_label", "upgrade_button", "close_button")]
+[node name="TowerUpgradePanel" type="PanelContainer" unique_id=501736015 node_paths=PackedStringArray("title_label", "stats_label", "upgrade_button", "fire_button", "ice_button", "close_button")]
 custom_minimum_size = Vector2(350, 0)
 anchors_preset = 6
 anchor_left = 1.0
@@ -21,6 +21,8 @@ script = ExtResource("2_ptrbw")
 title_label = NodePath("MarginContainer/VBoxContainer/Title")
 stats_label = NodePath("MarginContainer/VBoxContainer/Stats")
 upgrade_button = NodePath("MarginContainer/VBoxContainer/UpgradeButton")
+fire_button = NodePath("MarginContainer/VBoxContainer/PathRow/FireButton")
+ice_button = NodePath("MarginContainer/VBoxContainer/PathRow/IceButton")
 close_button = NodePath("MarginContainer/VBoxContainer/CloseButton")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1788028315]
@@ -44,6 +46,17 @@ horizontal_alignment = 1
 
 [node name="Spacer2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1201733396]
 layout_mode = 2
+
+[node name="PathRow" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=202720800]
+layout_mode = 2
+
+[node name="FireButton" type="Button" parent="MarginContainer/VBoxContainer/PathRow" unique_id=2049773488]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="IceButton" type="Button" parent="MarginContainer/VBoxContainer/PathRow" unique_id=452861030]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="UpgradeButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1088909369]
 layout_mode = 2

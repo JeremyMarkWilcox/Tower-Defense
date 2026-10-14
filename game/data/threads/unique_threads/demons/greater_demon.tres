@@ -8,4 +8,6 @@ script = ExtResource("1_ptdfy")
 enemy = ExtResource("1_b6pul")
 count = 1
 can_cut = false
+use_screen_angle = true
+screen_angle = -45.0
 metadata/_custom_type_script = "uid://dv1yo7v82leod"

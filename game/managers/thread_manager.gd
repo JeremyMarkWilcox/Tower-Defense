@@ -93,11 +93,21 @@ func _process(delta: float) -> void:
 		return
 	_cooldown_left = maxf(_cooldown_left - delta, 0.0)
 	_time_left = maxf(_time_left - delta, 0.0)
+	if _lull.spin_speed != 0.0:
+		_spin_threads(delta)
 	var urgency := 1.0 - _time_left / _lull.duration
 	for thread in _threads:
 		thread.set_urgency(urgency)
 	if _time_left <= 0.0:
 		_swarm()
+		
+func _spin_threads(delta: float) -> void:
+	var turn := deg_to_rad(_lull.spin_speed) * delta
+	for thread in _threads:
+		var dir := thread.direction.rotated(Vector3.UP, turn)
+		thread.direction = dir
+		thread.global_position = center.global_position + dir * _wall_distance(dir)  # stays on the Stronghold's wall
+		thread.basis = Basis.looking_at(dir, Vector3.UP)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -158,11 +168,24 @@ func _spawn_thread(data: SignalThreadData, screen_angle: float) -> void:
 	thread.global_position = center.global_position + direction * wall
 	var edge_distance := ScreenEdge.distance(camera, center.global_position, direction, thread_length)
 	var length := edge_distance - edge_margin - wall
+	if _lull.spin_speed != 0.0:
+		length = _spin_safe_length()  # one length that fits at every angle
 	var color := data.enemy.thread_color if data.enemy else default_color
 	thread.setup(data, direction, maxf(length, 1.0), color)
 	thread.hovered.connect(_on_thread_hovered)
 	thread.clicked.connect(_on_thread_clicked)
 	_threads.append(thread)
+	
+	
+	## For spinning lulls: a thread length that stays on screen at any angle.
+## Uses the nearest screen edge and the farthest point of the Stronghold's wall.
+func _spin_safe_length() -> float:
+	var nearest_edge := INF
+	for degrees: float in [0.0, 90.0, 180.0, 270.0]:
+		var dir := _screen_to_world(degrees)
+		nearest_edge = minf(nearest_edge, ScreenEdge.distance(camera, center.global_position, dir, thread_length))
+	var farthest_wall := stronghold_half_size.length() if stronghold_half_size != Vector2.ZERO else start_offset
+	return maxf(nearest_edge - edge_margin - farthest_wall, 1.0)
 
 
 func _select(index: int) -> void:

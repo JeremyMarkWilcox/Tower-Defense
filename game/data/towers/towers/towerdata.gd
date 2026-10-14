@@ -1,65 +1,83 @@
 class_name TowerData
 extends Resource
+## Stats and assets for every tower. Every socket builds a Cannon; the Cannon upgrades
+## into Fire or Ice level 1, which upgrades once more to level 2.
+## costData[type][level] is the price of reaching that tower (building or upgrading into it).
 
+const CANNON := 0
+const FIRE := 1
+const ICE := 2
+
+@export_group("Models")
 @export var basiclvl_1: PackedScene
 @export var firelvl_1: PackedScene
+@export var firelvl_2: PackedScene
 @export var icelvl_1: PackedScene
+@export var icelvl_2: PackedScene
 
+@export_group("Hit Effects")
 @export var standard_hit: PackedScene
 @export var fire_hit: PackedScene
 @export var ice_hit: PackedScene
 
+@export_group("Bullets")
 @export var cannon_bullet: PackedScene
 @export var fire_bullet: PackedScene
 @export var ice_bullet: PackedScene
 
+@export_group("Shot Effects")
 @export var standard_shoot: PackedScene
 
-
-var costData : Array[Array] = [
-	[10,20,30],
-	[20,40,80],
-	[20,40,80]
+# One row per type; one entry per level on that path.
+var costData: Array[Array] = [
+	[10],      # Cannon: build
+	[20, 40],  # Fire: Cannon -> Fire 1, Fire 1 -> Fire 2
+	[20, 40],  # Ice:  Cannon -> Ice 1,  Ice 1 -> Ice 2
 ]
 
-var damageData : Array[Array] = [
-	[4,8,12],
-	[2,4,6],
-	[8,16,32]
+var damageData: Array[Array] = [
+	[4],
+	[2, 4],
+	[8, 16],
 ]
 
-var fireRateData : Array[Array] = [
-	[.8,.7,.6],
-	[.6,.5,.4],
-	[1,1.2,1.4]
+## Seconds between shots (lower = faster).
+var fireRateData: Array[Array] = [
+	[0.8],
+	[0.6, 0.5],
+	[1.0, 1.2],
 ]
 
-var bulletSpeedData : Array[Array] = [
-	[20,40,60],
-	[20,40,60],
-	[20,40,60]
+var bulletSpeedData: Array[Array] = [
+	[20],
+	[20, 40],
+	[20, 40],
 ]
 
-# Use a function instead of a variable array so it evaluates live
+
+## The highest level index on a type's path (Cannon 0, Fire/Ice 1).
+func max_level(type: int) -> int:
+	return costData[type].size() - 1
+
+
 func get_mesh(type: int, level: int) -> PackedScene:
-	var matching_array := [
-		[basiclvl_1, basiclvl_1, basiclvl_1],
-		[firelvl_1, firelvl_1, firelvl_1],
-		[icelvl_1, icelvl_1, icelvl_1]
+	var meshes := [
+		[basiclvl_1],
+		[firelvl_1, firelvl_2],
+		[icelvl_1, icelvl_2],
 	]
-	return matching_array[type][level]
+	# Until a level 2 model exists, fall back to level 1 so the game still runs.
+	var mesh: PackedScene = meshes[type][level]
+	return mesh if mesh else meshes[type][0]
 
-func get_hit_particle(type: int, level: int) -> PackedScene:
-	var matching_array := [
-		[standard_hit, standard_hit, standard_hit],
-		[fire_hit, fire_hit, fire_hit],
-		[ice_hit, ice_hit, ice_hit]
-	]
-	return matching_array[type][level]
-	
+
+func get_hit_particle(type: int, _level: int) -> PackedScene:
+	return [standard_hit, fire_hit, ice_hit][type]
+
+
 func get_shot_particle(_type: int, _level: int) -> PackedScene:
 	return standard_shoot  # one shared muzzle flash for now
-	
+
 
 func get_bullet_mesh(type: int, _level: int) -> PackedScene:
-	return [cannon_bullet, fire_bullet, ice_bullet][type]  # same look at every level for now
+	return [cannon_bullet, fire_bullet, ice_bullet][type]
