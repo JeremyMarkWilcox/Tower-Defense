@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://lvbm281h2vww"]
 
 [ext_resource type="PackedScene" uid="uid://dgf785mw3toay" path="res://game/data/enemies/base_enemy/base_enemy.tscn" id="1_fel5c"]
+[ext_resource type="Script" uid="uid://b2eg58ugf8pie" path="res://game/data/enemies/enemy_components/hopping_enemy.gd" id="2_7qup6"]
 [ext_resource type="PackedScene" uid="uid://brghpujytf1le" path="res://assets/3d_art/enemies/frog.gltf" id="2_fef88"]
 [ext_resource type="PackedScene" uid="uid://chi77ytlbc0cf" path="res://assets/3d_art/particle_effects/deaths/death_greater_demon.tscn" id="2_txtyp"]
-[ext_resource type="Script" uid="uid://dwan00dwov0j0" path="res://game/data/enemies/enemy_components/WalkWobble.gd" id="3_abdfr"]
+[ext_resource type="PackedScene" uid="uid://1gufnqo3khmk" path="res://assets/3d_art/particle_effects/deaths/death_skeleton.tscn" id="3_tauwm"]
+[ext_resource type="PackedScene" uid="uid://b18l2ac172kr7" path="res://assets/3d_art/particle_effects/deaths/death_lesser_demon.tscn" id="4_7603a"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_abdfr"]
 radius = 4.0
@@ -18,15 +20,21 @@ material = SubResource("StandardMaterial3D_otjlk")
 radius = 2.0
 height = 3.0
 
-[node name="GreaterDemon" unique_id=1427662883 node_paths=PackedStringArray("anim_player") instance=ExtResource("1_fel5c")]
+[node name="GreaterDemon" unique_id=1427662883 node_paths=PackedStringArray("model", "anim_player") instance=ExtResource("1_fel5c")]
+script = ExtResource("2_7qup6")
+takeoff = 0.3
+landing = 0.78
+landing_effect = ExtResource("3_tauwm")
+model = NodePath("FrogMesh")
+slam_extra_height = 2.5
+slam_effect = ExtResource("4_7603a")
 anim_player = NodePath("FrogMesh/AnimationPlayer")
 death_effect = ExtResource("2_txtyp")
 
 [node name="FrogMesh" parent="." index="0" unique_id=281235633 instance=ExtResource("2_fef88")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
-script = ExtResource("3_abdfr")
 
-[node name="AnimationPlayer" parent="FrogMesh" index="1" unique_id=1561867502]
+[node name="AnimationPlayer" parent="FrogMesh" index="1" unique_id=2088635126]
 autoplay = &"animation"
 
 [node name="Hitbox" parent="." index="1" unique_id=1439913594]

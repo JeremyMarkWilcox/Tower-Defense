@@ -74,14 +74,14 @@ func _physics_process(delta: float) -> void:
 			_attack(delta)
 	#status effects
 	freezeTimer -= delta
-	burnTimer -= delta
-	burnTick -= delta
-	if (freezeTimer < 0):
-		speed_multiplier = 1
-	if (burnTimer < 0):
-		if (burnTick < 0.0):
-			take_damage(burnDamage)
-			burnTick = .5
+	if freezeTimer < 0.0:
+		speed_multiplier = 1.0
+	if burnTimer > 0.0:
+		burnTimer -= delta
+		burnTick -= delta
+		if burnTick <= 0.0:
+			burnTick += 0.5
+			take_damage(roundi(burnDamage))
 
 func take_damage(amount: int) -> void:
 	if _is_dead or amount <= 0:
@@ -89,25 +89,25 @@ func take_damage(amount: int) -> void:
 	health -= maxi(1, roundi(amount * damage_taken_multiplier))
 	if health <= 0:
 		_is_dead = true
-		died.emit(self)
-		queue_free()
-	if health <= 0:
-		_is_dead = true
 		_spawn_death_effect()
 		died.emit(self)
 		queue_free()
+		
 
+## Slows don't stack: the strongest active slow wins, and a new hit refreshes the duration.
 func slow(time: float, percent: float) -> void:
-	if (freezeTimer < time):
-		freezeTimer = time
-		speed_multiplier = 1 - (percent * speed_multiplier)
-		anim_speed = 1 - (percent * anim_speed)
+	freezeTimer = maxf(freezeTimer, time)
+	speed_multiplier = minf(speed_multiplier, 1.0 - clampf(percent, 0.0, 0.9))
 	#apply freeze particles
 	
+## Burns don't stack: a new hit refreshes the duration and keeps the higher damage.
 func burn(time: float, damage: float) -> void:
-	if (burnTimer < time):
-		burnTimer = time
+	if burnTimer <= 0.0:
+		burnTick = 0.5  # first tick half a second after catching fire
 		burnDamage = damage
+	else:
+		burnDamage = maxf(burnDamage, damage)
+	burnTimer = maxf(burnTimer, time)
 	#apply fire particles
 
 
