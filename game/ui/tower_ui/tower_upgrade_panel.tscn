@@ -101,6 +101,7 @@ autowrap_mode = 3
 
 [node name="UpgradeButton" type="Button" parent="MarginContainer/VBoxContainer/FireOption/Info/Details" unique_id=725429250]
 custom_minimum_size = Vector2(100, 40)
+custom_maximum_size = Vector2(-1, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -117,6 +118,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("5_wu06l")
+tower_type = 2
 portrait = NodePath("Info/Portrait")
 name_label = NodePath("Info/Details/Name")
 description_label = NodePath("Info/Details/Description")
@@ -165,6 +167,7 @@ autowrap_mode = 3
 
 [node name="UpgradeButton" type="Button" parent="MarginContainer/VBoxContainer/IceOption/Info/Details" unique_id=1088909369]
 custom_minimum_size = Vector2(110, 40)
+custom_maximum_size = Vector2(-1, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

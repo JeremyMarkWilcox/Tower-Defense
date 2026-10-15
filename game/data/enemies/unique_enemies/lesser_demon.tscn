@@ -29,13 +29,13 @@ script = ExtResource("3_5jpo5")
 sway_degrees = 5.0
 lean_degrees = 2.0
 
-[node name="leg_R" parent="LesserDemonMesh/demon/body/legs" parent_id_path=PackedInt32Array(1830051318, 347250529) index="0" unique_id=1320007429]
+[node name="leg_R" parent="LesserDemonMesh/demon/body/legs" parent_id_path=PackedInt32Array(1830051318, 447299271) index="0" unique_id=1357980406]
 transform = Transform3D(1, 0, 0, 0, 0.90630776, -0.4226183, 0, 0.4226183, 0.90630776, 0, -0.046875, 0.109375)
 
-[node name="Leg_L" parent="LesserDemonMesh/demon/body/legs" parent_id_path=PackedInt32Array(1830051318, 347250529) index="1" unique_id=184968274]
+[node name="Leg_L" parent="LesserDemonMesh/demon/body/legs" parent_id_path=PackedInt32Array(1830051318, 447299271) index="1" unique_id=2132932287]
 transform = Transform3D(0.9998403, -0.0065407814, -0.01662905, 0.014877654, 0.82016224, 0.57193744, 0.009897602, -0.5720934, 0.8201287, 0, -0.046875, -0.21875)
 
-[node name="AnimationPlayer" parent="LesserDemonMesh" index="1" unique_id=1360018224]
+[node name="AnimationPlayer" parent="LesserDemonMesh" index="1" unique_id=1324486385]
 autoplay = &"walk"
 
 [node name="CollisionShape3D" parent="Hitbox" parent_id_path=PackedInt32Array(1439913594) index="0" unique_id=749003341]
