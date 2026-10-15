@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cyyymtcnpcy60"]
 
 [ext_resource type="Script" uid="uid://bsq1ys1w6rko1" path="res://core/ui/end_screen.gd" id="1_ii3hx"]
-[ext_resource type="Theme" uid="uid://big3vhu7k1hbb" path="res://core/theme/base_theme.tres" id="2_chb2t"]
 [ext_resource type="Texture2D" uid="uid://0dmonlip37ou" path="res://assets/2d_art/ui_panel.png" id="2_pdkar"]
 [ext_resource type="PackedScene" uid="uid://ms65ua2jh58q" path="res://game/ui/screens/skull_button.tscn" id="3_v4e4x"]
 
@@ -64,7 +63,6 @@ grow_vertical = 2
 
 [node name="Heading" type="Label" parent="VBoxContainer" unique_id=885659446]
 layout_mode = 2
-theme = ExtResource("2_chb2t")
 theme_type_variation = &"TitleLabel"
 text = "Heading"
 horizontal_alignment = 1

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bc7gq4vhepj5j"]
 
 [ext_resource type="Script" uid="uid://bf3x3u3cism2y" path="res://core/ui/boot.gd" id="1_5bnmk"]
-[ext_resource type="Theme" uid="uid://big3vhu7k1hbb" path="res://core/theme/base_theme.tres" id="2_aivq0"]
 
 [node name="Boot" type="Control" unique_id=1532558089 node_paths=PackedStringArray("prompt_label")]
 layout_mode = 3
@@ -33,7 +32,6 @@ offset_top = -11.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_aivq0")
 theme_type_variation = &"TitleLabel"
 text = "Click to Start"
 horizontal_alignment = 1
