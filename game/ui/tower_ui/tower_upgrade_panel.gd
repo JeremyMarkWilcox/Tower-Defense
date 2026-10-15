@@ -1,25 +1,17 @@
 class_name TowerUpgradePanel
 extends TowerPanel
 ## Shown for a socket with a tower.
-## Cannon: choose the Fire or Ice path. Fire/Ice level 1: upgrade to level 2. Level 2: max.
+## Cannon: both path cards. Fire/Ice: only that path's card (level 2, then max).
 
-@export var title_label: Label
 @export var stats_label: Label
-## Fire/Ice level 1 -> level 2.
-@export var upgrade_button: Button
-## Shown only on a Cannon: the two path choices.
-@export var fire_button: Button
-@export var ice_button: Button
-@export var fire_2_icon: Texture2D
-@export var ice_2_icon: Texture2D
-@export var tower_names: Array[String] = ["Cannon", "Fire", "Ice"]
+@export var fire_option: UpgradeOption
+@export var ice_option: UpgradeOption
 
 
 func _ready() -> void:
 	super()
-	upgrade_button.pressed.connect(_on_upgrade_pressed)
-	fire_button.pressed.connect(_on_path_pressed.bind(TowerData.FIRE))
-	ice_button.pressed.connect(_on_path_pressed.bind(TowerData.ICE))
+	fire_option.chosen.connect(_on_option_chosen)
+	ice_option.chosen.connect(_on_option_chosen)
 
 
 func _refresh() -> void:
@@ -28,56 +20,40 @@ func _refresh() -> void:
 	var data := stronghold.towerdata
 	var type := socket.tower_type
 	var level := socket.tower_level
-	var is_cannon := type == TowerData.CANNON
+	stats_label.text = "Current damage: %d" % data.damageData[type][level]
 
-	fire_button.visible = is_cannon
-	ice_button.visible = is_cannon
-	upgrade_button.visible = not is_cannon
-
-	if is_cannon:
-		title_label.text = tower_names[type]
-		stats_label.text = "Damage %d\nChoose a path:" % data.damageData[type][level]
-		_show_path_button(fire_button, TowerData.FIRE)
-		_show_path_button(ice_button, TowerData.ICE)
+	if type == TowerData.CANNON:
+		_show_option(fire_option, 0)
+		_show_option(ice_option, 0)
 		return
 
-	title_label.text = "%s - Level %d" % [tower_names[type], level + 1]
-	upgrade_button.icon = fire_2_icon if type == TowerData.FIRE else ice_2_icon
+	# On a path: only that path's card stays.
+	fire_option.visible = type == TowerData.FIRE
+	ice_option.visible = type == TowerData.ICE
+	var option := fire_option if type == TowerData.FIRE else ice_option
 	if level >= data.max_level(type):
-		stats_label.text = "Damage %d" % data.damageData[type][level]
-		upgrade_button.text = "Max Level"
-		upgrade_button.disabled = true
+		option.show_max(level)
+	else:
+		_show_option(option, level + 1)
+
+
+func _show_option(option: UpgradeOption, next_level: int) -> void:
+	option.visible = true
+	var cost: int = stronghold.towerdata.costData[option.tower_type][next_level]
+	option.show_level(next_level, cost, gold_manager.can_afford(cost))
+
+
+## Cannon -> Fire 1 / Ice 1, or Fire/Ice 1 -> 2.
+func _on_option_chosen(type: int) -> void:
+	if socket == null or socket.is_empty():
 		return
-
-	stats_label.text = "Damage %d -> %d" % [data.damageData[type][level], data.damageData[type][level + 1]]
-	var cost: int = data.costData[type][level + 1]
-	upgrade_button.text = "Upgrade - %d" % cost
-	upgrade_button.disabled = not gold_manager.can_afford(cost)
-
-
-func _show_path_button(button: Button, type: int) -> void:
-	var cost: int = stronghold.towerdata.costData[type][0]
-	button.text = "%s - %d" % [tower_names[type], cost]
-	button.disabled = not gold_manager.can_afford(cost)
-
-
-## Cannon -> Fire 1 or Ice 1.
-func _on_path_pressed(type: int) -> void:
-	if socket == null or socket.tower_type != TowerData.CANNON:
+	var data := stronghold.towerdata
+	var current := socket.tower_type
+	if current != TowerData.CANNON and current != type:
+		return  # already on the other path
+	var next := 0 if current == TowerData.CANNON else socket.tower_level + 1
+	if next > data.max_level(type):
 		return
-	if gold_manager.try_spend(stronghold.towerdata.costData[type][0]):
-		stronghold.build_tower(socket, type, 0)
-		_refresh()  # stay open, now showing that path's upgrade
-
-
-## Fire/Ice level 1 -> level 2.
-func _on_upgrade_pressed() -> void:
-	if socket == null or socket.is_empty() or socket.tower_type == TowerData.CANNON:
-		return
-	var type := socket.tower_type
-	var next := socket.tower_level + 1
-	if next > stronghold.towerdata.max_level(type):
-		return
-	if gold_manager.try_spend(stronghold.towerdata.costData[type][next]):
+	if gold_manager.try_spend(data.costData[type][next]):
 		stronghold.build_tower(socket, type, next)
-		_refresh()
+		_refresh()  # stays open showing the next step
