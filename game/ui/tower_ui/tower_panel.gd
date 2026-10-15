@@ -21,13 +21,13 @@ func _ready() -> void:
 
 func open_for(target: TowerSocket) -> void:
 	socket = target
-	show()
-	_refresh()
+	_refresh()  # fill it first, so it pops in at its final size
+	UIAnim.pop_in(self)
 
 
 func close() -> void:
 	socket = null
-	hide()
+	UIAnim.pop_out(self)
 
 
 func _input(event: InputEvent) -> void:

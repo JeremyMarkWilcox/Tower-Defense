@@ -11,6 +11,7 @@ signal lull_requested(lull: LullDefinition)
 signal boss_defeated
 signal stronghold_attacked(damage: int)
 signal wave_cleared(wave_number: int)
+signal bounty_dropped(amount: int, at: Vector3)
 
 @export var waves: Array[WaveDefinition] = []
 @export var enemy_container: Node3D
@@ -165,6 +166,7 @@ func _spawn(enemy_data: EnemyData, at: Variant) -> void:
 func _on_enemy_died(enemy: BaseEnemy) -> void:
 	_alive.erase(enemy)
 	enemy_killed.emit(enemy.data.bounty)
+	bounty_dropped.emit(enemy.data.bounty, enemy.global_position)
 	if enemy.data.is_boss:
 		boss_defeated.emit()
 

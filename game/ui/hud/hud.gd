@@ -16,6 +16,7 @@ extends Control
 @export var wave_banner: Label
 @export var banner_color := Color(0.6, 0.85, 1.0)
 @export var final_banner_color := Color(0.85, 0.1, 0.1)
+@export var low_health_vignette: ColorRect
 
 @export_group("Look")
 ## Below this share of health, the bar pulses.
@@ -30,6 +31,8 @@ var _gold_tween: Tween
 var _banner_tween: Tween
 var _low_tween: Tween
 var _panel_rest := Vector2.ZERO
+var _vignette_tween: Tween
+var _vignette_on := false
 
 
 func _ready() -> void:
@@ -59,6 +62,25 @@ func _show_health(current: int, maximum: int, animate: bool) -> void:
 		health_bar.value = current
 	var is_low := current > 0 and float(current) / maximum <= low_health_ratio
 	_set_low_health(is_low)
+	_set_vignette(is_low)
+	
+	
+func _set_vignette(on: bool) -> void:
+	if on == _vignette_on or low_health_vignette == null:
+		return
+	_vignette_on = on
+	if _vignette_tween:
+		_vignette_tween.kill()
+	var param := "material:shader_parameter/strength"
+	_vignette_tween = create_tween()
+	if on and Settings.flashing:
+		# Slow heartbeat pulse while health is low.
+		_vignette_tween.set_loops()
+		_vignette_tween.tween_property(low_health_vignette, param, 0.6, 0.6)
+		_vignette_tween.tween_property(low_health_vignette, param, 0.35, 0.8)
+	else:
+		# Flashing turned off in settings: a steady glow instead of a pulse.
+		_vignette_tween.tween_property(low_health_vignette, param, 0.5 if on else 0.0, 0.5)
 
 
 func _flash_hit() -> void:
@@ -96,7 +118,7 @@ func _set_low_health(is_low: bool) -> void:
 
 
 func _show_gold(current: int, animate: bool) -> void:
-	gold_label.text = "Gold: %d" % current
+	gold_label.text = str(current)
 	if not animate:
 		return
 	if _gold_tween:

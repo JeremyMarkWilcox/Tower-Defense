@@ -11,8 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://cvogxbmkihnuc" path="res://game/enviroment/props.tscn" id="3_wgsev"]
 [ext_resource type="Resource" uid="uid://uaiismft5nub" path="res://game/data/waves/unique_waves/wave_01.tres" id="4_qf6n1"]
 [ext_resource type="Shader" uid="uid://bcqlmc0nah414" path="res://assets/shaders/atmosphere/rain.gdshader" id="5_ln7ps"]
+[ext_resource type="Script" uid="uid://kwc5v2703q82" path="res://game/ui/hud/gold_popups.gd" id="5_ropga"]
 [ext_resource type="Resource" uid="uid://bpny3ka8b2xq5" path="res://game/data/waves/unique_waves/wave_02.tres" id="5_vsp63"]
 [ext_resource type="Resource" uid="uid://cb0dfd6owlsiq" path="res://game/data/waves/unique_waves/wave_03.tres" id="6_b686c"]
+[ext_resource type="FontFile" uid="uid://dl8fqw0cfdgm3" path="res://assets/fonts/VT323-Regular.ttf" id="6_caicf"]
 [ext_resource type="PackedScene" uid="uid://ddt1m8s6wg7ju" path="res://core/ui/credits.tscn" id="6_dakft"]
 [ext_resource type="Shader" uid="uid://dlqkwxa4ft1ud" path="res://assets/shaders/atmosphere/mist.gdshader" id="8_mhvfb"]
 [ext_resource type="Script" uid="uid://e21u8rkcefj4" path="res://game/managers/gold_manager.gd" id="8_vsp63"]
@@ -97,6 +99,13 @@ camera = NodePath("../../CameraLighting/Camera3D")
 
 [node name="ThreadFeedback" parent="World/SignalSystem" index="3" unique_id=11552838 node_paths=PackedStringArray("camera")]
 camera = NodePath("../../CameraLighting/Camera3D")
+
+[node name="GoldPopups" type="Node3D" parent="World" unique_id=1975966615 node_paths=PackedStringArray("wave_manager")]
+script = ExtResource("5_ropga")
+wave_manager = NodePath("../../Managers/WaveManager")
+font = ExtResource("6_caicf")
+pixel_size = 0.02
+rise = 2.0
 
 [node name="Atmosphere" type="CanvasLayer" parent="." unique_id=67527882]
 layer = 0

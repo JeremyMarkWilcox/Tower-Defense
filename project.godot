@@ -28,6 +28,7 @@ Audio="*uid://bheog7nt33hxb"
 SceneManager="*uid://c2lpl4r0k2ifb"
 MenuManager="*uid://bld3llbebpdwt"
 Debug="*uid://c2ijrurwpnvxk"
+UiJuice="*uid://xosp7dantmmv"
 
 [debug]
 
@@ -39,6 +40,8 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="uid://dkkvpkhoxfd80"
+mouse_cursor/custom_image_hotspot=Vector2(2, 2)
 
 [gui]
 

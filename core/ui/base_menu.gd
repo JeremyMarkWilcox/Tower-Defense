@@ -19,8 +19,12 @@ func _ready() -> void:
 
 
 func open() -> void:
-	show()
+	UIAnim.pop_in(self)
 	restore_focus()
+
+
+func close() -> void:
+	UIAnim.pop_out(self)
 	
 func restore_focus() -> void:
 	# Return to the last focused control (e.g. back from Settings lands on the
@@ -29,10 +33,6 @@ func restore_focus() -> void:
 		last_focus.grab_focus()
 	elif first_focus:
 		first_focus.grab_focus()
-
-
-func close() -> void:
-	hide()
 
 
 func _link_focus_chain() -> void:

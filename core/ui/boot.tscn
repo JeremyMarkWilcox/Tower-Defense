@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://bc7gq4vhepj5j"]
 
 [ext_resource type="Script" uid="uid://bf3x3u3cism2y" path="res://core/ui/boot.gd" id="1_5bnmk"]
+[ext_resource type="Texture2D" uid="uid://d2nvrs001wdw" path="res://assets/2d_art/PumpkinCoin.png" id="2_v5pur"]
+[ext_resource type="Script" uid="uid://cejwyyk8a5j8s" path="res://game/ui/hud/flicker_icon.gd" id="3_7v4ab"]
+[ext_resource type="Texture2D" uid="uid://bfstj0m0ex65l" path="res://assets/2d_art/Pumpkin_Coin_Sheet.png" id="4_kubvj"]
 
 [node name="Boot" type="Control" unique_id=1532558089 node_paths=PackedStringArray("prompt_label")]
 layout_mode = 3
@@ -11,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5bnmk")
 next_scene = "uid://bub40ec1qfl2u"
-prompt_label = NodePath("PromptTitle")
+prompt_label = NodePath("PromptRow/PromptTitle")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1565063747]
 layout_mode = 1
@@ -22,17 +25,49 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="PromptTitle" type="Label" parent="." unique_id=2127270296]
+[node name="PromptRow" type="HBoxContainer" parent="." unique_id=722659781]
 layout_mode = 1
-anchors_preset = 14
+anchors_preset = -1
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -11.5
-offset_bottom = 11.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="PumpkinLeft" type="TextureRect" parent="PromptRow" unique_id=22413104]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_v5pur")
+expand_mode = 1
+script = ExtResource("3_7v4ab")
+sheet = ExtResource("4_kubvj")
+min_time = 0.2
+max_time = 0.4
+
+[node name="PromptTitle" type="Label" parent="PromptRow" unique_id=2127270296]
+layout_mode = 2
 theme_type_variation = &"TitleLabel"
 text = "Click to Start"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PumpkinRight" type="TextureRect" parent="PromptRow" unique_id=278279564]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_v5pur")
+expand_mode = 1
+flip_h = true
+script = ExtResource("3_7v4ab")
+sheet = ExtResource("4_kubvj")
+min_time = 0.2
+max_time = 0.4

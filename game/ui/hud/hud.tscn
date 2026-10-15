@@ -2,9 +2,21 @@
 
 [ext_resource type="Script" uid="uid://dig27xj86hnvm" path="res://game/ui/hud/hud.gd" id="1_r0wki"]
 [ext_resource type="PackedScene" uid="uid://oedawwjr5won" path="res://game/ui/hud/health_bar.tscn" id="2_f8jww"]
+[ext_resource type="Shader" uid="uid://bfllcnnlpm48e" path="res://assets/shaders/ui/low_health_vignette.gdshader" id="2_uoejn"]
 [ext_resource type="Theme" uid="uid://docepy01vs1ci" path="res://assets/theme/tower-defense_theme.tres" id="3_4cd48"]
+[ext_resource type="Texture2D" uid="uid://d2nvrs001wdw" path="res://assets/2d_art/PumpkinCoin.png" id="3_c644b"]
+[ext_resource type="Texture2D" uid="uid://q5irpp0w1h14" path="res://assets/2d_art/gold_coin.png" id="3_s3dv2"]
+[ext_resource type="Texture2D" uid="uid://bfstj0m0ex65l" path="res://assets/2d_art/Pumpkin_Coin_Sheet.png" id="3_ymgic"]
+[ext_resource type="Script" uid="uid://cejwyyk8a5j8s" path="res://game/ui/hud/flicker_icon.gd" id="4_fw58w"]
 
-[node name="HUD" type="Control" unique_id=360266916 node_paths=PackedStringArray("health_panel", "health_bar", "health_label", "gold_label", "wave_label", "wave_banner")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uoejn"]
+shader = ExtResource("2_uoejn")
+shader_parameter/tint = Color(0.7, 0.15, 0.18, 1)
+shader_parameter/strength = 0.0
+shader_parameter/inner = 0.55
+shader_parameter/outer = 1.2
+
+[node name="HUD" type="Control" unique_id=360266916 node_paths=PackedStringArray("health_panel", "health_bar", "health_label", "gold_label", "wave_label", "wave_banner", "low_health_vignette")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,9 +27,21 @@ script = ExtResource("1_r0wki")
 health_panel = NodePath("HealthPanel")
 health_bar = NodePath("HealthPanel/HealthBar/FillBar")
 health_label = NodePath("HealthPanel/HealthBar/HealthLabel")
-gold_label = NodePath("TopRight/GoldLabel")
+gold_label = NodePath("TopRight/GoldRow/GoldLabel")
 wave_label = NodePath("TopRight/WaveLabel")
 wave_banner = NodePath("WaveBanner")
+banner_color = Color(0.9490196, 0.54901963, 0.15686275, 1)
+final_banner_color = Color(0.7019608, 0.14901961, 0.18039216, 1)
+low_health_vignette = NodePath("LowHealthVignette")
+
+[node name="LowHealthVignette" type="ColorRect" parent="." unique_id=167087326]
+material = SubResource("ShaderMaterial_uoejn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="HealthPanel" type="VBoxContainer" parent="." unique_id=229530422]
 layout_mode = 1
@@ -39,37 +63,67 @@ horizontal_alignment = 1
 
 [node name="TopRight" type="VBoxContainer" parent="." unique_id=697948508]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = -1
 anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -160.0
-offset_top = 24.0
-offset_right = -120.0
-offset_bottom = 64.0
+anchor_right = 1.1
+offset_left = -368.0
+offset_top = 20.0
+offset_right = -172.0
+offset_bottom = 79.0
 grow_horizontal = 0
+theme_override_constants/separation = 2
 
-[node name="GoldLabel" type="Label" parent="TopRight" unique_id=177279957]
+[node name="GoldRow" type="HBoxContainer" parent="TopRight" unique_id=517658421]
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_constants/separation = 6
+
+[node name="CoinBG" type="TextureRect" parent="TopRight/GoldRow" unique_id=31388505]
+custom_maximum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("3_s3dv2")
+
+[node name="GoldIcon" type="TextureRect" parent="TopRight/GoldRow/CoinBG" unique_id=802101768]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 39.0
+offset_bottom = 38.0
+size_flags_horizontal = 4
+texture = ExtResource("3_c644b")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("4_fw58w")
+sheet = ExtResource("3_ymgic")
+
+[node name="GoldLabel" type="Label" parent="TopRight/GoldRow" unique_id=177279957]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"CostLabel"
+theme_override_constants/line_spacing = 6
 text = "Gold: 000"
 
 [node name="WaveLabel" type="Label" parent="TopRight" unique_id=352789728]
+custom_minimum_size = Vector2(88, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Wave 1"
 
 [node name="WaveBanner" type="Label" parent="." unique_id=2039692852]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -86.0
-offset_top = 210.0
-offset_right = 244.0
-offset_bottom = 285.0
+offset_top = 170.0
+offset_right = 1.0
+offset_bottom = 250.0
 grow_horizontal = 2
+offset_transform_enabled = true
 theme = ExtResource("3_4cd48")
 theme_type_variation = &"TitleLabel"
 text = "Wave Banner"
+horizontal_alignment = 1
 
 [editable path="HealthPanel/HealthBar"]

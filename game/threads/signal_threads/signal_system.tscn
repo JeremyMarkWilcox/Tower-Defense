@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dfad8mr7np0na"]
 
 [ext_resource type="Script" uid="uid://gnn5x4jgay38" path="res://game/managers/thread_manager.gd" id="3_d6mrp"]
+[ext_resource type="AudioStream" uid="uid://pm6en0wiklp1" path="res://assets/sounds/sfx/wood_knock.ogg" id="4_1iu35"]
 [ext_resource type="PackedScene" uid="uid://dxiaycn0rmy1n" path="res://game/threads/signal_threads/signal_thread.tscn" id="4_ntrhb"]
 [ext_resource type="Script" uid="uid://dw63nkt6ikr6k" path="res://game/data/threads/lulls/base_lull/lull_timer.gd" id="7_w0ieh"]
 [ext_resource type="Theme" uid="uid://docepy01vs1ci" path="res://assets/theme/tower-defense_theme.tres" id="8_ensoo"]
@@ -45,7 +46,8 @@ mouse_filter = 2
 script = ExtResource("7_w0ieh")
 thread_manager = NodePath("../../ThreadManager")
 label = NodePath("Label")
-caption = NodePath("Label/Caption")
+caption = NodePath("Caption")
+tick_sound = ExtResource("4_1iu35")
 
 [node name="Label" type="Label" parent="UI/LullTimer" unique_id=1818317055]
 layout_mode = 1
@@ -64,17 +66,19 @@ text = "Place Holder"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Caption" type="Label" parent="UI/LullTimer/Label" unique_id=1650878094]
+[node name="Caption" type="Label" parent="UI/LullTimer" unique_id=1650878094]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -43.0
-offset_bottom = -43.0
+offset_left = -160.0
+offset_top = -13.0
+offset_right = 70.0
+offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("8_ensoo")
-theme_type_variation = &"HeaderLarge"
+theme_type_variation = &"HeaderLabel"
 text = "All Signal Threads Snap In:"
 horizontal_alignment = 1
 vertical_alignment = 1

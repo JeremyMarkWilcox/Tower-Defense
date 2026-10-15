@@ -15,12 +15,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jxs0t")
-resume_button = NodePath("Restart/ResumeButton")
-restart_button = NodePath("Restart/RestartButton")
-quit_button = NodePath("Restart/QuitButton")
-settings_button = NodePath("Restart/Settings")
-first_focus = NodePath("Restart/ResumeButton")
-focus_chain = [NodePath("Restart/ResumeButton"), NodePath("Restart/RestartButton"), NodePath("Restart/Settings"), NodePath("Restart/QuitButton")]
+resume_button = NodePath("PauseMenuElements/ResumeButton")
+restart_button = NodePath("PauseMenuElements/RestartButton")
+quit_button = NodePath("PauseMenuElements/QuitButton")
+settings_button = NodePath("PauseMenuElements/Settings")
+first_focus = NodePath("PauseMenuElements/ResumeButton")
+focus_chain = [NodePath("PauseMenuElements/ResumeButton"), NodePath("PauseMenuElements/RestartButton"), NodePath("PauseMenuElements/Settings"), NodePath("PauseMenuElements/QuitButton")]
 
 [node name="Dim" type="ColorRect" parent="." unique_id=206671920]
 layout_mode = 1
@@ -47,7 +47,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_nwy8r")
 
-[node name="Restart" type="VBoxContainer" parent="." unique_id=212127685]
+[node name="PauseMenuElements" type="VBoxContainer" parent="." unique_id=212127685]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -60,19 +60,23 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 40
 
-[node name="ResumeButton" parent="Restart" unique_id=323461587 instance=ExtResource("2_vdl4r")]
+[node name="ResumeButton" parent="PauseMenuElements" unique_id=323461587 instance=ExtResource("2_vdl4r")]
 layout_mode = 2
 text = "Resume"
 
-[node name="RestartButton" type="Button" parent="Restart" unique_id=644740672]
+[node name="RestartButton" type="Button" parent="PauseMenuElements" unique_id=644740672]
+custom_minimum_size = Vector2(300, 65)
 layout_mode = 2
 text = "Restart"
 
-[node name="Settings" type="Button" parent="Restart" unique_id=412556533]
+[node name="Settings" type="Button" parent="PauseMenuElements" unique_id=412556533]
+custom_minimum_size = Vector2(300, 65)
 layout_mode = 2
 text = "Settings"
 
-[node name="QuitButton" type="Button" parent="Restart" unique_id=754210131]
+[node name="QuitButton" type="Button" parent="PauseMenuElements" unique_id=754210131]
+custom_minimum_size = Vector2(300, 65)
 layout_mode = 2
 text = "Quit to Title"
