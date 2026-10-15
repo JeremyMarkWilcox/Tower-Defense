@@ -182,3 +182,5 @@ TitleLabel/constants/shadow_offset_y = 3
 TitleLabel/constants/shadow_outline_size = 2
 TitleLabel/font_sizes/font_size = 75
 TitleLabel/fonts/font = ExtResource("1_g0ci4")
+UnaffordableButton/base_type = &"Button"
+UnaffordableButton/colors/font_disabled_color = Color(0.5568628, 0.105882354, 0.12941177, 1)

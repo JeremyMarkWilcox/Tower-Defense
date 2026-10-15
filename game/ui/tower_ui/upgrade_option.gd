@@ -30,6 +30,7 @@ func show_level(level: int, cost: int, can_afford: bool) -> void:
 	_fill(level)
 	button.text = "Upgrade - %d" % cost
 	button.disabled = not can_afford
+	button.theme_type_variation = &"" if can_afford else &"UnaffordableButton"
 
 
 ## The tower is already at its last level.
@@ -37,6 +38,7 @@ func show_max(level: int) -> void:
 	_fill(level)
 	button.text = "Max Level"
 	button.disabled = true
+	button.theme_type_variation = &""
 
 
 func _fill(level: int) -> void:
