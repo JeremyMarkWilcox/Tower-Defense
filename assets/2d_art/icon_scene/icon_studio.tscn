@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://wpmnm2hv47p1"]
+
+[ext_resource type="Script" uid="uid://vd8np5p470ok" path="res://assets/2d_art/icon_scene/icon_studio.gd" id="1_iu8cu"]
+[ext_resource type="PackedScene" uid="uid://dfqwo7pdhjwkd" path="res://game/data/towers/towers/icelvl_1.tscn" id="2_iu8cu"]
+
+[sub_resource type="Environment" id="Environment_iu8cu"]
+background_mode = 1
+background_color = Color(0.44755203, 0.64339864, 1, 1)
+tonemap_agx_white = 16.5
+tonemap_agx_contrast = 11.75
+
+[node name="IconStudio" type="Node" unique_id=1535543538 node_paths=PackedStringArray("viewport")]
+script = ExtResource("1_iu8cu")
+viewport = NodePath("SubViewport")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1800517693]
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="CameraLighting" type="Node3D" parent="SubViewport" unique_id=991075232]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/CameraLighting" unique_id=1492725204]
+transform = Transform3D(0.7071068, -0.4055798, 0.579228, 0, 0.81915206, 0.57357645, -0.7071068, -0.4055798, 0.579228, 13.905417, 14.502318, 14.06699)
+projection = 1
+size = 2.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/CameraLighting" unique_id=257030078]
+transform = Transform3D(0.8660254, -0.38302222, 0.32139382, 0, 0.64278764, 0.76604444, -0.5, -0.66341394, 0.5566704, 9.740093, 15.484674, 31.292307)
+light_energy = 0.5
+light_indirect_energy = 0.5
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport/CameraLighting" unique_id=1628098895]
+environment = SubResource("Environment_iu8cu")
+
+[node name="Icelvl1" parent="." unique_id=867320742 instance=ExtResource("2_iu8cu")]

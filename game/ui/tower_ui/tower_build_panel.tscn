@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://docepy01vs1ci" path="res://assets/theme/tower-defense_theme.tres" id="1_mn7y1"]
 [ext_resource type="Script" uid="uid://d1p7yp5iyfvo2" path="res://game/ui/tower_ui/tower_vuild_panel.gd" id="2_t5nre"]
+[ext_resource type="Texture2D" uid="uid://ck7twjpy3ldqu" path="res://game/ui/tower_icons/cannon_tower.png" id="3_s4sjn"]
 
 [node name="TowerBuildPanel" type="PanelContainer" unique_id=501736015 node_paths=PackedStringArray("title_label", "build_buttons", "close_button")]
 custom_minimum_size = Vector2(500, 550)
@@ -60,6 +61,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 mouse_filter = 2
+texture = ExtResource("3_s4sjn")
 expand_mode = 1
 stretch_mode = 5
 

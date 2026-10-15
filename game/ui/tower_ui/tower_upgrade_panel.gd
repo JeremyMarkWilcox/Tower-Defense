@@ -10,6 +10,8 @@ extends TowerPanel
 ## Shown only on a Cannon: the two path choices.
 @export var fire_button: Button
 @export var ice_button: Button
+@export var fire_2_icon: Texture2D
+@export var ice_2_icon: Texture2D
 @export var tower_names: Array[String] = ["Cannon", "Fire", "Ice"]
 
 
@@ -40,6 +42,7 @@ func _refresh() -> void:
 		return
 
 	title_label.text = "%s - Level %d" % [tower_names[type], level + 1]
+	upgrade_button.icon = fire_2_icon if type == TowerData.FIRE else ice_2_icon
 	if level >= data.max_level(type):
 		stats_label.text = "Damage %d" % data.damageData[type][level]
 		upgrade_button.text = "Max Level"
