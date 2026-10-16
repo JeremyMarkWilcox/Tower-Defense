@@ -28,6 +28,7 @@ material = SubResource("StandardMaterial3D_clhrx")
 [node name="DeathGreaterDemon" unique_id=721675762 instance=ExtResource("1_vc80i")]
 
 [node name="Smoke" parent="." index="0" unique_id=90950119]
+emitting = false
 lifetime = 0.8
 mesh = SubResource("QuadMesh_lh2nv")
 spread = 180.0
@@ -37,7 +38,6 @@ angular_velocity_min = 10.0
 angular_velocity_max = 25.0
 
 [node name="Chunks" parent="." index="1" unique_id=81826891]
-emitting = true
 lifetime = 0.4
 mesh = SubResource("BoxMesh_6fchr")
 spread = 180.0

@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cq6n43g7ad7iv" path="res://assets/3d_art/particle_effects/attacks/ice_hit.tscn" id="4_ldq5b"]
 [ext_resource type="PackedScene" uid="uid://dcnixmhr20vy4" path="res://assets/3d_art/towers/FireTowerlvl2.glb" id="6_d81vh"]
 [ext_resource type="PackedScene" uid="uid://bvh7wpjavnwmp" path="res://game/data/towers/bullet/visuals/ice_shard.tscn" id="6_ec85p"]
+[ext_resource type="PackedScene" uid="uid://ut5n0efofydj" path="res://assets/3d_art/particle_effects/attacks/frost_nova.tscn" id="9_imwhn"]
 [ext_resource type="PackedScene" uid="uid://dfqwo7pdhjwkd" path="res://game/data/towers/towers/icelvl_1.tscn" id="10_d81vh"]
 [ext_resource type="PackedScene" uid="uid://djrpki6vu1667" path="res://game/data/towers/towers/ice_towerlevel_2.tscn" id="11_d81vh"]
 [ext_resource type="PackedScene" uid="uid://ejbtcg4bo146" path="res://assets/3d_art/particle_effects/attacks/cannon_shoot.tscn" id="13_ec85p"]
@@ -24,10 +25,13 @@ icelvl_2 = ExtResource("11_d81vh")
 cannon_hit = ExtResource("3_ec85p")
 fire_hit = ExtResource("2_r20n7")
 ice_hit = ExtResource("4_ldq5b")
+frost_nova = ExtResource("9_imwhn")
 cannon_bullet = ExtResource("2_8m7gp")
 fire_bullet = ExtResource("3_d81vh")
 ice_bullet = ExtResource("6_ec85p")
 cannon_shoot = ExtResource("13_ec85p")
 ice_shoot = ExtResource("4_ldq5b")
 fire_shoot = ExtResource("2_r20n7")
+slow_duration = Array[float]([3.0, 5.0])
+slow_amount = Array[float]([0.5, 0.75])
 metadata/_custom_type_script = "uid://dxhmx4118pfd3"

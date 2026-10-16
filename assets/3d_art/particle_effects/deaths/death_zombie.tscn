@@ -32,5 +32,4 @@ size = Vector3(0.05, 0.05, 0.05)
 mesh = SubResource("QuadMesh_5ge5b")
 
 [node name="Chunks" parent="." index="1" unique_id=81826891]
-emitting = true
 mesh = SubResource("BoxMesh_curv3")

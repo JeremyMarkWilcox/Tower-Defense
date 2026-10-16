@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://ut5n0efofydj"]
+
+[ext_resource type="Script" uid="uid://gttsjxoa4feg" path="res://assets/3d_art/particle_effects/attacks/frost_nova.gd" id="1_csfy4"]
+[ext_resource type="Texture2D" uid="uid://rckp6dgpnhy8" path="res://assets/2d_art/ice_shard.png" id="1_p02op"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4xi0"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.65882355, 0.9019608, 1, 0.8)
+
+[sub_resource type="TorusMesh" id="TorusMesh_ra2i3"]
+material = SubResource("StandardMaterial3D_f4xi0")
+inner_radius = 0.92
+rings = 48
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_otjlk"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.7019608, 0.8, 1, 0.5803922)
+albedo_texture = ExtResource("1_p02op")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_g4gaj"]
+material = SubResource("StandardMaterial3D_otjlk")
+size = Vector2(0.25, 0.25)
+
+[sub_resource type="Curve" id="Curve_csfy4"]
+_data = [Vector2(0, 0.49107146), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="FrostNova" type="Node3D" unique_id=650518653 node_paths=PackedStringArray("ring", "shards")]
+script = ExtResource("1_csfy4")
+ring = NodePath("Ring")
+shards = NodePath("Shards")
+
+[node name="Ring" type="MeshInstance3D" parent="." unique_id=1878222262]
+mesh = SubResource("TorusMesh_ra2i3")
+
+[node name="Shards" type="CPUParticles3D" parent="." unique_id=1462300847]
+emitting = false
+amount = 24
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_g4gaj")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0.1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 30.0
+gravity = Vector3(0, -4, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+angle_min = -133.2
+angle_max = 4.9
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_csfy4")

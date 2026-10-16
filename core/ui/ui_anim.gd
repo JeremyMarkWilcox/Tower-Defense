@@ -35,9 +35,10 @@ static func pop_out(control: Control) -> void:
 
 ## Stops any running open/close on this control so the two never fight.
 static func _start(control: Control) -> Tween:
-	var old: Tween = control.get_meta(&"ui_anim", null)
-	if old and old.is_valid():
-		old.kill()
+	if control.has_meta(&"ui_anim"):
+		var old: Tween = control.get_meta(&"ui_anim")
+		if old and old.is_valid():
+			old.kill()
 	var tween := control.create_tween()
 	control.set_meta(&"ui_anim", tween)
 	return tween

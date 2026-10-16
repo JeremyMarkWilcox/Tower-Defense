@@ -23,6 +23,10 @@ enum State { MOVING, ATTACKING }
 @export var death_effect: PackedScene
 ## Lifts the effect off the ground to roughly the middle of the body.
 @export var death_effect_height := 0.8
+## Tint over the whole model while slowed.
+@export var frost_tint := Color(0.45, 0.75, 1.0, 0.45)
+## Brief flash on each burn tick.
+@export var burn_flash := Color(1.0, 0.3, 0.1, 0.6)
 
 var data: EnemyData
 var health := 0
@@ -44,12 +48,22 @@ var burnTick : float
 var burnDamage : float
 var freezeTimer : float
 
+var _meshes: Array[MeshInstance3D] = []
+var _frost_overlay: StandardMaterial3D
+var _flash_overlay: StandardMaterial3D
+var _current_overlay: Material
+var _flash_time := 0.0
+
 
 func _ready() -> void:
-	add_to_group("enemies")
-	add_to_group(&"enemies") ## So Ice 2 can find nearby enemies
+	add_to_group(&"enemies")  # so Ice 2 can find nearby enemies
 	if ward_effect:
 		ward_effect.visible = false
+	for node in find_children("*", "MeshInstance3D", true, false):
+		if node != ward_effect:  # the ward shell keeps its own look
+			_meshes.append(node)
+	_frost_overlay = _make_overlay(frost_tint)
+	_flash_overlay = _make_overlay(burn_flash)
 
 
 ## Called by WaveManager right after spawning.
@@ -82,7 +96,9 @@ func _physics_process(delta: float) -> void:
 		burnTick -= delta
 		if burnTick <= 0.0:
 			burnTick += 0.5
+			_flash_time = 0.12
 			take_damage(roundi(burnDamage))
+	_update_status_look(delta)
 
 func take_damage(amount: int) -> void:
 	if _is_dead or amount <= 0:
@@ -104,11 +120,13 @@ func slow(time: float, percent: float) -> void:
 ## Burns don't stack: a new hit refreshes the duration and keeps the higher damage.
 func burn(time: float, damage: float) -> void:
 	if data and data.burn_immune:
-		return
+		return  # demons can't be burned
+	if burnTimer <= 0.0:
+		burnTick = 0.5  # first tick half a second after catching fire
+		burnDamage = damage
 	else:
 		burnDamage = maxf(burnDamage, damage)
 	burnTimer = maxf(burnTimer, time)
-	#apply fire particles
 
 
 func _spawn_death_effect() -> void:
@@ -157,7 +175,7 @@ func _move(delta: float) -> void:
 func _attack(delta: float) -> void:
 	if data.stronghold_damage <= 0:
 		return  # e.g. cultists: they hold position and channel instead
-	_attack_cooldown -= delta
+		_attack_cooldown -= delta * speed_multiplier
 	if _attack_cooldown <= 0.0:
 		_attack_cooldown += data.attack_interval
 		attacked.emit(self, roundi(data.stronghold_damage * damage_multiplier))
@@ -177,3 +195,26 @@ func _face(direction: Vector3) -> void:
 	direction.y = 0.0
 	if direction.length() > 0.01:
 		look_at(global_position + direction, Vector3.UP, true)
+		
+
+## Red flash wins briefly, otherwise blue while slowed, otherwise no overlay.
+func _update_status_look(delta: float) -> void:
+	_flash_time = maxf(_flash_time - delta, 0.0)
+	var overlay: Material = null
+	if _flash_time > 0.0:
+		overlay = _flash_overlay
+	elif freezeTimer > 0.0:
+		overlay = _frost_overlay
+	if overlay == _current_overlay:
+		return  # only touch the meshes when the look actually changes
+	_current_overlay = overlay
+	for mesh in _meshes:
+		mesh.material_overlay = overlay
+
+
+func _make_overlay(color: Color) -> StandardMaterial3D:
+	var mat := StandardMaterial3D.new()
+	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	mat.albedo_color = color
+	return mat

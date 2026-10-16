@@ -29,6 +29,7 @@ size = Vector3(0.05, 0.05, 0.05)
 [node name="DeathLesserDemon" unique_id=721675762 instance=ExtResource("1_vb5ta")]
 
 [node name="Smoke" parent="." index="0" unique_id=90950119]
+emitting = false
 mesh = SubResource("QuadMesh_by1re")
 
 [node name="Chunks" parent="." index="1" unique_id=81826891]

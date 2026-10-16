@@ -65,9 +65,10 @@ func _settle(button: Button) -> void:
 func _to(button: Button, target: Vector2) -> void:
 	if button.disabled:
 		target = Vector2.ONE  # disabled buttons stay still (and recover if just disabled)
-	var old: Tween = button.get_meta(&"juice_tween", null)
-	if old and old.is_valid():
-		old.kill()
+	if button.has_meta(&"juice_tween"):
+		var old: Tween = button.get_meta(&"juice_tween")
+		if old and old.is_valid():
+			old.kill()
 	button.pivot_offset = button.size * 0.5
 	var tween := button.create_tween()
 	button.set_meta(&"juice_tween", tween)

@@ -43,6 +43,7 @@ script = ExtResource("1_hglhm")
 
 [node name="Smoke" type="CPUParticles3D" parent="." unique_id=90950119]
 cast_shadow = 0
+emitting = false
 amount = 16
 lifetime = 0.55
 explosiveness = 1.0

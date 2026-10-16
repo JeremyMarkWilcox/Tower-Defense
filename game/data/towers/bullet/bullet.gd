@@ -69,10 +69,12 @@ func _apply_effect(enemy: BaseEnemy) -> void:
 			if radius <= 0.0:
 				enemy.slow(duration, amount)
 				return
+			_spawn_nova(enemy.global_position, radius)
 			for node in get_tree().get_nodes_in_group(&"enemies"):
 				var other := node as BaseEnemy
 				if other and other.global_position.distance_to(enemy.global_position) <= radius:
 					other.slow(duration, amount)
+										
 	
 	##special effects per tower type maybe not the best practice but it will work
 	#fire
@@ -84,6 +86,15 @@ func _apply_effect(enemy: BaseEnemy) -> void:
 		enemy.slow(1.0 * level, 30.0 * level)
 
 
+func _spawn_nova(at: Vector3, radius: float) -> void:
+	if tower_data.frost_nova == null:
+		return
+	var nova := tower_data.frost_nova.instantiate() as Node3D
+	get_tree().current_scene.add_child(nova)  # restarts clean it up with the scene
+	nova.global_position = at + Vector3.UP * 0.05  # just above the ground, so it doesn't flicker into it
+	nova.play(radius)
+	
+	
 func _spawn_effect(scene: PackedScene) -> void:
 	if scene == null:
 		return

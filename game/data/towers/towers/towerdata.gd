@@ -19,6 +19,8 @@ const ICE := 2
 @export var cannon_hit: PackedScene
 @export var fire_hit: PackedScene
 @export var ice_hit: PackedScene
+## Visual for Ice 2's area slow, sized to slow_radius.
+@export var frost_nova: PackedScene
 
 @export_group("Bullets")
 @export var cannon_bullet: PackedScene
