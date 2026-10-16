@@ -190,6 +190,8 @@ visible = false
 gold_manager = NodePath("../../Managers/GoldManager")
 stronghold = NodePath("../../World/Environment/Stronghold")
 wave_manager = NodePath("../../Managers/WaveManager")
+banner_slide = 1400.0
+vignette_peak = 0.25
 
 [node name="TowerMenus" type="Node" parent="UI" unique_id=1342853690 node_paths=PackedStringArray("stronghold", "build_panel", "upgrade_panel")]
 script = ExtResource("26_ropga")

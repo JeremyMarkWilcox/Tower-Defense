@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://gttsjxoa4feg" path="res://assets/3d_art/particle_effects/attacks/frost_nova.gd" id="1_csfy4"]
 [ext_resource type="Texture2D" uid="uid://rckp6dgpnhy8" path="res://assets/2d_art/ice_shard.png" id="1_p02op"]
+[ext_resource type="AudioStream" uid="uid://xkswioftljfm" path="res://assets/sounds/sfx/frost_nova.wav" id="2_f4xi0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4xi0"]
 transparency = 1
@@ -37,6 +38,8 @@ script = ExtResource("1_csfy4")
 ring = NodePath("Ring")
 shards = NodePath("Shards")
 ring_alpha = 0.2
+sound = ExtResource("2_f4xi0")
+sound_volume_db = -24.0
 
 [node name="Ring" type="MeshInstance3D" parent="." unique_id=1878222262]
 mesh = SubResource("TorusMesh_ra2i3")

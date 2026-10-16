@@ -7,8 +7,12 @@ extends Node3D
 ## How see-through the ring is at its strongest. 0 = invisible, 1 = solid.
 @export_range(0.0, 1.0, 0.05) var ring_alpha := 0.35
 
+@export var sound: AudioStream
+@export var sound_volume_db := -4.0
+
 
 func play(radius: float) -> void:
+	Audio.play_sfx(sound, 0.05, sound_volume_db)
 	if ring == null:
 		queue_free()
 		return

@@ -1,7 +1,9 @@
 extends Node
 ## UI sounds for every button, a small SFX pool, and music with crossfade.
 
-const SFX_VOICES := 8
+const SFX_VOICES := 16
+## The same sound can't restart more often than this (stops shot spam from stacking up).
+const MIN_REPEAT_GAP := 0.05
 const NAV_ACTIONS: Array[String] = ["ui_up", "ui_down", "ui_left", "ui_right", "ui_focus_next", "ui_focus_prev"]
 
 @export_group("UI Sounds")
@@ -12,12 +14,19 @@ const NAV_ACTIONS: Array[String] = ["ui_up", "ui_down", "ui_left", "ui_right", "
 @export_group("Music")
 @export var default_crossfade := 1.0
 
+@export_group("Ambience")
+## Plays from boot in every scene and is never paused (the rain).
+@export var ambience: AudioStream
+@export var ambience_volume_db := -6.0
+
 var _ui_player: AudioStreamPlayer
 var _sfx_players: Array[AudioStreamPlayer] = []
 var _music_a: AudioStreamPlayer
 var _music_b: AudioStreamPlayer
 var _active_music: AudioStreamPlayer
 var _music_tween: Tween
+var _last_played: Dictionary = {}  # AudioStream -> last start time in ms
+var _ambience_player: AudioStreamPlayer
 
 
 func _ready() -> void:
@@ -30,6 +39,11 @@ func _ready() -> void:
 	_active_music = _music_a
 	get_tree().node_added.connect(_on_node_added)
 	_hook_existing.call_deferred(get_tree().root)
+	_ambience_player = _make_player("Ambience")
+	if ambience:
+		_ambience_player.stream = ambience
+		_ambience_player.volume_db = ambience_volume_db
+		_ambience_player.play()
 
 
 # --- UI ---
@@ -47,13 +61,18 @@ func play_back() -> void:
 
 # --- SFX ---
 
-func play_sfx(stream: AudioStream, pitch_variation := 0.0) -> void:
+func play_sfx(stream: AudioStream, pitch_variation := 0.0, volume_db := 0.0) -> void:
 	if stream == null:
 		return
+	var now := Time.get_ticks_msec()
+	if now - int(_last_played.get(stream, -100000)) < MIN_REPEAT_GAP * 1000.0:
+		return  # this exact sound just played; skip the duplicate
+	_last_played[stream] = now
 	for player in _sfx_players:
 		if not player.playing:
 			player.stream = stream
 			player.pitch_scale = 1.0 + randf_range(-pitch_variation, pitch_variation)
+			player.volume_db = volume_db
 			player.play()
 			return
 	# every voice is busy: skip this sound rather than cut one off
@@ -62,6 +81,7 @@ func play_sfx(stream: AudioStream, pitch_variation := 0.0) -> void:
 # --- Music ---
 
 func play_music(stream: AudioStream, fade_time := default_crossfade) -> void:
+	set_music_paused(false)
 	if stream == null:
 		stop_music(fade_time)
 		return
@@ -98,6 +118,12 @@ func _crossfade(from: AudioStreamPlayer, to: AudioStreamPlayer, fade_time: float
 	await _music_tween.finished
 	if from and from != to:
 		from.stop()
+
+
+## Pauses or resumes the music where it is. Ambience and SFX keep playing.
+func set_music_paused(paused: bool) -> void:
+	_music_a.stream_paused = paused
+	_music_b.stream_paused = paused
 
 
 func _set_linear_volume(value: float, player: AudioStreamPlayer) -> void:

@@ -32,6 +32,20 @@ const ICE := 2
 @export var ice_shoot: PackedScene
 @export var fire_shoot: PackedScene
 
+@export_group("Shot Sounds")
+@export var cannon_shot_sound: AudioStream
+@export var fire_shot_sound: AudioStream
+@export var ice_shot_sound: AudioStream
+## Shots play constantly, so they sit quieter than other sounds.
+@export var shot_volume_db := -8.0
+
+@export_group("Hit Sounds")
+## Leave a slot empty for no hit sound (e.g. Fire and Ice 1).
+@export var cannon_hit_sound: AudioStream
+@export var fire_hit_sound: AudioStream
+@export var ice_hit_sound: AudioStream
+@export var hit_volume_db := -10.0
+
 # One row per type; one entry per level on that path.
 var costData: Array[Array] = [
 	[10],      # Cannon: build
@@ -108,6 +122,26 @@ func get_shot_particle(type: int, _level: int) -> PackedScene:
 		_:
 			scene = cannon_shoot
 	return scene if scene else cannon_shoot  # fall back if an export is empty
+
+
+func get_shot_sound(type: int) -> AudioStream:
+	match type:
+		FIRE:
+			return fire_shot_sound
+		ICE:
+			return ice_shot_sound
+		_:
+			return cannon_shot_sound
+			
+			
+func get_hit_sound(type: int) -> AudioStream:
+	match type:
+		FIRE:
+			return fire_hit_sound
+		ICE:
+			return ice_hit_sound
+		_:
+			return cannon_hit_sound
 
 
 func get_bullet_mesh(type: int, _level: int) -> PackedScene:

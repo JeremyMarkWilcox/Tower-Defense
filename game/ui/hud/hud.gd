@@ -14,6 +14,8 @@ extends Control
 @export var gold_label: Label
 @export var wave_label: Label
 @export var wave_banner: Label
+## How far to the right the wave banner starts before sliding in.
+@export var banner_slide := 240.0
 @export var banner_color := Color(0.6, 0.85, 1.0)
 @export var final_banner_color := Color(0.85, 0.1, 0.1)
 @export var low_health_vignette: ColorRect
@@ -26,6 +28,9 @@ extends Control
 @export_range(0.0, 1.0, 0.05) var low_health_ratio := 0.25
 @export var hit_color := Color(1.0, 0.35, 0.35)
 @export var shake_strength := 6.0
+
+## Played when the final-wave banner lands. Empty = silent.
+@export var final_wave_sound: AudioStream
 
 var _bar_tween: Tween
 var _hit_tween: Tween
@@ -138,11 +143,38 @@ func _on_wave_started(number: int, total: int) -> void:
 	wave_banner.add_theme_color_override("font_color", final_banner_color if is_final else banner_color)
 	if _banner_tween:
 		_banner_tween.kill()
+	wave_banner.pivot_offset = wave_banner.size * 0.5  # grow from the middle
+	wave_banner.offset_transform_position = Vector2(banner_slide, 0.0)
+	wave_banner.scale = Vector2(0.4, 0.4)
 	wave_banner.modulate.a = 0.0
-	_banner_tween = create_tween()
-	_banner_tween.tween_property(wave_banner, "modulate:a", 1.0, 0.3)
-	_banner_tween.tween_interval(1.2)
-	_banner_tween.tween_property(wave_banner, "modulate:a", 0.0, 0.6)
+
+	# The final wave overshoots more, so it lands heavier.
+	var overshoot := Vector2(1.3, 1.3) if is_final else Vector2(1.15, 1.15)
+
+	_banner_tween = create_tween().set_parallel()
+	# 1. Slide in from the right, growing a bit past full size and fading in.
+	_banner_tween.tween_property(wave_banner, "offset_transform_position", Vector2.ZERO, 0.35) \
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	_banner_tween.tween_property(wave_banner, "scale", overshoot, 0.35) \
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	_banner_tween.tween_property(wave_banner, "modulate:a", 1.0, 0.2)
+	# 2. Pop: settle to full size with a small bounce.
+	_banner_tween.chain().tween_property(wave_banner, "scale", Vector2.ONE, 0.25) \
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+
+	# Final wave only: a stinger sound and a short shake as it lands.
+	if is_final:
+		_banner_tween.chain().tween_callback(func() -> void:
+			Audio.play_sfx(final_wave_sound))
+		if Settings.screen_shake:
+			for i in 6:
+				var offset := Vector2(randf_range(-8.0, 8.0), randf_range(-4.0, 4.0))
+				_banner_tween.chain().tween_property(wave_banner, "offset_transform_position", offset, 0.04)
+			_banner_tween.chain().tween_property(wave_banner, "offset_transform_position", Vector2.ZERO, 0.04)
+
+	# 3. Hold, then fade out like before.
+	_banner_tween.chain().tween_interval(1.2)
+	_banner_tween.chain().tween_property(wave_banner, "modulate:a", 0.0, 0.6)
 
 
 func _ignore_mouse(node: Node) -> void:

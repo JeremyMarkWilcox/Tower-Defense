@@ -6,6 +6,7 @@ const UI_SCALE_STEPS: Array[float] = [0.75, 0.9, 1.0, 1.1, 1.25]
 @export var music_slider: HSlider
 @export var sfx_slider: HSlider
 @export var ui_slider: HSlider
+@export var ambience_slider: HSlider
 @export var fullscreen_toggle: CheckButton
 @export var shake_toggle: CheckButton
 @export var flash_toggle: CheckButton
@@ -23,6 +24,7 @@ func _ready() -> void:
 	master_slider.value_changed.connect(func(value: float) -> void: Settings.set_volume("Master", value))
 	music_slider.value_changed.connect(func(value: float) -> void: Settings.set_volume("Music", value))
 	sfx_slider.value_changed.connect(func(value: float) -> void: Settings.set_volume("SFX", value))
+	ambience_slider.value_changed.connect(func(value: float) -> void: Settings.set_volume("Ambience", value))
 	ui_slider.value_changed.connect(func(value: float) -> void: Settings.set_volume("UI", value))
 	fullscreen_toggle.toggled.connect(Settings.set_fullscreen)
 	shake_toggle.toggled.connect(Settings.set_screen_shake)
@@ -54,6 +56,7 @@ func _sync_from_settings() -> void:
 	master_slider.set_value_no_signal(Settings.volumes["Master"])
 	music_slider.set_value_no_signal(Settings.volumes["Music"])
 	sfx_slider.set_value_no_signal(Settings.volumes["SFX"])
+	ambience_slider.set_value_no_signal(Settings.volumes["Ambience"])
 	ui_slider.set_value_no_signal(Settings.volumes["UI"])
 	var is_fullscreen := Settings.fullscreen
 	if OS.has_feature("web"):

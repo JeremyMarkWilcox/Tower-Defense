@@ -2,14 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://cyyymtcnpcy60" path="res://core/ui/end_screen.tscn" id="1_ydo2o"]
 [ext_resource type="Script" uid="uid://d3cp3p64duyqp" path="res://game/ui/screens/run_end_screen.gd" id="2_lhmfp"]
+[ext_resource type="AudioStream" uid="uid://bn3ljse3akd4q" path="res://assets/sounds/sfx/you_win.ogg" id="3_as7le"]
+[ext_resource type="AudioStream" uid="uid://bi04ub5b50yix" path="res://assets/sounds/sfx/game_over.ogg" id="4_as7le"]
 
 [node name="RunEndScreen" unique_id=1090858386 node_paths=PackedStringArray("focus_chain") instance=ExtResource("1_ydo2o")]
 script = ExtResource("2_lhmfp")
 win_heading = "You Win!"
-win_stinger = null
+win_stinger = ExtResource("3_as7le")
 win_music = null
 lose_heading = "Game Over"
-lose_stinger = null
+lose_stinger = ExtResource("4_as7le")
 lose_music = null
 win_color = Color(0.9490196, 0.54901963, 0.15686275, 1)
 lose_color = Color(0.7019608, 0.14901961, 0.18039216, 1)

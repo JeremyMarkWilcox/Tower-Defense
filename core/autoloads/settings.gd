@@ -5,7 +5,7 @@ signal changed
 
 const CONFIG_PATH := "user://settings.cfg"
 
-var volumes: Dictionary[String, float] = {"Master": 1.0, "Music": 0.8, "SFX": 0.8, "UI": 0.8}
+var volumes: Dictionary[String, float] = {"Master": 1.0, "Music": 0.8, "SFX": 0.8, "UI": 0.8, "Ambience": 0.8}
 var fullscreen := false
 var ui_scale := 1.0
 var screen_shake := true

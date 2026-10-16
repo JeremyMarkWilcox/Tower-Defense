@@ -87,6 +87,7 @@ func _shoot() -> void:
 	bulletInstance.type = type
 	bulletInstance.level = level
 	bulletInstance.tower_data = tower_data
+	Audio.play_sfx(tower_data.get_shot_sound(type), 0.08, tower_data.shot_volume_db)
 
 	if twrShotParticle:
 		var flash := twrShotParticle.instantiate() as Node3D

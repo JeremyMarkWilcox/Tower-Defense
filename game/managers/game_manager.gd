@@ -38,6 +38,21 @@ func _connect_systems() -> void:
 	thread_manager.lull_ended.connect(wave_manager.on_lull_ended)
 	thread_manager.thread_released.connect(_on_thread_released)
 	stronghold.destroyed.connect(_lose)
+	MenuManager.menu_opened.connect(_on_menu_opened)
+	MenuManager.menu_closed.connect(_on_menu_closed)
+	
+	
+## Only the pause menu stops the music; hint cards keep it playing.
+func _on_menu_opened(menu: BaseMenu) -> void:
+	if menu == pause_menu:
+		Audio.set_music_paused(true)
+
+
+func _on_menu_closed(_menu: BaseMenu) -> void:
+	# Pause -> Settings -> Back still has the pause menu open underneath,
+	# so only resume once every menu is closed.
+	if not MenuManager.is_menu_open():
+		Audio.set_music_paused(false)
 
 
 func _start_run() -> void:

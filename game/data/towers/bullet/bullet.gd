@@ -51,6 +51,8 @@ func _on_area_entered(area: Area3D) -> void:
 	if enemy:
 		enemy.take_damage(int(damage))
 		if tower_data:
+			Audio.play_sfx(tower_data.get_hit_sound(type), 0.1, tower_data.hit_volume_db)
+		if tower_data:
 			_apply_effect(enemy)
 	_spawn_effect(hitParticle)
 	_release_trails()

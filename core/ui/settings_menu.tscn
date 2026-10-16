@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ofjd23x0aj6q" path="res://core/ui/settings_menu.gd" id="1_ig1xr"]
 
-[node name="SettingsMenu" type="Control" unique_id=662873383 node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider", "ui_slider", "fullscreen_toggle", "shake_toggle", "flash_toggle", "back_button", "controls_button", "ui_scale_down_button", "ui_scale_up_button", "ui_scale_value_label", "first_focus", "focus_chain")]
+[node name="SettingsMenu" type="Control" unique_id=662873383 node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider", "ui_slider", "ambience_slider", "fullscreen_toggle", "shake_toggle", "flash_toggle", "back_button", "controls_button", "ui_scale_down_button", "ui_scale_up_button", "ui_scale_value_label", "first_focus", "focus_chain")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +14,7 @@ master_slider = NodePath("VBoxMain/ScrollContainer/ScrollerVBox/Master/MasterHSl
 music_slider = NodePath("VBoxMain/ScrollContainer/ScrollerVBox/Music/MusicHSlider")
 sfx_slider = NodePath("VBoxMain/ScrollContainer/ScrollerVBox/SFX/SFXHSlider")
 ui_slider = NodePath("VBoxMain/ScrollContainer/ScrollerVBox/UISounds/UIHSlider")
+ambience_slider = NodePath("VBoxMain/ScrollContainer/ScrollerVBox/Ambience/AmbienceHSlider")
 fullscreen_toggle = NodePath("VBoxMain/ScrollContainer/ScrollerVBox/FullScreenBox/FullScreen")
 shake_toggle = NodePath("VBoxMain/ScrollContainer/ScrollerVBox/ShakeScreenBox/ScreenShake")
 flash_toggle = NodePath("VBoxMain/ScrollContainer/ScrollerVBox/FlashingEffectsBox/FlashingEffects")
@@ -97,6 +98,22 @@ layout_mode = 2
 text = "Music"
 
 [node name="MusicHSlider" type="HSlider" parent="VBoxMain/ScrollContainer/ScrollerVBox/Music" unique_id=709042131]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+
+[node name="Ambience" type="HBoxContainer" parent="VBoxMain/ScrollContainer/ScrollerVBox" unique_id=917424789]
+layout_mode = 2
+
+[node name="AmbienceLabel" type="Label" parent="VBoxMain/ScrollContainer/ScrollerVBox/Ambience" unique_id=879088305]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Ambience"
+
+[node name="AmbienceHSlider" type="HSlider" parent="VBoxMain/ScrollContainer/ScrollerVBox/Ambience" unique_id=725598598]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 6

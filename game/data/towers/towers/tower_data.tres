@@ -7,13 +7,17 @@
 [ext_resource type="PackedScene" uid="uid://cyn45b55j6a6x" path="res://assets/3d_art/particle_effects/attacks/fire_hit.tscn" id="2_r20n7"]
 [ext_resource type="PackedScene" uid="uid://6xr5g0kcstpl" path="res://game/data/towers/bullet/visuals/fireball.tscn" id="3_d81vh"]
 [ext_resource type="PackedScene" uid="uid://c6bt1b5a61xuv" path="res://assets/3d_art/particle_effects/attacks/cannon_hit.tscn" id="3_ec85p"]
+[ext_resource type="AudioStream" uid="uid://c1d3yo48jkt4w" path="res://assets/sounds/sfx/cannon_hit.wav" id="4_idbte"]
 [ext_resource type="PackedScene" uid="uid://cq6n43g7ad7iv" path="res://assets/3d_art/particle_effects/attacks/ice_hit.tscn" id="4_ldq5b"]
+[ext_resource type="AudioStream" uid="uid://cv54e54nf6ow4" path="res://assets/sounds/sfx/cannon.wav" id="5_7nsal"]
 [ext_resource type="PackedScene" uid="uid://dcnixmhr20vy4" path="res://assets/3d_art/towers/FireTowerlvl2.glb" id="6_d81vh"]
 [ext_resource type="PackedScene" uid="uid://bvh7wpjavnwmp" path="res://game/data/towers/bullet/visuals/ice_shard.tscn" id="6_ec85p"]
+[ext_resource type="AudioStream" uid="uid://rlxfta2pvmjv" path="res://assets/sounds/sfx/fire_tower.wav" id="8_ur78y"]
 [ext_resource type="PackedScene" uid="uid://ut5n0efofydj" path="res://assets/3d_art/particle_effects/attacks/frost_nova.tscn" id="9_imwhn"]
 [ext_resource type="PackedScene" uid="uid://dfqwo7pdhjwkd" path="res://game/data/towers/towers/icelvl_1.tscn" id="10_d81vh"]
 [ext_resource type="PackedScene" uid="uid://djrpki6vu1667" path="res://game/data/towers/towers/ice_towerlevel_2.tscn" id="11_d81vh"]
 [ext_resource type="PackedScene" uid="uid://ejbtcg4bo146" path="res://assets/3d_art/particle_effects/attacks/cannon_shoot.tscn" id="13_ec85p"]
+[ext_resource type="AudioStream" uid="uid://b4cw076tkga6l" path="res://assets/sounds/sfx/ice_tower.wav" id="14_ykpdv"]
 
 [resource]
 script = ExtResource("1_qm3ln")
@@ -32,6 +36,11 @@ ice_bullet = ExtResource("6_ec85p")
 cannon_shoot = ExtResource("13_ec85p")
 ice_shoot = ExtResource("4_ldq5b")
 fire_shoot = ExtResource("2_r20n7")
+cannon_shot_sound = ExtResource("5_7nsal")
+fire_shot_sound = ExtResource("8_ur78y")
+ice_shot_sound = ExtResource("14_ykpdv")
+shot_volume_db = 0.0
+cannon_hit_sound = ExtResource("4_idbte")
 burn_tick_damage = Array[float]([1.5, 2.5])
 burst_gap = 0.25
 slow_duration = Array[float]([2.5, 0.5])
