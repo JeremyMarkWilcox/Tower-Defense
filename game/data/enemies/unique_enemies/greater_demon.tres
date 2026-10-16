@@ -13,4 +13,5 @@ stronghold_damage = 50
 bounty = 100
 thread_color = Color(0.4180398, 8.8440254e-07, 1.92523e-07, 1)
 is_boss = true
+burn_immune = true
 metadata/_custom_type_script = "uid://dynep1f7hnh6a"

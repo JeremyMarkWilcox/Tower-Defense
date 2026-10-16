@@ -1,7 +1,7 @@
 extends Node
 
 @export var viewport: SubViewport
-@export var file_name: String = "ice_1"
+@export var file_name: String = "new"
 
 func _ready() -> void:
 	await RenderingServer.frame_post_draw

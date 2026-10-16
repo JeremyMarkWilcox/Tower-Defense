@@ -64,6 +64,10 @@ texture = ExtResource("1_btyo8")
 texture_margin_left = 25.0
 texture_margin_right = 25.0
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ra2i3"]
+color = Color(0.22745098, 0.18039216, 0.28235295, 1)
+thickness = 2
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btyo8"]
 border_width_left = 5
 border_width_top = 5
@@ -132,6 +136,7 @@ CostLabel/colors/font_color = Color(1, 0.78431374, 0.41960785, 1)
 CostLabel/colors/font_outline_color = Color(0.16470589, 0.078431375, 0.03137255, 1)
 CostLabel/constants/outline_size = 3
 CostLabel/font_sizes/font_size = 25
+HSeparator/styles/separator = SubResource("StyleBoxLine_ra2i3")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_btyo8")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_at5ve")
 HSlider/styles/slider = SubResource("StyleBoxFlat_xpfcc")
@@ -154,6 +159,7 @@ Label/colors/font_outline_color = Color(0.105882354, 0.08627451, 0.13333334, 1)
 Label/constants/outline_size = 3
 Label/font_sizes/font_size = 25
 Label/fonts/font = ExtResource("1_g0ci4")
+Panel/styles/panel = SubResource("StyleBoxTexture_ra2i3")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_ra2i3")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_ig1xr")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_gbe44")

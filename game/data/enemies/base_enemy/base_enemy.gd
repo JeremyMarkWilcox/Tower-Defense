@@ -47,6 +47,7 @@ var freezeTimer : float
 
 func _ready() -> void:
 	add_to_group("enemies")
+	add_to_group(&"enemies") ## So Ice 2 can find nearby enemies
 	if ward_effect:
 		ward_effect.visible = false
 
@@ -102,9 +103,8 @@ func slow(time: float, percent: float) -> void:
 	
 ## Burns don't stack: a new hit refreshes the duration and keeps the higher damage.
 func burn(time: float, damage: float) -> void:
-	if burnTimer <= 0.0:
-		burnTick = 0.5  # first tick half a second after catching fire
-		burnDamage = damage
+	if data and data.burn_immune:
+		return
 	else:
 		burnDamage = maxf(burnDamage, damage)
 	burnTimer = maxf(burnTimer, time)

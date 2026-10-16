@@ -13,6 +13,7 @@ var time := 0.0
 var _has_hit := false
 var _age := 0.0
 const MAX_AGE := 4.0  # seconds; frees bullets whose target died mid-flight
+var tower_data: TowerData
 
 func _ready() -> void:
 	#prevents bullet from clipping through turret, may not be necessary if shot particle can cover it up
@@ -49,9 +50,29 @@ func _on_area_entered(area: Area3D) -> void:
 	var enemy := area.get_parent() as BaseEnemy
 	if enemy:
 		enemy.take_damage(int(damage))
+		if tower_data:
+			_apply_effect(enemy)
 	_spawn_effect(hitParticle)
 	_release_trails()
 	queue_free()
+
+
+## Fire burns the target; Ice slows the target, or everything nearby at Ice 2.
+func _apply_effect(enemy: BaseEnemy) -> void:
+	match type:
+		TowerData.FIRE:
+			enemy.burn(tower_data.burn_duration[level], tower_data.burn_tick_damage[level])
+		TowerData.ICE:
+			var duration: float = tower_data.slow_duration[level]
+			var amount: float = tower_data.slow_amount[level]
+			var radius: float = tower_data.slow_radius[level]
+			if radius <= 0.0:
+				enemy.slow(duration, amount)
+				return
+			for node in get_tree().get_nodes_in_group(&"enemies"):
+				var other := node as BaseEnemy
+				if other and other.global_position.distance_to(enemy.global_position) <= radius:
+					other.slow(duration, amount)
 	
 	##special effects per tower type maybe not the best practice but it will work
 	#fire

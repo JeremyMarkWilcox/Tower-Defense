@@ -2,9 +2,9 @@
 
 [ext_resource type="Theme" uid="uid://docepy01vs1ci" path="res://assets/theme/tower-defense_theme.tres" id="1_ptrbw"]
 [ext_resource type="Script" uid="uid://cj1j6fufnthmy" path="res://game/ui/tower_ui/tower_upgrade_panel.gd" id="2_ptrbw"]
-[ext_resource type="Texture2D" uid="uid://c5vmho8ekcq18" path="res://game/ui/tower_icons/fire_1.png" id="3_3pmu2"]
-[ext_resource type="Texture2D" uid="uid://x1ciw3ehrbjr" path="res://game/ui/tower_icons/fire_2.png" id="3_j2rnc"]
+[ext_resource type="Texture2D" uid="uid://bfiq4pkqwy3ko" path="res://game/ui/tower_icons/fire_1.png" id="4_0ib7b"]
 [ext_resource type="Texture2D" uid="uid://bpn86ybn3cubb" path="res://game/ui/tower_icons/ice_2.png" id="4_w6j8b"]
+[ext_resource type="Texture2D" uid="uid://c6qsqa01nan1h" path="res://game/ui/tower_icons/fire_2.png" id="5_kw2rl"]
 [ext_resource type="Script" uid="uid://dk4s2ki7pue8l" path="res://game/ui/tower_ui/upgrade_option.gd" id="5_wu06l"]
 [ext_resource type="Texture2D" uid="uid://b6e4efwm3rpd7" path="res://game/ui/tower_icons/ice_1.png" id="6_wu06l"]
 
@@ -59,9 +59,9 @@ portrait = NodePath("Info/Portrait")
 name_label = NodePath("Info/Details/Name")
 description_label = NodePath("Info/Details/Description")
 button = NodePath("Info/Details/UpgradeButton")
-level_1_icon = ExtResource("3_3pmu2")
+level_1_icon = ExtResource("4_0ib7b")
 level_1_description = "Damage a single target with fire."
-level_2_icon = ExtResource("3_j2rnc")
+level_2_icon = ExtResource("5_kw2rl")
 level_2_description = "Damages 3 targets with fire."
 
 [node name="Info" type="HBoxContainer" parent="MarginContainer/VBoxContainer/FireOption" unique_id=1715845017]
@@ -74,7 +74,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 mouse_filter = 2
-texture = ExtResource("3_3pmu2")
+texture = ExtResource("4_0ib7b")
 expand_mode = 1
 stretch_mode = 5
 

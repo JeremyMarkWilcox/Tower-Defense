@@ -9,4 +9,5 @@ display_name = "Lesser Demon"
 scene = ExtResource("1_igt8g")
 move_speed = 3.0
 thread_color = Color(0.6313726, 0.2509804, 0.14117648, 1)
+burn_immune = true
 metadata/_custom_type_script = "uid://dynep1f7hnh6a"

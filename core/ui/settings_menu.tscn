@@ -33,7 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.105882354, 0.08627451, 0.13333334, 1)
 
 [node name="VBoxMain" type="VBoxContainer" parent="." unique_id=490367709]
 layout_mode = 1
@@ -63,8 +63,10 @@ horizontal_scroll_mode = 0
 
 [node name="ScrollerVBox" type="VBoxContainer" parent="VBoxMain/ScrollContainer" unique_id=94619568]
 layout_mode = 2
+theme_override_constants/separation = 8
 
 [node name="AudioHeader" type="Label" parent="VBoxMain/ScrollContainer/ScrollerVBox" unique_id=1080124852]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_type_variation = &"HeaderLabel"
 text = "Audio"
@@ -74,8 +76,9 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="MasterLabel" type="Label" parent="VBoxMain/ScrollContainer/ScrollerVBox/Master" unique_id=982648564]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "Master            "
+text = "Master"
 
 [node name="MasterHSlider" type="HSlider" parent="VBoxMain/ScrollContainer/ScrollerVBox/Master" unique_id=1890600828]
 custom_minimum_size = Vector2(400, 0)
@@ -89,8 +92,9 @@ step = 0.05
 layout_mode = 2
 
 [node name="MusicLabel" type="Label" parent="VBoxMain/ScrollContainer/ScrollerVBox/Music" unique_id=380194808]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "Music             "
+text = "Music"
 
 [node name="MusicHSlider" type="HSlider" parent="VBoxMain/ScrollContainer/ScrollerVBox/Music" unique_id=709042131]
 custom_minimum_size = Vector2(400, 0)
@@ -104,8 +108,9 @@ step = 0.05
 layout_mode = 2
 
 [node name="SFXLabel" type="Label" parent="VBoxMain/ScrollContainer/ScrollerVBox/SFX" unique_id=2011004812]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "Sound Effects      "
+text = "Sound Effects"
 
 [node name="SFXHSlider" type="HSlider" parent="VBoxMain/ScrollContainer/ScrollerVBox/SFX" unique_id=68022615]
 custom_minimum_size = Vector2(400, 0)
@@ -119,8 +124,9 @@ step = 0.05
 layout_mode = 2
 
 [node name="UISoundsLabel" type="Label" parent="VBoxMain/ScrollContainer/ScrollerVBox/UISounds" unique_id=1590328559]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "UI Sounds         "
+text = "UI Sounds"
 
 [node name="UIHSlider" type="HSlider" parent="VBoxMain/ScrollContainer/ScrollerVBox/UISounds" unique_id=1583891508]
 custom_minimum_size = Vector2(400, 0)
@@ -130,7 +136,15 @@ size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
 
+[node name="ControlSpacer" type="Control" parent="VBoxMain/ScrollContainer/ScrollerVBox" unique_id=626084693]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxMain/ScrollContainer/ScrollerVBox" unique_id=1658138213]
+layout_mode = 2
+
 [node name="DisplayHeader" type="Label" parent="VBoxMain/ScrollContainer/ScrollerVBox" unique_id=1217627401]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_type_variation = &"HeaderLabel"
 text = "Display"
@@ -140,46 +154,61 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="FullScreenText" type="Label" parent="VBoxMain/ScrollContainer/ScrollerVBox/FullScreenBox" unique_id=1695258642]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "Fullscreen        "
+text = "Fullscreen"
 
 [node name="FullScreen" type="CheckButton" parent="VBoxMain/ScrollContainer/ScrollerVBox/FullScreenBox" unique_id=1193615506]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="ControlSpacer2" type="Control" parent="VBoxMain/ScrollContainer/ScrollerVBox" unique_id=250981540]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxMain/ScrollContainer/ScrollerVBox" unique_id=2113980905]
 layout_mode = 2
 
 [node name="AccessibilityHeader" type="Label" parent="VBoxMain/ScrollContainer/ScrollerVBox" unique_id=2076082527]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_type_variation = &"HeaderLabel"
 text = "Accessibility"
 horizontal_alignment = 1
 
 [node name="ShakeScreenBox" type="HBoxContainer" parent="VBoxMain/ScrollContainer/ScrollerVBox" unique_id=1186380392]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
 [node name="ShakeScreenText" type="Label" parent="VBoxMain/ScrollContainer/ScrollerVBox/ShakeScreenBox" unique_id=590019155]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "Shake Screen      "
+text = "Shake Screen"
 
 [node name="ScreenShake" type="CheckButton" parent="VBoxMain/ScrollContainer/ScrollerVBox/ShakeScreenBox" unique_id=864856497]
 layout_mode = 2
 
 [node name="FlashingEffectsBox" type="HBoxContainer" parent="VBoxMain/ScrollContainer/ScrollerVBox" unique_id=1459189495]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
 [node name="FlashingEffectsText" type="Label" parent="VBoxMain/ScrollContainer/ScrollerVBox/FlashingEffectsBox" unique_id=1539317022]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "Flashing Effects   "
+text = "Flashing Effects"
 
 [node name="FlashingEffects" type="CheckButton" parent="VBoxMain/ScrollContainer/ScrollerVBox/FlashingEffectsBox" unique_id=2029714032]
 layout_mode = 2
 
 [node name="UIScale" type="HBoxContainer" parent="VBoxMain/ScrollContainer/ScrollerVBox" unique_id=394992399]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
 [node name="UiScaleLabel" type="Label" parent="VBoxMain/ScrollContainer/ScrollerVBox/UIScale" unique_id=1000863339]
-custom_minimum_size = Vector2(60, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "UI Scale          "
+text = "UI Scale"
 
 [node name="UiScaleDown" type="Button" parent="VBoxMain/ScrollContainer/ScrollerVBox/UIScale" unique_id=2003301580]
 custom_minimum_size = Vector2(40, 40)
@@ -190,14 +219,22 @@ text = "-"
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "         100%              "
+text = "100%"
 
 [node name="UiScaleUp" type="Button" parent="VBoxMain/ScrollContainer/ScrollerVBox/UIScale" unique_id=1395818189]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 text = "+"
 
+[node name="ControlSpacer3" type="Control" parent="VBoxMain/ScrollContainer/ScrollerVBox" unique_id=1635068258]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxMain/ScrollContainer/ScrollerVBox" unique_id=612660232]
+layout_mode = 2
+
 [node name="Gameplay" type="Label" parent="VBoxMain/ScrollContainer/ScrollerVBox" unique_id=911813062]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_type_variation = &"HeaderLabel"
 text = "Gameplay"

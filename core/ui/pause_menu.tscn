@@ -1,11 +1,7 @@
 [gd_scene format=3 uid="uid://clc41ipfan7bu"]
 
 [ext_resource type="Script" uid="uid://blcy7p60o1i33" path="res://core/ui/pause_menu.gd" id="1_jxs0t"]
-[ext_resource type="Texture2D" uid="uid://0dmonlip37ou" path="res://assets/2d_art/ui_panel.png" id="2_q2nfl"]
 [ext_resource type="PackedScene" uid="uid://ms65ua2jh58q" path="res://game/ui/screens/skull_button.tscn" id="2_vdl4r"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nwy8r"]
-texture = ExtResource("2_q2nfl")
 
 [node name="PauseMenu" type="Control" unique_id=1641965247 node_paths=PackedStringArray("resume_button", "restart_button", "quit_button", "settings_button", "first_focus", "focus_chain")]
 layout_mode = 3
@@ -29,7 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.92156863)
+color = Color(0.105882354, 0.08627451, 0.13333334, 0.7490196)
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1578001760]
 custom_maximum_size = Vector2(350, -1)
@@ -45,7 +41,6 @@ offset_right = 175.0
 offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_nwy8r")
 
 [node name="PauseMenuElements" type="VBoxContainer" parent="." unique_id=212127685]
 layout_mode = 1

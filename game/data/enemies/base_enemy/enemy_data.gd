@@ -21,3 +21,5 @@ extends Resource
 @export var is_boss := false
 ## Off for cultists: wards never buff them.
 @export var can_be_warded := true
+## Demons can't be burned.
+@export var burn_immune := false

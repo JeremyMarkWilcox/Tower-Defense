@@ -43,14 +43,35 @@ func _process(_delta: float) -> void:
 			targetEnemy = null
 			return
 	#aiming logic
-		direction = targetEnemy.global_position - global_position
+	direction = targetEnemy.global_position - global_position
 	var target_angle := atan2(-direction.x, -direction.z)  # points -Z (the front) at the target
 	global_rotation.y = lerp_angle(global_rotation.y, target_angle, 0.1)
-	#shooting logic
-	if (targetEnemy):
-		if (shoot_timer.is_stopped()):
-			_shoot()
-			shoot_timer.start(tower_data.fireRateData[type][level])
+		#shooting logic
+	if targetEnemy and shoot_timer.is_stopped():
+		shoot_timer.start(tower_data.fireRateData[type][level])
+		_fire_volley()
+		
+		
+## One shot for most towers, a quick burst for Fire 2.
+func _fire_volley() -> void:
+	var shots := 1
+	if type == TowerData.FIRE:
+		shots = tower_data.burst_shots[level]
+	if shots <= 1:
+		_shoot()
+		return
+	# A tween owned by this tower: if the tower is upgraded (freed) mid-burst,
+	# the remaining shots are cancelled cleanly.
+	var tween := create_tween()
+	for i in shots:
+		tween.tween_callback(_shoot_if_target)
+		tween.tween_interval(tower_data.burst_gap)
+
+
+func _shoot_if_target() -> void:
+	if is_instance_valid(targetEnemy):
+		_shoot()
+
 
 func _shoot() -> void:
 	#firing logic
@@ -65,6 +86,7 @@ func _shoot() -> void:
 	bulletInstance.hitParticle = twrHitParticle
 	bulletInstance.type = type
 	bulletInstance.level = level
+	bulletInstance.tower_data = tower_data
 
 	if twrShotParticle:
 		var flash := twrShotParticle.instantiate() as Node3D

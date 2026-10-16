@@ -24,11 +24,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.7058824)
+color = Color(0.105882354, 0.08627451, 0.13333334, 0.7490196)
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1546182883]
-custom_minimum_size = Vector2(400, 1000)
-custom_maximum_size = Vector2(-1, 250)
+custom_minimum_size = Vector2(420, 380)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -56,7 +55,7 @@ offset_right = 150.0
 offset_bottom = 119.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 80
 
 [node name="Heading" type="Label" parent="VBoxContainer" unique_id=885659446]
 layout_mode = 2

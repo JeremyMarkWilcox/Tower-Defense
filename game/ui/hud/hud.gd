@@ -20,6 +20,9 @@ extends Control
 
 @export_group("Look")
 ## Below this share of health, the bar pulses.
+@export_range(0.0, 1.0, 0.05) var vignette_peak := 0.15
+@export_range(0.0, 1.0, 0.05) var vignette_low := 0.09
+
 @export_range(0.0, 1.0, 0.05) var low_health_ratio := 0.25
 @export var hit_color := Color(1.0, 0.35, 0.35)
 @export var shake_strength := 6.0
@@ -36,6 +39,8 @@ var _vignette_on := false
 
 
 func _ready() -> void:
+	if low_health_vignette:
+		low_health_vignette.material.set_shader_parameter("strength", 0.0)
 	_ignore_mouse(self)  # never block clicks on threads or sockets
 	wave_banner.modulate.a = 0.0
 	# Systems may have started before the HUD connected, so read current values first.
@@ -74,14 +79,11 @@ func _set_vignette(on: bool) -> void:
 	var param := "material:shader_parameter/strength"
 	_vignette_tween = create_tween()
 	if on and Settings.flashing:
-		# Slow heartbeat pulse while health is low.
 		_vignette_tween.set_loops()
-		_vignette_tween.tween_property(low_health_vignette, param, 0.6, 0.6)
-		_vignette_tween.tween_property(low_health_vignette, param, 0.35, 0.8)
+		_vignette_tween.tween_property(low_health_vignette, param, vignette_peak, 0.6)
+		_vignette_tween.tween_property(low_health_vignette, param, vignette_low, 0.8)
 	else:
-		# Flashing turned off in settings: a steady glow instead of a pulse.
-		_vignette_tween.tween_property(low_health_vignette, param, 0.5 if on else 0.0, 0.5)
-
+		_vignette_tween.tween_property(low_health_vignette, param, vignette_peak if on else 0.0, 0.5)
 
 func _flash_hit() -> void:
 	if _hit_tween:
