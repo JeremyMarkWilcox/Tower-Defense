@@ -11,5 +11,6 @@
 [resource]
 script = ExtResource("1_imwin")
 threads = Array[ExtResource("2_7cju1")]([ExtResource("3_fm3ci"), ExtResource("4_yxm5r"), ExtResource("5_oa5wq"), ExtResource("6_6fmjm"), ExtResource("7_6og7x"), ExtResource("7_6og7x")])
+cut_cooldown = 1.0
 spin_speed = 20.0
 metadata/_custom_type_script = "uid://dtlm87vw6n02f"

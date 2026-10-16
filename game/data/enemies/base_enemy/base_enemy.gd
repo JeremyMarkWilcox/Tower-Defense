@@ -185,7 +185,7 @@ func _move(delta: float) -> void:
 func _attack(delta: float) -> void:
 	if data.stronghold_damage <= 0:
 		return  # e.g. cultists: they hold position and channel instead
-		_attack_cooldown -= delta * speed_multiplier
+	_attack_cooldown -= delta * speed_multiplier
 	if _attack_cooldown <= 0.0:
 		_attack_cooldown += data.attack_interval
 		attacked.emit(self, roundi(data.stronghold_damage * damage_multiplier))

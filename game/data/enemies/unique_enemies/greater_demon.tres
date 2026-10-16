@@ -7,9 +7,10 @@
 script = ExtResource("2_5ai4t")
 display_name = "Great Demon"
 scene = ExtResource("1_npnuq")
-move_speed = 0.5
-max_health = 300
+move_speed = 0.7999999999999999
+max_health = 500
 stronghold_damage = 50
+attack_range = 5.1
 bounty = 100
 thread_color = Color(0.4180398, 8.8440254e-07, 1.92523e-07, 1)
 is_boss = true

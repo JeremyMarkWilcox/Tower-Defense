@@ -8,4 +8,5 @@
 [resource]
 script = ExtResource("1_jxstq")
 threads = Array[ExtResource("2_vddcj")]([ExtResource("3_tiinq"), ExtResource("3_tiinq"), ExtResource("5_dmuyw")])
+cut_cooldown = 1.0
 metadata/_custom_type_script = "uid://dtlm87vw6n02f"

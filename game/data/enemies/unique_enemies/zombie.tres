@@ -7,9 +7,10 @@
 script = ExtResource("1_yf7cv")
 display_name = "Zombie"
 scene = ExtResource("1_ce4wo")
-move_speed = 8.0
+move_speed = 1.2000000000000002
+max_health = 25
 stronghold_damage = 2
 attack_range = 6.5
-bounty = 2
+bounty = 3
 thread_color = Color(0, 0.55359787, 5.7756904e-07, 1)
 metadata/_custom_type_script = "uid://dynep1f7hnh6a"

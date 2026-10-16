@@ -155,9 +155,11 @@ enemy_container = NodePath("../../World/Environment/Enemies")
 stronghold = NodePath("../../World/Environment/Stronghold")
 spawn_radius = 32.0
 camera = NodePath("../../World/CameraLighting/Camera3D")
+time_between_waves = 3.0
 
 [node name="GoldManager" type="Node" parent="Managers" unique_id=900479467]
 script = ExtResource("8_vsp63")
+starting_gold = 15
 
 [node name="HintManager" type="Node" parent="Managers" unique_id=2032372107 node_paths=PackedStringArray("wave_manager", "hint_card")]
 script = ExtResource("19_jhnov")

@@ -11,10 +11,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sgxwx")
-title_label = NodePath("Panel/VBoxContainer/TitleLabel")
-body_label = NodePath("Panel/VBoxContainer/BodyLabel")
-got_it_button = NodePath("Panel/VBoxContainer/GotItButton")
-first_focus = NodePath("Panel/VBoxContainer/GotItButton")
+title_label = NodePath("BackgroundPanel/MarginContainer/VBoxContainer/TitleLabel")
+body_label = NodePath("BackgroundPanel/MarginContainer/VBoxContainer/BodyLabel")
+got_it_button = NodePath("BackgroundPanel/MarginContainer/VBoxContainer/GotItButton")
+first_focus = NodePath("BackgroundPanel/MarginContainer/VBoxContainer/GotItButton")
 pauses_game = true
 
 [node name="Dim" type="ColorRect" parent="." unique_id=404154024]
@@ -26,7 +26,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.105882354, 0.08627451, 0.13333334, 0.54901963)
 
-[node name="Panel" type="Panel" parent="." unique_id=1920192939]
+[node name="BackgroundPanel" type="PanelContainer" parent="." unique_id=1185063291]
+custom_minimum_size = Vector2(480, 0)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -38,23 +39,25 @@ offset_bottom = 520.0
 grow_horizontal = 2
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1070295227]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundPanel" unique_id=1922649641]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BackgroundPanel/MarginContainer" unique_id=1070295227]
+layout_mode = 2
 mouse_filter = 2
 
-[node name="TitleLabel" type="Label" parent="Panel/VBoxContainer" unique_id=2108423556]
+[node name="TitleLabel" type="Label" parent="BackgroundPanel/MarginContainer/VBoxContainer" unique_id=2108423556]
 layout_mode = 2
 theme = ExtResource("2_kqm8t")
-theme_type_variation = &"TitleLabel"
+theme_type_variation = &"HeaderLabel"
 text = "Title"
 horizontal_alignment = 1
 
-[node name="BodyLabel" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=422293954]
+[node name="BodyLabel" type="RichTextLabel" parent="BackgroundPanel/MarginContainer/VBoxContainer" unique_id=422293954]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -65,14 +68,16 @@ text = "Info
 "
 fit_content = true
 
-[node name="Spacer" type="Label" parent="Panel/VBoxContainer" unique_id=1317628250]
+[node name="SpacerLarger" type="Control" parent="BackgroundPanel/MarginContainer/VBoxContainer" unique_id=1715214851]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-theme = ExtResource("2_kqm8t")
-theme_type_variation = &"TitleLabel"
-horizontal_alignment = 1
 
-[node name="GotItButton" type="Button" parent="Panel/VBoxContainer" unique_id=1248025923]
+[node name="GotItButton" type="Button" parent="BackgroundPanel/MarginContainer/VBoxContainer" unique_id=1248025923]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 10
 text = "Got it..."
+
+[node name="SpacerSmaller" type="Control" parent="BackgroundPanel/MarginContainer/VBoxContainer" unique_id=1059448756]
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2

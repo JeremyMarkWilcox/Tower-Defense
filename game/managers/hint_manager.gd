@@ -19,19 +19,19 @@ func _on_lull_requested(lull: LullDefinition) -> void:
 	# Deferred so the threads are laid out behind the card when it appears.
 	if _has_boss(lull):
 		_show_once.call_deferred(&"boss", "Something is coming",
-				"Its thread [b]can't be cut[/b].\nClear the others while you can.")
+				"\n\tIts thread [b]can't be cut[/b].\n\n\tClear the others while you can.")
 	elif lull.spin_speed != 0.0 and _seen.has(&"threads"):
 		_show_once.call_deferred(&"spin", "Turning Threads",
-				"In some levels threads circle the Stronghold.\nWhen a thread is cut an enemy group appears [b]where its thread points.[/b] So like before you want to spread the groups out, but also try to cut when the thread faces your towers.\n\n[b]Double Duty Time![/b]" )
+				"\n\tSometimes threads will circle the Stronghold.\n\n\tWhen a thread is cut an enemy group appears [b]where its thread points.\n\n\t[/b] Like beforehand, you want to spread the groups out, while also trying to face your towers.\n\n\n\t[b]Double Duty Time![/b]" )
 	else:
 		_show_once.call_deferred(&"threads", "Signal Threads",
-				"Each thread holds enemies in the dark.\n[b]Click[/b] one to release its group now.\nWhen the timer runs out, [b]every uncut thread swarms at once.[/b]")
+				"\n\tEach thread holds enemies in the dark.\n\n\t[b]Click[/b] one to release its group now.\n\n\tWhen the timer runs out, [b]every uncut thread swarms at once.[/b]\n\n\t[i]There is a 1 second cooldown between each thread cut.[/i]")
 
 
 ## Called by WardAura through the "hint_listeners" group.
 func on_ward_activated() -> void:
 	_show_once.call_deferred(&"cultist", "Cultist",
-			"Enemies inside its circle take [b]half damage[/b].\nKill it first.")
+			"\n\tEnemies inside its circle take [b]half damage[/b].\n\n\tKill it first, if possible.")
 
 
 func _show_once(id: StringName, title: String, body: String) -> void:

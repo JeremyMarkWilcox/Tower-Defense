@@ -7,8 +7,8 @@
 script = ExtResource("1_8sqps")
 display_name = "Skeleton"
 scene = ExtResource("1_tdmgd")
-move_speed = 5.0
-max_health = 5
+move_speed = 2.5
+max_health = 6
 attack_range = 7.0
 attack_interval = 2.0
 thread_color = Color(1, 1, 0.67058825, 1)
