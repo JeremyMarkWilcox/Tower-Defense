@@ -43,7 +43,7 @@ mesh = SubResource("SphereMesh_m8pbu")
 
 [node name="Trail" type="CPUParticles3D" parent="." unique_id=661346979]
 amount = 30
-lifetime = 0.35000000000000003
+lifetime = 0.05
 mesh = SubResource("QuadMesh_g4gaj")
 emission_shape = 1
 emission_sphere_radius = 0.05

@@ -59,12 +59,22 @@ func _ready() -> void:
 	add_to_group(&"enemies")  # so Ice 2 can find nearby enemies
 	if ward_effect:
 		ward_effect.visible = false
-	for node in find_children("*", "MeshInstance3D", true, false):
-		if node != ward_effect:  # the ward shell keeps its own look
+		for node in find_children("*", "MeshInstance3D", true, false):
+			if node == ward_effect or _is_in_ward_aura(node):
+				continue  # ward visuals keep their own look
 			_meshes.append(node)
 	_frost_overlay = _make_overlay(frost_tint)
 	_flash_overlay = _make_overlay(burn_flash)
 
+
+func _is_in_ward_aura(node: Node) -> bool:
+	var parent := node.get_parent()
+	while parent and parent != self:
+		if parent is WardAura:
+			return true
+		parent = parent.get_parent()
+	return false
+	
 
 ## Called by WaveManager right after spawning.
 func setup(enemy_data: EnemyData, target: Vector3, stronghold_radius: float) -> void:
