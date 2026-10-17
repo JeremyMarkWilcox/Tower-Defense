@@ -17,6 +17,15 @@ enum RunState { SETUP, ACTIVE, VICTORY, DEFEAT }
 ## Seconds between the Stronghold falling and the Game Over screen.
 @export var defeat_delay := 1.8
 
+## Plays when the final wave starts.
+@export var final_wave_music: AudioStream
+## Plays when the boss's thread releases it.
+@export var boss_music: AudioStream
+## Short crossfade so the boss arrival hits hard.
+@export var boss_music_fade := 0.4
+## Seconds between the boss dying and the victory screen.
+@export var victory_delay := 2.0
+
 var state: RunState = RunState.SETUP
 
 var _last_window_size := Vector2i.ZERO
@@ -43,7 +52,19 @@ func _connect_systems() -> void:
 	stronghold.destroyed.connect(_lose)
 	MenuManager.menu_opened.connect(_on_menu_opened)
 	MenuManager.menu_closed.connect(_on_menu_closed)
-	
+	wave_manager.wave_started.connect(_on_wave_started)
+
+
+func _on_wave_started(number: int, total: int) -> void:
+	if number == total and final_wave_music:
+		Audio.play_music(final_wave_music)	
+		
+
+func _on_thread_released(data: SignalThreadData, at: Vector3) -> void:
+	wave_manager.spawn_group(data.enemy, data.count, data.spawn_interval, at)
+	if data.enemy and data.enemy.is_boss and boss_music:
+		Audio.play_music(boss_music, boss_music_fade)
+
 	
 ## Only the pause menu stops the music; hint cards keep it playing.
 func _on_menu_opened(menu: BaseMenu) -> void:
@@ -66,9 +87,11 @@ func _start_run() -> void:
 
 func _win() -> void:
 	if state != RunState.ACTIVE:
-		return  # the outcome is decided once
+		return
 	state = RunState.VICTORY
 	_end_run()
+	stronghold.lock()  # leftover enemies can't take it down after you've won
+	await get_tree().create_timer(victory_delay).timeout  # let the boss death play out
 	end_screen.set_result(true)
 	MenuManager.open_menu(end_screen)
 
@@ -87,10 +110,6 @@ func _end_run() -> void:
 	wave_manager.stop()
 	thread_manager.stop()
 	MenuManager.close_all()
-
-
-func _on_thread_released(data: SignalThreadData, at: Vector3) -> void:
-	wave_manager.spawn_group(data.enemy, data.count, data.spawn_interval, at)
 
 
 func _unhandled_input(event: InputEvent) -> void:

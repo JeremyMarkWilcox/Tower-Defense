@@ -22,6 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://cniox0c88ga5l" path="res://core/ui/controls_menu.tscn" id="8_wmqhs"]
 [ext_resource type="PackedScene" uid="uid://dj4pwl2xdjjfq" path="res://game/ui/screens/run_end_screen.tscn" id="11_3vho3"]
 [ext_resource type="PackedScene" uid="uid://dfad8mr7np0na" path="res://game/threads/signal_threads/signal_system.tscn" id="11_7l47o"]
+[ext_resource type="AudioStream" uid="uid://ieboaihrnwa0" path="res://assets/sounds/music/see.ogg" id="12_k562j"]
+[ext_resource type="AudioStream" uid="uid://bdlr36e8okrg2" path="res://assets/sounds/music/thump.ogg" id="13_75p8r"]
+[ext_resource type="AudioStream" uid="uid://djdof6h81cbtg" path="res://assets/sounds/music/bring.ogg" id="14_63mkb"]
 [ext_resource type="Script" uid="uid://t5dtitkv78yy" path="res://game/managers/hint_manager.gd" id="19_jhnov"]
 [ext_resource type="Resource" uid="uid://dxbta4cne2rrk" path="res://game/data/waves/unique_waves/wave_04.tres" id="21_caicf"]
 [ext_resource type="PackedScene" uid="uid://b0ihbus3uvtu0" path="res://game/ui/tower_ui/tower_build_panel.tscn" id="23_wgsev"]
@@ -157,12 +160,15 @@ mouse_filter = 2
 
 [node name="GameManager" type="Node" parent="Managers" unique_id=181638440 node_paths=PackedStringArray("pause_menu", "end_screen", "wave_manager", "stronghold", "gold_manager", "thread_manager")]
 script = ExtResource("1_l1rk1")
+music = ExtResource("12_k562j")
 pause_menu = NodePath("../../UI/PauseMenu")
 end_screen = NodePath("../../UI/EndScreen")
 wave_manager = NodePath("../WaveManager")
 stronghold = NodePath("../../World/Environment/Stronghold")
 gold_manager = NodePath("../GoldManager")
 thread_manager = NodePath("../../World/SignalSystem/ThreadManager")
+final_wave_music = ExtResource("13_75p8r")
+boss_music = ExtResource("14_63mkb")
 
 [node name="WaveManager" type="Node" parent="Managers" unique_id=1737513906 node_paths=PackedStringArray("enemy_container", "stronghold", "camera")]
 script = ExtResource("2_u5opy")

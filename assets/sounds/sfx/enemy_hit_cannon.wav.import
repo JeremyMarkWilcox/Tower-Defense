@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c4cj65l6m876r"
-path="res://.godot/imported/enemy_hit_cannon.wav-22dcee6883c1ac34501a00259d51a0c7.sample"
+path="res://.godot/imported/enemy_hit_cannon.wav-75425543fc8226d58f46c6b1d9f1e13d.sample"
 
 [deps]
 
-source_file="res://assets/sounds/enemy_hit_cannon.wav"
-dest_files=["res://.godot/imported/enemy_hit_cannon.wav-22dcee6883c1ac34501a00259d51a0c7.sample"]
+source_file="res://assets/sounds/sfx/enemy_hit_cannon.wav"
+dest_files=["res://.godot/imported/enemy_hit_cannon.wav-75425543fc8226d58f46c6b1d9f1e13d.sample"]
 
 [params]
 

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dotsrnnn415j1" path="res://core/ui/title.gd" id="1_s5xim"]
 [ext_resource type="PackedScene" uid="uid://dr52lc4bvyyj7" path="res://core/ui/settings_menu.tscn" id="2_fepre"]
+[ext_resource type="AudioStream" uid="uid://bwwf8pqqtwjig" path="res://assets/sounds/music/arrival.ogg" id="2_l0gmp"]
 [ext_resource type="PackedScene" uid="uid://ms65ua2jh58q" path="res://game/ui/screens/skull_button.tscn" id="3_2fc5o"]
 [ext_resource type="PackedScene" uid="uid://drybvcb351xjl" path="res://core/ui/title_backdrop.tscn" id="3_2uxhk"]
 [ext_resource type="PackedScene" uid="uid://ddt1m8s6wg7ju" path="res://core/ui/credits.tscn" id="4_q06yk"]
@@ -53,6 +54,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s5xim")
 game_scene = "uid://bghavjkofsdd7"
+music = ExtResource("2_l0gmp")
 play_button = NodePath("VBoxContainer/PlayButton")
 settings_button = NodePath("VBoxContainer/Settings")
 credits_button = NodePath("VBoxContainer/CreditsButton")

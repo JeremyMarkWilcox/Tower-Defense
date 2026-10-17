@@ -57,7 +57,7 @@ func _move(delta: float) -> void:
 func _attack(delta: float) -> void:
 	if data.stronghold_damage <= 0 or _slamming:
 		return
-		_attack_cooldown -= delta * speed_multiplier
+	_attack_cooldown -= delta * speed_multiplier
 	if _attack_cooldown <= 0.0:
 		_attack_cooldown = data.attack_interval
 		_slamming = true

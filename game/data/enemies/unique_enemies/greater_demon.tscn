@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://chi77ytlbc0cf" path="res://assets/3d_art/particle_effects/deaths/death_greater_demon.tscn" id="2_txtyp"]
 [ext_resource type="PackedScene" uid="uid://1gufnqo3khmk" path="res://assets/3d_art/particle_effects/deaths/death_skeleton.tscn" id="3_tauwm"]
 [ext_resource type="PackedScene" uid="uid://b18l2ac172kr7" path="res://assets/3d_art/particle_effects/deaths/death_lesser_demon.tscn" id="4_7603a"]
+[ext_resource type="AudioStream" uid="uid://cwqrqmhy0qamm" path="res://assets/sounds/sfx/deaths/boss_death.wav" id="6_tauwm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_abdfr"]
 radius = 4.0
@@ -30,6 +31,7 @@ slam_extra_height = 2.5
 slam_effect = ExtResource("4_7603a")
 anim_player = NodePath("FrogMesh/AnimationPlayer")
 death_effect = ExtResource("2_txtyp")
+death_sound = ExtResource("6_tauwm")
 
 [node name="FrogMesh" parent="." index="0" unique_id=281235633 instance=ExtResource("2_fef88")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)

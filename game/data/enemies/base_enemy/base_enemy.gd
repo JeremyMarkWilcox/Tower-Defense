@@ -28,6 +28,10 @@ enum State { MOVING, ATTACKING }
 ## Brief flash on each burn tick.
 @export var burn_flash := Color(1.0, 0.3, 0.1, 0.6)
 
+## Played when this enemy dies. Set a default in base_enemy.tscn; override per enemy.
+@export var death_sound: AudioStream
+@export var death_volume_db := -4.0
+
 var data: EnemyData
 var health := 0
 var state := State.MOVING
@@ -117,6 +121,7 @@ func take_damage(amount: int) -> void:
 	if health <= 0:
 		_is_dead = true
 		_spawn_death_effect()
+		Audio.play_sfx(death_sound, 0.12, death_volume_db)
 		died.emit(self)
 		queue_free()
 		

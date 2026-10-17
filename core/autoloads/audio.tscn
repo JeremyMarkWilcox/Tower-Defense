@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://d4bsisau8la3h" path="res://assets/sounds/sfx/question_004.wav" id="2_joat1"]
 [ext_resource type="AudioStream" uid="uid://c6n6odedvnoji" path="res://assets/sounds/sfx/select_001.ogg" id="3_kgqjb"]
 [ext_resource type="AudioStream" uid="uid://5pmss0av5i1" path="res://assets/sounds/sfx/back_002.ogg" id="4_0uhop"]
-[ext_resource type="AudioStream" uid="uid://cmy8cf4wkah2q" path="res://assets/sounds/music/Rainfg.ogg" id="5_kgqjb"]
+[ext_resource type="AudioStream" uid="uid://cmy8cf4wkah2q" path="res://assets/sounds/music/rain_fg.ogg" id="5_kgqjb"]
 
 [node name="Audio" type="Node" unique_id=238841783]
 script = ExtResource("1_v581s")

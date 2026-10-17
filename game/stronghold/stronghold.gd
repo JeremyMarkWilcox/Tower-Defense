@@ -41,6 +41,7 @@ var _flash_mat: StandardMaterial3D
 var _flash_tween: Tween
 
 var _is_destroyed := false
+var _locked := false
 
 
 func _ready() -> void:
@@ -63,6 +64,8 @@ func _ready() -> void:
 
 
 func take_damage(amount: int) -> void:
+	if _locked:
+		return
 	if Debug.stronghold_invincible:
 		return
 	if _is_destroyed or amount <= 0:
@@ -78,7 +81,12 @@ func take_damage(amount: int) -> void:
 	_spawn_destroyed_effect()
 	_swap_to_ruins()
 	destroyed.emit()
-	
+
+
+## Stops all further damage (used once the run is won).
+func lock() -> void:
+	_locked = true
+
 
 ## Red flash over the model that fades out quickly.
 func _flash_hit() -> void:
