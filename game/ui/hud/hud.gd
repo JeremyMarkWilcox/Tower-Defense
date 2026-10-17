@@ -33,6 +33,12 @@ extends Control
 ## Played when the final-wave banner lands. Empty = silent.
 @export var final_wave_sound: AudioStream
 
+
+@export_group("Voice")
+## One line per wave, in order: element 0 = Wave 1, element 3 = the boss wave. Empty slot = silent.
+@export var wave_voice_lines: Array[AudioStream] = []
+@export var voice_volume_db := 0.0
+
 var _bar_tween: Tween
 var _hit_tween: Tween
 var _shake_tween: Tween
@@ -143,6 +149,7 @@ func _on_wave_started(number: int, total: int) -> void:
 	wave_label.text = "Wave %d / %d" % [number, total]
 	wave_banner.text = "Final Wave" if number == total else "Wave %d" % number
 	var is_final := number == total
+	_play_wave_voice(number)
 	wave_banner.add_theme_color_override("font_color", final_banner_color if is_final else banner_color)
 	if _banner_tween:
 		_banner_tween.kill()
@@ -182,6 +189,12 @@ func _on_wave_started(number: int, total: int) -> void:
 	# 3. Hold, then fade out like before.
 	_banner_tween.chain().tween_interval(1.2)
 	_banner_tween.chain().tween_property(wave_banner, "modulate:a", 0.0, 0.6)
+
+
+func _play_wave_voice(number: int) -> void:
+	var index := number - 1
+	if index >= 0 and index < wave_voice_lines.size():
+		Audio.play_sfx(wave_voice_lines[index], 0.0, voice_volume_db)
 
 
 func _ignore_mouse(node: Node) -> void:
