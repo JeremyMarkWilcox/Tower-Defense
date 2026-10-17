@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cnmhajh457cdk"]
+
+[ext_resource type="PackedScene" uid="uid://1gufnqo3khmk" path="res://assets/3d_art/particle_effects/deaths/death_skeleton.tscn" id="1_jwsdi"]
+[ext_resource type="Texture2D" uid="uid://dx8yt14bos60" path="res://assets/2d_art/smoke_puffs.png" id="2_ryjp3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_52erl"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_ryjp3")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_fn5ob"]
+material = SubResource("StandardMaterial3D_52erl")
+size = Vector2(2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_term0"]
+shading_mode = 0
+albedo_color = Color(0.43137255, 0.41568628, 0.4509804, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ofy4e"]
+material = SubResource("StandardMaterial3D_term0")
+size = Vector3(0.05, 0.05, 0.05)
+
+[node name="DeathSmoke" unique_id=721675762 instance=ExtResource("1_jwsdi")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="Smoke" parent="." index="0" unique_id=90950119]
+amount = 100
+lifetime = 1.5
+mesh = SubResource("QuadMesh_fn5ob")
+
+[node name="Chunks" parent="." index="1" unique_id=81826891]
+amount = 40
+mesh = SubResource("BoxMesh_ofy4e")
+gravity = Vector3(0, -50, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0

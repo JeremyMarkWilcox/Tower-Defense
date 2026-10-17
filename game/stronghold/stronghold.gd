@@ -15,6 +15,15 @@ const TOWER_SCENE := preload("uid://hfqj55tjn8l8")  # towers/towers/tower.tscn
 @export var starting_tower_type := 0
 @export var starting_socket := 1
 
+@export_group("Feedback")
+@export var hit_sound: AudioStream
+@export var hit_volume_db := 0.0
+@export var destroyed_sound: AudioStream
+@export var destroyed_volume_db := 0.0
+## Spawned where the Stronghold stood when it falls.
+@export var destroyed_effect: PackedScene
+@export var destroyed_effect_height := 1.5
+
 var health := 0
 var sockets: Array[TowerSocket] = []
 ## type * 10 + level per socket, or -1 if empty. Kept for anything that reads it.
@@ -42,9 +51,21 @@ func take_damage(amount: int) -> void:
 		return
 	health = maxi(health - amount, 0)
 	health_changed.emit(health, max_health)
-	if health == 0:
-		_is_destroyed = true
-		destroyed.emit()
+	if health > 0:
+		Audio.play_sfx(hit_sound, 0.1, hit_volume_db)
+		return
+	_is_destroyed = true
+	Audio.play_sfx(destroyed_sound, 0.1, destroyed_volume_db)
+	_spawn_destroyed_effect()
+	destroyed.emit()
+
+
+func _spawn_destroyed_effect() -> void:
+	if destroyed_effect == null:
+		return
+	var effect := destroyed_effect.instantiate() as Node3D
+	get_tree().current_scene.add_child(effect)
+	effect.global_position = global_position + Vector3.UP * destroyed_effect_height
 
 ## Builds a tower on a socket, replacing any tower already there.
 ## Doesn't touch gold; the shop checks and spends before calling this.

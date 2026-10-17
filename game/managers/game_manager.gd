@@ -14,6 +14,9 @@ enum RunState { SETUP, ACTIVE, VICTORY, DEFEAT }
 @export var gold_manager: GoldManager
 @export var thread_manager: ThreadManager
 
+## Seconds between the Stronghold falling and the Game Over screen.
+@export var defeat_delay := 1.8
+
 var state: RunState = RunState.SETUP
 
 var _last_window_size := Vector2i.ZERO
@@ -74,7 +77,8 @@ func _lose() -> void:
 	if state != RunState.ACTIVE:
 		return
 	state = RunState.DEFEAT
-	_end_run()
+	_end_run()  # stops spawning and threads right away
+	await get_tree().create_timer(defeat_delay).timeout  # let the fall play out
 	end_screen.set_result(false)
 	MenuManager.open_menu(end_screen)
 
