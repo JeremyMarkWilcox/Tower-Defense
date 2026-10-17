@@ -24,10 +24,21 @@ const TOWER_SCENE := preload("uid://hfqj55tjn8l8")  # towers/towers/tower.tscn
 @export var destroyed_effect: PackedScene
 @export var destroyed_effect_height := 1.5
 
+## The intact Stronghold model (the stronghold_base node).
+@export var model: Node3D
+## Shown in its place when the Stronghold falls. Same origin and scale as the intact model.
+@export var destroyed_model: PackedScene
+@export var hit_flash_color := Color(1.0, 0.15, 0.1, 0.6)
+@export var hit_flash_time := 0.15
+
 var health := 0
 var sockets: Array[TowerSocket] = []
 ## type * 10 + level per socket, or -1 if empty. Kept for anything that reads it.
 var loadout: Array[int] = []
+
+var _model_meshes: Array[MeshInstance3D] = []
+var _flash_mat: StandardMaterial3D
+var _flash_tween: Tween
 
 var _is_destroyed := false
 
@@ -42,6 +53,13 @@ func _ready() -> void:
 			socket.clicked.connect(func(s: TowerSocket) -> void: socket_clicked.emit(s))
 	if starting_tower_type >= 0 and starting_socket < sockets.size():
 		build_tower(sockets[starting_socket], starting_tower_type, 0)
+		
+	if model:
+		for node in model.find_children("*", "MeshInstance3D", true, false):
+			_model_meshes.append(node)
+	_flash_mat = StandardMaterial3D.new()
+	_flash_mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	_flash_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 
 
 func take_damage(amount: int) -> void:
@@ -53,11 +71,45 @@ func take_damage(amount: int) -> void:
 	health_changed.emit(health, max_health)
 	if health > 0:
 		Audio.play_sfx(hit_sound, 0.1, hit_volume_db)
+		_flash_hit()
 		return
 	_is_destroyed = true
-	Audio.play_sfx(destroyed_sound, 0.1, destroyed_volume_db)
+	Audio.play_sfx(destroyed_sound, 0.0, destroyed_volume_db)
 	_spawn_destroyed_effect()
+	_swap_to_ruins()
 	destroyed.emit()
+	
+
+## Red flash over the model that fades out quickly.
+func _flash_hit() -> void:
+	if _model_meshes.is_empty():
+		return
+	if _flash_tween:
+		_flash_tween.kill()
+	_flash_mat.albedo_color = hit_flash_color
+	for mesh in _model_meshes:
+		mesh.material_overlay = _flash_mat
+	_flash_tween = create_tween()
+	_flash_tween.tween_property(_flash_mat, "albedo_color:a", 0.0, hit_flash_time)
+	_flash_tween.tween_callback(_clear_flash)
+
+
+func _clear_flash() -> void:
+	for mesh in _model_meshes:
+		mesh.material_overlay = null
+
+
+## Hides the intact model and puts the ruins in its place, under the dust cloud.
+func _swap_to_ruins() -> void:
+	if _flash_tween:
+		_flash_tween.kill()
+	_clear_flash()
+	if model == null or destroyed_model == null:
+		return
+	var ruins := destroyed_model.instantiate() as Node3D
+	model.add_sibling(ruins)
+	ruins.transform = model.transform
+	model.hide()
 
 
 func _spawn_destroyed_effect() -> void:

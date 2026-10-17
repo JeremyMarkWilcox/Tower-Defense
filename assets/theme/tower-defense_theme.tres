@@ -93,10 +93,10 @@ border_color = Color(0.16470589, 0.078431375, 0.03137255, 1)
 texture = ExtResource("3_xpfcc")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig1xr"]
-bg_color = Color(0.7019608, 0.14901961, 0.18039216, 1)
+bg_color = Color(0.7019608, 0.14901961, 0.18039216, 0.2784314)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbe44"]
-bg_color = Color(0.7, 0.14699998, 0.1746501, 0.49019608)
+bg_color = Color(0.69803923, 0.14509805, 0.1764706, 1)
 
 [resource]
 default_font = ExtResource("1_g0ci4")

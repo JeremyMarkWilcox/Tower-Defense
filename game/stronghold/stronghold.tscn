@@ -4,11 +4,14 @@
 [ext_resource type="Resource" uid="uid://byui546w78od6" path="res://game/data/towers/towers/tower_data.tres" id="2_3ms5n"]
 [ext_resource type="PackedScene" uid="uid://drxix2qq7vrcp" path="res://assets/3d_art/stronghold/stronghold_base.glb" id="2_b8jds"]
 [ext_resource type="PackedScene" uid="uid://caeloa1nngu3c" path="res://game/stronghold/tower_socket.tscn" id="3_b46vg"]
+[ext_resource type="PackedScene" uid="uid://cwmj6s0t4m6gp" path="res://assets/3d_art/stronghold/stronghold_base_destroyed.glb" id="3_m4biq"]
 
-[node name="StrongholdHolder" type="Node3D" unique_id=2125922311 node_paths=PackedStringArray("sockets_root")]
+[node name="StrongholdHolder" type="Node3D" unique_id=2125922311 node_paths=PackedStringArray("sockets_root", "model")]
 script = ExtResource("1_3cre5")
 towerdata = ExtResource("2_3ms5n")
 sockets_root = NodePath("Sockets")
+model = NodePath("stronghold_base")
+destroyed_model = ExtResource("3_m4biq")
 
 [node name="stronghold_base" parent="." unique_id=25793128 instance=ExtResource("2_b8jds")]
 
