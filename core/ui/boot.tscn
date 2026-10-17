@@ -4,8 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://d2nvrs001wdw" path="res://assets/2d_art/PumpkinCoin.png" id="2_v5pur"]
 [ext_resource type="Script" uid="uid://cejwyyk8a5j8s" path="res://game/ui/hud/flicker_icon.gd" id="3_7v4ab"]
 [ext_resource type="Texture2D" uid="uid://bfstj0m0ex65l" path="res://assets/2d_art/Pumpkin_Coin_Sheet.png" id="4_kubvj"]
+[ext_resource type="Texture2D" uid="uid://devlra22vgq0n" path="res://assets/ui/jam/gwj_full_logo.svg" id="5_a88hl"]
+[ext_resource type="Texture2D" uid="uid://b6lkdxxrer5hs" path="res://assets/ui/jam/jam_98_signal.png" id="6_x6dik"]
+[ext_resource type="Texture2D" uid="uid://cff61rbl0jrpx" path="res://assets/ui/jam/double_duty.png" id="7_cvtiu"]
+[ext_resource type="Texture2D" uid="uid://ehpl75eerjoh" path="res://assets/ui/jam/feeling_froggy.png" id="8_imsxy"]
 
-[node name="Boot" type="Control" unique_id=1532558089 node_paths=PackedStringArray("prompt_label")]
+[node name="Boot" type="Control" unique_id=1532558089 node_paths=PackedStringArray("prompt_label", "prompt_row", "made_for", "wildcards")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +19,11 @@ grow_vertical = 2
 script = ExtResource("1_5bnmk")
 next_scene = "uid://bub40ec1qfl2u"
 prompt_label = NodePath("PromptRow/PromptTitle")
+prompt_row = NodePath("PromptRow")
+made_for = NodePath("JamCards/MadeFor")
+wildcards = NodePath("JamCards/WildCards")
+card_fade = 0.5
+card_hold = 3.0
 
 [node name="Background" type="ColorRect" parent="." unique_id=1565063747]
 layout_mode = 1
@@ -71,3 +80,97 @@ script = ExtResource("3_7v4ab")
 sheet = ExtResource("4_kubvj")
 min_time = 0.2
 max_time = 0.4
+
+[node name="JamCards" type="Control" parent="." unique_id=334944662]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MadeFor" type="VBoxContainer" parent="JamCards" unique_id=1821325781]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MadeForLabel" type="Label" parent="JamCards/MadeFor" unique_id=1293979563]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "A game made for:"
+horizontal_alignment = 1
+
+[node name="Logo" type="TextureRect" parent="JamCards/MadeFor" unique_id=684877785]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+texture = ExtResource("5_a88hl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="JamBanner" type="TextureRect" parent="JamCards/MadeFor" unique_id=1940404967]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+texture = ExtResource("6_x6dik")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WildCards" type="VBoxContainer" parent="JamCards" unique_id=588814480]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="WildCardsLabel" type="Label" parent="JamCards/WildCards" unique_id=1582684956]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "Wildcards"
+horizontal_alignment = 1
+
+[node name="CardRow" type="HBoxContainer" parent="JamCards/WildCards" unique_id=1535008992]
+layout_mode = 2
+theme_override_constants/separation = 80
+alignment = 1
+
+[node name="DoubleDuty" type="VBoxContainer" parent="JamCards/WildCards/CardRow" unique_id=929393593]
+layout_mode = 2
+
+[node name="Card" type="TextureRect" parent="JamCards/WildCards/CardRow/DoubleDuty" unique_id=1329419531]
+custom_minimum_size = Vector2(246, 342)
+layout_mode = 2
+texture = ExtResource("7_cvtiu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Note" type="Label" parent="JamCards/WildCards/CardRow/DoubleDuty" unique_id=1814172656]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+text = "Thread System gives you the power to control when to send enemies. You'll have to watch the timing and alignment to be effective."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Froggy" type="VBoxContainer" parent="JamCards/WildCards/CardRow" unique_id=926253388]
+layout_mode = 2
+
+[node name="Card" type="TextureRect" parent="JamCards/WildCards/CardRow/Froggy" unique_id=28314800]
+custom_minimum_size = Vector2(246, 342)
+layout_mode = 2
+texture = ExtResource("8_imsxy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Note" type="Label" parent="JamCards/WildCards/CardRow/Froggy" unique_id=1412509714]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+theme_type_variation = &"SmallLabel"
+text = "The final boss is a giant frog. It is waiting for you..."
+horizontal_alignment = 1
+autowrap_mode = 2
