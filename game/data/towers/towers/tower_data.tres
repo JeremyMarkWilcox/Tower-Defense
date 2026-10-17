@@ -45,6 +45,7 @@ fire_shot_sound = ExtResource("8_ur78y")
 ice_shot_sound = ExtResource("14_ykpdv")
 shot_volume_db = 0.0
 cannon_hit_sound = SubResource("AudioStreamWAV_ykpdv")
+hit_volume_db = -15.0
 burn_tick_damage = Array[float]([1.5, 2.5])
 burst_gap = 0.25
 slow_duration = Array[float]([2.5, 0.5])

@@ -14,6 +14,7 @@ extends Control
 @export var gold_label: Label
 @export var wave_label: Label
 @export var wave_banner: Label
+@export var banner_back: CanvasItem
 ## How far to the right the wave banner starts before sliding in.
 @export var banner_slide := 240.0
 @export var banner_color := Color(0.6, 0.85, 1.0)
@@ -48,6 +49,8 @@ func _ready() -> void:
 		low_health_vignette.material.set_shader_parameter("strength", 0.0)
 	_ignore_mouse(self)  # never block clicks on threads or sockets
 	wave_banner.modulate.a = 0.0
+	if banner_back:
+		banner_back.modulate.a = 0.0
 	# Systems may have started before the HUD connected, so read current values first.
 	_show_health(stronghold.health, stronghold.max_health, false)
 	_show_gold(gold_manager.gold, false)
@@ -158,9 +161,13 @@ func _on_wave_started(number: int, total: int) -> void:
 	_banner_tween.tween_property(wave_banner, "scale", overshoot, 0.35) \
 		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	_banner_tween.tween_property(wave_banner, "modulate:a", 1.0, 0.2)
+	if banner_back:
+		_banner_tween.tween_property(banner_back, "modulate:a", 1.0, 0.2)
 	# 2. Pop: settle to full size with a small bounce.
 	_banner_tween.chain().tween_property(wave_banner, "scale", Vector2.ONE, 0.25) \
 		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	if banner_back:
+		_banner_tween.tween_property(banner_back, "modulate:a", 0.0, 0.6)
 
 	# Final wave only: a stinger sound and a short shake as it lands.
 	if is_final:

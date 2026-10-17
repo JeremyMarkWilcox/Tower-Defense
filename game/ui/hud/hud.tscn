@@ -16,7 +16,16 @@ shader_parameter/strength = 0.0
 shader_parameter/inner = 0.55
 shader_parameter/outer = 1.2
 
-[node name="HUD" type="Control" unique_id=360266916 node_paths=PackedStringArray("health_panel", "health_bar", "health_label", "gold_label", "wave_label", "wave_banner", "low_health_vignette")]
+[sub_resource type="Gradient" id="Gradient_uoejn"]
+offsets = PackedFloat32Array(0, 0.51008064, 1)
+colors = PackedColorArray(0.105882354, 0.08627451, 0.13333334, 0, 0.105882354, 0.08627451, 0.13333334, 0.7019608, 0.105882354, 0.08627451, 0.13333334, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ra2i3"]
+gradient = SubResource("Gradient_uoejn")
+width = 256
+height = 1
+
+[node name="HUD" type="Control" unique_id=360266916 node_paths=PackedStringArray("health_panel", "health_bar", "health_label", "gold_label", "wave_label", "wave_banner", "banner_back", "low_health_vignette")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,6 +39,7 @@ health_label = NodePath("HealthPanel/HealthBar/HealthLabel")
 gold_label = NodePath("TopRight/GoldRow/GoldLabel")
 wave_label = NodePath("TopRight/WaveLabel")
 wave_banner = NodePath("WaveBanner")
+banner_back = NodePath("BannerBack")
 banner_color = Color(0.9490196, 0.54901963, 0.15686275, 1)
 final_banner_color = Color(0.7019608, 0.14901961, 0.18039216, 1)
 low_health_vignette = NodePath("LowHealthVignette")
@@ -110,6 +120,15 @@ custom_minimum_size = Vector2(88, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Wave 1"
+
+[node name="BannerBack" type="TextureRect" parent="." unique_id=799119218]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 155.0
+offset_bottom = 265.0
+texture = SubResource("GradientTexture2D_ra2i3")
+expand_mode = 1
 
 [node name="WaveBanner" type="Label" parent="." unique_id=2039692852]
 layout_mode = 1
