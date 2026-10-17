@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dgf785mw3toay" path="res://game/data/enemies/base_enemy/base_enemy.tscn" id="1_07po6"]
 [ext_resource type="PackedScene" uid="uid://4aetlbhetawu" path="res://assets/3d_art/enemies/lesser_demon.gltf" id="2_ss6uj"]
 [ext_resource type="PackedScene" uid="uid://b18l2ac172kr7" path="res://assets/3d_art/particle_effects/deaths/death_lesser_demon.tscn" id="2_v7jbu"]
+[ext_resource type="AudioStream" uid="uid://7dkjdurpyoxt" path="res://assets/sounds/sfx/deaths/zombie_lesserdemon_death.wav" id="3_1sayr"]
 [ext_resource type="Script" uid="uid://dwan00dwov0j0" path="res://game/data/enemies/enemy_components/WalkWobble.gd" id="3_5jpo5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5jpo5"]
@@ -22,6 +23,8 @@ height = 2.0
 anim_player = NodePath("LesserDemonMesh/AnimationPlayer")
 attack_animation = &"fight"
 death_effect = ExtResource("2_v7jbu")
+death_sound = ExtResource("3_1sayr")
+death_volume_db = 12.0
 
 [node name="LesserDemonMesh" parent="." index="0" unique_id=1830051318 instance=ExtResource("2_ss6uj")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
@@ -29,13 +32,13 @@ script = ExtResource("3_5jpo5")
 sway_degrees = 5.0
 lean_degrees = 2.0
 
-[node name="leg_R" parent="LesserDemonMesh/demon/body/legs" parent_id_path=PackedInt32Array(1830051318, 447299271) index="0" unique_id=1357980406]
+[node name="leg_R" parent="LesserDemonMesh/demon/body/legs" parent_id_path=PackedInt32Array(1830051318, 199536259) index="0" unique_id=1767231747]
 transform = Transform3D(1, 0, 0, 0, 0.90630776, -0.4226183, 0, 0.4226183, 0.90630776, 0, -0.046875, 0.109375)
 
-[node name="Leg_L" parent="LesserDemonMesh/demon/body/legs" parent_id_path=PackedInt32Array(1830051318, 447299271) index="1" unique_id=2132932287]
+[node name="Leg_L" parent="LesserDemonMesh/demon/body/legs" parent_id_path=PackedInt32Array(1830051318, 199536259) index="1" unique_id=1813596551]
 transform = Transform3D(0.9998403, -0.0065407814, -0.01662905, 0.014877654, 0.82016224, 0.57193744, 0.009897602, -0.5720934, 0.8201287, 0, -0.046875, -0.21875)
 
-[node name="AnimationPlayer" parent="LesserDemonMesh" index="1" unique_id=1324486385]
+[node name="AnimationPlayer" parent="LesserDemonMesh" index="1" unique_id=645416599]
 autoplay = &"walk"
 
 [node name="CollisionShape3D" parent="Hitbox" parent_id_path=PackedInt32Array(1439913594) index="0" unique_id=749003341]

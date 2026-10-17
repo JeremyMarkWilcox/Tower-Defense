@@ -32,6 +32,14 @@ enum Phase { INTRO, IDLE, LEAVING }
 @export var swoop_time := 1.2
 @export var fade: ColorRect
 
+@export_group("Sounds")
+@export var pulse_sound: AudioStream
+@export var pulse_volume_db := 0.0
+@export var thread_sound: AudioStream
+@export var thread_volume_db := -4.0
+## Each thread plays this much higher than the one before (0.08 = 8% higher).
+@export var thread_pitch_step := 0.08
+
 var phase := Phase.INTRO
 
 var _intro: Tween
@@ -109,6 +117,7 @@ func _play_intro() -> void:
 	# Beat 1: a moment of darkness, then the pulse.
 	_intro.tween_interval(1.2)
 	_intro.tween_callback(pulse_ring.show)
+	_intro.tween_callback(Audio.play_sfx.bind(pulse_sound, 0.0, pulse_volume_db))
 	# Beat 2: the camera rises while the pulse spreads.
 	_intro.set_parallel(true)
 	if fade:
@@ -122,6 +131,7 @@ func _play_intro() -> void:
 	for i in _threads.size():
 		var delay := pulse_time * 0.6 + i * 0.25
 		_intro.tween_callback(_threads[i].show).set_delay(delay)
+		_intro.tween_callback(Audio.play_sfx.bind(thread_sound, 0.0, thread_volume_db, 1.0 + i * thread_pitch_step)).set_delay(delay)
 		_intro.tween_property(_threads[i], "scale", Vector3.ONE, 0.35).set_delay(delay)
 		_intro.tween_property(_risers[i], "global_position", _rise_targets[i], rise_time) \
 				.set_delay(delay + 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)

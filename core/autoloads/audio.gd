@@ -60,8 +60,7 @@ func play_back() -> void:
 
 
 # --- SFX ---
-
-func play_sfx(stream: AudioStream, pitch_variation := 0.0, volume_db := 0.0) -> void:
+func play_sfx(stream: AudioStream, pitch_variation := 0.0, volume_db := 0.0, pitch := 1.0) -> void:
 	if stream == null:
 		return
 	var now := Time.get_ticks_msec()
@@ -71,7 +70,7 @@ func play_sfx(stream: AudioStream, pitch_variation := 0.0, volume_db := 0.0) -> 
 	for player in _sfx_players:
 		if not player.playing:
 			player.stream = stream
-			player.pitch_scale = 1.0 + randf_range(-pitch_variation, pitch_variation)
+			player.pitch_scale = pitch + randf_range(-pitch_variation, pitch_variation)
 			player.volume_db = volume_db
 			player.play()
 			return

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cg6n6b183jwsh" path="res://assets/3d_art/enemies/CULT.gltf" id="2_hkt21"]
 [ext_resource type="PackedScene" uid="uid://dd7iof6k82ir7" path="res://assets/3d_art/particle_effects/deaths/death_cultist.tscn" id="2_okl66"]
 [ext_resource type="Script" uid="uid://byvqdkchtukj0" path="res://game/data/enemies/enemy_components/float_bob.gd" id="3_hhqyx"]
+[ext_resource type="AudioStream" uid="uid://2sn5ybctlx6r" path="res://assets/sounds/sfx/deaths/cultist_death.ogg" id="3_hxqal"]
 [ext_resource type="Script" uid="uid://jqhrxyqa2l5h" path="res://game/data/enemies/enemy_components/ward_aura.gd" id="4_ea85i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hhqyx"]
@@ -23,6 +24,8 @@ height = 0.02
 
 [node name="Cultist" unique_id=1427662883 instance=ExtResource("1_klvc8")]
 death_effect = ExtResource("2_okl66")
+death_sound = ExtResource("3_hxqal")
+death_volume_db = 8.0
 
 [node name="CultistMesh" parent="." index="0" unique_id=30939511 instance=ExtResource("2_hkt21")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

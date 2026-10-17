@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://clxgsyewsruls"]
 
 [ext_resource type="PackedScene" uid="uid://dgf785mw3toay" path="res://game/data/enemies/base_enemy/base_enemy.tscn" id="1_qye7u"]
+[ext_resource type="AudioStream" uid="uid://bfk0cxiv833j0" path="res://assets/sounds/sfx/deaths/skeleton_death.wav" id="2_3x1ph"]
 [ext_resource type="PackedScene" uid="uid://bm4lsflmwqgpy" path="res://assets/3d_art/enemies/Skeleton.glb" id="2_54rws"]
 [ext_resource type="Script" uid="uid://dwan00dwov0j0" path="res://game/data/enemies/enemy_components/WalkWobble.gd" id="3_gbopi"]
 
@@ -19,6 +20,8 @@ radius = 1.0
 height = 2.0
 
 [node name="Skeleton" unique_id=1427662883 instance=ExtResource("1_qye7u")]
+death_sound = ExtResource("2_3x1ph")
+death_volume_db = 4.0
 
 [node name="SkeletonMesh" parent="." index="0" unique_id=1248366212 instance=ExtResource("2_54rws")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
