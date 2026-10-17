@@ -5,8 +5,10 @@
 [ext_resource type="AudioStream" uid="uid://bwwf8pqqtwjig" path="res://assets/sounds/music/arrival.ogg" id="2_l0gmp"]
 [ext_resource type="PackedScene" uid="uid://ms65ua2jh58q" path="res://game/ui/screens/skull_button.tscn" id="3_2fc5o"]
 [ext_resource type="PackedScene" uid="uid://drybvcb351xjl" path="res://core/ui/title_backdrop.tscn" id="3_2uxhk"]
+[ext_resource type="AudioStream" uid="uid://t3eqoqfj1otn" path="res://assets/sounds/sfx/thread.wav" id="4_nskft"]
 [ext_resource type="PackedScene" uid="uid://ddt1m8s6wg7ju" path="res://core/ui/credits.tscn" id="4_q06yk"]
 [ext_resource type="PackedScene" uid="uid://cniox0c88ga5l" path="res://core/ui/controls_menu.tscn" id="5_f8y5p"]
+[ext_resource type="AudioStream" uid="uid://do6hhg1l8im5m" path="res://assets/sounds/sfx/swoosh.wav" id="5_ktp8a"]
 [ext_resource type="Shader" uid="uid://bcqlmc0nah414" path="res://assets/shaders/atmosphere/rain.gdshader" id="9_nskft"]
 [ext_resource type="Shader" uid="uid://bpukmr24jllgu" path="res://assets/shaders/atmosphere/edge_shadow.gdshader" id="10_ktp8a"]
 [ext_resource type="Shader" uid="uid://dlqkwxa4ft1ud" path="res://assets/shaders/atmosphere/mist.gdshader" id="11_x1u2m"]
@@ -76,7 +78,10 @@ menu_items = [NodePath("PanelContainer"), NodePath("VBoxContainer")]
 [node name="TitleBackdrop" parent="." unique_id=1278245280 node_paths=PackedStringArray("fade") instance=ExtResource("3_2uxhk")]
 fade = NodePath("../IntroFade")
 pulse_sound = SubResource("AudioStreamWAV_l0gmp")
-pulse_volume_db = 5.0
+thread_sound = ExtResource("4_nskft")
+thread_volume_db = 3.0
+swoop_sound = ExtResource("5_ktp8a")
+swoop_volume_db = 5.0
 
 [node name="IntroFade" type="ColorRect" parent="." unique_id=723287824]
 layout_mode = 1

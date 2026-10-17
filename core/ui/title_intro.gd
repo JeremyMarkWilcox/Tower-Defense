@@ -39,6 +39,8 @@ enum Phase { INTRO, IDLE, LEAVING }
 @export var thread_volume_db := -4.0
 ## Each thread plays this much higher than the one before (0.08 = 8% higher).
 @export var thread_pitch_step := 0.08
+@export var swoop_sound: AudioStream
+@export var swoop_volume_db := 0.0
 
 var phase := Phase.INTRO
 
@@ -75,6 +77,7 @@ func _input(event: InputEvent) -> void:
 ## Called by the title when Play is pressed. Await it, then change scenes.
 func play_transition() -> void:
 	phase = Phase.LEAVING
+	Audio.play_sfx(swoop_sound, 0.0, swoop_volume_db)
 	var from := camera.global_transform
 	var tween := create_tween().set_parallel(true)
 	for thread in _threads:

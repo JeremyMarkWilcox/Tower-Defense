@@ -69,7 +69,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.96592563, 0.25881898, 0, -0.25881
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 75, 100)
 
 [node name="ShotGameplay" type="Marker3D" parent="Node3D" unique_id=1748228603]
-transform = Transform3D(1, 0, 0, 0, 0.30320475, 0.95292544, 0, -0.95292544, 0.30320475, -2.6962318, 0, -0.7259877)
+transform = Transform3D(1, 0, 0, 0, 0.30320475, 0.95292544, 0, -0.95292544, 0.30320475, -2.6962318, 0, -2.3812358)
 
 [editable path="Stronghold"]
 [editable path="Stronghold/stronghold_base"]
