@@ -35,13 +35,20 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	#targeting logic
-	if targetEnemy == null or not is_instance_valid(targetEnemy):
-		var bodies := range_three.get_overlapping_areas()
-		if bodies.size() > 0:
-			targetEnemy = bodies[0] # Pick the first enemy in range
-		else:
-			targetEnemy = null
-			return
+	#made change so that towers target closest enemies. However this may decrease performance so when web build is published, uncomment following line and add an indent to each line until ##marker
+	#if targetEnemy == null or not is_instance_valid(targetEnemy):
+	var bodies := range_three.get_overlapping_areas()
+	if bodies.size() > 0:
+		bodies.sort_custom(func(a,b):
+			var distance_a := global_position.distance_to(a.global_position)
+			var distance_b := global_position.distance_to(b.global_position)
+			return distance_a < distance_b
+		)
+		targetEnemy = bodies[0] # Pick the first enemy in range
+	else:
+		targetEnemy = null
+		return
+	##marker
 	#aiming logic
 	direction = targetEnemy.global_position - global_position
 	var target_angle := atan2(-direction.x, -direction.z)  # points -Z (the front) at the target
