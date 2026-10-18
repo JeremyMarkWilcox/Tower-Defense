@@ -12,8 +12,10 @@ const ICE := 2
 @export var basiclvl_1: PackedScene
 @export var firelvl_1: PackedScene
 @export var firelvl_2: PackedScene
+@export var firelvl_3: PackedScene
 @export var icelvl_1: PackedScene
 @export var icelvl_2: PackedScene
+@export var icelvl_3: PackedScene
 
 @export_group("Hit Effects")
 @export var cannon_hit: PackedScene
@@ -48,28 +50,28 @@ const ICE := 2
 
 # One row per type; one entry per level on that path.
 var costData: Array[Array] = [
-	[15],      # Cannon: build
-	[15, 75],  # Fire: Cannon -> Fire 1, Fire 1 -> Fire 2
-	[15, 75],  # Ice:  Cannon -> Ice 1,  Ice 1 -> Ice 2
+	[10],      # Cannon: build
+	[15, 75, 100],  # Fire: Cannon -> Fire 1, Fire 1 -> Fire 2
+	[10, 50, 75],  # Ice:  Cannon -> Ice 1,  Ice 1 -> Ice 2
 ]
 
 var damageData: Array[Array] = [
 	[2],
-	[4, 5],
-	[2, 3],
+	[4, 5, 6],
+	[5, 7, 8],
 ]
 
 ## Seconds between shots (lower = faster).
 var fireRateData: Array[Array] = [
 	[0.8],
-	[0.6, 0.9],
-	[1.0, 1.2],
+	[0.6, 0.9, 1.0],
+	[1.5, 1.75, 2],
 ]
 
 var bulletSpeedData: Array[Array] = [
 	[20],
-	[25, 35],
-	[15, 15],
+	[25, 35, 40],
+	[12, 12, 12],
 ]
 
 
@@ -100,8 +102,8 @@ func max_level(type: int) -> int:
 func get_mesh(type: int, level: int) -> PackedScene:
 	var meshes := [
 		[basiclvl_1],
-		[firelvl_1, firelvl_2],
-		[icelvl_1, icelvl_2],
+		[firelvl_1, firelvl_2, firelvl_3],
+		[icelvl_1, icelvl_2, icelvl_3],
 	]
 	# Until a level 2 model exists, fall back to level 1 so the game still runs.
 	var mesh: PackedScene = meshes[type][level]

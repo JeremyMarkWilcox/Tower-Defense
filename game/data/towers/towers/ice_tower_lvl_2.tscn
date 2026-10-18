@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://djrpki6vu1667"]
 
-[ext_resource type="PackedScene" uid="uid://cdi6agu61euh7" path="res://assets/3d_art/towers/IceTowerlevel2.glb" id="1_1whe5"]
+[ext_resource type="PackedScene" uid="uid://cdi6agu61euh7" path="res://assets/3d_art/towers/ice_lvl_2.glb" id="1_1whe5"]
 [ext_resource type="PackedScene" uid="uid://dsbmpjxk1h3ke" path="res://game/data/towers/towers/ice_orbit.tscn" id="2_hey7k"]
 [ext_resource type="PackedScene" uid="uid://pr07c3mxeg85" path="res://game/data/towers/towers/ice_orbit_reversed.tscn" id="3_ph2o4"]
 

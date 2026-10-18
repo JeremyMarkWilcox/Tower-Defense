@@ -8,19 +8,19 @@
 [sub_resource type="Resource" id="Resource_7gs6h"]
 script = ExtResource("1_4buek")
 enemy = ExtResource("3_s1x7u")
-count = 4
 metadata/_custom_type_script = "uid://cmo6to4a6tibi"
 
 [sub_resource type="Resource" id="Resource_pho53"]
 script = ExtResource("1_4buek")
 enemy = ExtResource("3_s1x7u")
+count = 6
 start_delay = 8.0
 metadata/_custom_type_script = "uid://cmo6to4a6tibi"
 
 [sub_resource type="Resource" id="Resource_s1x7u"]
 script = ExtResource("1_4buek")
 enemy = ExtResource("3_s1x7u")
-count = 6
+count = 8
 start_delay = 18.0
 metadata/_custom_type_script = "uid://cmo6to4a6tibi"
 

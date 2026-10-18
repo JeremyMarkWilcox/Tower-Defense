@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SignalThreadData" format=3 uid="uid://b73rkuh42rsm0"]
+
+[ext_resource type="Script" uid="uid://dv1yo7v82leod" path="res://game/data/threads/base_thread/signal_thread_data.gd" id="1_4kbbj"]
+[ext_resource type="Resource" uid="uid://b6j4j27ylhq4j" path="res://game/data/enemies/unique_enemies/zombie.tres" id="1_ofuq3"]
+
+[resource]
+script = ExtResource("1_4kbbj")
+enemy = ExtResource("1_ofuq3")
+count = 4
+metadata/_custom_type_script = "uid://dv1yo7v82leod"

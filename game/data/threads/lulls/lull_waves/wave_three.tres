@@ -2,15 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dtlm87vw6n02f" path="res://game/data/threads/lulls/base_lull/lull_definition.gd" id="1_imwin"]
 [ext_resource type="Script" uid="uid://dv1yo7v82leod" path="res://game/data/threads/base_thread/signal_thread_data.gd" id="2_7cju1"]
-[ext_resource type="Resource" uid="uid://d3a3ymb8k8u0o" path="res://game/data/threads/unique_threads/skeleton/five_skeleton.tres" id="3_fm3ci"]
-[ext_resource type="Resource" uid="uid://d0iqkg1h3je8m" path="res://game/data/threads/unique_threads/skeleton/three_skeleton.tres" id="4_yxm5r"]
+[ext_resource type="Resource" uid="uid://dhjh5i1f24tdp" path="res://game/data/threads/unique_threads/skeleton/eight_skeleton.tres" id="3_w8kpy"]
+[ext_resource type="Resource" uid="uid://dtpixat03v41f" path="res://game/data/threads/unique_threads/zombie/five_zombie.tres" id="5_fm3ci"]
 [ext_resource type="Resource" uid="uid://cniha3e4yl1j" path="res://game/data/threads/unique_threads/zombie/three_zombie.tres" id="5_oa5wq"]
-[ext_resource type="Resource" uid="uid://c62srdi1x3xa" path="res://game/data/threads/unique_threads/zombie/two_zombie.tres" id="6_6fmjm"]
-[ext_resource type="Resource" uid="uid://1v47tabkmxou" path="res://game/data/threads/unique_threads/cultist/one_cultist.tres" id="7_6og7x"]
+[ext_resource type="Resource" uid="uid://ddtttxcokupvd" path="res://game/data/threads/unique_threads/cultist/two_cultists.tres" id="7_oa5wq"]
 
 [resource]
 script = ExtResource("1_imwin")
-threads = Array[ExtResource("2_7cju1")]([ExtResource("3_fm3ci"), ExtResource("4_yxm5r"), ExtResource("5_oa5wq"), ExtResource("6_6fmjm"), ExtResource("7_6og7x"), ExtResource("7_6og7x")])
+threads = Array[ExtResource("2_7cju1")]([ExtResource("3_w8kpy"), ExtResource("7_oa5wq"), ExtResource("3_w8kpy"), ExtResource("7_oa5wq"), ExtResource("5_fm3ci"), ExtResource("7_oa5wq"), ExtResource("5_oa5wq")])
 cut_cooldown = 1.0
 spin_speed = 20.0
 metadata/_custom_type_script = "uid://dtlm87vw6n02f"

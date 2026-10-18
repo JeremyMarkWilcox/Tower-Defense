@@ -120,7 +120,6 @@ func take_damage(amount: int) -> void:
 	health -= maxi(1, roundi(amount * damage_taken_multiplier))
 	if health <= 0:
 		_is_dead = true
-		print("DIED: ", name, "  sound: ", death_sound)
 		Audio.play_sfx(death_sound, 0.12, death_volume_db)
 		_spawn_death_effect()
 		died.emit(self)

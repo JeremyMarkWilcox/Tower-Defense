@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dl7btnuthvvlb"
-path="res://.godot/imported/Firelvl1.glb-dce9fb95bded9b8e3b82c3e61551a497.scn"
+uid="uid://dcnixmhr20vy4"
+path="res://.godot/imported/fire_tower_lvl_2.glb-7a3942ac91599db13458255aae87793b.scn"
 
 [deps]
 
-source_file="res://assets/3d_art/towers/Firelvl1.glb"
-dest_files=["res://.godot/imported/Firelvl1.glb-dce9fb95bded9b8e3b82c3e61551a497.scn"]
+source_file="res://assets/3d_art/towers/fire_tower_lvl_2.glb"
+dest_files=["res://.godot/imported/fire_tower_lvl_2.glb-7a3942ac91599db13458255aae87793b.scn"]
 
 [params]
 

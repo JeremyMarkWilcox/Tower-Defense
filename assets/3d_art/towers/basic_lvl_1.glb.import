@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dm6ojjrnrnkqg"
-path="res://.godot/imported/Icelvl1.glb-a398be0a5bd9983254bb01ed5f5cb9fe.scn"
+uid="uid://b82y0h3s65i2h"
+path="res://.godot/imported/basic_lvl_1.glb-2012376a206a43c48a3f39ca96309454.scn"
 
 [deps]
 
-source_file="res://assets/3d_art/towers/Icelvl1.glb"
-dest_files=["res://.godot/imported/Icelvl1.glb-a398be0a5bd9983254bb01ed5f5cb9fe.scn"]
+source_file="res://assets/3d_art/towers/basic_lvl_1.glb"
+dest_files=["res://.godot/imported/basic_lvl_1.glb-2012376a206a43c48a3f39ca96309454.scn"]
 
 [params]
 

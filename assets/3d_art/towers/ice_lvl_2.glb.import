@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cdi6agu61euh7"
-path="res://.godot/imported/IceTowerlevel2.glb-2b3fc3df251a7ec8c14c67a61c902521.scn"
+path="res://.godot/imported/ice_lvl_2.glb-6ba8bdfeb60b202caf37c4ef35fb932e.scn"
 
 [deps]
 
-source_file="res://assets/3d_art/towers/IceTowerlevel2.glb"
-dest_files=["res://.godot/imported/IceTowerlevel2.glb-2b3fc3df251a7ec8c14c67a61c902521.scn"]
+source_file="res://assets/3d_art/towers/ice_lvl_2.glb"
+dest_files=["res://.godot/imported/ice_lvl_2.glb-6ba8bdfeb60b202caf37c4ef35fb932e.scn"]
 
 [params]
 

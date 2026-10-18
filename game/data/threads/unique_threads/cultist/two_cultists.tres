@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SignalThreadData" format=3 uid="uid://ddtttxcokupvd"]
+
+[ext_resource type="Resource" uid="uid://crniaq8n2b6bv" path="res://game/data/enemies/unique_enemies/cultist.tres" id="1_q13kb"]
+[ext_resource type="Script" uid="uid://dv1yo7v82leod" path="res://game/data/threads/base_thread/signal_thread_data.gd" id="2_5n0n1"]
+
+[resource]
+script = ExtResource("2_5n0n1")
+enemy = ExtResource("1_q13kb")
+count = 2
+metadata/_custom_type_script = "uid://dv1yo7v82leod"

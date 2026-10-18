@@ -20,12 +20,17 @@ signal chosen(tower_type: int)
 @export var level_2_name: String = "Fire Tower II"
 @export_multiline var level_2_description: String = ""
 
+@export_group("Level 3")
+@export var level_3_icon: Texture2D
+@export var level_3_name: String = "Fire Tower III"
+@export_multiline var level_3_description: String = ""
+
 
 func _ready() -> void:
 	button.pressed.connect(func() -> void: chosen.emit(tower_type))
 
 
-## Shows what buying `level` (0 = level 1, 1 = level 2) gives you.
+## Shows what buying `level` (0 = level 1, 1 = level 2, 2 = level 3) gives you.
 func show_level(level: int, cost: int, can_afford: bool) -> void:
 	_fill(level)
 	button.text = "Upgrade - %d" % cost
@@ -42,7 +47,15 @@ func show_max(level: int) -> void:
 
 
 func _fill(level: int) -> void:
-	var is_two := level >= 1
-	portrait.texture = level_2_icon if is_two else level_1_icon
-	name_label.text = level_2_name if is_two else level_1_name
-	description_label.text = level_2_description if is_two else level_1_description
+	var icons := [level_1_icon, level_2_icon, level_3_icon]
+	var names := [level_1_name, level_2_name, level_3_name]
+	var descriptions := [level_1_description, level_2_description, level_3_description]
+	var i := clampi(level, 0, 2)
+	# Fall back to the level below if a level 3 icon isn't made yet.
+	var icon: Texture2D = icons[i]
+	while icon == null and i > 0:
+		i -= 1
+		icon = icons[i]
+	portrait.texture = icon
+	name_label.text = names[clampi(level, 0, 2)]
+	description_label.text = descriptions[clampi(level, 0, 2)]

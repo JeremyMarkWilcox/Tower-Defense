@@ -19,3 +19,6 @@ win_color = Color(0.9490196, 0.54901963, 0.15686275, 1)
 lose_color = Color(0.7019608, 0.14901961, 0.18039216, 1)
 pauses_game = true
 focus_chain = []
+
+[node name="TitleButton" parent="VBoxContainer" parent_id_path=PackedInt32Array(1969318145) index="2" unique_id=1880123845]
+text = "Title"

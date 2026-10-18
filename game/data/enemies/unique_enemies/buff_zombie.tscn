@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://6sb8h2k6r3ox"]
+
+[ext_resource type="PackedScene" uid="uid://cb6yw6pdpv3o8" path="res://game/data/enemies/unique_enemies/zombie.tscn" id="1_a355o"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a355o"]
+radius = 1.0498047
+height = 2.0996094
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_otjlk"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.5176471, 0.08235294, 0.7490196, 0.2509804)
+
+[sub_resource type="SphereMesh" id="SphereMesh_vfddu"]
+material = SubResource("StandardMaterial3D_otjlk")
+radius = 1.0
+height = 2.0
+
+[node name="Zombie" unique_id=1427662883 instance=ExtResource("1_a355o")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="ZombieMesh" parent="." index="0" unique_id=980058954]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
+
+[node name="zom" parent="ZombieMesh" index="0" unique_id=1845406697]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.10850065, 0)
+
+[node name="bod" parent="ZombieMesh/zom/body" parent_id_path=PackedInt32Array(980058954, 1030134631) index="0" unique_id=2121768759]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.024008272)
+
+[node name="arm_L" parent="ZombieMesh/zom/body/arms" parent_id_path=PackedInt32Array(980058954, 758865237) index="0" unique_id=1389038474]
+transform = Transform3D(0.38268247, 7.6554716e-07, -0.9238799, -0.08052037, -0.9961948, -0.033353373, -0.9203641, 0.08715492, -0.3812263, -0.21875, -0.072001144, -0.3060671)
+
+[node name="arm_R" parent="ZombieMesh/zom/body/arms" parent_id_path=PackedInt32Array(980058954, 758865237) index="1" unique_id=1755401546]
+transform = Transform3D(0.38268366, -7.310882e-07, 0.92387944, 0.040298764, -0.99904823, -0.016693097, 0.92300016, 0.043619376, -0.3823194, 0.21875, -0.17463419, -0.31847563)
+
+[node name="leg_L" parent="ZombieMesh/zom/body/legs" parent_id_path=PackedInt32Array(980058954, 814742577) index="0" unique_id=527996881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025468146, 0.073905736, 0.048016544)
+
+[node name="leg_r" parent="ZombieMesh/zom/body/legs" parent_id_path=PackedInt32Array(980058954, 814742577) index="1" unique_id=2108289876]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013510205, -0.03640002, 0.02061966)
+
+[node name="head" parent="ZombieMesh/zom" index="1" unique_id=920810488]
+transform = Transform3D(1, 0, 0, 0, 0.9238795, -0.38268346, 0, 0.38268346, 0.9238795, 0, 0, -0.0625)
+
+[node name="head2" parent="ZombieMesh/zom/head" index="1" unique_id=1094051748]
+transform = Transform3D(1, 0, 0, 0, 0.57357645, -0.81915206, 0, 0.81915206, 0.57357645, 0, 0.11862068, -0.12534997)
+
+[node name="CollisionShape3D" parent="Hitbox" parent_id_path=PackedInt32Array(1439913594) index="0" unique_id=749003341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42690575, -0.16141105)
+shape = SubResource("CapsuleShape3D_a355o")
+
+[node name="WardEffect" parent="." index="2" unique_id=1037558712]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2900766, -0.18567699)
+mesh = SubResource("SphereMesh_vfddu")
+
+[editable path="ZombieMesh"]

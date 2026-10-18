@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://wpmnm2hv47p1"]
 
 [ext_resource type="Script" uid="uid://vd8np5p470ok" path="res://assets/2d_art/icon_scene/icon_studio.gd" id="1_iu8cu"]
-[ext_resource type="PackedScene" uid="uid://dcnixmhr20vy4" path="res://assets/3d_art/towers/FireTowerlvl2.glb" id="2_iu8cu"]
+[ext_resource type="PackedScene" uid="uid://dcnixmhr20vy4" path="res://assets/3d_art/towers/fire_tower_lvl_2.glb" id="2_iu8cu"]
 
 [sub_resource type="Environment" id="Environment_iu8cu"]
 background_mode = 1

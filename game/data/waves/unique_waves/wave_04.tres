@@ -2,29 +2,88 @@
 
 [ext_resource type="Script" uid="uid://cmo6to4a6tibi" path="res://game/data/waves/base_data/spawn_group.gd" id="1_ega6o"]
 [ext_resource type="Script" uid="uid://bvroyv8j4sgmi" path="res://game/data/waves/base_data/wave_definition.gd" id="2_2msy5"]
-[ext_resource type="Resource" uid="uid://trop0kuylotd" path="res://game/data/enemies/unique_enemies/skeleton.tres" id="2_rkk6w"]
+[ext_resource type="Resource" uid="uid://bd6s3gnnn4sri" path="res://game/data/enemies/unique_enemies/buffed_zombies.tres" id="2_y6h0c"]
+[ext_resource type="Resource" uid="uid://crniaq8n2b6bv" path="res://game/data/enemies/unique_enemies/cultist.tres" id="3_lvh5b"]
 [ext_resource type="Resource" uid="uid://ciclkk6cgvw5m" path="res://game/data/threads/lulls/lull_waves/wave_four.tres" id="3_y6h0c"]
 
 [sub_resource type="Resource" id="Resource_cmj0o"]
 script = ExtResource("1_ega6o")
-enemy = ExtResource("2_rkk6w")
+enemy = ExtResource("2_y6h0c")
+count = 10
+metadata/_custom_type_script = "uid://cmo6to4a6tibi"
+
+[sub_resource type="Resource" id="Resource_npnuq"]
+script = ExtResource("1_ega6o")
+enemy = ExtResource("3_lvh5b")
+count = 8
+metadata/_custom_type_script = "uid://cmo6to4a6tibi"
+
+[sub_resource type="Resource" id="Resource_ee07f"]
+script = ExtResource("1_ega6o")
+enemy = ExtResource("3_lvh5b")
+count = 8
+start_delay = 4.0
 metadata/_custom_type_script = "uid://cmo6to4a6tibi"
 
 [sub_resource type="Resource" id="Resource_netxl"]
 script = ExtResource("1_ega6o")
-enemy = ExtResource("2_rkk6w")
+enemy = ExtResource("2_y6h0c")
+count = 10
+start_delay = 8.0
+metadata/_custom_type_script = "uid://cmo6to4a6tibi"
+
+[sub_resource type="Resource" id="Resource_lvh5b"]
+script = ExtResource("1_ega6o")
+enemy = ExtResource("3_lvh5b")
+count = 8
 start_delay = 10.0
+metadata/_custom_type_script = "uid://cmo6to4a6tibi"
+
+[sub_resource type="Resource" id="Resource_y6h0c"]
+script = ExtResource("1_ega6o")
+enemy = ExtResource("3_lvh5b")
+count = 8
+start_delay = 9.0
+metadata/_custom_type_script = "uid://cmo6to4a6tibi"
+
+[sub_resource type="Resource" id="Resource_017ga"]
+script = ExtResource("1_ega6o")
+enemy = ExtResource("2_y6h0c")
+count = 10
+start_delay = 11.0
 metadata/_custom_type_script = "uid://cmo6to4a6tibi"
 
 [sub_resource type="Resource" id="Resource_7bgr8"]
 script = ExtResource("1_ega6o")
-enemy = ExtResource("2_rkk6w")
+enemy = ExtResource("2_y6h0c")
+count = 10
+start_delay = 13.0
+metadata/_custom_type_script = "uid://cmo6to4a6tibi"
+
+[sub_resource type="Resource" id="Resource_rt1ub"]
+script = ExtResource("1_ega6o")
+enemy = ExtResource("3_lvh5b")
+count = 8
+start_delay = 14.5
+metadata/_custom_type_script = "uid://cmo6to4a6tibi"
+
+[sub_resource type="Resource" id="Resource_mcalg"]
+script = ExtResource("1_ega6o")
+enemy = ExtResource("2_y6h0c")
+count = 10
 start_delay = 15.0
+metadata/_custom_type_script = "uid://cmo6to4a6tibi"
+
+[sub_resource type="Resource" id="Resource_l407a"]
+script = ExtResource("1_ega6o")
+enemy = ExtResource("3_lvh5b")
+count = 8
+start_delay = 17.0
 metadata/_custom_type_script = "uid://cmo6to4a6tibi"
 
 [resource]
 script = ExtResource("2_2msy5")
-groups = Array[ExtResource("1_ega6o")]([SubResource("Resource_cmj0o"), SubResource("Resource_netxl"), SubResource("Resource_7bgr8")])
+groups = Array[ExtResource("1_ega6o")]([SubResource("Resource_cmj0o"), SubResource("Resource_npnuq"), SubResource("Resource_ee07f"), SubResource("Resource_netxl"), SubResource("Resource_lvh5b"), SubResource("Resource_y6h0c"), SubResource("Resource_017ga"), SubResource("Resource_7bgr8"), SubResource("Resource_rt1ub"), SubResource("Resource_mcalg"), SubResource("Resource_l407a")])
 lull = ExtResource("3_y6h0c")
 lull_start = 30.0
 metadata/_custom_type_script = "uid://bvroyv8j4sgmi"
