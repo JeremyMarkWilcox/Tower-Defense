@@ -72,7 +72,7 @@ func _fire_volley() -> void:
 	var tween := create_tween()
 	for i in shots:
 		tween.tween_callback(_shoot_if_target)
-		tween.tween_interval(tower_data.burst_gap / level)
+		tween.tween_interval(tower_data.burst_gap)
 
 
 func _shoot_if_target() -> void:

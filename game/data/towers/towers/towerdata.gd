@@ -81,7 +81,7 @@ var bulletSpeedData: Array[Array] = [
 ## Damage per burn tick (2 ticks per second).
 @export var burn_tick_damage: Array[float] = [1.0, 2.0, 3.0]
 ## Bullets per volley. Fire 2 fires a 3-shot burst like a gatling gun.
-@export var burst_shots: Array[int] = [1, 3, 6]
+@export var burst_shots: Array[int] = [1, 30, 60] #Doesn't work?
 ## Seconds between the bullets in one burst.
 @export var burst_gap := 0.08
 
