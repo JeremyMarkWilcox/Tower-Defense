@@ -17,6 +17,7 @@ var _loaded_game: PackedScene
 
 
 func _ready() -> void:
+	version_label.text = "v" + str(ProjectSettings.get_setting("application/config/version"))
 	Audio.play_music(music)
 	play_button.pressed.connect(_on_play_pressed)
 	settings_button.pressed.connect(func() -> void: MenuManager.open_menu(settings_menu))

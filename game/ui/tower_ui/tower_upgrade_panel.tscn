@@ -3,10 +3,12 @@
 [ext_resource type="Theme" uid="uid://docepy01vs1ci" path="res://assets/theme/tower-defense_theme.tres" id="1_ptrbw"]
 [ext_resource type="Script" uid="uid://cj1j6fufnthmy" path="res://game/ui/tower_ui/tower_upgrade_panel.gd" id="2_ptrbw"]
 [ext_resource type="Texture2D" uid="uid://bfiq4pkqwy3ko" path="res://game/ui/tower_icons/fire_1.png" id="4_0ib7b"]
-[ext_resource type="Texture2D" uid="uid://bpn86ybn3cubb" path="res://game/ui/tower_icons/ice_2.png" id="4_w6j8b"]
-[ext_resource type="Texture2D" uid="uid://c6qsqa01nan1h" path="res://game/ui/tower_icons/fire_2.png" id="5_kw2rl"]
+[ext_resource type="Texture2D" uid="uid://baapsia75jl2s" path="res://game/ui/tower_icons/ice_2.png" id="4_w6j8b"]
+[ext_resource type="Texture2D" uid="uid://crfiwdqfuxjr4" path="res://game/ui/tower_icons/fire_2.png" id="5_kw2rl"]
 [ext_resource type="Script" uid="uid://dk4s2ki7pue8l" path="res://game/ui/tower_ui/upgrade_option.gd" id="5_wu06l"]
-[ext_resource type="Texture2D" uid="uid://b6e4efwm3rpd7" path="res://game/ui/tower_icons/ice_1.png" id="6_wu06l"]
+[ext_resource type="Texture2D" uid="uid://c6qsqa01nan1h" path="res://game/ui/tower_icons/fire_3.png" id="6_0ib7b"]
+[ext_resource type="Texture2D" uid="uid://fsonvf8nbc3w" path="res://game/ui/tower_icons/ice_1.png" id="6_wu06l"]
+[ext_resource type="Texture2D" uid="uid://tvub7eu2r3fl" path="res://game/ui/tower_icons/ice_3.png" id="9_kw2rl"]
 
 [node name="TowerUpgradePanel" type="PanelContainer" unique_id=501736015 node_paths=PackedStringArray("stats_label", "fire_option", "ice_option", "close_button")]
 custom_minimum_size = Vector2(500, 600)
@@ -62,7 +64,9 @@ button = NodePath("Info/Details/UpgradeButton")
 level_1_icon = ExtResource("4_0ib7b")
 level_1_description = "Damage a single target with fire."
 level_2_icon = ExtResource("5_kw2rl")
-level_2_description = "Damages 3 targets with fire."
+level_2_description = "Damages 2 targets with fire."
+level_3_icon = ExtResource("6_0ib7b")
+level_3_description = "Damages 3 targets with fire."
 
 [node name="Info" type="HBoxContainer" parent="MarginContainer/VBoxContainer/FireOption" unique_id=1715845017]
 custom_minimum_size = Vector2(300, 0)
@@ -126,10 +130,12 @@ description_label = NodePath("Info/Details/Description")
 button = NodePath("Info/Details/UpgradeButton")
 level_1_icon = ExtResource("6_wu06l")
 level_1_name = "Ice Tower"
-level_1_description = "Slows + dmg a single target."
+level_1_description = "Slows + dmg a small group."
 level_2_icon = ExtResource("4_w6j8b")
 level_2_name = "Ice Tower II"
-level_2_description = "Slows + dmg a multiple targets."
+level_2_description = "Slows + dmg a medium group."
+level_3_icon = ExtResource("9_kw2rl")
+level_3_description = "Slows + dmg a large group."
 
 [node name="Info" type="HBoxContainer" parent="MarginContainer/VBoxContainer/IceOption" unique_id=1014188501]
 custom_minimum_size = Vector2(300, 0)

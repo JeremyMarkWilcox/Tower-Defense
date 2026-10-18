@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://wpmnm2hv47p1"]
 
 [ext_resource type="Script" uid="uid://vd8np5p470ok" path="res://assets/2d_art/icon_scene/icon_studio.gd" id="1_iu8cu"]
-[ext_resource type="PackedScene" uid="uid://dcnixmhr20vy4" path="res://assets/3d_art/towers/fire_tower_lvl_2.glb" id="2_iu8cu"]
+[ext_resource type="PackedScene" uid="uid://cdi6agu61euh7" path="res://assets/3d_art/towers/ice_lvl_3.glb" id="2_iu8cu"]
 
 [sub_resource type="Environment" id="Environment_iu8cu"]
 background_mode = 1
-background_color = Color(1, 0.35000002, 0.35000002, 1)
+background_color = Color(0.45, 0.615, 1, 1)
 tonemap_agx_white = 16.5
 tonemap_agx_contrast = 11.75
 
@@ -20,7 +20,7 @@ render_target_update_mode = 4
 [node name="CameraLighting" type="Node3D" parent="SubViewport" unique_id=991075232]
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport/CameraLighting" unique_id=1492725204]
-transform = Transform3D(0.7071068, -0.4055798, 0.579228, 0, 0.81915206, 0.57357645, -0.7071068, -0.4055798, 0.579228, 13.641866, 14.230847, 14.044094)
+transform = Transform3D(0.7071068, -0.4055798, 0.579228, 0, 0.81915206, 0.57357645, -0.7071068, -0.4055798, 0.579228, 13.310826, 13.93616, 13.354607)
 projection = 1
 size = 2.5
 
@@ -33,4 +33,4 @@ sky_mode = 1
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport/CameraLighting" unique_id=1628098895]
 environment = SubResource("Environment_iu8cu")
 
-[node name="FireTowerlvl2" parent="." unique_id=372017053 instance=ExtResource("2_iu8cu")]
+[node name="ice_lvl_3" parent="." unique_id=52570449 instance=ExtResource("2_iu8cu")]
