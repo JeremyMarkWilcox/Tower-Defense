@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bc8nbw68tm6my"
-path.s3tc="res://.godot/imported/CULT_0.png-700b38707c42d42d8ba5125b70c71d65.s3tc.ctex"
+path="res://.godot/imported/CULT_0.png-700b38707c42d42d8ba5125b70c71d65.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "27857a20e7b33798f644749afc5e99e5"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/3d_art/enemies/CULT_0.png"
-dest_files=["res://.godot/imported/CULT_0.png-700b38707c42d42d8ba5125b70c71d65.s3tc.ctex"]
+dest_files=["res://.godot/imported/CULT_0.png-700b38707c42d42d8ba5125b70c71d65.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

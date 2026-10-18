@@ -50,9 +50,9 @@ const ICE := 2
 
 # One row per type; one entry per level on that path.
 var costData: Array[Array] = [
-	[15],      # Cannon: build
-	[20, 35, 55],  # Fire: Cannon -> Fire 1, Fire 1 -> Fire 2
-	[15, 25, 45],  # Ice:  Cannon -> Ice 1,  Ice 1 -> Ice 2
+	[12],      # Cannon: build
+	[15, 25, 75],  # Fire: Cannon -> Fire 1, Fire 1 -> Fire 2
+	[12, 20, 50],  # Ice:  Cannon -> Ice 1,  Ice 1 -> Ice 2
 ]
 
 var damageData: Array[Array] = [

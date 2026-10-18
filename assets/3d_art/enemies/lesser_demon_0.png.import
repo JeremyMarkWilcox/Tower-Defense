@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwroxfbrrlcdf"
-path.s3tc="res://.godot/imported/lesser_demon_0.png-ec3c255bfe526f60af8b841fc1acfbc3.s3tc.ctex"
+path="res://.godot/imported/lesser_demon_0.png-ec3c255bfe526f60af8b841fc1acfbc3.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "ae0071ee0404aa5c24b1ade67c2858d5"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/3d_art/enemies/lesser_demon_0.png"
-dest_files=["res://.godot/imported/lesser_demon_0.png-ec3c255bfe526f60af8b841fc1acfbc3.s3tc.ctex"]
+dest_files=["res://.godot/imported/lesser_demon_0.png-ec3c255bfe526f60af8b841fc1acfbc3.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
