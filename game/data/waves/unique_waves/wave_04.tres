@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_cmj0o"]
 script = ExtResource("1_ega6o")
 enemy = ExtResource("2_y6h0c")
-count = 10
+count = 6
 metadata/_custom_type_script = "uid://cmo6to4a6tibi"
 
 [sub_resource type="Resource" id="Resource_npnuq"]
@@ -28,7 +28,7 @@ metadata/_custom_type_script = "uid://cmo6to4a6tibi"
 [sub_resource type="Resource" id="Resource_netxl"]
 script = ExtResource("1_ega6o")
 enemy = ExtResource("2_y6h0c")
-count = 10
+count = 8
 start_delay = 8.0
 metadata/_custom_type_script = "uid://cmo6to4a6tibi"
 
@@ -49,14 +49,14 @@ metadata/_custom_type_script = "uid://cmo6to4a6tibi"
 [sub_resource type="Resource" id="Resource_017ga"]
 script = ExtResource("1_ega6o")
 enemy = ExtResource("2_y6h0c")
-count = 10
+count = 8
 start_delay = 11.0
 metadata/_custom_type_script = "uid://cmo6to4a6tibi"
 
 [sub_resource type="Resource" id="Resource_7bgr8"]
 script = ExtResource("1_ega6o")
 enemy = ExtResource("2_y6h0c")
-count = 10
+count = 6
 start_delay = 13.0
 metadata/_custom_type_script = "uid://cmo6to4a6tibi"
 
@@ -70,7 +70,7 @@ metadata/_custom_type_script = "uid://cmo6to4a6tibi"
 [sub_resource type="Resource" id="Resource_mcalg"]
 script = ExtResource("1_ega6o")
 enemy = ExtResource("2_y6h0c")
-count = 10
+count = 6
 start_delay = 15.0
 metadata/_custom_type_script = "uid://cmo6to4a6tibi"
 

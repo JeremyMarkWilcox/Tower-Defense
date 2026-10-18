@@ -64,7 +64,7 @@ var damageData: Array[Array] = [
 ## Seconds between shots (lower = faster).
 var fireRateData: Array[Array] = [
 	[0.8],
-	[0.6, 0.9, 1.0],
+	[0.6, .9, 1.0],
 	[1.5, 1.75, 2],
 ]
 
@@ -77,21 +77,21 @@ var bulletSpeedData: Array[Array] = [
 
 @export_group("Fire")
 ## Seconds an enemy keeps burning after a hit.
-@export var burn_duration: Array[float] = [3.0, 4.0]
+@export var burn_duration: Array[float] = [3.0, 4.0, 5.0]
 ## Damage per burn tick (2 ticks per second).
-@export var burn_tick_damage: Array[float] = [1.0, 2.0]
+@export var burn_tick_damage: Array[float] = [1.0, 2.0, 3.0]
 ## Bullets per volley. Fire 2 fires a 3-shot burst like a gatling gun.
-@export var burst_shots: Array[int] = [1, 3]
+@export var burst_shots: Array[int] = [1, 3, 6]
 ## Seconds between the bullets in one burst.
 @export var burst_gap := 0.08
 
 @export_group("Ice")
 ## Seconds an enemy stays slowed.
-@export var slow_duration: Array[float] = [2.0, 2.5]
+@export var slow_duration: Array[float] = [2.0, 2.5, 3.0]
 ## How much slower: 0.4 = 40% slower.
-@export var slow_amount: Array[float] = [0.35, 0.5]
+@export var slow_amount: Array[float] = [0.35, 0.5, .6]
 ## Ice 2 slows everything within this radius of the hit. 0 = only the target.
-@export var slow_radius: Array[float] = [0.0, 3.0]
+@export var slow_radius: Array[float] = [0.0, 3.0, 8.0]
 
 
 ## The highest level index on a type's path (Cannon 0, Fire/Ice 1).

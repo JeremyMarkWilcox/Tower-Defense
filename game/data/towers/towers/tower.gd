@@ -59,11 +59,11 @@ func _process(_delta: float) -> void:
 		_fire_volley()
 		
 		
-## One shot for most towers, a quick burst for Fire 2.
+## One shot for most towers, a quick burst for Fire 2 and Fire 3.
 func _fire_volley() -> void:
 	var shots := 1
 	if type == TowerData.FIRE:
-		shots = tower_data.burst_shots[level]
+		shots = tower_data.burst_shots[level] #why isn't this working?
 	if shots <= 1:
 		_shoot()
 		return
@@ -72,7 +72,7 @@ func _fire_volley() -> void:
 	var tween := create_tween()
 	for i in shots:
 		tween.tween_callback(_shoot_if_target)
-		tween.tween_interval(tower_data.burst_gap)
+		tween.tween_interval(tower_data.burst_gap / level)
 
 
 func _shoot_if_target() -> void:
