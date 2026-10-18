@@ -23,7 +23,7 @@ prompt_row = NodePath("PromptRow")
 made_for = NodePath("JamCards/MadeFor")
 wildcards = NodePath("JamCards/WildCards")
 card_fade = 0.5
-card_hold = 3.0
+card_hold = 2.0
 
 [node name="Background" type="ColorRect" parent="." unique_id=1565063747]
 layout_mode = 1

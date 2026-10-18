@@ -52,19 +52,19 @@ const ICE := 2
 var costData: Array[Array] = [
 	[12],      # Cannon: build
 	[15, 25, 75],  # Fire: Cannon -> Fire 1, Fire 1 -> Fire 2
-	[12, 20, 50],  # Ice:  Cannon -> Ice 1,  Ice 1 -> Ice 2
+	[12, 15, 50],  # Ice:  Cannon -> Ice 1,  Ice 1 -> Ice 2
 ]
 
 var damageData: Array[Array] = [
 	[2],
-	[4, 5, 7],
+	[4, 3, 3],
 	[5, 6, 8],
 ]
 
 ## Seconds between shots (lower = faster).
 var fireRateData: Array[Array] = [
 	[0.8],
-	[0.6, 0.8, 1.0],
+	[0.6, 0.8, 0.9],
 	[1.5, 1.75, 2.0],
 ]
 

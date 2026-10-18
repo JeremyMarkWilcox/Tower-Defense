@@ -45,34 +45,34 @@ size_flags_vertical = 0
 mouse_filter = 2
 script = ExtResource("7_w0ieh")
 thread_manager = NodePath("../../ThreadManager")
-label = NodePath("Label")
-caption = NodePath("Caption")
+label = NodePath("VBoxContainer/Label")
+caption = NodePath("VBoxContainer/Caption")
 tick_sound = ExtResource("4_1iu35")
 
-[node name="Label" type="Label" parent="UI/LullTimer" unique_id=1818317055]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/LullTimer" unique_id=498488744]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -160.0
-offset_top = 30.0
-offset_right = 160.0
-offset_bottom = 30.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -216.0
+offset_top = 15.0
+offset_right = 216.0
+offset_bottom = 160.0
 grow_horizontal = 2
-grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="UI/LullTimer/VBoxContainer" unique_id=1818317055]
+layout_mode = 2
+size_flags_horizontal = 4
 theme = ExtResource("8_ensoo")
 theme_type_variation = &"TitleLabel"
 text = "Place Holder"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Caption" type="Label" parent="UI/LullTimer" unique_id=1650878094]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Caption" type="Label" parent="UI/LullTimer/VBoxContainer" unique_id=1650878094]
+layout_mode = 2
+size_flags_horizontal = 4
 theme = ExtResource("8_ensoo")
 theme_type_variation = &"HeaderLabel"
 text = "All Signal Threads Snap In:"
