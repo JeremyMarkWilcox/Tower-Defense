@@ -40,3 +40,13 @@ func _input(event: InputEvent) -> void:
 ## Each panel fills in its own labels and buttons.
 func _refresh() -> void:
 	pass
+	
+## For controllers: put focus on the first usable button (or Close if none are).
+func focus_first() -> void:
+	for node in find_children("*", "BaseButton", true, false):
+		var button := node as BaseButton
+		if button.is_visible_in_tree() and not button.disabled:
+			button.grab_focus.call_deferred()
+			return
+	if close_button:
+		close_button.grab_focus.call_deferred()

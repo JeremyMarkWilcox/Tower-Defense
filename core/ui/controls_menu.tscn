@@ -147,6 +147,26 @@ script = ExtResource("2_ovn7s")
 action = &"thread_prev"
 device = 1
 
+[node name="SelectTower" type="Label" parent="VBoxContainer/GridContainer" unique_id=411421129]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Tower Selection"
+
+[node name="NextThSelectTowerKeyboardreadKeyboard2" type="Button" parent="VBoxContainer/GridContainer" unique_id=716055384]
+custom_minimum_size = Vector2(125, 50)
+custom_maximum_size = Vector2(500, -1)
+layout_mode = 2
+script = ExtResource("2_ovn7s")
+action = &"socket_next"
+
+[node name="SelectTowerController" type="Button" parent="VBoxContainer/GridContainer" unique_id=842166037]
+custom_minimum_size = Vector2(125, 50)
+custom_maximum_size = Vector2(500, -1)
+layout_mode = 2
+script = ExtResource("2_ovn7s")
+action = &"socket_next"
+device = 1
+
 [node name="Mouse" type="Label" parent="VBoxContainer/GridContainer" unique_id=1585577340]
 layout_mode = 2
 theme_type_variation = &"Hint"
