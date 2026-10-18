@@ -6,19 +6,48 @@
 [ext_resource type="AudioStream" uid="uid://bi04ub5b50yix" path="res://assets/sounds/sfx/game_over.ogg" id="4_as7le"]
 [ext_resource type="AudioStream" uid="uid://7dskak3h7g8o" path="res://assets/sounds/music/repeat_hate.ogg" id="4_c2o8m"]
 [ext_resource type="AudioStream" uid="uid://bwwf8pqqtwjig" path="res://assets/sounds/music/arrival.ogg" id="6_6q7dx"]
+[ext_resource type="PackedScene" uid="uid://ms65ua2jh58q" path="res://game/ui/screens/skull_button.tscn" id="7_nt3gt"]
 
-[node name="RunEndScreen" unique_id=1090858386 node_paths=PackedStringArray("focus_chain") instance=ExtResource("1_ydo2o")]
+[node name="RunEndScreen" unique_id=1090858386 node_paths=PackedStringArray("subtitle_label", "credits_button", "credits_menu", "focus_chain") instance=ExtResource("1_ydo2o")]
 script = ExtResource("2_lhmfp")
 win_heading = "You Win!"
+win_subtitle = "The signal falls silent."
 win_stinger = ExtResource("3_as7le")
 win_music = ExtResource("4_c2o8m")
 lose_heading = "Game Over"
+lose_subtitle = "The signal consumed the Stronghold."
 lose_stinger = ExtResource("4_as7le")
 lose_music = ExtResource("6_6q7dx")
 win_color = Color(0.9490196, 0.54901963, 0.15686275, 1)
 lose_color = Color(0.7019608, 0.14901961, 0.18039216, 1)
+subtitle_label = NodePath("PanelContainer/VBoxContainer/SubtitleLabel")
+credits_button = NodePath("PanelContainer/VBoxContainer/CreditsButton")
+credits_menu = NodePath("")
 pauses_game = true
 focus_chain = []
 
-[node name="TitleButton" parent="VBoxContainer" parent_id_path=PackedInt32Array(1969318145) index="2" unique_id=1880123845]
+[node name="VBoxContainer" parent="PanelContainer" parent_id_path=PackedInt32Array(1546182883) index="0" unique_id=1969318145]
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="PanelContainer/VBoxContainer" index="1" unique_id=791274402]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="RetryButton" parent="PanelContainer/VBoxContainer" index="2" unique_id=323461587]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CreditsButton" parent="PanelContainer/VBoxContainer" index="3" unique_id=1405432541 instance=ExtResource("7_nt3gt")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Credits"
+
+[node name="TitleButton" parent="PanelContainer/VBoxContainer" index="4" unique_id=1880123845]
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Title"

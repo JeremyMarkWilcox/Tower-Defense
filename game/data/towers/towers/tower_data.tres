@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ejbtcg4bo146" path="res://assets/3d_art/particle_effects/attacks/cannon_shoot.tscn" id="13_ec85p"]
 [ext_resource type="AudioStream" uid="uid://b4cw076tkga6l" path="res://assets/sounds/sfx/ice_tower.wav" id="14_ykpdv"]
 [ext_resource type="PackedScene" uid="uid://dfqwo7pdhjwkd" path="res://game/data/towers/towers/ice_lvl_1.tscn" id="16_xu32o"]
-[ext_resource type="PackedScene" uid="uid://ch5seddomiip5" path="res://assets/3d_art/towers/ice_lvl_2.glb" id="17_o2ate"]
+[ext_resource type="PackedScene" uid="uid://boditicqxebes" path="res://game/data/towers/towers/ice_lvl_2.tscn" id="17_o2ate"]
 [ext_resource type="PackedScene" uid="uid://4so7ntmi2wpp" path="res://game/data/towers/towers/ice_lvl_3.tscn" id="18_o2ate"]
 
 [sub_resource type="AudioStreamWAV" id="AudioStreamWAV_ykpdv"]

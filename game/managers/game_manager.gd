@@ -91,9 +91,20 @@ func _win() -> void:
 	state = RunState.VICTORY
 	_end_run()
 	stronghold.lock()  # leftover enemies can't take it down after you've won
-	await get_tree().create_timer(victory_delay).timeout  # let the boss death play out
+	_collapse_enemies()
+	await get_tree().create_timer(victory_delay).timeout  # let the boss and the rest fall
 	end_screen.set_result(true)
 	MenuManager.open_menu(end_screen)
+
+
+## The signal is cut: every enemy left on the field dies, one after another.
+func _collapse_enemies() -> void:
+	var enemies := get_tree().get_nodes_in_group(&"enemies")
+	enemies.shuffle()
+	for enemy in enemies:
+		await get_tree().create_timer(0.08).timeout
+		if is_instance_valid(enemy) and enemy.has_method("take_damage"):
+			enemy.take_damage(999999)
 
 
 func _lose() -> void:

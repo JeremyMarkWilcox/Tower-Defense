@@ -50,27 +50,27 @@ const ICE := 2
 
 # One row per type; one entry per level on that path.
 var costData: Array[Array] = [
-	[12],      # Cannon: build
-	[15, 30, 65],  # Fire: Cannon -> Fire 1, Fire 1 -> Fire 2
-	[12, 25, 40],  # Ice:  Cannon -> Ice 1,  Ice 1 -> Ice 2
+	[15],      # Cannon: build
+	[20, 35, 55],  # Fire: Cannon -> Fire 1, Fire 1 -> Fire 2
+	[15, 25, 45],  # Ice:  Cannon -> Ice 1,  Ice 1 -> Ice 2
 ]
 
 var damageData: Array[Array] = [
 	[2],
-	[5, 6, 7],
-	[6, 7, 8],
+	[4, 5, 7],
+	[5, 6, 8],
 ]
 
 ## Seconds between shots (lower = faster).
 var fireRateData: Array[Array] = [
-	[0.7],
-	[0.5, 0.7, 0.8],
-	[1.2, 1.5, 1.75],
+	[0.8],
+	[0.6, 0.8, 1.0],
+	[1.5, 1.75, 2.0],
 ]
 
 var bulletSpeedData: Array[Array] = [
 	[20],
-	[25, 35, 40],
+	[20, 25, 25],
 	[12, 12, 12],
 ]
 
