@@ -1,6 +1,19 @@
 [gd_scene format=3 uid="uid://6sb8h2k6r3ox"]
 
 [ext_resource type="PackedScene" uid="uid://cb6yw6pdpv3o8" path="res://game/data/enemies/unique_enemies/zombie.tscn" id="1_a355o"]
+[ext_resource type="Texture2D" uid="uid://ekshcqcuck43" path="res://assets/3d_art/enemies/zom_0.png" id="2_vfddu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpxvu"]
+resource_name = "material_0"
+transparency = 2
+alpha_scissor_threshold = 0.05
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_color = Color(0, 0.5803922, 0, 1)
+albedo_texture = ExtResource("2_vfddu")
+texture_filter = 0
+texture_repeat = false
+metadata/_gltf_primary_texture_coord = 0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a355o"]
 radius = 1.0498047
@@ -23,28 +36,64 @@ transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
 
 [node name="zom" parent="ZombieMesh" index="0" unique_id=1845406697]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.10850065, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.10999775, 0)
 
 [node name="bod" parent="ZombieMesh/zom/body" parent_id_path=PackedInt32Array(980058954, 1030134631) index="0" unique_id=2121768759]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.024008272)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.019299557)
+
+[node name="mesh" parent="ZombieMesh/zom/body/bod" index="0" unique_id=708942032]
+surface_material_override/0 = SubResource("StandardMaterial3D_hpxvu")
 
 [node name="arm_L" parent="ZombieMesh/zom/body/arms" parent_id_path=PackedInt32Array(980058954, 758865237) index="0" unique_id=1389038474]
-transform = Transform3D(0.38268247, 7.6554716e-07, -0.9238799, -0.08052037, -0.9961948, -0.033353373, -0.9203641, 0.08715492, -0.3812263, -0.21875, -0.072001144, -0.3060671)
+transform = Transform3D(0.38268247, 7.6554716e-07, -0.9238799, -0.08052037, -0.9961948, -0.033353373, -0.9203641, 0.08715492, -0.3812263, -0.21875, -0.07954973, -0.30331215)
+
+[node name="mesh2" parent="ZombieMesh/zom/body/arms/arm_L" index="0" unique_id=1811568994]
+surface_material_override/0 = SubResource("StandardMaterial3D_hpxvu")
 
 [node name="arm_R" parent="ZombieMesh/zom/body/arms" parent_id_path=PackedInt32Array(980058954, 758865237) index="1" unique_id=1755401546]
-transform = Transform3D(0.38268366, -7.310882e-07, 0.92387944, 0.040298764, -0.99904823, -0.016693097, 0.92300016, 0.043619376, -0.3823194, 0.21875, -0.17463419, -0.31847563)
+transform = Transform3D(0.38268366, -7.310882e-07, 0.92387944, 0.040298764, -0.99904823, -0.016693097, 0.92300016, 0.043619376, -0.3823194, 0.21875, -0.16912428, -0.3143432)
+
+[node name="mesh3" parent="ZombieMesh/zom/body/arms/arm_R" index="0" unique_id=982413686]
+surface_material_override/0 = SubResource("StandardMaterial3D_hpxvu")
 
 [node name="leg_L" parent="ZombieMesh/zom/body/legs" parent_id_path=PackedInt32Array(980058954, 814742577) index="0" unique_id=527996881]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025468146, 0.073905736, 0.048016544)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0003064189, 0.025812399, 0.038599115)
+
+[node name="cube" parent="ZombieMesh/zom/body/legs/leg_L" index="0" unique_id=431610107]
+surface_material_override/0 = SubResource("StandardMaterial3D_hpxvu")
 
 [node name="leg_r" parent="ZombieMesh/zom/body/legs" parent_id_path=PackedInt32Array(980058954, 814742577) index="1" unique_id=2108289876]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013510205, -0.03640002, 0.02061966)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02818732, 0.12240882, 0.025932334)
+
+[node name="cube2" parent="ZombieMesh/zom/body/legs/leg_r" index="0" unique_id=511289638]
+surface_material_override/0 = SubResource("StandardMaterial3D_hpxvu")
 
 [node name="head" parent="ZombieMesh/zom" index="1" unique_id=920810488]
 transform = Transform3D(1, 0, 0, 0, 0.9238795, -0.38268346, 0, 0.38268346, 0.9238795, 0, 0, -0.0625)
 
+[node name="cylinder" parent="ZombieMesh/zom/head" index="0" unique_id=1186200369]
+surface_material_override/0 = SubResource("StandardMaterial3D_hpxvu")
+
 [node name="head2" parent="ZombieMesh/zom/head" index="1" unique_id=1094051748]
-transform = Transform3D(1, 0, 0, 0, 0.57357645, -0.81915206, 0, 0.81915206, 0.57357645, 0, 0.11862068, -0.12534997)
+transform = Transform3D(1, 0, 0, 0, 0.57357645, -0.81915206, 0, 0.81915206, 0.57357645, 0, 0.11396893, -0.11581214)
+
+[node name="mesh4" parent="ZombieMesh/zom/head/head2" index="0" unique_id=379690553]
+surface_material_override/0 = SubResource("StandardMaterial3D_hpxvu")
+
+[node name="mesh5" parent="ZombieMesh/zom/head/head2" index="1" unique_id=407535491]
+surface_material_override/0 = SubResource("StandardMaterial3D_hpxvu")
+
+[node name="mesh6" parent="ZombieMesh/zom/head/head2" index="2" unique_id=139118245]
+surface_material_override/0 = SubResource("StandardMaterial3D_hpxvu")
+
+[node name="mesh7" parent="ZombieMesh/zom/head/head2" index="3" unique_id=906704908]
+surface_material_override/0 = SubResource("StandardMaterial3D_hpxvu")
+
+[node name="mesh8" parent="ZombieMesh/zom/head/head2" index="4" unique_id=91399231]
+surface_material_override/0 = SubResource("StandardMaterial3D_hpxvu")
+
+[node name="mesh9" parent="ZombieMesh/zom/head/head2" index="5" unique_id=1674502528]
+surface_material_override/0 = SubResource("StandardMaterial3D_hpxvu")
 
 [node name="CollisionShape3D" parent="Hitbox" parent_id_path=PackedInt32Array(1439913594) index="0" unique_id=749003341]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42690575, -0.16141105)
