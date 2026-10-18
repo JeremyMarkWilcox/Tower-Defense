@@ -31,6 +31,10 @@ const TOWER_SCENE := preload("uid://hfqj55tjn8l8")  # towers/towers/tower.tscn
 @export var hit_flash_color := Color(1.0, 0.15, 0.1, 0.6)
 @export var hit_flash_time := 0.15
 
+## How long the intact model takes to drop into the dust before the ruins replace it.
+@export var collapse_time := 0.35
+@export var collapse_sink := 0.8
+
 var health := 0
 var sockets: Array[TowerSocket] = []
 ## type * 10 + level per socket, or -1 if empty. Kept for anything that reads it.
@@ -79,7 +83,8 @@ func take_damage(amount: int) -> void:
 	_is_destroyed = true
 	Audio.play_sfx(destroyed_sound, 0.0, destroyed_volume_db)
 	_spawn_destroyed_effect()
-	_swap_to_ruins()
+	_clear_towers()
+	_collapse()
 	destroyed.emit()
 
 
@@ -107,16 +112,49 @@ func _clear_flash() -> void:
 		mesh.material_overlay = null
 
 
-## Hides the intact model and puts the ruins in its place, under the dust cloud.
-func _swap_to_ruins() -> void:
+## Every tower stops at once, then shrinks away. Sockets stop taking clicks.
+## Every tower stops at once, then each socket shrinks away with its tower.
+## The ruins model has its own socket pads, so the live sockets disappear.
+func _clear_towers() -> void:
+	for socket in sockets:
+		socket.process_mode = Node.PROCESS_MODE_DISABLED  # no more clicks, hover or shooting
+		var tower := socket.tower
+		var tween := create_tween()
+		tween.tween_interval(randf_range(0.0, 0.25))  # a little stagger between sockets
+		tween.tween_property(socket, "scale", Vector3.ONE * 0.01, 0.3) \
+				.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+		tween.tween_callback(socket.hide)
+		if tower:
+			tween.tween_callback(tower.queue_free)
+		socket.tower = null
+		socket.tower_type = -1
+		socket.tower_level = -1
+
+
+## The intact model shakes, then sinks and squashes into the dust; the ruins replace it.
+func _collapse() -> void:
 	if _flash_tween:
 		_flash_tween.kill()
 	_clear_flash()
 	if model == null or destroyed_model == null:
 		return
+	var rest := model.transform  # the ruins go here, not wherever the model sank to
+	var start := model.position
+	var tween := create_tween()
+	for i in 5:
+		var jolt := Vector3(randf_range(-0.12, 0.12), 0.0, randf_range(-0.12, 0.12))
+		tween.tween_property(model, "position", start + jolt, 0.04)
+	tween.tween_property(model, "position:y", start.y - collapse_sink, collapse_time) \
+			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tween.parallel().tween_property(model, "scale:y", model.scale.y * 0.5, collapse_time)
+	tween.tween_callback(_swap_to_ruins.bind(rest))
+
+
+## Hides the intact model and puts the ruins where it originally stood.
+func _swap_to_ruins(rest: Transform3D) -> void:
 	var ruins := destroyed_model.instantiate() as Node3D
 	model.add_sibling(ruins)
-	ruins.transform = model.transform
+	ruins.transform = rest
 	model.hide()
 
 

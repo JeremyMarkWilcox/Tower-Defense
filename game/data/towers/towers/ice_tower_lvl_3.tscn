@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://diidr3ynuevut"]
-
-[ext_resource type="PackedScene" uid="uid://djrpki6vu1667" path="res://game/data/towers/towers/ice_tower_lvl_2.tscn" id="1_lc5xf"]
-
-[node name="IceTowerlevel2" unique_id=1882837467 instance=ExtResource("1_lc5xf")]

@@ -60,21 +60,39 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
 bbcode_enabled = true
-text = "[center][b]Programming[/b]
+text = "[center]
+[b]Programming[/b]
 
+Lead: 
 Jericho Black
+
+Gameplay: 
 ThunderDinInteractive
+
 
 [b]Art[/b]
 
+Environment, Towers, skeleton model,
+ particle effects, 
+and UI: 
 Jericho Black
+
+Enemies Models and animation: 
 Ekipir
 
+
 [b]Music[/b]
+5 beautiful songs and ambience:
 LostEagle
 
 [b]Sound Effects[/b]
-Sound effects by Kenney (CC0)
+
+Kenney (CC0)
+
+Sonniss (CC0)
+
+Jericho Black
+
 
 [b]Font[/b]
 VT323 by Peter Hull (SIL Open Font License)

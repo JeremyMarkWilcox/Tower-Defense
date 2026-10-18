@@ -50,22 +50,22 @@ const ICE := 2
 
 # One row per type; one entry per level on that path.
 var costData: Array[Array] = [
-	[10],      # Cannon: build
-	[15, 75, 100],  # Fire: Cannon -> Fire 1, Fire 1 -> Fire 2
-	[10, 50, 75],  # Ice:  Cannon -> Ice 1,  Ice 1 -> Ice 2
+	[12],      # Cannon: build
+	[15, 30, 65],  # Fire: Cannon -> Fire 1, Fire 1 -> Fire 2
+	[12, 25, 40],  # Ice:  Cannon -> Ice 1,  Ice 1 -> Ice 2
 ]
 
 var damageData: Array[Array] = [
 	[2],
-	[4, 5, 6],
-	[5, 7, 8],
+	[5, 6, 7],
+	[6, 7, 8],
 ]
 
 ## Seconds between shots (lower = faster).
 var fireRateData: Array[Array] = [
-	[0.8],
-	[0.6, .9, 1.0],
-	[1.5, 1.75, 2],
+	[0.7],
+	[0.5, 0.7, 0.8],
+	[1.2, 1.5, 1.75],
 ]
 
 var bulletSpeedData: Array[Array] = [
@@ -80,8 +80,9 @@ var bulletSpeedData: Array[Array] = [
 @export var burn_duration: Array[float] = [3.0, 4.0, 5.0]
 ## Damage per burn tick (2 ticks per second).
 @export var burn_tick_damage: Array[float] = [1.0, 2.0, 3.0]
-## Bullets per volley. Fire 2 fires a 3-shot burst like a gatling gun.
-@export var burst_shots: Array[int] = [1, 30, 60] #Doesn't work?
+## Bullets per volley: Fire 1 single, Fire 2 a 2-shot burst, Fire 3 a 3-shot gatling burst.
+## Note: tower_data.tres overrides these defaults; edit the values there in the Inspector.
+@export var burst_shots: Array[int] = [1, 2, 3]
 ## Seconds between the bullets in one burst.
 @export var burst_gap := 0.08
 
