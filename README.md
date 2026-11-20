@@ -1,2 +1,2 @@
 # Tower Defense
-TD for Game Jam
+Godot Wild Jam #98 entry
